@@ -9,7 +9,7 @@
 
 			<ul
 				class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-				<li class="active"><a href="index.html">masterhome1</a></li>
+				<li class="active"><a href="index.html">masterhome2</a></li>
 				<li class="has-children"><a href="#">Dropdown</a>
 					<ul class="dropdown">
 						<li><a href="elements.html">Elements</a></li>
