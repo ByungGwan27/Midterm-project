@@ -6,7 +6,6 @@
 			<div class="site-navigation">
 				<a href="index.html" class="logo m-0">Traveller<span class="text-primary">.</span></a>
 
-<<<<<<< HEAD
 				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
 					<!--<li class="active"><a href="index.html">숙소</a></li>-->
 					
@@ -32,7 +31,6 @@
 					<li><a href="contact.html">공지사항</a></li>
 				</ul>
 
-=======
 
 			<ul
 				class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
