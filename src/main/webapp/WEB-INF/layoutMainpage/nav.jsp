@@ -10,7 +10,7 @@
 			<ul
 				class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
 				<li class="active"><a href="index.html">홈2</a></li>
-				<li class="has-children"><a href="#">Dropdown</a>
+				<li class="has-children"><a href="#">드롭다운</a>
 					<ul class="dropdown">
 						<li><a href="elements.html">Elements</a></li>
 						<li><a href="#">Menu One</a></li>
