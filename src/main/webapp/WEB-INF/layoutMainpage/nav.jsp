@@ -6,31 +6,27 @@
 			<div class="site-navigation">
 				<a href="index.html" class="logo m-0">Traveller<span class="text-primary">.</span></a>
 
-				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-					<!--<li class="active"><a href="index.html">숙소</a></li>-->
-					
-					<li><a href="services.html">숙소</a></li>
-					<li><a href="about.html">여행포스트</a></li>
-					<li class="has-children">
-						<a href="#">로그인|마이페이지</a>
-						<ul class="dropdown">
-							<li><a href="elements.html">회원정보수정</a></li>
-							<li><a href="#">예약정보</a></li>
-							<!-- <li class="has-children">
-								<a href="#">위시리스트</a>
-								<ul class="dropdown">
-									<li><a href="#">Sub Menu One</a></li>
-									<li><a href="#">Sub Menu Two</a></li>
-									<li><a href="#">Sub Menu Three</a></li>
-								</ul>
-							</li> -->
-							<li><a href="#">위시리스트</a></li>
-							<li><a href="#">QnA</a></li>
-						</ul>
-					</li>
-					<li><a href="contact.html">공지사항</a></li>
-				</ul>
->>>>>>> branch 'jayk' of https://github.com/ByungGwan27/Midterm-project.git
+
+			<ul
+				class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+				<li class="active"><a href="index.html">masterhome1</a></li>
+				<li class="has-children"><a href="#">Dropdown</a>
+					<ul class="dropdown">
+						<li><a href="elements.html">Elements</a></li>
+						<li><a href="#">Menu One</a></li>
+						<li class="has-children"><a href="#">Menu Two</a>
+							<ul class="dropdown">
+								<li><a href="#">Sub Menu One</a></li>
+								<li><a href="#">Sub Menu Two</a></li>
+								<li><a href="#">Sub Menu Three</a></li>
+							</ul></li>
+						<li><a href="#">Menu Three</a></li>
+					</ul></li>
+				<li><a href="services.html">Services</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="contact.html">Contact Us</a></li>
+			</ul>
+>>>>>>> branch 'master' of https://github.com/ByungGwan27/Midterm-project.git
 
 				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
 					<span></span>
