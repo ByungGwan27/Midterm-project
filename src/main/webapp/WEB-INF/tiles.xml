@@ -2,7 +2,7 @@
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
-       
+
 <tiles-definitions>
 
   <definition name="mainpage" template="/WEB-INF/layoutMainpage/template.jsp">
@@ -10,9 +10,9 @@
     <put-attribute name="body" value="/WEB-INF/layoutMainpage/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/layoutMainpage/footer.jsp" />
   </definition>
-  
+
   <definition name="WILDCARD:mainpage/*" extends="mainpage">
     <put-attribute name="body" value="/WEB-INF/views/mainpage/{1}.jsp"></put-attribute>
   </definition>
-   
+
 </tiles-definitions>
