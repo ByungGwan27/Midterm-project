@@ -9,7 +9,7 @@
 				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
 					<!--<li class="active"><a href="index.html">숙소</a></li>-->
 					
-					<li><a href="services.html">숙소</a></li>
+					<li><a href="services.html">숙소11</a></li>
 					<li><a href="about.html">여행포스트</a></li>
 					<li class="has-children">
 						<a href="#">로그인|마이페이지</a>
