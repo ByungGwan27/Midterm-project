@@ -6,27 +6,6 @@
 			<div class="site-navigation">
 				<a href="index.html" class="logo m-0">Traveller<span class="text-primary">.</span></a>
 
-<<<<<<< HEAD
-			<ul
-				class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-				<li class="active"><a href="index.html">홈3</a></li>
-				<li class="has-children"><a href="#">Dropdown</a>
-					<ul class="dropdown">
-						<li><a href="elements.html">Elements</a></li>
-						<li><a href="#">Menu One</a></li>
-						<li class="has-children"><a href="#">Menu Two</a>
-							<ul class="dropdown">
-								<li><a href="#">Sub Menu One</a></li>
-								<li><a href="#">Sub Menu Two</a></li>
-								<li><a href="#">Sub Menu Three</a></li>
-							</ul></li>
-						<li><a href="#">Menu Three</a></li>
-					</ul></li>
-				<li><a href="services.html">Services</a></li>
-				<li><a href="about.html">About</a></li>
-				<li><a href="contact.html">Contact Us</a></li>
-			</ul>
-=======
 				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
 					<!--<li class="active"><a href="index.html">숙소</a></li>-->
 					
