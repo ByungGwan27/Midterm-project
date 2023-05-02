@@ -10,9 +10,22 @@
     <put-attribute name="body" value="/WEB-INF/layoutMainpage/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/layoutMainpage/footer.jsp" />
   </definition>
+  
+  <!-- 5/2 gwan. mypage tiles work -->
+  <definition name="mypage" template="/WEB-INF/layoutMypage/template.jsp">
+    <put-attribute name="topbar" value="/WEB-INF/layoutMypage/topbar.jsp" />
+    <put-attribute name="sidebar" value="/WEB-INF/layoutMypage/sidebar.jsp" />
+    <put-attribute name="body" value="/WEB-INF/layoutMypage/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/layoutMypage/footer.jsp" />
+  </definition>
 
   <definition name="WILDCARD:mainpage/*" extends="mainpage">
     <put-attribute name="body" value="/WEB-INF/views/mainpage/{1}.jsp"></put-attribute>
+  </definition>
+  
+  <!-- 5/2 gwan. mypage tiles work-->
+  <definition name="WILDCARD:mypage/*" extends="mypage">
+    <put-attribute name="body" value="/WEB-INF/views/mypage/{1}.jsp"></put-attribute>
   </definition>
 
 </tiles-definitions>

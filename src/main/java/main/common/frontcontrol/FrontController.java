@@ -11,6 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import gwan.mypage.control.MyPageCouponControl;
+import gwan.mypage.control.MyPageMessageControl;
+import gwan.mypage.control.MyPageQnaControl;
+import gwan.mypage.control.MyPageUserInfoChangeControl;
+import gwan.mypage.control.MyPageWishListControl;
+import gwan.mypage.control.MypageHomeControl;
 import main.common.control.Control;
 
 public class FrontController extends HttpServlet{
@@ -27,6 +33,15 @@ public class FrontController extends HttpServlet{
 		
 		//메인페이지
 		map.put("/mainPage.do", new MainControl());
+		
+		//5.2 강병관. 마이페이지
+		map.put("/myPageHome.do", new MypageHomeControl());
+		map.put("/myPageWishList.do", new MyPageWishListControl());
+		map.put("/myPageCoupon.do", new MyPageCouponControl());
+		map.put("/myPageMessage.do", new MyPageMessageControl());
+		map.put("/myPageUserInfoChange.do", new MyPageUserInfoChangeControl());
+		map.put("/myPageQna.do", new MyPageQnaControl());
+		
 	}
 	
 	@Override
