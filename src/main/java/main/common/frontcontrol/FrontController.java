@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import main.common.control.Control;
+import shin.post.control.PostDetailControl;
+import shin.post.control.PostListControl;
 
 public class FrontController extends HttpServlet{
 	private Map<String, Control> map;
@@ -27,6 +29,13 @@ public class FrontController extends HttpServlet{
 		
 		//메인페이지
 		map.put("/mainPage.do", new MainControl());
+		
+		//여행 포스트 리스트
+		map.put("/postList.do", new PostListControl());
+		//여행 포스트 상세페이지
+		map.put("/postDetail.do", new PostDetailControl());
+		//
+		
 	}
 	
 	@Override

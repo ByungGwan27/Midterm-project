@@ -14,5 +14,15 @@
   <definition name="WILDCARD:mainpage/*" extends="mainpage">
     <put-attribute name="body" value="/WEB-INF/views/mainpage/{1}.jsp"></put-attribute>
   </definition>
+  
+   <definition name="postpage" template="/WEB-INF/layoutPostDetail/template.jsp">
+    <put-attribute name="nav" value="/WEB-INF/layoutPostDetailnav.jsp" />
+    <put-attribute name="body" value="/WEB-INF/layoutPostDetail/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/layoutPostDetail/footer.jsp" />
+  </definition>
 
+  <definition name="WILDCARD:postpage/*" extends="postpage">
+    <put-attribute name="body" value="/WEB-INF/views/postpage/{1}.jsp"></put-attribute>
+  </definition>
+  
 </tiles-definitions>
