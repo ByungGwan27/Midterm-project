@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jayk.control.GetDormControl;
 import main.common.control.Control;
 
 public class FrontController extends HttpServlet{
@@ -27,6 +28,11 @@ public class FrontController extends HttpServlet{
 		
 		//메인페이지
 		map.put("/mainPage.do", new MainControl());
+		
+		//숙소리스트
+		
+		//인포페이지
+		map.put("/dormInfoPage.do", new GetDormControl());
 	}
 	
 	@Override
