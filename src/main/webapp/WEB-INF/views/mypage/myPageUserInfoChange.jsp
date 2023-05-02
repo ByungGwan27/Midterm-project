@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<h1 class="h3 mb-2 text-gray-800">보유쿠폰함</h1>
+<title>Traveller - 회원정보수정</title>
+
+<h1 class="h3 mb-4 text-gray-800">회원정보수정</h1>
 
 <form action="modifyNotice.do" method="post">
   <table class="table">

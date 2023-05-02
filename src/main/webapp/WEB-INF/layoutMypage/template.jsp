@@ -14,8 +14,8 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
+<link rel="shortcut icon" href="cssMainpage/favicon.png">
 
-<title>SB Admin 2 - 각페이로 변경시킬것</title>
 
 <!-- Custom fonts for this template-->
 <link href="cssMypage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -46,6 +46,7 @@
 				<!-- Topbar -->
 				<tiles:insertAttribute name="topbar"></tiles:insertAttribute>
 				<!-- End of Topbar -->
+				<div class="container-fluid">
 				<tiles:insertAttribute name="body"></tiles:insertAttribute>
 
 				<tiles:insertAttribute name="footer"></tiles:insertAttribute>
@@ -85,22 +86,6 @@
 			</div>
 		</div>
 
-		<!-- Bootstrap core JavaScript-->
-		<script src="cssMypage/vendor/jquery/jquery.min.js"></script>
-		<script src="cssMypage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-		<!-- Core plugin JavaScript-->
-		<script src="cssMypage/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-		<!-- Custom scripts for all pages-->
-		<script src="cssMypage/js/sb-admin-2.min.js"></script>
-
-		<!-- Page level plugins -->
-		<script src="cssMypage/vendor/chart.js/Chart.min.js"></script>
-
-		<!-- Page level custom scripts -->
-		<script src="cssMypage/js/demo/chart-area-demo.js"></script>
-		<script src="cssMypage/js/demo/chart-pie-demo.js"></script>
 </body>
 
 </html>
