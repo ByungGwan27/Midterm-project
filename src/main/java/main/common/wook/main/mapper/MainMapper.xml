@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!-- DAO와 같은 역할 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="main.common.wook.main.mapper.MainMapper"> <!-- mapper = 인터페이스 파일 부분 -->
+	<select id="memberCount" parameterType="member">
+	select count(*) as memberCount from member
+	</select>
+	
+</mapper>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-
+<% int count = (int) session.getAttribute("memberCount"); %>
 <!-- /*
 * Template Name: Tour
 * Template Author: Untree.co
@@ -53,9 +53,9 @@
 	<!-- Navigation-->
 	<tiles:insertAttribute name="nav"></tiles:insertAttribute>
 
-	<div class="untree_co-section">
+	<<!-- div class="untree_co-section">
 		<div class="container">
-			<!-- <div class="row mb-5 justify-content-center">
+			<div class="row mb-5 justify-content-center">
 				<div class="col-lg-6 text-center">
 					<h2 class="section-title text-center mb-3">Our Services</h2>
 					<p>Far far away, behind the word mountains, far from the
@@ -63,7 +63,7 @@
 						Separated they live in Bookmarksgrove right at the coast of the
 						Semantics, a large language ocean.</p>
 				</div>
-			</div> -->
+			</div>
 			<div class="row align-items-stretch">
 				<div class="col-lg-4 order-lg-1">
 					<div class="h-100">
@@ -73,7 +73,7 @@
 						</div>
 					</div>
 				</div>
-
+ -->
 				<!-- <div
 					class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-1">
 
@@ -130,7 +130,7 @@
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
 					<div class="counter-wrap">
 						<div class="counter">
-							<span class="" data-number="9313">0</span>
+							<span class="" data-number="" id="memberCount">0</span>
 						</div>
 						<span class="caption">회원 수</span>
 					</div>
@@ -502,3 +502,17 @@
 </body>
 
 </html>
+
+
+<script>
+fetch("mainMemberCount.do")
+.then(resolve => resolve.json())
+.then(result => {
+	console.log(result)
+	let memberCount = result[0].memberCount
+	console.log(memberCount)
+	let count = document.querySelector("#memberCount")
+	console.log(count)
+	count.setAttribute('data-number' , memberCount)
+})
+</script>
