@@ -55,7 +55,7 @@
 
 	<div class="untree_co-section">
 		<div class="container">
-			<div class="row mb-5 justify-content-center">
+			<!-- <div class="row mb-5 justify-content-center">
 				<div class="col-lg-6 text-center">
 					<h2 class="section-title text-center mb-3">Our Services</h2>
 					<p>Far far away, behind the word mountains, far from the
@@ -63,7 +63,7 @@
 						Separated they live in Bookmarksgrove right at the coast of the
 						Semantics, a large language ocean.</p>
 				</div>
-			</div>
+			</div> -->
 			<div class="row align-items-stretch">
 				<div class="col-lg-4 order-lg-1">
 					<div class="h-100">
@@ -74,7 +74,7 @@
 					</div>
 				</div>
 
-				<div
+				<!-- <div
 					class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-1">
 
 					<div class="feature-1 d-md-flex">
@@ -116,7 +116,7 @@
 							<p class="mb-0">Even the all-powerful Pointing has no control
 								about the blind texts.</p>
 						</div>
-					</div>
+					</div> -->
 
 				</div>
 
@@ -132,7 +132,7 @@
 						<div class="counter">
 							<span class="" data-number="9313">0</span>
 						</div>
-						<span class="caption">No. of Travels</span>
+						<span class="caption">회원 수</span>
 					</div>
 				</div>
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
@@ -140,7 +140,7 @@
 						<div class="counter">
 							<span class="" data-number="8492">0</span>
 						</div>
-						<span class="caption">No. of Clients</span>
+						<span class="caption">총 예약건수</span>
 					</div>
 				</div>
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
@@ -148,7 +148,7 @@
 						<div class="counter">
 							<span class="" data-number="100">0</span>
 						</div>
-						<span class="caption">No. of Employees</span>
+						<span class="caption">등록 숙소 수</span>
 					</div>
 				</div>
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
@@ -156,7 +156,7 @@
 						<div class="counter">
 							<span class="" data-number="120">0</span>
 						</div>
-						<span class="caption">No. of Countries</span>
+						<span class="caption">후기 수</span>
 					</div>
 				</div>
 			</div>
@@ -169,7 +169,7 @@
 		<div class="container">
 			<div class="row text-center justify-content-center mb-5">
 				<div class="col-lg-7">
-					<h2 class="section-title text-center">Popular Destination</h2>
+					<h2 class="section-title text-center">추천 숙소</h2>
 				</div>
 			</div>
 
@@ -242,7 +242,7 @@
 	</div>
 
 
-	<div class="untree_co-section testimonial-section mt-5">
+	<!-- <div class="untree_co-section testimonial-section mt-5">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-7 text-center">
@@ -290,10 +290,10 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 
-	<div class="untree_co-section">
+	<!-- <div class="untree_co-section">
 		<div class="container">
 			<div class="row justify-content-center text-center mb-5">
 				<div class="col-lg-6">
@@ -394,9 +394,9 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
-	<div class="untree_co-section">
+	<!-- <div class="untree_co-section">
 		<div class="container">
 			<div class="row justify-content-between align-items-center">
 
@@ -445,7 +445,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<!-- Footer-->
 	<tiles:insertAttribute name="footer"></tiles:insertAttribute>

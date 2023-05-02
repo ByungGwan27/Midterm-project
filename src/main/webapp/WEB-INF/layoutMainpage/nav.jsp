@@ -9,22 +9,23 @@
 
 			<ul
 				class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-				<li class="active"><a href="index.html">Home</a></li>
-				<li class="has-children"><a href="#">Dropdown</a>
+				<li class="active"><a href="">숙소</a></li>
+				<li><a href="">여행포스트</a></li>
+				<li class="has-children"><a href="#">로그인/마이페이지</a>
 					<ul class="dropdown">
-						<li><a href="elements.html">Elements</a></li>
-						<li><a href="#">Menu One</a></li>
-						<li class="has-children"><a href="#">Menu Two</a>
+						<li><a href="">회원정보수정</a></li>
+						<li><a href="">예약정보</a></li>
+						<li><a href="">위시리스트</a></li>
+						<li><a href="">QnA</a></li>
+						<!-- <li class="has-children"><a href="#">Menu Two</a>
 							<ul class="dropdown">
 								<li><a href="#">Sub Menu One</a></li>
 								<li><a href="#">Sub Menu Two</a></li>
 								<li><a href="#">Sub Menu Three</a></li>
-							</ul></li>
-						<li><a href="#">Menu Three</a></li>
+							</ul></li> -->
 					</ul></li>
-				<li><a href="services.html">Services</a></li>
-				<li><a href="about.html">About</a></li>
-				<li><a href="contact.html">Contact Us</a></li>
+
+				<li><a href="">공지사항</a></li>
 			</ul>
 
 			<a href="#"
@@ -52,15 +53,24 @@
 								<div class="row mb-2">
 									<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
 										<select name="" id="" class="form-control custom-select">
-											<option value="">Destination</option>
-											<option value="">Peru</option>
-											<option value="">Japan</option>
-											<option value="">Thailand</option>
-											<option value="">Brazil</option>
-											<option value="">United States</option>
-											<option value="">Israel</option>
-											<option value="">China</option>
-											<option value="">Russia</option>
+											<option value="">서울특별시</option>
+											<option value="">부산광역시</option>
+											<option value="">대구광역시</option>
+											<option value="">인천광역시</option>
+											<option value="">광주광역시</option>
+											<option value="">대전광역시</option>
+											<option value="">울산광역시</option>
+											<option value="">세종특별자치시</option>
+											<option value="">경기도</option>
+											<option value="">강원도</option>
+											<option value="">충청북도</option>
+											<option value="">충청남도</option>
+											<option value="">전라북도</option>
+											<option value="">전라남도</option>
+											<option value="">경상북도</option>
+											<option value="">경상남도</option>
+											<option value="">제주특별자치도</option>
+							
 										</select>
 									</div>
 									<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-5">
@@ -68,18 +78,18 @@
 									</div>
 									<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-3">
 										<input type="text" class="form-control"
-											placeholder="# of People">
+											placeholder="인원수">
 									</div>
 
 								</div>
 								<div class="row align-items-center">
 									<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
 										<input type="submit" class="btn btn-primary btn-block"
-											value="Search">
+											value="검색">
 									</div>
 									<div class="col-lg-8">
 										<label class="control control--checkbox mt-3"> <span
-											class="caption">Save this search</span> <input
+											class="caption">설정 저장</span> <input
 											type="checkbox" checked="checked" />
 											<div class="control__indicator"></div>
 										</label>
@@ -94,10 +104,14 @@
 				<div class="slides">
 					<img src="cssMainpage/images/hero-slider-1.jpg" alt="Image"
 						class="img-fluid active"> <img
-						src="cssMainpage/images/hero-slider-2.jpg" alt="Image" class="img-fluid">
-					<img src="cssMainpage/images/hero-slider-3.jpg" alt="Image" class="img-fluid">
-					<img src="cssMainpage/images/hero-slider-4.jpg" alt="Image" class="img-fluid">
-					<img src="cssMainpage/images/hero-slider-5.jpg" alt="Image" class="img-fluid">
+						src="cssMainpage/images/hero-slider-2.jpg" alt="Image"
+						class="img-fluid"> <img
+						src="cssMainpage/images/hero-slider-3.jpg" alt="Image"
+						class="img-fluid"> <img
+						src="cssMainpage/images/hero-slider-4.jpg" alt="Image"
+						class="img-fluid"> <img
+						src="cssMainpage/images/hero-slider-5.jpg" alt="Image"
+						class="img-fluid">
 				</div>
 			</div>
 		</div>
