@@ -9,9 +9,11 @@
 
 			<ul
 				class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-				<li class="active"><a href="">숙소</a></li>
-				<li><a href="">여행포스트</a></li>
-				<li class="has-children"><a href="#">로그인/마이페이지</a>
+				<li class="active"><a href="dormListPage.do">숙소</a></li>
+				<li><a href="postList.do">여행포스트</a></li>
+				<li><a href="">로그인</a></li>
+				<li><a href="">관리자페이지</a></li>
+				<li class="has-children"><a href="#">마이페이지</a>
 					<ul class="dropdown">
 						<li><a href="">회원정보수정</a></li>
 						<li><a href="">예약정보</a></li>
@@ -25,7 +27,7 @@
 							</ul></li> -->
 					</ul></li>
 
-				<li><a href="">공지사항</a></li>
+				<li><a href="noticeList.do">공지사항</a></li>
 			</ul>
 
 			<a href="#"
