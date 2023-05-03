@@ -10,9 +10,21 @@
     <put-attribute name="body" value="/WEB-INF/layoutMainpage/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/layoutMainpage/footer.jsp" />
   </definition>
+  
+  <definition name="adminpage" template="/WEB-INF/layoutAdminpage/template.jsp">
+    <put-attribute name="header" value="/WEB-INF/layoutAdminpage/header.jsp" />
+    <put-attribute name="body" value="/WEB-INF/layoutAdminpage/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/layoutAdminpage/footer.jsp" />
+     <put-attribute name="sidebar" value="/WEB-INF/layoutAdminpage/sidebar.jsp" />
+  </definition>
 
   <definition name="WILDCARD:mainpage/*" extends="mainpage">
     <put-attribute name="body" value="/WEB-INF/views/mainpage/{1}.jsp"></put-attribute>
   </definition>
+  
+   <definition name="WILDCARD:adminpage/*" extends="adminpage">
+    <put-attribute name="body" value="/WEB-INF/views/adminpage/{1}.jsp"></put-attribute>
+  </definition>
+  
 
 </tiles-definitions>
