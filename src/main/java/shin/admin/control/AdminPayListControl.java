@@ -13,7 +13,7 @@ public class AdminPayListControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		return "adminpage/adminPayList.tiles";
+		return "adminpay/adminPayList.tiles";
 	}
 
 }

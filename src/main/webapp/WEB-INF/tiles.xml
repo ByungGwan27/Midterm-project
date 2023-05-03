@@ -47,14 +47,14 @@
     <put-attribute name="body" value="/WEB-INF/views/noticepage/{1}.jsp"></put-attribute>
   </definition>
   
-    <definition name="adminpage" template="/WEB-INF/layoutAdminpay/template.jsp">
+    <definition name="adminpay" template="/WEB-INF/layoutAdminpay/template.jsp">
     <put-attribute name="nav" value="/WEB-INF/layoutAdminpay/nav.jsp" />
     <put-attribute name="body" value="/WEB-INF/layoutAdminpay/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/layoutAdminpay/footer.jsp" />
   </definition>
 
-  <definition name="WILDCARD:adminpage/*" extends="adminpage">
-    <put-attribute name="body" value="/WEB-INF/views/adminpage/{1}.jsp"></put-attribute>
+  <definition name="WILDCARD:adminpay/*" extends="adminpay">
+    <put-attribute name="body" value="/WEB-INF/views/adminpay/{1}.jsp"></put-attribute>
   </definition>
   
   
