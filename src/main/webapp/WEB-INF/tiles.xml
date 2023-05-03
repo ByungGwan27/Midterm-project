@@ -10,7 +10,7 @@
     <put-attribute name="body" value="/WEB-INF/layoutMainpage/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/layoutMainpage/footer.jsp" />
   </definition>
-  
+  <!-- 20230503 wook -->
   <definition name="adminpage" template="/WEB-INF/layoutAdminpage/template.jsp">
     <put-attribute name="header" value="/WEB-INF/layoutAdminpage/header.jsp" />
     <put-attribute name="body" value="/WEB-INF/layoutAdminpage/body.jsp" />
@@ -24,6 +24,16 @@
   
    <definition name="WILDCARD:adminpage/*" extends="adminpage">
     <put-attribute name="body" value="/WEB-INF/views/adminpage/{1}.jsp"></put-attribute>
+</definition>
+   
+    <!-- 20230503 jayk -->
+  <definition name="infopage" template="/WEB-INF/layoutDormInfoPage/template.jsp">
+    <put-attribute name="nav" value="/WEB-INF/layoutDormInfoPage/nav.jsp" />
+    <put-attribute name="body" value="/WEB-INF/layoutDormInfoPage/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/layoutDormInfoPage/footer.jsp" />
+  </definition>
+  <definition name="WILDCARD:dorminfopage/*" extends="infopage">
+    <put-attribute name="body" value="/WEB-INF/views/dorminfopage/{1}.jsp"></put-attribute>
   </definition>
   
 

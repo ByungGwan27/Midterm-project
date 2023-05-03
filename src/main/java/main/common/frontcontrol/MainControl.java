@@ -92,7 +92,7 @@ public class MainControl implements Control {
 			index++;
 		}
 		
-		return "mainpage/Main.tiles";
+		return "mainpage/mainpage.tiles";
 	}
 
 }
