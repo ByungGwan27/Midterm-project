@@ -13,6 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import jayk.dorminfo.control.DormListControl;
 import jayk.dorminfo.control.GetDormControl;
+import gwan.mypage.control.MyPageCouponControl;
+import gwan.mypage.control.MyPageMessageControl;
+import gwan.mypage.control.MyPageQnaControl;
+import gwan.mypage.control.MyPageQnaQControl;
+import gwan.mypage.control.MyPageUserInfoChangeControl;
+import gwan.mypage.control.MyPageWishListControl;
+import gwan.mypage.control.MypageHomeControl;
 import main.common.control.Control;
 import main.common.wook.admin.control.adminDeclarationInfoControl;
 import main.common.wook.admin.control.adminDeclarationListControl;
@@ -40,11 +47,12 @@ public class FrontController extends HttpServlet{
 	public void init(ServletConfig config) throws ServletException {
 		encoding = config.getInitParameter("enc");
 		
-		
 		//메인페이지
 		map.put("/mainPage.do", new MainControl());
 		
-		// 20230503 김성욱
+		
+		// 김성욱
+		
 		//관리자 페이지
 		map.put("/adminPage.do", new adminPageControl());
 		map.put("/adminQna.do" , new adminQnaControl());
@@ -56,14 +64,17 @@ public class FrontController extends HttpServlet{
 		map.put("/adminReservationInfo.do", new adminReservationInfoControl());
 		
 		
-		// 20230503 김자영
+		// 김자영
+		
 		//숙소리스트
 		map.put("/dormListPage.do", new DormListControl());
 		
 		//인포페이지
 		map.put("/dormInfoPage.do", new GetDormControl());
 		
-		// 20230503 신지은
+		
+		// 신지은
+		
 		//여행 포스트 리스트
 		map.put("/postList.do", new PostListControl());
 		//여행 포스트 상세페이지
@@ -74,6 +85,25 @@ public class FrontController extends HttpServlet{
 		map.put("/noticeAddForm.do", new NoticeAddFormControl());
 		//관리자 결제정보창
 		map.put("/adminPayList.do", new AdminPayListControl());
+		
+		
+		// 강병관
+		//마이페이지
+		//마이페이지 홈(예약내역)
+		map.put("/myPageHome.do", new MypageHomeControl());
+		//마이페이지 위시리스트(위시리스트)
+		map.put("/myPageWishList.do", new MyPageWishListControl());
+		//마이페이지(쿠폰)
+		map.put("/myPageCoupon.do", new MyPageCouponControl());
+		//마이페이지(메세지)
+		map.put("/myPageMessage.do", new MyPageMessageControl());
+		//마이페이지(회원정보수정)
+		map.put("/myPageUserInfoChange.do", new MyPageUserInfoChangeControl());
+		//마이페이지(Q&A)
+		map.put("/myPageQna.do", new MyPageQnaControl());
+		
+		//Q&A 질문 작성 페이지
+		map.put("/myPageQnaQ.do", new MyPageQnaQControl());
 		
 	}
 	
