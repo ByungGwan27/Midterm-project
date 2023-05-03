@@ -5,45 +5,62 @@
 
 <tiles-definitions>
 
+  <!-- main page -->
   <definition name="mainpage" template="/WEB-INF/layoutMainpage/template.jsp">
     <put-attribute name="nav" value="/WEB-INF/layoutMainpage/nav.jsp" />
     <put-attribute name="body" value="/WEB-INF/layoutMainpage/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/layoutMainpage/footer.jsp" />
   </definition>
+  
+  <definition name="WILDCARD:mainpage/*" extends="mainpage">
+    <put-attribute name="body" value="/WEB-INF/views/mainpage/{1}.jsp"></put-attribute>
+  </definition>
+  
   <!-- 20230503 wook -->
   <definition name="adminpage" template="/WEB-INF/layoutAdminpage/template.jsp">
     <put-attribute name="header" value="/WEB-INF/layoutAdminpage/header.jsp" />
     <put-attribute name="body" value="/WEB-INF/layoutAdminpage/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/layoutAdminpage/footer.jsp" />
-     <put-attribute name="sidebar" value="/WEB-INF/layoutAdminpage/sidebar.jsp" />
-  </definition>
-
-  <definition name="WILDCARD:mainpage/*" extends="mainpage">
-    <put-attribute name="body" value="/WEB-INF/views/mainpage/{1}.jsp"></put-attribute>
+    <put-attribute name="sidebar" value="/WEB-INF/layoutAdminpage/sidebar.jsp" />
   </definition>
   
-   <definition name="WILDCARD:adminpage/*" extends="adminpage">
+  <definition name="WILDCARD:adminpage/*" extends="adminpage">
     <put-attribute name="body" value="/WEB-INF/views/adminpage/{1}.jsp"></put-attribute>
-</definition>
+  </definition>
+  
+  <!-- 5/2 gwan. mypage tiles work -->
+  <definition name="mypage" template="/WEB-INF/layoutMypage/template.jsp">
+    <put-attribute name="topbar" value="/WEB-INF/layoutMypage/topbar.jsp" />
+    <put-attribute name="sidebar" value="/WEB-INF/layoutMypage/sidebar.jsp" />
+    <put-attribute name="body" value="/WEB-INF/layoutMypage/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/layoutMypage/footer.jsp" />
+  </definition>
    
-    <!-- 20230503 jayk -->
+  <!-- 5/2 gwan. mypage tiles work-->
+  <definition name="WILDCARD:mypage/*" extends="mypage">
+    <put-attribute name="body" value="/WEB-INF/views/mypage/{1}.jsp"></put-attribute>
+  </definition>
+  
+  <!-- 20230503 jayk -->
   <definition name="infopage" template="/WEB-INF/layoutDormInfoPage/template.jsp">
     <put-attribute name="nav" value="/WEB-INF/layoutDormInfoPage/nav.jsp" />
     <put-attribute name="body" value="/WEB-INF/layoutDormInfoPage/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/layoutDormInfoPage/footer.jsp" />
   </definition>
+  
   <definition name="WILDCARD:dorminfopage/*" extends="infopage">
     <put-attribute name="body" value="/WEB-INF/views/dorminfopage/{1}.jsp"></put-attribute>
   </definition>
   
-   <!-- 20230503 shin  -->
-   <definition name="postpage" template="/WEB-INF/layoutPostDetail/template.jsp">
+  <!-- 20230503 shin  -->
+  <!-- 5/03 gwan. this definition confirmed two tiles-->
+  <definition name="postpage" template="/WEB-INF/layoutPostDetail/template.jsp">
     <put-attribute name="nav" value="/WEB-INF/layoutPostDetail/nav.jsp" />
     <put-attribute name="body" value="/WEB-INF/layoutPostDetail/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/layoutPostDetail/footer.jsp" />
   </definition>
 
-     <definition name="postpage" template="/WEB-INF/layoutPostList/template.jsp">
+  <definition name="postpage" template="/WEB-INF/layoutPostList/template.jsp">
     <put-attribute name="nav" value="/WEB-INF/layoutPostList/nav.jsp" />
     <put-attribute name="body" value="/WEB-INF/layoutPostList/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/layoutPostList/footer.jsp" />
@@ -53,7 +70,8 @@
     <put-attribute name="body" value="/WEB-INF/views/postpage/{1}.jsp"></put-attribute>
   </definition>
   
-      <definition name="noticepage" template="/WEB-INF/layoutNoticeAdd/template.jsp">
+  <!-- 20230503 shin  -->
+  <definition name="noticepage" template="/WEB-INF/layoutNoticeAdd/template.jsp">
     <put-attribute name="nav" value="/WEB-INF/layoutNoticeAdd/nav.jsp" />
     <put-attribute name="body" value="/WEB-INF/layoutNoticeAdd/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/layoutNoticeAdd/footer.jsp" />
@@ -78,7 +96,6 @@
   <definition name="WILDCARD:adminpay/*" extends="adminpay">
     <put-attribute name="body" value="/WEB-INF/views/adminpay/{1}.jsp"></put-attribute>
   </definition>
-  
   
   
 </tiles-definitions>
