@@ -4,7 +4,7 @@
 <nav class="site-nav">
 	<div class="container">
 		<div class="site-navigation">
-			<a href="index.html" class="logo m-0">Traveller <span
+			<a href="mainPage.do" class="logo m-0">Traveller <span
 				class="text-primary">.</span></a>
 
 			<ul
@@ -101,17 +101,17 @@
 				</div>
 			</div>
 			<div class="col-lg-5">
-				<div class="slides">
-					<img src="cssMainpage/images/hero-slider-1.jpg" alt="Image"
-						class="img-fluid active"> <img
-						src="cssMainpage/images/hero-slider-2.jpg" alt="Image"
-						class="img-fluid"> <img
-						src="cssMainpage/images/hero-slider-3.jpg" alt="Image"
-						class="img-fluid"> <img
-						src="cssMainpage/images/hero-slider-4.jpg" alt="Image"
-						class="img-fluid"> <img
-						src="cssMainpage/images/hero-slider-5.jpg" alt="Image"
-						class="img-fluid">
+				<div class="slides" style="height: 705px;">
+					<img src="cssMainpage/images/jeju.jpg" alt="Image"
+						class="img-fluid active" style="height: 705px;"> <img
+						src="cssMainpage/images/busan.jpg" alt="Image"
+						class="img-fluid" style="height: 705px;"> <img
+						src="cssMainpage/images/Gyeongju.jpg" alt="Image"
+						class="img-fluid" style="height: 705px;"> <img
+						src="cssMainpage/images/Seoul.jpg" alt="Image"
+						class="img-fluid" style="height: 705px;"> <img
+						src="cssMainpage/images/Jeonju.jpg" alt="Image"
+						class="img-fluid" style="height: 705px;">
 				</div>
 			</div>
 		</div>

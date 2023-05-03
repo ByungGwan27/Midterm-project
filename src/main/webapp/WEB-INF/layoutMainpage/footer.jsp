@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <div class="py-5 cta-section">
 	<div class="container">
-		<div class="row text-center">
+		<!-- <div class="row text-center">
 			<div class="col-md-12">
 				<h2 class="mb-2 text-white">Lets you Explore the Best. Contact
 					Us Now</h2>
@@ -14,7 +14,7 @@
 						in touch</a>
 				</p>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
 

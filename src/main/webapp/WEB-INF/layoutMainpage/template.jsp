@@ -1,7 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<% int count = (int) session.getAttribute("memberCount"); %>
+<% int memCount = (int) session.getAttribute("memberCount"); 
+   int resCount = (int) session.getAttribute("reservationCount"); 
+   int hotCount = (int) session.getAttribute("hotelCount"); 
+   int revCount = (int) session.getAttribute("reviewCount"); 
+   
+   String[] resName = new String[6];
+   String[] resLocation = new String[6];
+   String[] resImage = new String[6];
+   
+   for(int i= 0; i<=5;i++){
+	  resName[i] =(String) session.getAttribute("orderHotelName"+i);
+	  resLocation[i] =(String) session.getAttribute("orderHotelLocation"+i);
+	  resImage[i] = (String) session.getAttribute("orderHotelImage"+i);
+   }
+%>
+
 <!-- /*
 * Template Name: Tour
 * Template Author: Untree.co
@@ -40,7 +55,6 @@
 </head>
 
 <body>
-
 	<div class="site-mobile-menu site-navbar-target">
 		<div class="site-mobile-menu-header">
 			<div class="site-mobile-menu-close">
@@ -130,15 +144,15 @@
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
 					<div class="counter-wrap">
 						<div class="counter">
-							<span class="" data-number="" id="memberCount">0</span>
+							<span class="" data-number="<%=memCount %>" id="memberCount">0</span>
 						</div>
-						<span class="caption">회원 수</span>
+						<span class="caption">총 회원 수</span>
 					</div>
 				</div>
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
 					<div class="counter-wrap">
 						<div class="counter">
-							<span class="" data-number="8492">0</span>
+							<span class="" data-number="<%=resCount%>">0</span>
 						</div>
 						<span class="caption">총 예약건수</span>
 					</div>
@@ -146,17 +160,17 @@
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
 					<div class="counter-wrap">
 						<div class="counter">
-							<span class="" data-number="100">0</span>
+							<span class="" data-number="<%=hotCount%>">0</span>
 						</div>
-						<span class="caption">등록 숙소 수</span>
+						<span class="caption">총 등록숙소 수</span>
 					</div>
 				</div>
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
 					<div class="counter-wrap">
 						<div class="counter">
-							<span class="" data-number="120">0</span>
+							<span class="" data-number="<%=revCount%>">0</span>
 						</div>
-						<span class="caption">후기 수</span>
+						<span class="caption">총 후기 수</span>
 					</div>
 				</div>
 			</div>
@@ -179,9 +193,10 @@
 					<a class="media-thumb" href="cssMainpage/images/hero-slider-1.jpg"
 						data-fancybox="gallery">
 						<div class="media-text">
-							<h3>Pragser Wildsee</h3>
-							<span class="location">Italy</span>
-						</div> <img src="cssMainpage/images/hero-slider-1.jpg" alt="Image" class="img-fluid">
+							<h3><%=resName[0] %></h3>
+							<span class="location"><%=resLocation[0] %></span><br>
+							<span class="location">예약 1위</span>
+						</div> <img src="cssMainpage/images/<%=resImage[0] %>" alt="Image" class="img-fluid">
 					</a>
 				</div>
 
@@ -189,9 +204,10 @@
 					<a class="media-thumb" href="cssMainpage/images/hero-slider-2.jpg"
 						data-fancybox="gallery">
 						<div class="media-text">
-							<h3>Oia</h3>
-							<span class="location">Greece</span>
-						</div> <img src="cssMainpage/images/hero-slider-2.jpg" alt="Image" class="img-fluid">
+							<h3><%=resName[1] %></h3>
+							<span class="location"><%=resLocation[1] %></span><br>
+							<span class="location">예약 2위</span>
+						</div> <img src="cssMainpage/images/<%=resImage[1] %>" alt="Image" class="img-fluid">
 					</a>
 				</div>
 
@@ -199,9 +215,10 @@
 					<a class="media-thumb" href="cssMainpage/images/hero-slider-3.jpg"
 						data-fancybox="gallery">
 						<div class="media-text">
-							<h3>Perhentian Islands</h3>
-							<span class="location">Malaysia</span>
-						</div> <img src="cssMainpage/images/hero-slider-3.jpg" alt="Image" class="img-fluid">
+							<h3><%=resName[2] %></h3>
+							<span class="location"><%=resLocation[2] %></span><br>
+							<span class="location">후기수 1위</span>
+						</div> <img src="cssMainpage/images/<%=resImage[2] %>" alt="Image" class="img-fluid">
 					</a>
 				</div>
 
@@ -210,9 +227,10 @@
 					<a class="media-thumb" href="cssMainpage/images/hero-slider-4.jpg"
 						data-fancybox="gallery">
 						<div class="media-text">
-							<h3>Rialto Bridge</h3>
-							<span class="location">Italy</span>
-						</div> <img src="cssMainpage/images/hero-slider-4.jpg" alt="Image" class="img-fluid">
+							<h3><%=resName[3] %></h3>
+							<span class="location"><%=resLocation[3] %></span><br>
+							<span class="location">후기수 2위</span>
+						</div> <img src="cssMainpage/images/<%=resImage[3] %>" alt="Image" class="img-fluid">
 					</a>
 				</div>
 
@@ -220,9 +238,10 @@
 					<a class="media-thumb" href="cssMainpage/images/hero-slider-5.jpg"
 						data-fancybox="gallery">
 						<div class="media-text">
-							<h3>San Francisco, United States</h3>
-							<span class="location">United States</span>
-						</div> <img src="cssMainpage/images/hero-slider-5.jpg" alt="Image" class="img-fluid">
+							<h3><%=resName[4] %></h3>
+							<span class="location"><%=resLocation[4] %></span><br>
+							<span class="location">평점순 1위</span>
+						</div> <img src="cssMainpage/images/<%=resImage[4] %>" alt="Image" class="img-fluid">
 					</a>
 				</div>
 
@@ -230,9 +249,10 @@
 					<a class="media-thumb" href="cssMainpage/images/hero-slider-1.jpg"
 						data-fancybox="gallery">
 						<div class="media-text">
-							<h3>Lake Thun</h3>
-							<span class="location">Switzerland</span>
-						</div> <img src="cssMainpage/images/hero-slider-2.jpg" alt="Image" class="img-fluid">
+							<h3><%=resName[5] %></h3>
+							<span class="location"><%=resLocation[5] %></span><br>
+							<span class="location">평점순 2위</span>
+						</div> <img src="cssMainpage/images/<%=resImage[5] %>" alt="Image" class="img-fluid">
 					</a>
 				</div>
 
@@ -479,7 +499,7 @@
 			})
 			
 			var typed = new Typed('.typed-words', {
-				strings: ["San Francisco."," Paris."," New Zealand.", " Maui.", " London."],
+				strings: ["Jeju."," Busan."," Gyeongju.", " Seoul.", " Jeonju."],
 				typeSpeed: 80,
 				backSpeed: 80,
 				backDelay: 4000,
@@ -495,6 +515,7 @@
 				
 			});
 		})
+		
 	</script>
 
 	<script src="cssMainpage/js/custom.js"></script>
@@ -504,7 +525,7 @@
 </html>
 
 
-<script>
+<!-- <script>
 fetch("mainMemberCount.do")
 .then(resolve => resolve.json())
 .then(result => {
@@ -515,4 +536,4 @@ fetch("mainMemberCount.do")
 	console.log(count)
 	count.setAttribute('data-number' , memberCount)
 })
-</script>
+</script> -->

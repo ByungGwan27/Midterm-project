@@ -11,6 +11,8 @@
 	<typeAliases>
 		
 		<typeAlias alias="member" type="main.common.wook.main.domain.MemberVO" />
+		<typeAlias alias="main" type="main.common.wook.main.domain.MainVO" />
+		<typeAlias alias="hotel" type="main.common.wook.main.domain.HotelVO" />
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">

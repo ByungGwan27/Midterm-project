@@ -1,12 +1,11 @@
-package main.common.wook.main.mapper;
+package main.common.wook.main.service;
 
 import java.util.List;
 
 import main.common.wook.main.domain.HotelVO;
 import main.common.wook.main.domain.MainVO;
 
-public interface MainMapper {
-	//회원 수 조회
+public interface MainService {
 	public MainVO memberCount();
 	public MainVO reservationCount();
 	public MainVO hotelCount();

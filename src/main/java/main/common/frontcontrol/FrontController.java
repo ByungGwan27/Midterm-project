@@ -12,15 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import main.common.control.Control;
-import main.common.wook.admin.control.adminReservationListControl;
-import main.common.wook.main.control.mainMemberCountControl;
-import main.common.wook.admin.control.adminPageControl;
-import main.common.wook.admin.control.adminQnaControl;
 import main.common.wook.admin.control.adminDeclarationInfoControl;
 import main.common.wook.admin.control.adminDeclarationListControl;
-import main.common.wook.admin.control.adminReservationInfoControl;
 import main.common.wook.admin.control.adminMemberInfoControl;
 import main.common.wook.admin.control.adminMemberListControl;
+import main.common.wook.admin.control.adminPageControl;
+import main.common.wook.admin.control.adminQnaControl;
+import main.common.wook.admin.control.adminReservationInfoControl;
+import main.common.wook.admin.control.adminReservationListControl;
 
 public class FrontController extends HttpServlet{
 	private Map<String, Control> map;
@@ -36,7 +35,6 @@ public class FrontController extends HttpServlet{
 		
 		//메인페이지
 		map.put("/mainPage.do", new MainControl());
-		map.put("/mainMemberCount.do", new mainMemberCountControl());
 		
 		//관리자 페이지
 		map.put("/adminPage.do", new adminPageControl());

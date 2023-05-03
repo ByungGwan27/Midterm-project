@@ -3,8 +3,53 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="main.common.wook.main.mapper.MainMapper"> <!-- mapper = 인터페이스 파일 부분 -->
-	<select id="memberCount" parameterType="member">
-	select count(*) as memberCount from member
+	<!-- 회원 수 조회 -->
+	<select id="memberCount" resultType="main">
+		select count(*) as memberCount from member
+	</select>
+	<!-- 예약건수 조회 -->
+	<select id="reservationCount" resultType="main">
+		select count(*) as reservationCount from reservation
+	</select>
+	<!-- 등록숙소수 조회 -->
+	<select id="hotelCount" resultType="main">
+		select count(*) as hotelCount from hotel
+	</select>
+	<!-- 리뷰수 조회 -->
+	<select id="reviewCount" resultType="main">
+		select count(*) as reviewCount from review
+	</select>
+
+	<!-- 예약 많은 순 숙소 -->
+	<select id="OrderResHotel" resultType="hotel">
+	<![CDATA[ 
+	select *
+	from(select hotel_id, count(*)as resCount from reservation 
+	group by hotel_id order by resCount desc) r join hotel h using (hotel_id)
+	where rownum<3
+	]]>
+	</select>
+
+	<!-- 후기 많은 순 숙소 -->
+	<select id="OrderReviewHotel" resultType="hotel">
+	<![CDATA[ 
+	select *
+	from(select hotel_id, count(*)as reviewCount from review 
+	group by hotel_id order by reviewCount desc) r join hotel h using (hotel_id)
+	where rownum<3
+	]]>
 	</select>
 	
+	<!-- 평점이 높은 숙소 -->
+	<select id="OrderPointHotel" resultType="hotel">
+	<![CDATA[ 
+	select *
+	FROM(
+	select hotel_id, (sum(review_point)/count(*)) as avgpoint
+	from review 
+	GROUP BY hotel_id
+	order by avgpoint DESC)r join hotel h using (hotel_id)
+	where rownum<3
+	]]>	
+	</select>
 </mapper>
