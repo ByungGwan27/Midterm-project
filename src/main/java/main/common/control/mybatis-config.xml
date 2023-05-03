@@ -9,7 +9,11 @@
 		<setting name="jdbcTypeForNull" value="NULL"/>
 	</settings>
 	<typeAliases>
-		<typeAlias alias="employee" type="com.yedam.domain.Employee" />
+
+		<typeAlias alias="notice" type="shin.notice.domain.NoticeVO" />
+		<typeAlias alias="post" type="shin.post.domain.PostVO" />
+		
+		
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -24,6 +28,11 @@
 	</environments>
 	<mappers>
 	<!-- mapper.xml을 만들면 추가 해줘야함 -->
-		<mapper resource="com/yedam/notice/mapper/NoticeMapper.xml" />
+	
+		<mapper resource="shin/notice/mapper/NoticeMapper.xml" />
+		<mapper resource="shin/post/mapper/PostMapper.xml" />
+		
+		
+		
 	</mappers>
 </configuration>

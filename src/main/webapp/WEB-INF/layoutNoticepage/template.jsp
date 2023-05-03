@@ -5,7 +5,7 @@
 	<tiles:insertAttribute name="nav"></tiles:insertAttribute>
 <h3>공지사항 등록페이지.</h3>
 <tiles:insertAttribute name="body"></tiles:insertAttribute>
-<form action="addNotice.do" method="post" enctype="multipart/form-data">
+<form action="noticeList.do" method="post" enctype="multipart/form-data">
 	<table class="table">
 		<tr>
 			<th>제목</th>

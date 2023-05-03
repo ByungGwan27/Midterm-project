@@ -17,7 +17,7 @@ public class PostDetailControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		
+		
 //		String prodCode = req.getParameter("prodCode");
 //		System.out.println(prodCode);
 //		ProdService service = new ProdServiceImpl();

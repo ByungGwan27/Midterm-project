@@ -1,36 +1,73 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<style>
+.center {
+	text-align: center;
+}
 
+.pagination {
+	display: inline-block;
+}
 
-<h3>공지사항 등록페이지.</h3>
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+	border: 1px solid #ddd;
+	margin: 0 4px;
+}
 
-<form action="addNotice.do" method="post" enctype="multipart/form-data">
-	<table class="table">
+.pagination a.active {
+	background-color: #4CAF50;
+	color: white;
+	border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {
+	background-color: #ddd;
+}
+</style>
+
+<p>${pageInfo }</p>
+<c:set var="no" value="0"></c:set>
+<table class="table">
+	<thead>
 		<tr>
-			<th>제목</th>
-			<td><input type="text" name="title"></td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td><textarea rows="3" cols="20" name="subject"></textarea></td>
-		</tr>
-		<tr>
+			<th>순번</th>
+			<th>글번호</th>
+			<th>제목></th>
 			<th>작성자</th>
-			
-			<td><input type="text" name="writer" readonly value="${id }"></td>
+			<th>조회수</th>
 		</tr>
+	</thead>
+	<c:forEach var="notice" items="${list }">
 		<tr>
-			<th>첨부파일</th>
-			<td><input type="file" name="attach"></td>
+			<td><c:out value="${no=no+1 }"></c:out></td>
+			<td><a href="getNotice.do?page=${pageInfo.pageNum}&nid=${notice.noticeId }">${notice.noticeId }</a></td>
+			<td>${notice.noticeTitle }</td>
+			<td>${notice.memberId }</td>
+			<td>${notice.noticeViews }</td>
 		</tr>
-		<tr>
-			<td colspan="2" align="center">
-				<button type="submit">등록</button>
-				<button type="reset">취소</button>
-			</td>
-		</tr>
+	</c:forEach>
+</table>
+<hr>
+<div class="center">
+	<div class="pagination">
+		<c:if test="${pageInfo.prev }">
+			<a href="noticeList.do?page=${pageInfo.startPage-1 }">Previous</a>
+		</c:if>
+		<c:forEach var="i" begin="${pageInfo.startPage }"
+			end="${pageInfo.endPage }">
+			<a class="${i == pageInfo.pageNum ? 'active' : '' }" href="noticeList.do?page=${i }">${i } </a>
+		</c:forEach>
+		<c:if test="${pageInfo.next }">
+			<a href="noticeList.do?page=${pageInfo.endPage+1 }">Next</a>
+		</c:if>
+	</div>
+</div>
 
-	</table>
-</form>
