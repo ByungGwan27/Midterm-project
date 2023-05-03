@@ -9,23 +9,28 @@
 <script src="https://code.jquery.com/jquery-1.8.3.min.js"
 	integrity="sha256-YcbK69I5IXQftf/mYD8WY0/KmEDCv1asggHpJk1trM8="
 	crossorigin="anonymous"></script>
+	
+	
+	
 
 <style>
+	/*채팅창 가로길이*/
 .chat_wrap {
 	border: 1px solid #999;
-	width: 300px;
+	width: 600px;
 	padding: 5px;
-	font-size: 13px;
+	font-size: 20px;
 	color: #333
+	
 }
 
-/*채팅창 배경*/
+/*채팅창 배경, 세로길이*/
 .chat_wrap .inner {
 	background-color: #e3e6f0;
 	border-radius: 5px;
 	padding: 10px;
 	overflow-y: scroll;
-	height: 400px;
+	height: 600px;
 }
 
 .chat_wrap .item {
@@ -36,9 +41,10 @@
 	margin-top: 0px
 }
 
+/*채팅창 길이*/
 .chat_wrap .item .box {
 	display: inline-block;
-	max-width: 180px;
+	max-width: 350px;
 	position: relative
 }
 
@@ -114,7 +120,7 @@ input[type="text"] {
 	width: 100%;
 	background: #ddd;
 	border-radius: 5px;
-	height: 30px;
+	height: 50px;
 	padding-left: 5px;
 	box-sizing: border-box;
 	margin-top: 5px
@@ -122,6 +128,20 @@ input[type="text"] {
 
 input[type="text"]::placeholder {
 	color: #999
+}
+
+
+.gwan-main-container {
+	border: #e3e6f0 1px solid;
+	height: 700px;
+}
+.list-container {
+	width: 300px;
+	height: 693px;
+	float: left;
+}
+.gwan-chat {
+	float: left;
 }
 </style>
 <script>
@@ -171,15 +191,46 @@ input[type="text"]::placeholder {
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">메세지함</h1>
 
-<!-- 본문  -->
-<div class="card shadow mb-4">
+<!-- 본문 --> 
+<div class="gwan-main-container">
 		<div>
-		내용
-		</div>
-		<div class="chat_wrap">
+			<div class="list-container">
+				<table>
+					<tr>
+						<th>전체메시지 | 안 읽은 메시지 | 별표 메시지</th>
+					</tr>
+					<tr>
+						<td>
+							1번타자
+						</td>
+					</tr>
+					<tr>
+						<td>
+							2번타자
+						</td>
+					</tr>
+					<tr>
+						<td>
+							3번타자
+						</td>
+					</tr>
+					<tr>
+						<td>
+							4번타자
+						</td>
+					</tr>
+					<tr>
+						<td>
+							5번타자
+						</td>
+					</tr>
+				</table>
+			</div>
+		
+		<div class="chat_wrap gwan-chat">
 			<div class="inner">
 
-				<!-- <div class="item">
+				<div class="item">
                 <div class="box">
                     <p class="msg">안녕하세요</p>
                     <span class="time">오전 10:05</span>
@@ -191,11 +242,15 @@ input[type="text"]::placeholder {
                     <p class="msg">안녕하세요</p>
                     <span class="time">오전 10:05</span>
                 </div>
-            </div> -->
+            </div>
 
 			</div>
 
 			<input type="text" class="mymsg" placeholder="내용 입력">
+			<button>파일전송</button>
 			<!-- <input type="text" class="yourmsg" placeholder="내용 입력"> -->
 		</div>
-	</div>
+	</div> 
+</div>
+	
+	
