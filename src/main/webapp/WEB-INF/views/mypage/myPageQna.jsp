@@ -4,15 +4,22 @@
 
 <title>Traveller - Q&A</title>
 
-<link href="cssMypage/avarious/qnacss/styles.css" rel="stylesheet" />
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Q&A</h1>
+<p class="mb-4">
+	질문 내용들을 확인해주세요
+</p>
+
+<!-- 본문  -->
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h6 class="m-0 font-weight-bold text-primary">어떤것을 도와드릴까요?</h6>
+	</div>
+
 
 <!-- Page Content-->
 <section class="py-5">
 	<div class="container px-5 my-5">
-		<div class="text-center mb-5">
-			<h1 class="fw-bolder">자주 묻는 질문들</h1>
-			<p class="lead fw-normal text-muted mb-0">어떤것을 도와드릴까요?</p>
-		</div>
 		<div class="row gx-5">
 			<div class="col-xl-8">
 				<!-- FAQ Accordion 1-->
@@ -159,12 +166,12 @@
 			</div>
 			<div class="col-xl-4">
 				<div class="card border-0 bg-light mt-xl-5">
-					<div class="card-body p-4 py-lg-5">
+					<div class="card-body p-4 py-lg-5 byunggwan-card">
 						<div class="d-flex align-items-center justify-content-center">
 							<div class="text-center">
 								<div class="h6 fw-bolder">Have more questions?</div>
 								<p class="text-muted mb-4">
-									Contact us at <br /> <a href="#!">질문하러가기</a>
+									Contact us at <br /> <a href="myPageQnaQ.do">질문하러가기</a>
 								</p>
 							</div>
 						</div>
@@ -174,6 +181,8 @@
 		</div>
 	</div>
 </section>
+
+</div>
 
 <!-- Bootstrap core JS-->
 <script

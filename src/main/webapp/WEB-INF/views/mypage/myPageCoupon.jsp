@@ -11,7 +11,7 @@
 	<!-- Page Heading -->
 	<h1 class="h3 mb-2 text-gray-800">보유쿠폰함</h1>
 	<p class="mb-4">
-		쿠폰 유의사항 설명</a>.
+		쿠폰 유의사항 설명
 	</p>
 
 	<!-- DataTales Example -->
@@ -24,6 +24,7 @@
 				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 					<thead>
 						<tr>
+							<th></th>
 							<th>쿠폰 이름</th>
 							<th>쿠폰 기간(시작일)</th>
 							<th>쿠폰 기간(종료일)</th>
@@ -33,6 +34,7 @@
 					</thead>
 					<tbody>
 						<tr>
+							<td><input type="checkbox" name="1" value="1" id="on"><label for="on"></label></td>
 							<td>회원 가입 축하</td>
 							<td>2023-05-02</td>
 							<td>2023-06-02</td>
@@ -40,6 +42,7 @@
 							<td>10%</td>
 						</tr>
 						<tr>
+							<td><input type="checkbox" name="2" value="2" id="on"><label for="on"></label></td>
 							<td>등급 업</td>
 							<td>2023-05-03</td>
 							<td>2023-06-03</td>
@@ -54,17 +57,6 @@
 
 </div>
 <!-- /.container-fluid -->
-
-
-<!-- Bootstrap core JavaScript-->
-    <script src="cssMypage/vendor/jquery/jquery.min.js"></script>
-    <script src="cssMypage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="cssMypage/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="cssMypage/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
     <script src="cssMypage/vendor/datatables/jquery.dataTables.min.js"></script>

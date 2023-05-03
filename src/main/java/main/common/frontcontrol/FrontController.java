@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import gwan.mypage.control.MyPageCouponControl;
 import gwan.mypage.control.MyPageMessageControl;
 import gwan.mypage.control.MyPageQnaControl;
+import gwan.mypage.control.MyPageQnaQControl;
 import gwan.mypage.control.MyPageUserInfoChangeControl;
 import gwan.mypage.control.MyPageWishListControl;
 import gwan.mypage.control.MypageHomeControl;
@@ -41,6 +42,10 @@ public class FrontController extends HttpServlet{
 		map.put("/myPageMessage.do", new MyPageMessageControl());
 		map.put("/myPageUserInfoChange.do", new MyPageUserInfoChangeControl());
 		map.put("/myPageQna.do", new MyPageQnaControl());
+		
+		//5.3 강병관 Q&A 질문 작성
+		map.put("/myPageQnaQ.do", new MyPageQnaQControl());
+		
 		
 	}
 	
