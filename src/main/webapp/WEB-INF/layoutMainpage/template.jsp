@@ -1,6 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<% int memCount = (int) session.getAttribute("memberCount"); 
+   int resCount = (int) session.getAttribute("reservationCount"); 
+   int hotCount = (int) session.getAttribute("hotelCount"); 
+   int revCount = (int) session.getAttribute("reviewCount"); 
+   
+   String[] resName = new String[6];
+   String[] resLocation = new String[6];
+   String[] resImage = new String[6];
+   
+   for(int i= 0; i<=5;i++){
+	  resName[i] =(String) session.getAttribute("orderHotelName"+i);
+	  resLocation[i] =(String) session.getAttribute("orderHotelLocation"+i);
+	  resImage[i] = (String) session.getAttribute("orderHotelImage"+i);
+   }
+%>
 
 <!-- /*
 * Template Name: Tour
@@ -40,7 +55,6 @@
 </head>
 
 <body>
-
 	<div class="site-mobile-menu site-navbar-target">
 		<div class="site-mobile-menu-header">
 			<div class="site-mobile-menu-close">
@@ -53,26 +67,36 @@
 	<!-- Navigation-->
 	<tiles:insertAttribute name="nav"></tiles:insertAttribute>
 
-<!-- <div class="untree_co-section">
+	<<!-- div class="untree_co-section">
 		<div class="container">
 			<div class="row mb-5 justify-content-center">
 				<div class="col-lg-6 text-center">
 					<h2 class="section-title text-center mb-3">Our Services</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+					<p>Far far away, behind the word mountains, far from the
+						countries Vokalia and Consonantia, there live the blind texts.
+						Separated they live in Bookmarksgrove right at the coast of the
+						Semantics, a large language ocean.</p>
 				</div>
 			</div>
 			<div class="row align-items-stretch">
 				<div class="col-lg-4 order-lg-1">
-					<div class="h-100"><div class="frame h-100"><div class="feature-img-bg h-100" style="background-image: url('images/hero-slider-1.jpg');"></div></div></div>
+					<div class="h-100">
+						<div class="frame h-100">
+							<div class="feature-img-bg h-100"
+								style="background-image: url('cssMainpage/images/hero-slider-1.jpg');"></div>
+						</div>
+					</div>
 				</div>
-
-				<div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-1" >
+ -->
+				<!-- <div
+					class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-1">
 
 					<div class="feature-1 d-md-flex">
 						<div class="align-self-center">
 							<span class="flaticon-house display-4 text-primary"></span>
 							<h3>Beautiful Condo</h3>
-							<p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
+							<p class="mb-0">Even the all-powerful Pointing has no control
+								about the blind texts.</p>
 						</div>
 					</div>
 
@@ -80,19 +104,22 @@
 						<div class="align-self-center">
 							<span class="flaticon-restaurant display-4 text-primary"></span>
 							<h3>Restaurants & Cafe</h3>
-							<p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
+							<p class="mb-0">Even the all-powerful Pointing has no control
+								about the blind texts.</p>
 						</div>
 					</div>
 
 				</div>
 
-				<div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-3" >
+				<div
+					class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-3">
 
 					<div class="feature-1 d-md-flex">
 						<div class="align-self-center">
 							<span class="flaticon-mail display-4 text-primary"></span>
 							<h3>Easy to Connect</h3>
-							<p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
+							<p class="mb-0">Even the all-powerful Pointing has no control
+								about the blind texts.</p>
 						</div>
 					</div>
 
@@ -100,17 +127,16 @@
 						<div class="align-self-center">
 							<span class="flaticon-phone-call display-4 text-primary"></span>
 							<h3>24/7 Support</h3>
-							<p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
+							<p class="mb-0">Even the all-powerful Pointing has no control
+								about the blind texts.</p>
 						</div>
-					</div>
+					</div> -->
 
 				</div>
 
 			</div>
 		</div>
-	</div> -->
-
-	
+	</div>
 
 	<div class="untree_co-section count-numbers py-5">
 		<div class="container">
@@ -118,273 +144,305 @@
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
 					<div class="counter-wrap">
 						<div class="counter">
-							<span class="" data-number="9313">0</span>
+							<span class="" data-number="<%=memCount %>" id="memberCount">0</span>
 						</div>
-						<span class="caption">MEMBERS</span>
+						<span class="caption">총 회원 수</span>
 					</div>
 				</div>
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
 					<div class="counter-wrap">
 						<div class="counter">
-							<span class="" data-number="8492">0</span>
+							<span class="" data-number="<%=resCount%>">0</span>
 						</div>
-						<span class="caption">RESERVATIONS</span>
+						<span class="caption">총 예약건수</span>
 					</div>
 				</div>
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
 					<div class="counter-wrap">
 						<div class="counter">
-							<span class="" data-number="100">0</span>
+							<span class="" data-number="<%=hotCount%>">0</span>
 						</div>
-						<span class="caption">DORMS</span>
+						<span class="caption">총 등록숙소 수</span>
 					</div>
 				</div>
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
 					<div class="counter-wrap">
 						<div class="counter">
-							<span class="" data-number="120">0</span>
+							<span class="" data-number="<%=revCount%>">0</span>
 						</div>
-						<span class="caption">REVIEWS</span>
+						<span class="caption">총 후기 수</span>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
+
+
 	<div class="untree_co-section">
+		<div class="container">
+			<div class="row text-center justify-content-center mb-5">
+				<div class="col-lg-7">
+					<h2 class="section-title text-center">추천 숙소</h2>
+				</div>
+			</div>
+
+			<div class="owl-carousel owl-3-slider">
+
+				<div class="item">
+					<a class="media-thumb" href="cssMainpage/images/hero-slider-1.jpg"
+						data-fancybox="gallery">
+						<div class="media-text">
+							<h3><%=resName[0] %></h3>
+							<span class="location"><%=resLocation[0] %></span><br>
+							<span class="location">예약 1위</span>
+						</div> <img src="cssMainpage/images/<%=resImage[0] %>" alt="Image" class="img-fluid">
+					</a>
+				</div>
+
+				<div class="item">
+					<a class="media-thumb" href="cssMainpage/images/hero-slider-2.jpg"
+						data-fancybox="gallery">
+						<div class="media-text">
+							<h3><%=resName[1] %></h3>
+							<span class="location"><%=resLocation[1] %></span><br>
+							<span class="location">예약 2위</span>
+						</div> <img src="cssMainpage/images/<%=resImage[1] %>" alt="Image" class="img-fluid">
+					</a>
+				</div>
+
+				<div class="item">
+					<a class="media-thumb" href="cssMainpage/images/hero-slider-3.jpg"
+						data-fancybox="gallery">
+						<div class="media-text">
+							<h3><%=resName[2] %></h3>
+							<span class="location"><%=resLocation[2] %></span><br>
+							<span class="location">후기수 1위</span>
+						</div> <img src="cssMainpage/images/<%=resImage[2] %>" alt="Image" class="img-fluid">
+					</a>
+				</div>
+
+
+				<div class="item">
+					<a class="media-thumb" href="cssMainpage/images/hero-slider-4.jpg"
+						data-fancybox="gallery">
+						<div class="media-text">
+							<h3><%=resName[3] %></h3>
+							<span class="location"><%=resLocation[3] %></span><br>
+							<span class="location">후기수 2위</span>
+						</div> <img src="cssMainpage/images/<%=resImage[3] %>" alt="Image" class="img-fluid">
+					</a>
+				</div>
+
+				<div class="item">
+					<a class="media-thumb" href="cssMainpage/images/hero-slider-5.jpg"
+						data-fancybox="gallery">
+						<div class="media-text">
+							<h3><%=resName[4] %></h3>
+							<span class="location"><%=resLocation[4] %></span><br>
+							<span class="location">평점순 1위</span>
+						</div> <img src="cssMainpage/images/<%=resImage[4] %>" alt="Image" class="img-fluid">
+					</a>
+				</div>
+
+				<div class="item">
+					<a class="media-thumb" href="cssMainpage/images/hero-slider-1.jpg"
+						data-fancybox="gallery">
+						<div class="media-text">
+							<h3><%=resName[5] %></h3>
+							<span class="location"><%=resLocation[5] %></span><br>
+							<span class="location">평점순 2위</span>
+						</div> <img src="cssMainpage/images/<%=resImage[5] %>" alt="Image" class="img-fluid">
+					</a>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+
+	<!-- <div class="untree_co-section testimonial-section mt-5">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-7 text-center">
+					<h2 class="section-title text-center mb-5">Testimonials</h2>
+
+					<div class="owl-single owl-carousel no-nav">
+						<div class="testimonial mx-auto">
+							<figure class="img-wrap">
+								<img src="cssMainpage/images/person_2.jpg" alt="Image" class="img-fluid">
+							</figure>
+							<h3 class="name">Adam Aderson</h3>
+							<blockquote>
+								<p>&ldquo;There live the blind texts. Separated they live in
+									Bookmarksgrove right at the coast of the Semantics, a large
+									language ocean.&rdquo;</p>
+							</blockquote>
+						</div>
+
+						<div class="testimonial mx-auto">
+							<figure class="img-wrap">
+								<img src="cssMainpage/images/person_3.jpg" alt="Image" class="img-fluid">
+							</figure>
+							<h3 class="name">Lukas Devlin</h3>
+							<blockquote>
+								<p>&ldquo;There live the blind texts. Separated they live in
+									Bookmarksgrove right at the coast of the Semantics, a large
+									language ocean.&rdquo;</p>
+							</blockquote>
+						</div>
+
+						<div class="testimonial mx-auto">
+							<figure class="img-wrap">
+								<img src="cssMainpage/images/person_4.jpg" alt="Image" class="img-fluid">
+							</figure>
+							<h3 class="name">Kayla Bryant</h3>
+							<blockquote>
+								<p>&ldquo;There live the blind texts. Separated they live in
+									Bookmarksgrove right at the coast of the Semantics, a large
+									language ocean.&rdquo;</p>
+							</blockquote>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div> -->
+
+
+	<!-- <div class="untree_co-section">
 		<div class="container">
 			<div class="row justify-content-center text-center mb-5">
 				<div class="col-lg-6">
-					<h2 class="section-title text-center mb-3">Special Offers &amp; Discounts</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+					<h2 class="section-title text-center mb-3">Special Offers
+						&amp; Discounts</h2>
+					<p>Far far away, behind the word mountains, far from the
+						countries Vokalia and Consonantia, there live the blind texts.
+						Separated they live in Bookmarksgrove right at the coast of the
+						Semantics, a large language ocean.</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
 					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img src="cssMainpage/images/hero-slider-1.jpg" alt="Image" class="img-fluid"></a>
-						<span class="d-flex align-items-center loc mb-2">
-							<span class="icon-room mr-3"></span>
-							<span>가장높은예약수</span>
+						<a href="#" class="d-block mb-3"><img
+							src="cssMainpage/images/hero-slider-1.jpg" alt="Image" class="img-fluid"></a>
+						<span class="d-flex align-items-center loc mb-2"> <span
+							class="icon-room mr-3"></span> <span>Italy</span>
 						</span>
 						<div class="d-flex align-items-center">
 							<div>
-								<h3><a href="#">Rialto Mountains</a></h3>
+								<h3>
+									<a href="#">Rialto Mountains</a>
+								</h3>
 								<div class="price ml-auto">
 									<span>$520.00</span>
 								</div>
 							</div>
-							
+
 						</div>
-						
+
 					</div>
 				</div>
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
 					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img src="cssMainpage/images/hero-slider-2.jpg" alt="Image" class="img-fluid"></a>
-						<span class="d-flex align-items-center loc mb-2">
-							<span class="icon-room mr-3"></span>
-							<span>가장높은리뷰수</span>
+						<a href="#" class="d-block mb-3"><img
+							src="cssMainpage/images/hero-slider-2.jpg" alt="Image" class="img-fluid"></a>
+						<span class="d-flex align-items-center loc mb-2"> <span
+							class="icon-room mr-3"></span> <span>United States</span>
 						</span>
 						<div class="d-flex align-items-center">
 							<div>
-								<h3><a href="#">San Francisco</a></h3>
+								<h3>
+									<a href="#">San Francisco</a>
+								</h3>
 								<div class="price ml-auto">
 									<span>$520.00</span>
 								</div>
 							</div>
-							
+
 						</div>
-						
+
 					</div>
 				</div>
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
 					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img src="cssMainpage/images/hero-slider-3.jpg" alt="Image" class="img-fluid"></a>
-						<span class="d-flex align-items-center loc mb-2">
-							<span class="icon-room mr-3"></span>
-							<span>가장높은평점수</span>
+						<a href="#" class="d-block mb-3"><img
+							src="cssMainpage/images/hero-slider-3.jpg" alt="Image" class="img-fluid"></a>
+						<span class="d-flex align-items-center loc mb-2"> <span
+							class="icon-room mr-3"></span> <span>Malaysia</span>
 						</span>
 						<div class="d-flex align-items-center">
 							<div>
-								<h3><a href="#">Perhentian Islands</a></h3>
+								<h3>
+									<a href="#">Perhentian Islands</a>
+								</h3>
 								<div class="price ml-auto">
 									<span>$750.00</span>
 								</div>
 							</div>
-							
+
 						</div>
-						
+
 					</div>
 				</div>
-				<!-- <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
 					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img src="images/hero-slider-4.jpg" alt="Image" class="img-fluid"></a>
+						<a href="#" class="d-block mb-3"><img
+							src="cssMainpage/images/hero-slider-4.jpg" alt="Image" class="img-fluid"></a>
 
-						<span class="d-flex align-items-center loc mb-2">
-							<span class="icon-room mr-3"></span>
-							<span>Switzerland</span>
+						<span class="d-flex align-items-center loc mb-2"> <span
+							class="icon-room mr-3"></span> <span>Switzerland</span>
 						</span>
 
 						<div class="d-flex align-items-center">
 							<div>
-								<h3><a href="#">Lake Thun</a></h3>
+								<h3>
+									<a href="#">Lake Thun</a>
+								</h3>
 								<div class="price ml-auto">
 									<span>$520.00</span>
 								</div>
 							</div>
-							
+
 						</div>
-						
-					</div>
-				</div> -->
-			</div>
-		</div>
-	</div>
 
-
-
-			<div class="untree_co-section testimonial-section mt-5">
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-7 text-center">
-							<h2 class="section-title text-center mb-5">여기에파워블로거넣어도괜찮을듯?</h2>
-		
-							<div class="owl-single owl-carousel no-nav">
-								<div class="testimonial mx-auto">
-									<figure class="img-wrap">
-										<img src="cssMainpage/images/person_2.jpg" alt="Image" class="img-fluid">
-									</figure>
-									<h3 class="name">Adam Aderson</h3>
-									<blockquote>
-										<p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-									</blockquote>
-								</div>
-		
-								<div class="testimonial mx-auto">
-									<figure class="img-wrap">
-										<img src="cssMainpage/images/person_3.jpg" alt="Image" class="img-fluid">
-									</figure>
-									<h3 class="name">Lukas Devlin</h3>
-									<blockquote>
-										<p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-									</blockquote>
-								</div>
-		
-								<div class="testimonial mx-auto">
-									<figure class="img-wrap">
-										<img src="cssMainpage/images/person_4.jpg" alt="Image" class="img-fluid">
-									</figure>
-									<h3 class="name">Kayla Bryant</h3>
-									<blockquote>
-										<p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-									</blockquote>
-								</div>
-		
-							</div>
-		
-						</div>
 					</div>
 				</div>
 			</div>
-		
-
-
-			
-	<!-- <div class="untree_co-section">
-		<div class="container">
-			<div class="row text-center justify-content-center mb-5">
-				<div class="col-lg-7"><h2 class="section-title text-center">여기에파워블로거넣어도괜찮을듯?</h2></div>
-			</div>
-			<div class="owl-carousel owl-3-slider">
-
-				<div class="item">
-					<a class="media-thumb" href="images/hero-slider-1.jpg" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>Pragser Wildsee</h3>
-							<span class="location">Italy</span>
-						</div>
-						<img src="images/hero-slider-1.jpg" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="images/hero-slider-2.jpg" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>Oia</h3>
-							<span class="location">Greece</span>
-						</div>
-						<img src="images/hero-slider-2.jpg" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="images/hero-slider-3.jpg" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>Perhentian Islands</h3>
-							<span class="location">Malaysia</span>
-						</div>
-						<img src="images/hero-slider-3.jpg" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-
-				<div class="item">
-					<a class="media-thumb" href="images/hero-slider-4.jpg" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>Rialto Bridge</h3>
-							<span class="location">Italy</span>
-						</div>
-						<img src="images/hero-slider-4.jpg" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="images/hero-slider-5.jpg" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>San Francisco, United States</h3>
-							<span class="location">United States</span>
-						</div>
-						<img src="images/hero-slider-5.jpg" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="images/hero-slider-1.jpg" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>Lake Thun</h3>
-							<span class="location">Switzerland</span>
-						</div>
-						<img src="images/hero-slider-2.jpg" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-			</div>
-
 		</div>
 	</div> -->
-
-
-	
 
 	<!-- <div class="untree_co-section">
 		<div class="container">
 			<div class="row justify-content-between align-items-center">
-				
+
 				<div class="col-lg-6">
 					<figure class="img-play-video">
-						<a id="play-video" class="video-play-button" href="https://www.youtube.com/watch?v=mwtbEGNABWU" data-fancybox>
+						<a id="play-video" class="video-play-button"
+							href="https://www.youtube.com/watch?v=mwtbEGNABWU" data-fancybox>
 							<span></span>
 						</a>
-						<img src="images/hero-slider-2.jpg" alt="Image" class="img-fluid rounded-20">
+						<img src="cssMainpage/images/hero-slider-2.jpg" alt="Image"
+							class="img-fluid rounded-20">
 					</figure>
 				</div>
 
 				<div class="col-lg-5">
-					<h2 class="section-title text-left mb-4">Take a look at Tour Video</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+					<h2 class="section-title text-left mb-4">Take a look at Tour
+						Video</h2>
+					<p>Far far away, behind the word mountains, far from the
+						countries Vokalia and Consonantia, there live the blind texts.
+						Separated they live in Bookmarksgrove right at the coast of the
+						Semantics, a large language ocean.</p>
 
-					<p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+					<p class="mb-4">A small river named Duden flows by their place
+						and supplies it with the necessary regelialia. It is a
+						paradisematic country, in which roasted parts of sentences fly
+						into your mouth.</p>
 
 					<ul class="list-unstyled two-col clearfix">
 						<li>Outdoor recreation activities</li>
@@ -399,98 +457,18 @@
 						<li>Guide Books</li>
 					</ul>
 
-					<p><a href="#" class="btn btn-primary">Get Started</a></p>
+					<p>
+						<a href="#" class="btn btn-primary">Get Started</a>
+					</p>
 
-					
+
 				</div>
 			</div>
 		</div>
 	</div> -->
 
-	
-	
-	<div class="py-5 cta-section">
-		<div class="container">
-			<div class="row text-center">
-				<div class="col-md-12">
-					<h2 class="mb-2 text-white">Lets you Explore the Best. Contact Us Now</h2>
-					<p class="mb-4 lead text-white text-white-opacity">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, fugit?</p>
-					<p class="mb-0"><a href="booking.html" class="btn btn-outline-white text-white btn-md font-weight-bold">Get in touch</a></p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="site-footer">
-		<div class="inner first">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-lg-4">
-						<div class="widget">
-							<h3 class="heading">About Tour</h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						</div>
-						<div class="widget">
-							<ul class="list-unstyled social">
-								<li><a href="#"><span class="icon-twitter"></span></a></li>
-								<li><a href="#"><span class="icon-instagram"></span></a></li>
-								<li><a href="#"><span class="icon-facebook"></span></a></li>
-								<li><a href="#"><span class="icon-linkedin"></span></a></li>
-								<li><a href="#"><span class="icon-dribbble"></span></a></li>
-								<li><a href="#"><span class="icon-pinterest"></span></a></li>
-								<li><a href="#"><span class="icon-apple"></span></a></li>
-								<li><a href="#"><span class="icon-google"></span></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-2 pl-lg-5">
-						<div class="widget">
-							<h3 class="heading">Pages</h3>
-							<ul class="links list-unstyled">
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">About</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-2">
-						<div class="widget">
-							<h3 class="heading">Resources</h3>
-							<ul class="links list-unstyled">
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">About</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4">
-						<div class="widget">
-							<h3 class="heading">Contact</h3>
-							<ul class="list-unstyled quick-info links">
-								<li class="email"><a href="#">mail@example.com</a></li>
-								<li class="phone"><a href="#">+1 222 212 3819</a></li>
-								<li class="address"><a href="#">43 Raymouth Rd. Baltemoer, London 3910</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-
-		<div class="inner dark">
-			<div class="container">
-				<div class="row text-center">
-					<div class="col-md-8 mb-3 mb-md-0 mx-auto">
-						<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co" class="link-highlight">Untree.co</a> <!-- License information: https://untree.co/license/ -->
-						</p>
-					</div>
-					
-				</div>
-			</div>
-		</div>
-	</div>
+	<!-- Footer-->
+	<tiles:insertAttribute name="footer"></tiles:insertAttribute>
 
 	<div id="overlayer"></div>
 	<div class="loader">
@@ -515,13 +493,13 @@
 		$(function() {
 			var slides = $('.slides'),
 			images = slides.find('img');
-
+			
 			images.each(function(i) {
 				$(this).attr('data-id', i + 1);
 			})
-
+			
 			var typed = new Typed('.typed-words', {
-				strings: ["San Francisco."," Paris."," New Zealand.", " Maui.", " London."],
+				strings: ["Jeju."," Busan."," Gyeongju.", " Seoul.", " Jeonju."],
 				typeSpeed: 80,
 				backSpeed: 80,
 				backDelay: 4000,
@@ -534,9 +512,10 @@
 					$('.slides img').removeClass('active');
 					$('.slides img[data-id="'+arrayPos+'"]').addClass('active');
 				}
-
+				
 			});
 		})
+		
 	</script>
 
 	<script src="cssMainpage/js/custom.js"></script>
@@ -544,3 +523,17 @@
 </body>
 
 </html>
+
+
+<!-- <script>
+fetch("mainMemberCount.do")
+.then(resolve => resolve.json())
+.then(result => {
+	console.log(result)
+	let memberCount = result[0].memberCount
+	console.log(memberCount)
+	let count = document.querySelector("#memberCount")
+	console.log(count)
+	count.setAttribute('data-number' , memberCount)
+})
+</script> -->
