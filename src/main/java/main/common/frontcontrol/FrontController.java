@@ -22,6 +22,11 @@ import main.common.wook.admin.control.adminPageControl;
 import main.common.wook.admin.control.adminQnaControl;
 import main.common.wook.admin.control.adminReservationInfoControl;
 import main.common.wook.admin.control.adminReservationListControl;
+import shin.admin.control.AdminPayListControl;
+import shin.notice.control.NoticeAddFormControl;
+import shin.notice.control.NoticeListControl;
+import shin.post.control.PostDetailControl;
+import shin.post.control.PostListControl;
 
 public class FrontController extends HttpServlet{
 	private Map<String, Control> map;
@@ -57,6 +62,19 @@ public class FrontController extends HttpServlet{
 		
 		//인포페이지
 		map.put("/dormInfoPage.do", new GetDormControl());
+		
+		// 20230503 신지은
+		//여행 포스트 리스트
+		map.put("/postList.do", new PostListControl());
+		//여행 포스트 상세페이지
+		map.put("/postDetail.do", new PostDetailControl());
+		//공지사항 페이지
+		map.put("/noticeList.do", new NoticeListControl());
+		//공지사항 작성페이지
+		map.put("/noticeAddForm.do", new NoticeAddFormControl());
+		//관리자 결제정보창
+		map.put("/adminPayList.do", new AdminPayListControl());
+		
 	}
 	
 	@Override
