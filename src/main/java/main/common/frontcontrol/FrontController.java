@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jayk.dorminfo.control.DormListControl;
+import jayk.dorminfo.control.GetDormControl;
 import main.common.control.Control;
 import main.common.wook.admin.control.adminDeclarationInfoControl;
 import main.common.wook.admin.control.adminDeclarationListControl;
@@ -33,9 +35,11 @@ public class FrontController extends HttpServlet{
 	public void init(ServletConfig config) throws ServletException {
 		encoding = config.getInitParameter("enc");
 		
+		
 		//메인페이지
 		map.put("/mainPage.do", new MainControl());
 		
+		// 20230503 김성욱
 		//관리자 페이지
 		map.put("/adminPage.do", new adminPageControl());
 		map.put("/adminQna.do" , new adminQnaControl());
@@ -47,7 +51,12 @@ public class FrontController extends HttpServlet{
 		map.put("/adminReservationInfo.do", new adminReservationInfoControl());
 		
 		
+		// 20230503 김자영
+		//숙소리스트
+		map.put("/dormListPage.do", new DormListControl());
 		
+		//인포페이지
+		map.put("/dormInfoPage.do", new GetDormControl());
 	}
 	
 	@Override
