@@ -20,10 +20,11 @@
   <definition name="infopage" template="/WEB-INF/layoutDormInfoPage/template.jsp">
     <put-attribute name="nav" value="/WEB-INF/layoutDormInfoPage/nav.jsp" />
     <put-attribute name="body" value="/WEB-INF/layoutDormInfoPage/body.jsp" />
-    <put-attribute name="sidebar" value="/WEB-INF/layoutDormInfoPage/sidebar.jsp" />
     <put-attribute name="footer" value="/WEB-INF/layoutDormInfoPage/footer.jsp" />
   </definition>
   <definition name="WILDCARD:dorminfopage/*" extends="infopage">
     <put-attribute name="body" value="/WEB-INF/views/dorminfopage/{1}.jsp"></put-attribute>
   </definition>
+  
+
 </tiles-definitions>

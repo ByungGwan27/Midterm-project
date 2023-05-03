@@ -1,4 +1,4 @@
-package main.common.frontcontrol;
+package jayk.dorminfo.control;
 
 import java.io.IOException;
 
@@ -8,12 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.common.control.Control;
 
-public class MainControl implements Control {
+public class GetDormControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		return "mainpage/mainpage.tiles";
+		return "dorminfopage/dormInfoPage.tiles";
 	}
 
 }
