@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import main.common.control.Control;
+import shin.admin.control.AdminPayListControl;
+import shin.notice.control.NoticeAddFormControl;
+import shin.notice.control.NoticeListControl;
 import shin.post.control.PostDetailControl;
 import shin.post.control.PostListControl;
 
@@ -34,7 +37,12 @@ public class FrontController extends HttpServlet{
 		map.put("/postList.do", new PostListControl());
 		//여행 포스트 상세페이지
 		map.put("/postDetail.do", new PostDetailControl());
-		//
+		//공지사항 페이지
+		map.put("/noticeList.do", new NoticeListControl());
+		//공지사항 작성페이지
+		map.put("/noticeAddForm.do", new NoticeAddFormControl());
+		//관리자 결제정보창
+		map.put("/adminPayList.do", new AdminPayListControl());
 		
 	}
 	

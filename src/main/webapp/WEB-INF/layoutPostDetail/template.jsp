@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Modern Business2 - Start Bootstrap Template</title>
+        <title>여행 포스트 상세페이지</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="cssPostDetail/assets/favicon.ico" />
         <!-- Bootstrap icons-->

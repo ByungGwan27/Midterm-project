@@ -16,13 +16,47 @@
   </definition>
   
    <definition name="postpage" template="/WEB-INF/layoutPostDetail/template.jsp">
-    <put-attribute name="nav" value="/WEB-INF/layoutPostDetailnav.jsp" />
+    <put-attribute name="nav" value="/WEB-INF/layoutPostDetail/nav.jsp" />
     <put-attribute name="body" value="/WEB-INF/layoutPostDetail/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/layoutPostDetail/footer.jsp" />
+  </definition>
+
+     <definition name="postpage" template="/WEB-INF/layoutPostList/template.jsp">
+    <put-attribute name="nav" value="/WEB-INF/layoutPostList/nav.jsp" />
+    <put-attribute name="body" value="/WEB-INF/layoutPostList/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/layoutPostList/footer.jsp" />
   </definition>
 
   <definition name="WILDCARD:postpage/*" extends="postpage">
     <put-attribute name="body" value="/WEB-INF/views/postpage/{1}.jsp"></put-attribute>
   </definition>
+  
+      <definition name="noticepage" template="/WEB-INF/layoutNoticeAdd/template.jsp">
+    <put-attribute name="nav" value="/WEB-INF/layoutNoticeAdd/nav.jsp" />
+    <put-attribute name="body" value="/WEB-INF/layoutNoticeAdd/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/layoutNoticeAdd/footer.jsp" />
+  </definition>
+  
+   <definition name="noticepage" template="/WEB-INF/layoutNoticepage/template.jsp">
+    <put-attribute name="nav" value="/WEB-INF/layoutNoticepage/nav.jsp" />
+    <put-attribute name="body" value="/WEB-INF/layoutNoticepage/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/layoutNoticepage/footer.jsp" />
+  </definition>
+
+  <definition name="WILDCARD:noticepage/*" extends="noticepage">
+    <put-attribute name="body" value="/WEB-INF/views/noticepage/{1}.jsp"></put-attribute>
+  </definition>
+  
+    <definition name="adminpage" template="/WEB-INF/layoutAdminpage/template.jsp">
+    <put-attribute name="nav" value="/WEB-INF/layoutAdminpage/nav.jsp" />
+    <put-attribute name="body" value="/WEB-INF/layoutAdminpage/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/layoutAdminpage/footer.jsp" />
+  </definition>
+
+  <definition name="WILDCARD:adminpage/*" extends="adminpage">
+    <put-attribute name="body" value="/WEB-INF/views/adminpage/{1}.jsp"></put-attribute>
+  </definition>
+  
+  
   
 </tiles-definitions>

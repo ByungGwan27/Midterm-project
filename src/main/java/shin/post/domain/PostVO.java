@@ -13,6 +13,6 @@ public class PostVO {
 	private Date writeDate;
 	private int postRec;
 	private int postViews;
-	
+	private String postImages;
 	
 }
