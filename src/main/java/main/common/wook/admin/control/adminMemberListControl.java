@@ -23,6 +23,8 @@ public class adminMemberListControl implements Control {
 		HttpSession session = req.getSession();
 		session.setAttribute("allMemberInfo", list);
 		
+		return "adminpage/adminMemberList.tiles";
+		
 	}
 }
 
