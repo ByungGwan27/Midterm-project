@@ -42,14 +42,14 @@
   </definition>
   
   <!-- 20230503 jayk -->
-  <definition name="infopage" template="/WEB-INF/layoutDormInfoPage/template.jsp">
-    <put-attribute name="nav" value="/WEB-INF/layoutDormInfoPage/nav.jsp" />
-    <put-attribute name="body" value="/WEB-INF/layoutDormInfoPage/body.jsp" />
-    <put-attribute name="footer" value="/WEB-INF/layoutDormInfoPage/footer.jsp" />
+  <definition name="infopage" template="/WEB-INF/layoutHotelInfoPage/template.jsp">
+    <put-attribute name="nav" value="/WEB-INF/layoutHotelInfoPage/nav.jsp" />
+    <put-attribute name="body" value="/WEB-INF/layoutHotelInfoPage/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/layoutHotelInfoPage/footer.jsp" />
   </definition>
   
-  <definition name="WILDCARD:dorminfopage/*" extends="infopage">
-    <put-attribute name="body" value="/WEB-INF/views/dorminfopage/{1}.jsp"></put-attribute>
+  <definition name="WILDCARD:hotelinfopage/*" extends="infopage">
+    <put-attribute name="body" value="/WEB-INF/views/hotelinfopage/{1}.jsp"></put-attribute>
   </definition>
   
   <!-- 20230503 shin  -->

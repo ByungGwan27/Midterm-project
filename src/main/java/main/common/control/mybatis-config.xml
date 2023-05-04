@@ -29,5 +29,8 @@
 	<!-- mapper.xml을 만들면 추가 해줘야함 -->
 		
 		<mapper resource="main/common/wook/main/mapper/MainMapper.xml"/>
+		<!-- 230504 jayk add -->
+		<mapper resource="jayk/hotelinfo/mapper/HotelInfoMapper.xml"/>
+		
 	</mappers>
 </configuration>

@@ -1,15 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<div class="row">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<style>
+.center {
+	text-align: center;
+}
+
+.pagination {
+	display: inline-block;
+}
+
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+	border: 1px solid #ddd;
+	margin: 0 4px;
+}
+
+.pagination a.active {
+	background-color: #4CAF50;
+	color: white;
+	border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {
+	background-color: #ddd;
+}
+</style>
+
+<div class="row">
 	<!-- 사이드바 -->
 	<nav id="sidebar">
-		<div class="p-4 pt-5">
+		<div class="p-4 pt-5" style="center;">
 			<h5>Categories</h5>
 			<ul class="list-unstyled components mb-5">
-				<li><a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">지역</a>
+				<li><a href="#pageSubmenu1" data-toggle="collapse"
+					aria-expanded="false" class="dropdown-toggle">지역</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu1">
-						<li><a href="#pageSubmenu6" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">서울특별시</a>
+						<li><a href="#pageSubmenu6" data-toggle="collapse"
+							aria-expanded="false" class="dropdown-toggle">서울특별시</a>
 							<ul class="collapse list-unstyled" id="pageSubmenu6">
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>종로구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>중구</a></li>
@@ -36,9 +69,9 @@
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>강남구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>송파구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>강동구</a></li>
-							</ul>
-						</li>
-						<li><a href="#pageSubmenu7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">부산광역시</a>
+							</ul></li>
+						<li><a href="#pageSubmenu7" data-toggle="collapse"
+							aria-expanded="false" class="dropdown-toggle">부산광역시</a>
 							<ul class="collapse list-unstyled" id="pageSubmenu7">
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>중구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>서구</a></li>
@@ -56,9 +89,9 @@
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>수영구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>사상구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>기장구</a></li>
-							</ul>
-						</li>
-						<li><a href="#pageSubmenu8" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">대구광역시</a>
+							</ul></li>
+						<li><a href="#pageSubmenu8" data-toggle="collapse"
+							aria-expanded="false" class="dropdown-toggle">대구광역시</a>
 							<ul class="collapse list-unstyled" id="pageSubmenu8">
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>중구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>동구</a></li>
@@ -68,9 +101,9 @@
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>수성구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>달서구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>달성군</a></li>
-							</ul>
-						</li>
-						<li><a href="#pageSubmenu9" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">인천광역시</a>
+							</ul></li>
+						<li><a href="#pageSubmenu9" data-toggle="collapse"
+							aria-expanded="false" class="dropdown-toggle">인천광역시</a>
 							<ul class="collapse list-unstyled" id="pageSubmenu9">
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>중구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>동구</a></li>
@@ -82,36 +115,36 @@
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>서구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>강화군</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>옹진군</a></li>
-							</ul>
-						</li>
-						<li><a href="#pageSubmenu10" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">광주광역시</a>
+							</ul></li>
+						<li><a href="#pageSubmenu10" data-toggle="collapse"
+							aria-expanded="false" class="dropdown-toggle">광주광역시</a>
 							<ul class="collapse list-unstyled" id="pageSubmenu10">
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>동구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>서구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>남구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>북구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>광산구</a></li>
-							</ul>
-						</li>
-						<li><a href="#pageSubmenu11" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">대전광역시</a>
+							</ul></li>
+						<li><a href="#pageSubmenu11" data-toggle="collapse"
+							aria-expanded="false" class="dropdown-toggle">대전광역시</a>
 							<ul class="collapse list-unstyled" id="pageSubmenu11">
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>동구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>중구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>서구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>유성구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>대덕구</a></li>
-							</ul>
-						</li>
-						<li><a href="#pageSubmenu12" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">울산광역시</a>
+							</ul></li>
+						<li><a href="#pageSubmenu12" data-toggle="collapse"
+							aria-expanded="false" class="dropdown-toggle">울산광역시</a>
 							<ul class="collapse list-unstyled" id="pageSubmenu12">
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>중구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>남구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>동구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>북구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>울주군</a></li>
-							</ul>
-						</li>
-						<li><a href="#pageSubmenu13" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">세종특별자치시</a>
+							</ul></li>
+						<li><a href="#pageSubmenu13" data-toggle="collapse"
+							aria-expanded="false" class="dropdown-toggle">세종특별자치시</a>
 							<ul class="collapse list-unstyled" id="pageSubmenu13">
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>반곡동</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>소담동</a></li>
@@ -145,9 +178,9 @@
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>전의면</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>전동면</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>소정면</a></li>
-							</ul>
-						</li>
-						<li><a href="#pageSubmenu14" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">경기도</a>
+							</ul></li>
+						<li><a href="#pageSubmenu14" data-toggle="collapse"
+							aria-expanded="false" class="dropdown-toggle">경기도</a>
 							<ul class="collapse list-unstyled" id="pageSubmenu14">
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>수원시</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>성남시</a></li>
@@ -180,9 +213,9 @@
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>연천군</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>가평군</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>양평군</a></li>
-							</ul>
-						</li>
-						<li><a href="#pageSubmenu15" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">강원도</a>
+							</ul></li>
+						<li><a href="#pageSubmenu15" data-toggle="collapse"
+							aria-expanded="false" class="dropdown-toggle">강원도</a>
 							<ul class="collapse list-unstyled" id="pageSubmenu15">
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>춘천시</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>원주시</a></li>
@@ -202,9 +235,9 @@
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>인제군</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>고성군</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>양양군</a></li>
-							</ul>
-						</li>
-						<li><a href="#pageSubmenu16" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">충청북도</a>
+							</ul></li>
+						<li><a href="#pageSubmenu16" data-toggle="collapse"
+							aria-expanded="false" class="dropdown-toggle">충청북도</a>
 							<ul class="collapse list-unstyled" id="pageSubmenu16">
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>청주시</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>충주시</a></li>
@@ -217,9 +250,9 @@
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>괴산군</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>음성군</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>단양군</a></li>
-							</ul>
-						</li>
-						<li><a href="#pageSubmenu17" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">충청남도</a>
+							</ul></li>
+						<li><a href="#pageSubmenu17" data-toggle="collapse"
+							aria-expanded="false" class="dropdown-toggle">충청남도</a>
 							<ul class="collapse list-unstyled" id="pageSubmenu17">
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>천안시</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>공주시</a></li>
@@ -236,9 +269,9 @@
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>홍성군</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>예산군</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>태안군</a></li>
-							</ul>
-						</li>
-						<li><a href="#pageSubmenu18" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">전라북도</a>
+							</ul></li>
+						<li><a href="#pageSubmenu18" data-toggle="collapse"
+							aria-expanded="false" class="dropdown-toggle">전라북도</a>
 							<ul class="collapse list-unstyled" id="pageSubmenu18">
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>전주시</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>군산시</a></li>
@@ -254,9 +287,9 @@
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>순창군</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>고창군</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>부안군</a></li>
-							</ul>
-						</li>
-						<li><a href="#pageSubmenu19" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">전라남도</a>
+							</ul></li>
+						<li><a href="#pageSubmenu19" data-toggle="collapse"
+							aria-expanded="false" class="dropdown-toggle">전라남도</a>
 							<ul class="collapse list-unstyled" id="pageSubmenu19">
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>목포시</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>여수시</a></li>
@@ -280,9 +313,9 @@
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>완도군</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>진도군</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>신안군</a></li>
-							</ul>
-						</li>
-						<li><a href="#pageSubmenu20" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">경상북도</a>
+							</ul></li>
+						<li><a href="#pageSubmenu20" data-toggle="collapse"
+							aria-expanded="false" class="dropdown-toggle">경상북도</a>
 							<ul class="collapse list-unstyled" id="pageSubmenu20">
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>포항시</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>경주시</a></li>
@@ -307,9 +340,9 @@
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>봉화군</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>울진군</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>울릉군</a></li>
-							</ul>
-						</li>
-						<li><a href="#pageSubmenu21" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">경상남도</a>
+							</ul></li>
+						<li><a href="#pageSubmenu21" data-toggle="collapse"
+							aria-expanded="false" class="dropdown-toggle">경상남도</a>
 							<ul class="collapse list-unstyled" id="pageSubmenu21">
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>창원시</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>진주시</a></li>
@@ -329,28 +362,37 @@
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>함양군</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>거창군</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>합천군</a></li>
-							</ul>
-						</li>
-						<li><a href="#pageSubmenu22" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">제주특별자치도</a>
+							</ul></li>
+						<li><a href="#pageSubmenu22" data-toggle="collapse"
+							aria-expanded="false" class="dropdown-toggle">제주특별자치도</a>
 							<ul class="collapse list-unstyled" id="pageSubmenu22">
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>제주시</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>서귀포시</a></li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li><a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">가격</a>
+							</ul></li>
+					</ul></li>
+				<li><a href="#pageSubmenu2" data-toggle="collapse"
+					aria-expanded="false" class="dropdown-toggle">가격</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu2">
-						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Casual</a></li>
-						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Football</a></li>
+						<li>
+							<div class="form-group d-flex">스크롤</div>
+						</li>
+						<li><div class="mb-5">
+								<form action="#" class="subscribe-form">
+									<div class="form-group d-flex">
+										<!-- <div class="icon"><span class="icon-paper-plane"></span></div> -->
+										<input type="text" placeholder="가격입력">
+									</div>
+								</form>
+							</div></li>
+						<!-- 						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Football</a></li>
 						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Jordan</a></li>
 						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Lifestyle</a></li>
 						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Running</a></li>
 						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Soccer</a></li>
-						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Sports</a></li>
-					</ul>
-				</li>
-				<li><a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">테마(숙소종류)</a>
+						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Sports</a></li> -->
+					</ul></li>
+				<li><a href="#pageSubmenu3" data-toggle="collapse"
+					aria-expanded="false" class="dropdown-toggle">테마(숙소종류)</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu3">
 						<!-- <li><div class="mb-5">
                     <form action="#" class="subscribe-form">
@@ -365,14 +407,19 @@
                       </div>
                     </form>
                   </div></li> -->
-						<li><span class="fa fa-chevron-right mr-2"></span><input type="checkbox">테마(숙소종류)1</li>
-						<li><span class="fa fa-chevron-right mr-2"></span><input type="checkbox">테마(숙소종류)2</li>
-						<li><span class="fa fa-chevron-right mr-2"></span><input type="checkbox">테마(숙소종류)3</li>
-						<li><span class="fa fa-chevron-right mr-2"></span><input type="checkbox">테마(숙소종류)4</li>
-						<li><span class="fa fa-chevron-right mr-2"></span><input type="checkbox">테마(숙소종류)5</li>
-					</ul>
-				</li>
-				<li><a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">편의시설</a>
+						<li><span class="fa fa-chevron-right mr-2"></span><input
+							type="checkbox">호텔</li>
+						<li><span class="fa fa-chevron-right mr-2"></span><input
+							type="checkbox">펜션</li>
+						<li><span class="fa fa-chevron-right mr-2"></span><input
+							type="checkbox">게스트하우스</li>
+						<li><span class="fa fa-chevron-right mr-2"></span><input
+							type="checkbox">테마(숙소종류)4</li>
+						<li><span class="fa fa-chevron-right mr-2"></span><input
+							type="checkbox">테마(숙소종류)5</li>
+					</ul></li>
+				<li><a href="#pageSubmenu4" data-toggle="collapse"
+					aria-expanded="false" class="dropdown-toggle">편의시설</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu4">
 						<!-- <li><div class="mb-5">
                     <form action="#" class="subscribe-form">
@@ -387,15 +434,21 @@
                       </div>
                     </form>
                   </div></li> -->
-						<li><span class="fa fa-chevron-right mr-2"></span><input type="checkbox">편의시설1</li>
-						<li><span class="fa fa-chevron-right mr-2"></span><input type="checkbox">주차장</li>
-						<li><span class="fa fa-chevron-right mr-2"></span><input type="checkbox">wifi</li>
-						<li><span class="fa fa-chevron-right mr-2"></span><input type="checkbox">애완동물동반</li>
-						<li><span class="fa fa-chevron-right mr-2"></span><input type="checkbox">조식</li>
-						<li><span class="fa fa-chevron-right mr-2"></span><input type="checkbox">수영장</li>
-					</ul>
-				</li>
-				<li><a href="#pageSubmenu5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">최대인원</a>
+						<li><span class="fa fa-chevron-right mr-2"></span><input
+							type="checkbox">편의시설1</li>
+						<li><span class="fa fa-chevron-right mr-2"></span><input
+							type="checkbox">주차장</li>
+						<li><span class="fa fa-chevron-right mr-2"></span><input
+							type="checkbox">wifi</li>
+						<li><span class="fa fa-chevron-right mr-2"></span><input
+							type="checkbox">애완동물동반</li>
+						<li><span class="fa fa-chevron-right mr-2"></span><input
+							type="checkbox">조식</li>
+						<li><span class="fa fa-chevron-right mr-2"></span><input
+							type="checkbox">수영장</li>
+					</ul></li>
+				<li><a href="#pageSubmenu5" data-toggle="collapse"
+					aria-expanded="false" class="dropdown-toggle">최대인원</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu5">
 						<li>
 							<div class="mb-5">
@@ -407,8 +460,7 @@
 								</form>
 							</div>
 						</li>
-					</ul>
-				</li>
+					</ul></li>
 			</ul>
 			<!-- <div class="mb-5">
               <h5>Tag Cloud</h5>
@@ -432,47 +484,72 @@
                 </div>
               </form>
             </div>-->
-	
 		</div>
 	</nav>
-	
 	<!-- 사이드바끝 -->
 
 	<!-- list -->
 	<div style="justify-content: center;">
-		<table border="1">
+	<p align="right"><a href="#">높은가격순</a> / <a href="#">낮은가격순</a> / <a href="#">이름순</a> / <a href="#">인기순</a></p>
+	<hr>
+	<c:forEach var="hotelList" items="${hotelList}">
+		<table>
 			<tr>
-				<td rowspan="4"><img src="cssMainpage/images/hero-slider-1.jpg" alt="test" width="200"></td>
-				<td>
-					<h3>상호명</h3>
+				<td rowspan="4">
+					<div style="margin: 10px;">
+						<img src="cssMainpage/images/${hotelList.hotelImage}" alt="hotelImage" width="200">
+					</div>
 				</td>
-				<td>테마(숙소종류)</td>
-				<td rowspan="4">공백</td>
+				<td>
+					<h3>${hotelList.hotelName}</h3>
+				</td>
+				<td>${hotelList.hotelThema}</td>
+				<td rowspan="4"><div style="width: 200px;"></div></td>
 				<td>후기갯수</td>
-				<td>6</td>
+				<td></td>
 			</tr>
 			<tr>
-				<td>평점</td>
-				<td>3</td>
-				<td>5</td>
-				<td>6</td>
+				<td>${hotelList.hotelPoint}</td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<tr>
-				<td>지역</td>
-				<td>3</td>
-				<td>가격</td>
+				<td>${hotelList.hotelLocation1} ${hotelList.hotelLocation2}</td>
+				<td></td>
+				<td><h4>${hotelList.roomPrice}</h4></td>
 				<td><button>예약</button></td>
 			</tr>
 			<tr>
-				<td>2</td>
-				<td>3</td>
+				<td></td>
+				<td></td>
 				<td>할인적용가</td>
-				<td>6</td>
+				<td></td>
 			</tr>
 		</table>
+		<hr>
+		</c:forEach>
+		<!-- 리스트끝 -->
+		
+		<!-- 페이징 20*10 -->
+		<div class="center">
+			<div class="pagination">
+				<c:if test="${pageInfo.prev}">
+					<a href="noticeList.do?page=${pageInfo.startPage-1}">Previous</a>
+				</c:if>
+				<c:forEach var="i" begin="${pageInfo.startPage}"
+					end="${pageInfo.endPage}">
+					<a class="${i==pageInfo.pageNum ? 'active' : ''}"
+						href="noticeList.do?page=${i}">${i}</a>
+				</c:forEach>
+				<c:if test="${pageInfo.next}">
+					<a href="noticeList.do?page=${pageInfo.endPage+1}">Next</a>
+				</c:if>
+			</div>
+		</div>
 	</div>
 </div>
-<!-- 리스트끝 -->
 
-<!-- 페이징 20*10 -->
+
+
 
