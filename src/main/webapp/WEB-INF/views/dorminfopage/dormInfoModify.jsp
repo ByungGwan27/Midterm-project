@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<h3>adddormpage</h3>
-<h5>숙소추가</h5>
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<h3>dorminfomodify</h3>
+<h5>숙소정보수정</h5>
 <form action="" method="POST">
 	<table class="table">
 		<tr>
@@ -24,17 +25,13 @@
 			<th>유의사항</th>
 			<td><textarea rows="3" cols="20" name="subject">${noticeInfo.noticeSubject}</textarea></td>
 		</tr>
-		<tr>
-			<th>객실개수</th>
-			<td><input type="text" name="nid" value="${noticeInfo.noticeId}"></td>
-		</tr>
 		<td colspan="2" align="center">
 			<button type="submit">저장</button>
 			<button type="button">취소</button>
 		</td>
 	</table>
 </form>
-<h5>숙소상세정보기입 * 상기객실개수받아표시</h5>
+<h5>숙소상세정보수정 * 객실전체조회해서보이게</h5>
 <form>
 	<table class="table">
 	<tr>
@@ -47,18 +44,6 @@
 		</tr>
 		<tr>
 			<th>호수</th>
-			<td><input type="text" name="nid" value="${noticeInfo.noticeId}"></td>
-		</tr>
-		<tr>
-			<th>최대인원</th>
-			<td><input type="text" name="nid" value="${noticeInfo.noticeId}"></td>
-		</tr>
-		<tr>
-			<th>최소인원</th>
-			<td><input type="text" name="nid" value="${noticeInfo.noticeId}"></td>
-		</tr>
-				<tr>
-			<th>인원추가시 발생하는 금액</th>
 			<td><input type="text" name="nid" value="${noticeInfo.noticeId}"></td>
 		</tr>
 		<tr>
@@ -76,3 +61,5 @@
 		</td>
 	</table>
 </form>
+
+
