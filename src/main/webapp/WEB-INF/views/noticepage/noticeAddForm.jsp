@@ -8,7 +8,7 @@
 	padding: 15px auto;
 }
 </style>
-<form action="modifyNotice.do" method="get">
+<form action="noticeAddForm.do" method="get">
 	<table class="table">
 		<tr>
 			<th></th>
@@ -58,13 +58,13 @@
 	</table>
 </form>
 
-<!-- 댓글등록. -->
+<!-- 댓글등록. 
 <div id="content">
 	<input type="text" id="reply"> <span>${id }</span>
 	<button type="button" id="addBtn">댓글등록</button>
-</div>
+</div>-->
 
-<!-- 댓글정보. -->
+<!-- 댓글정보. 
 <table class="table">
 	<thead>
 		<tr>
@@ -88,11 +88,11 @@
 		</tr>
 	</tbody>
 </table>
+ -->
 
 
 
-
-<script>
+<!-- <script>
   let showFields = ['replyId', 'reply', 'replyWriter'] //보여줄 필드 배열선언
   let xhtp = new XMLHttpRequest();
   xhtp.open('get', 'replyList.do?nid=${noticeInfo.noticeId}');
@@ -275,4 +275,4 @@
 }
   
   
-</script>
+</script> -->

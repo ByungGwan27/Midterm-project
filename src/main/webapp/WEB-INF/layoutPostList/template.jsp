@@ -32,21 +32,22 @@
   <link rel="stylesheet" href="cssMainpage/css/style.css">
 
   <title>Traveller</title>
+  
 </head>
-            <!-- Navigation-->
-           	<tiles:insertAttribute name="nav"></tiles:insertAttribute>
-            <!-- Header-->
-           <tiles:insertAttribute name="body"></tiles:insertAttribute>
-      
-        <!-- Footer-->
-      	<tiles:insertAttribute name="footer"></tiles:insertAttribute>
+     <!-- Navigation-->
+    	<tiles:insertAttribute name="nav"></tiles:insertAttribute>
+     <!-- Header-->
+     <tiles:insertAttribute name="body"></tiles:insertAttribute>
+    
+      <!-- Footer-->
+    	<tiles:insertAttribute name="footer"></tiles:insertAttribute>
      
        <div id="overlayer"></div>
-  <div class="loader">
-    <div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
+  	   <div class="loader">
+   	   <div class="spinner-border" role="status">
+       <span class="sr-only">Loading...</span>
+       </div>
+       </div>
 
   <script src="cssMainpage/js/jquery-3.4.1.min.js"></script>
   <script src="cssMainpage/js/popper.min.js"></script>
