@@ -1,4 +1,4 @@
-package jayk.dorminfo.control;
+package jayk.hotelinfo.control;
 
 import java.io.IOException;
 
@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.common.control.Control;
 
-public class DormListControl implements Control {
+public class AdminModifyHotelInfoControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		return "dorminfopage/dormListPage.tiles";
+		return "adminpage/adminHotelInfoModify.tiles";
 	}
 
 }

@@ -11,14 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jayk.dorminfo.control.AdminAddDormControl;
-import jayk.dorminfo.control.AdminDormListControl;
-import jayk.dorminfo.control.DormListControl;
-import jayk.dorminfo.control.GetDormControl;
+
 import gwan.loginpage.control.CreateUserPageControl;
 import gwan.loginpage.control.ForgotPasswordPageControl;
 import gwan.loginpage.control.loginPageControl;
-import jayk.dorminfo.control.AdminModifyDormInfoControl;
 import gwan.mypage.control.MyPageCouponControl;
 import gwan.mypage.control.MyPageMessageControl;
 import gwan.mypage.control.MyPageQnaControl;
@@ -26,6 +22,11 @@ import gwan.mypage.control.MyPageQnaQControl;
 import gwan.mypage.control.MyPageUserInfoChangeControl;
 import gwan.mypage.control.MyPageWishListControl;
 import gwan.mypage.control.MypageHomeControl;
+import jayk.hotelinfo.control.AdminAddHotelControl;
+import jayk.hotelinfo.control.AdminHotelListControl;
+import jayk.hotelinfo.control.AdminModifyHotelInfoControl;
+import jayk.hotelinfo.control.HotelListControl;
+import jayk.hotelinfo.control.GetHotelControl;
 import main.common.control.Control;
 import main.common.wook.admin.control.adminDeclarationInfoControl;
 import main.common.wook.admin.control.adminDeclarationListControl;
@@ -72,15 +73,15 @@ public class FrontController extends HttpServlet{
 		
 		// 김자영
 		//숙소리스트
-		map.put("/dormListPage.do", new DormListControl());
+		map.put("/hotelListPage.do", new HotelListControl());
 		//인포페이지
-		map.put("/dormInfoPage.do", new GetDormControl());
-		//관리자숙소추가페이지
-		map.put("/adminAddDormPage.do", new AdminAddDormControl());
-		//관리자숙소리스트페이지
-		map.put("/adminDormList.do", new AdminDormListControl());
+		map.put("/hotelInfoPage.do", new GetHotelControl());
+		//관리자숙소추가페이지 
+		map.put("/adminAddHotelPage.do", new AdminAddHotelControl());
+		//관리자숙소리스트페이지 
+		map.put("/adminHotelList.do", new AdminHotelListControl());
 		//관리자숙소정보수정페이지
-		map.put("/adimdormInfoModifyPage.do", new AdminModifyDormInfoControl());
+		map.put("/adminHotelInfoModifyPage.do", new AdminModifyHotelInfoControl());
 		
 		// 신지은
 		

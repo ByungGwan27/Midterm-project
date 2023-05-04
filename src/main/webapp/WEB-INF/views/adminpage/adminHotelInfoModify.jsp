@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<h3>dorminfomodify</h3>
+	<main id="main" class="main">
+<h3>hotelinfomodify</h3>
 <h5>숙소정보수정</h5>
 <form action="" method="POST">
 	<table class="table">
@@ -14,12 +15,22 @@
 			<td><input type="text" name="nid" value="${noticeInfo.noticeId}"></td>
 		</tr>
 		<tr>
-			<th>위치</th>
+			<th>위치1(시도)</th>
+			<td><input type="text" name="title"	value="${noticeInfo.noticeTitle}"></td>
+		</tr>
+		<tr>
+			<th>위치2(시군구)</th>
 			<td><input type="text" name="title"	value="${noticeInfo.noticeTitle}"></td>
 		</tr>
 		<tr>
 			<th>시설정보</th>
-			<td><textarea rows="3" cols="20" name="subject">${noticeInfo.noticeSubject}</textarea></td>
+			<td>
+			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">주차장
+			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">wifi
+			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">애완동물동반가능여부
+			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">조식
+			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">수영장
+			</td>
 		</tr>
 		<tr>
 			<th>유의사항</th>
@@ -52,7 +63,15 @@
 		</tr>
 		<tr>
 			<th>세부설명</th>
-			<td><textarea rows="3" cols="20" name="subject">${noticeInfo.noticeSubject}</textarea></td>
+			<td>
+			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">더블룸
+			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">트윈룸
+			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">주차장
+			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">wifi
+			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">애완동물동반가능여부
+			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">조식
+			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">수영장
+			</td>
 		</tr>
 
 		<td colspan="2" align="center">
@@ -61,5 +80,5 @@
 		</td>
 	</table>
 </form>
-
+</main>
 
