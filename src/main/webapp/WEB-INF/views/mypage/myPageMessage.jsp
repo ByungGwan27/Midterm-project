@@ -9,19 +9,18 @@
 <script src="https://code.jquery.com/jquery-1.8.3.min.js"
 	integrity="sha256-YcbK69I5IXQftf/mYD8WY0/KmEDCv1asggHpJk1trM8="
 	crossorigin="anonymous"></script>
-	
-	
-	
+
+
+
 
 <style>
-	/*채팅창 가로길이*/
+/*채팅창 가로길이*/
 .chat_wrap {
-	border: 1px solid #999;
+	border: 1px solid #e3e6f0;
 	width: 600px;
 	padding: 5px;
 	font-size: 20px;
 	color: #333
-	
 }
 
 /*채팅창 배경, 세로길이*/
@@ -130,18 +129,62 @@ input[type="text"]::placeholder {
 	color: #999
 }
 
-
 .gwan-main-container {
 	border: #e3e6f0 1px solid;
 	height: 700px;
+	margin-top: 32px;
+	margin-bottom: 32px;
+	margin-left: 300px
 }
-.list-container {
-	width: 300px;
+
+.gwan-flex-container {
+	display: inline-flex;
+}
+
+.gwan-flex-item-left {
+	width: 260px;
 	height: 693px;
-	float: left;
+	margin: 0px;
+	background-color: #f8f9fc;
 }
-.gwan-chat {
-	float: left;
+
+.gwan-flex-item-center {
+	width: 600px;
+	height: 693px;
+	margin: 0px;
+	background-color: #f8f9fc;
+}
+
+.gwan-flex-item-right {
+	width: 250px;
+	height: 693px;
+	margin: 0px;
+	background-color: #f8f9fc;
+}
+
+.gwan-scroll-table {
+	table-layout: fixed;
+}
+
+tbody {
+  height: 623px;
+  overflow-y: auto;
+}
+
+.gwan-scroll-table th {
+	height: 70px
+}
+
+.gwan-scroll-body {
+    display: block;
+  }
+
+.gwan-scroll-table td {
+	height: 100px;
+	border-top: #e3e6f0 1px solid;
+	border-bottom: #e3e6f0 1px solid;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 </style>
 <script>
@@ -154,7 +197,7 @@ input[type="text"]::placeholder {
 						$(this).val('');
 						var _tar = $(".chat_wrap .inner")
 								.append(
-										'<div class="item '+_class+'"><div class="box"><p class="msg">'
+										'<div class="item ' + _class + '"><div class="box"><p class="msg">'
 												+ _val
 												+ '</p><span class="time">'
 												+ currentTime()
@@ -183,7 +226,8 @@ input[type="text"]::placeholder {
 		var hh = date.getHours();
 		var mm = date.getMinutes();
 		var apm = hh > 12 ? "오후" : "오전";
-		var ct = apm + " " + hh + ":" + mm + "";
+		var th = hh > 12 ? hh - 12 : hh;
+		var ct = apm + " " + th + ":" + mm + "";
 		return ct;
 	}
 </script>
@@ -191,66 +235,72 @@ input[type="text"]::placeholder {
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">메세지함</h1>
 
-<!-- 본문 --> 
-<div class="gwan-main-container">
-		<div>
-			<div class="list-container">
-				<table>
-					<tr>
-						<th>전체메시지 | 안 읽은 메시지 | 별표 메시지</th>
-					</tr>
-					<tr>
-						<td>
-							1번타자
-						</td>
-					</tr>
-					<tr>
-						<td>
-							2번타자
-						</td>
-					</tr>
-					<tr>
-						<td>
-							3번타자
-						</td>
-					</tr>
-					<tr>
-						<td>
-							4번타자
-						</td>
-					</tr>
-					<tr>
-						<td>
-							5번타자
-						</td>
-					</tr>
-				</table>
-			</div>
-		
-		<div class="chat_wrap gwan-chat">
-			<div class="inner">
+<!-- 본문 -->
+<div class="gwan-main-container gwan-flex-container">
+	<div class="list-container gwan-flex-item-left">
+		<table class="gwan-scroll-table">
+			<thead>
+				<tr>
+					<th>전체메시지 | 안 읽은 메시지 | 별표 메시지</th>
+				</tr>
+			</thead>
+			<tbody class="gwan-scroll-body">
+				<tr>
+					<td>1번타자</td>
+				</tr>
+				<tr>
+					<td>2번타자</td>
+				</tr>
+				<tr>
+					<td>3번타자</td>
+				</tr>
+				<tr>
+					<td>4번타자</td>
+				</tr>
+				<tr>
+					<td>5번타자</td>
+				</tr>
+				<tr>
+					<td>6번타자</td>
+				</tr>
+				<tr>
+					<td>7번타자</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
-				<div class="item">
-                <div class="box">
-                    <p class="msg">안녕하세요</p>
-                    <span class="time">오전 10:05</span>
-                </div>
-            </div>
+	<div class="chat_wrap gwan-chat gwan-flex-item-center">
+		<div class="inner">
 
-            <div class="item mymsg">
-                <div class="box">
-                    <p class="msg">안녕하세요</p>
-                    <span class="time">오전 10:05</span>
-                </div>
-            </div>
-
+			<div class="item">
+				<div class="box">
+					<p class="msg">안녕하세요</p>
+					<span class="time">오전 10:05</span>
+				</div>
 			</div>
 
-			<input type="text" class="mymsg" placeholder="내용 입력">
-			<button>파일전송</button>
-			<!-- <input type="text" class="yourmsg" placeholder="내용 입력"> -->
+			<div class="item mymsg">
+				<div class="box">
+					<p class="msg">안녕하세요</p>
+					<span class="time">오전 10:05</span>
+				</div>
+			</div>
+
 		</div>
-	</div> 
+
+		<input type="text" class="mymsg" placeholder="내용 입력">
+		<button>파일전송</button>
+		<!-- <input type="text" class="yourmsg" placeholder="내용 입력"> -->
+	</div>
+
+	<div class="gwan-right-container gwan-flex-item-right">
+		<div>
+			<p>사용자 이미지</p>
+		</div>
+		<div>
+			<p>텍스트 상자</p>
+		</div>
+	</div>
+
 </div>
-	
-	
