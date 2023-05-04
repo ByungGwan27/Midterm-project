@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import jayk.dorminfo.control.DormListControl;
 import jayk.dorminfo.control.GetDormControl;
+import gwan.loginpage.control.CreateUserPageControl;
+import gwan.loginpage.control.ForgotPasswordPageControl;
+import gwan.loginpage.control.loginPageControl;
 import gwan.mypage.control.MyPageCouponControl;
 import gwan.mypage.control.MyPageMessageControl;
 import gwan.mypage.control.MyPageQnaControl;
@@ -104,6 +107,14 @@ public class FrontController extends HttpServlet{
 		
 		//Q&A 질문 작성 페이지
 		map.put("/myPageQnaQ.do", new MyPageQnaQControl());
+		
+		//로그인페이지
+		map.put("/loginPage.do", new loginPageControl());
+		//회원가입
+		map.put("/createUserPage.do", new CreateUserPageControl());
+		//pw찾기
+		map.put("/forgotPasswordPage.do", new ForgotPasswordPageControl());
+		
 		
 	}
 	
