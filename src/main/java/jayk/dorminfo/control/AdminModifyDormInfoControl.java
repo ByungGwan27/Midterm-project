@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.common.control.Control;
 
-public class ModifyDormInfoControl implements Control {
+public class AdminModifyDormInfoControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

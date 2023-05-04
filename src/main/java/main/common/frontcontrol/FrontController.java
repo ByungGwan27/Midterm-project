@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jayk.dorminfo.control.AddDormControl;
+import jayk.dorminfo.control.AdminAddDormControl;
 import jayk.dorminfo.control.AdminDormListControl;
 import jayk.dorminfo.control.DormListControl;
 import jayk.dorminfo.control.GetDormControl;
 import gwan.loginpage.control.CreateUserPageControl;
 import gwan.loginpage.control.ForgotPasswordPageControl;
 import gwan.loginpage.control.loginPageControl;
-import jayk.dorminfo.control.ModifyDormInfoControl;
+import jayk.dorminfo.control.AdminModifyDormInfoControl;
 import gwan.mypage.control.MyPageCouponControl;
 import gwan.mypage.control.MyPageMessageControl;
 import gwan.mypage.control.MyPageQnaControl;
@@ -76,11 +76,11 @@ public class FrontController extends HttpServlet{
 		//인포페이지
 		map.put("/dormInfoPage.do", new GetDormControl());
 		//관리자숙소추가페이지
-		map.put("/addDormPage.do", new AddDormControl());
+		map.put("/adminAddDormPage.do", new AdminAddDormControl());
 		//관리자숙소리스트페이지
 		map.put("/adminDormList.do", new AdminDormListControl());
 		//관리자숙소정보수정페이지
-		map.put("/dormInfoModifyPage.do", new ModifyDormInfoControl());
+		map.put("/adimdormInfoModifyPage.do", new AdminModifyDormInfoControl());
 		
 		// 신지은
 		
