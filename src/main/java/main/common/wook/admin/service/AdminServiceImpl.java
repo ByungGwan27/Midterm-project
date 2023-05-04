@@ -42,4 +42,18 @@ public class AdminServiceImpl implements AdminService {
 		return mapper.allMemberInfo();
 	}
 
+	@Override
+	public MemberVO memberInfo(MemberVO vo) {
+		
+		return mapper.memberInfo(vo);
+	}
+
+	@Override
+	public int modifyMemberInfo(MemberVO vo) {
+		
+		return mapper.modifyMemberInfo(vo);
+	}
+
+	
+
 }

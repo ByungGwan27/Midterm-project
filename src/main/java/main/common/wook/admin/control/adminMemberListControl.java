@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import main.common.control.Control;
 import main.common.wook.admin.service.AdminService;
@@ -19,9 +20,8 @@ public class adminMemberListControl implements Control {
 		AdminService service = new AdminServiceImpl();
 		List<MemberVO> list = service.allMemberInfo();
 		
-		for(MemberVO member : list) {
-			
-		}
+		HttpSession session = req.getSession();
+		session.setAttribute("allMemberInfo", list);
 		
 		return "adminpage/adminMemberList.tiles";
 	}

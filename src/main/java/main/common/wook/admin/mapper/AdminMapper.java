@@ -11,4 +11,6 @@ public interface AdminMapper {
 	public AdminVO monthPayCount();
 	public AdminVO monthTotalPay();
 	public List<MemberVO> allMemberInfo();
+	public MemberVO memberInfo(MemberVO vo);
+	public int modifyMemberInfo(MemberVO vo);
 }

@@ -53,7 +53,7 @@
 
   </main>
   
-  <script>
+<script>
   let dec = document.querySelectorAll(".dec");
 	console.log(dec);
 	dec.forEach(function(ele) {
@@ -64,6 +64,3 @@
 
 	})
 </script>
- 
-  
- 

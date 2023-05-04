@@ -27,4 +27,28 @@
 	<select id="allMemberInfo" resultType="member">
 	select * from member
 	</select>
+	
+	<!-- 단일 회원 정보 조회 -->
+	<select id="memberInfo" resultType="member" parameterType="member">
+	select * from member where member_id=#{memberId}
+	</select>
+	
+	<!-- 회원 정보 수정 -->
+	<update id="modifyMemberInfo" parameterType="member">
+	update member
+	set
+	member_pw=#{memberPw},
+	member_name=#{memberName},
+	member_birth=#{memberBirth},
+	member_email=#{memberEmail},
+	member_phone=#{memberPhone},
+	member_status=#{memberStatus},
+	member_nickname=#{memberNickname},
+	member_profile=#{memberProfile},
+	member_point=#{memberPoint},
+	member_thema=#{memberThema},
+	member_joindate=#{memberJoindate},
+	member_grade=#{memberGrade}
+	Where member_id=#{memberId}
+	</update>
 </mapper>
