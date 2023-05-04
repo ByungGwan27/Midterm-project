@@ -41,6 +41,16 @@
     <put-attribute name="body" value="/WEB-INF/views/mypage/{1}.jsp"></put-attribute>
   </definition>
   
+  <!-- 5/4 gwan. loginpage tiles work -->
+  <definition name="gwanLoginPage" template="/WEB-INF/gwanLayoutLoginPage/template.jsp">
+    <put-attribute name="blank" value="/WEB-INF/gwanLayoutLoginPage/blank.jsp" />
+  </definition>
+   
+  <!-- 5/4 gwan. loginpage tiles work-->
+  <definition name="WILDCARD:gwanLoginPage/*" extends="gwanLoginPage">
+    <put-attribute name="blank" value="/WEB-INF/views/gwanLoginPage/{1}.jsp"></put-attribute>
+  </definition>
+  
   <!-- 20230503 jayk -->
   <definition name="infopage" template="/WEB-INF/layoutDormInfoPage/template.jsp">
     <put-attribute name="nav" value="/WEB-INF/layoutDormInfoPage/nav.jsp" />
