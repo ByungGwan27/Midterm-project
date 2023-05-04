@@ -20,20 +20,29 @@ public class PostListControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
-		String pageStr = req.getParameter("page");
-		pageStr = pageStr == null ? "1" : pageStr; //원하는 페이지 번호 입력하지 않을시 디폴트 1번 페이지 보이게 출력
-		int page = Integer.parseInt(pageStr);
+//		String pageStr = req.getParameter("page");
+//		pageStr = pageStr == null ? "1" : pageStr; 
+//		int page = Integer.parseInt(pageStr);
+//		
+//		PostService service = new PostServiceImpl();
+//		//int total = service.totalCount();
+//		List<PostVO> list = service.postList(page); 
+//		System.out.println(page);
+//		//PageDTO dto = new PageDTO(page, total);
+//		
+//		String postId = req.getParameter("postId").trim();
+//		PostVO post = service.getPost(Integer.parseInt(postId));
+//		System.out.println(postId);
+//		
+//		req.setAttribute("postInfo", post);
+//		
+//		req.setAttribute("list", list);
+		//req.setAttribute("pageInfo", dto);
 		
 		PostService service = new PostServiceImpl();
-		int total = service.totalCount();
-		List<PostVO> list = service.postList(page); //원하는 페이지 번호 파라미터 입력
-		
-		PageDTO dto = new PageDTO(page, total);
-		
+		List<PostVO> list = service.postList(); 
 		req.setAttribute("list", list);
-		req.setAttribute("pageInfo", dto);
-		
-		
+		System.out.println(list);
 		
 		return "postpage/postList.tiles";
 	}

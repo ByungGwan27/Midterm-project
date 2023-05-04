@@ -37,10 +37,16 @@
     <put-attribute name="footer" value="/WEB-INF/layoutNoticeAdd/footer.jsp" />
   </definition>
   
-   <definition name="noticepage" template="/WEB-INF/layoutNoticepage/template.jsp">
-    <put-attribute name="nav" value="/WEB-INF/layoutNoticepage/nav.jsp" />
-    <put-attribute name="body" value="/WEB-INF/layoutNoticepage/body.jsp" />
-    <put-attribute name="footer" value="/WEB-INF/layoutNoticepage/footer.jsp" />
+    <definition name="noticepage" template="/WEB-INF/layoutNoticeDetail/template.jsp">
+    <put-attribute name="nav" value="/WEB-INF/layoutNoticeDetail/nav.jsp" />
+    <put-attribute name="body" value="/WEB-INF/layoutNoticeDetail/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/layoutNoticeDetail/footer.jsp" />
+  </definition>
+  
+   <definition name="noticepage" template="/WEB-INF/layoutNoticeList/template.jsp">
+    <put-attribute name="nav" value="/WEB-INF/layoutNoticeList/nav.jsp" />
+    <put-attribute name="body" value="/WEB-INF/layoutNoticeList/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/layoutNoticeList/footer.jsp" />
   </definition>
 
   <definition name="WILDCARD:noticepage/*" extends="noticepage">
@@ -56,7 +62,6 @@
   <definition name="WILDCARD:adminpay/*" extends="adminpay">
     <put-attribute name="body" value="/WEB-INF/views/adminpay/{1}.jsp"></put-attribute>
   </definition>
-  
   
   
 </tiles-definitions>

@@ -10,7 +10,7 @@ public interface PostMapper {
 	public List<PostVO> postWithPage(int page); 
 	
 	public PostVO searchPost(int postId);
-	public int updateCount(int postId);
-	public int getCount();
+//	public int updateCount(int postId);
+//	public int getCount();
 	
 }

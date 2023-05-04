@@ -6,7 +6,7 @@
 	<select id="postList" resultType="post">
 		select * from post
 		order by 1
-		desc
+
 	</select>
 
 	<select id="postWithPage" resultType="post">

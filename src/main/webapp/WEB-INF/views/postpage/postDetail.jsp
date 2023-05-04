@@ -1,19 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<!-- Section-->
 
+<!DOCTYPE html>
   <section class="py-5">
                 <div class="container px-5 my-5">
                     <div class="row gx-5">
-                   
                         <div class="col-lg-3">
                             <div class="d-flex align-items-center mt-lg-5 mb-4">
-                                <img class="img-fluid rounded-circle" src="images/${member.memberProfile}.jpg" alt="..." />
+                                <img class="img-fluid rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
                                 <div class="ms-3">
-                                    <div class="fw-bold">${member.memberId}</div>
-                                    <div class="text-muted">${member.memberId}</div>
+                                    <div class="fw-bold">작성자</div>
+                                    <div class="text-muted">News, Business</div>
                                 </div>
                             </div>
                         </div>
@@ -23,20 +21,19 @@
                                 <!-- Post header-->
                                 <header class="mb-4">
                                     <!-- Post title-->
-                                    <h1 class="fw-bolder mb-1">${post.postTitle}</h1>
+                                    <h1 class="fw-bolder mb-1">포스트 제목</h1>
                                     <!-- Post meta content-->
-                                    <div class="text-muted fst-italic mb-2">${post.writeDate}</div>
+                                    <div class="text-muted fst-italic mb-2">작성날짜</div>
                                     <!-- Post categories-->
-                                 
+                                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+                                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
                                 </header>
                                 <!-- Preview image figure-->
-                                <figure class="mb-4"><img class="img-fluid rounded" src="images/${post.postImages}.jpg" alt="..." /></figure>
-                                
-                                
+                                <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
                                 <!-- Post content-->
                                 <section class="mb-5">
-                                    <p class="fs-5 mb-4">${post.postContent}</p>
-                                 
+                                    <p class="fs-5 mb-4">포스트내용</p>
+                                  
                                 </section>
                             </article>
                             <!-- Comments section-->
@@ -44,20 +41,20 @@
                                 <div class="card bg-light">
                                     <div class="card-body">
                                         <!-- Comment form-->
-                                        <form class="mb-4"><textarea class="form-control" rows="3" placeholder="댓글을 입력해주세요!"></textarea></form>
+                                        <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
                                         <!-- Comment with nested comments-->
                                         <div class="d-flex mb-4">
                                             <!-- Parent comment-->
                                             <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                                             <div class="ms-3">
-                                                <div class="fw-bold">Commenter Name</div>
-                                                If you're going to lead a space frontier, it has to 
+                                                <div class="fw-bold">댓글 작성자</div>
+                                               댓글내용
                                                 <!-- Child comment 1-->
                                                 <div class="d-flex mt-4">
                                                     <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                                                     <div class="ms-3">
-                                                        <div class="fw-bold">Commenter Name</div>
-                                                        And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
+                                                        <div class="fw-bold">답글 작성자</div>
+                                                       	답글 내용
                                                     </div>
                                                 </div>
                                                 <!-- Child comment 2-->
@@ -85,4 +82,4 @@
                     </div>
                 </div>
             </section>
-    
+     

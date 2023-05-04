@@ -39,18 +39,19 @@
 	<thead>
 		<tr>
 			<th>순번</th>
-			<th>글번호</th>
 			<th>제목></th>
 			<th>작성자</th>
+			<th>작성날짜</th>
 			<th>조회수</th>
 		</tr>
 	</thead>
 	<c:forEach var="notice" items="${list }">
 		<tr>
 			<td><c:out value="${no=no+1 }"></c:out></td>
-			<td><a href="getNotice.do?page=${pageInfo.pageNum}&nid=${notice.noticeId }">${notice.noticeId }</a></td>
-			<td>${notice.noticeTitle }</td>
+			<!-- <td><a href="getNotice.do?page=${pageInfo.pageNum}&nid=${notice.noticeId }">${notice.noticeId }</a></td> -->
+			<td><a href="getNotice.do?page=${pageInfo.pageNum}&nTit=${notice.noticeTitle }">${notice.noticeTitle }</a></td>
 			<td>${notice.memberId }</td>
+			<td>${notice.writeDate }</td>
 			<td>${notice.noticeViews }</td>
 		</tr>
 	</c:forEach>
@@ -71,3 +72,5 @@
 	</div>
 </div>
 
+
+        
