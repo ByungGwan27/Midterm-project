@@ -16,60 +16,60 @@
                     </div>
                 </div>
             </header>
-            <!-- About section one-->
+            <!-- 첫번째 포스트-->
             <section class="py-5 bg-light" id="scroll-target">
                 <div class="container px-5 my-5">
                     <div class="row gx-5 align-items-center">
                         <div class="col-lg-6">
-                        <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded mb-5 mb-lg-0" src="cssPostList/images/${post.postImages}" alt="..." /></a></div>
+                        <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded mb-5 mb-lg-0" src="cssPostList/images/${post.postImages}" alt="..." /></div>
                         <div class="col-lg-6">
                             <h2 class="fw-bolder">포스트 제목</h2>
                             <p class="lead fw-normal text-muted mb-0">작성자</p>
-                            <p class="lead fw-normal text-muted mb-0">작성내용</p>
+                            <p class="lead fw-normal text-muted mb-0">작성내용</p></a>
                             
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- About section two-->
+            <!-- 두번째 포스트 -->
             <section class="py-5">
                 <div class="container px-5 my-5">
                     <div class="row gx-5 align-items-center">
                         <div class="col-lg-6 order-first order-lg-last">
-                        <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded mb-5 mb-lg-0" src="cssPostList/images/${post.postImages}" alt="..." /></a></div>
+                        <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded mb-5 mb-lg-0" src="cssPostList/images/${post.postImages}" alt="..." /></div>
                         <div class="col-lg-6">
                             <h2 class="fw-bolder">포스트 제목</h2>
                             <p class="lead fw-normal text-muted mb-0">작성자</p>
-                            <p class="lead fw-normal text-muted mb-0">작성내용</p>
+                            <p class="lead fw-normal text-muted mb-0">작성내용</p></a>
                         </div>
                     </div>
                 </div>
             </section>
-             <!-- About section three-->
+             <!-- 세번째 포스트-->
             <section class="py-5 bg-light" id="scroll-target">
                 <div class="container px-5 my-5">
                     <div class="row gx-5 align-items-center">
                         <div class="col-lg-6">
-                        <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded mb-5 mb-lg-0" src="cssPostList/images/${post.postImages}" alt="..." /></a></div>
+                        <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded mb-5 mb-lg-0" src="cssPostList/images/${post.postImages}" alt="..." /></div>
                         <div class="col-lg-6">
                             <h2 class="fw-bolder">포스트 제목</h2>
                             <p class="lead fw-normal text-muted mb-0">작성자</p>
-                            <p class="lead fw-normal text-muted mb-0">작성내용</p>
+                            <p class="lead fw-normal text-muted mb-0">작성내용</p></a>
                             
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- About section four-->
+            <!-- 네번째 포스트 -->
             <section class="py-5">
                 <div class="container px-5 my-5">
                     <div class="row gx-5 align-items-center">
                         <div class="col-lg-6 order-first order-lg-last">
-                        <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded mb-5 mb-lg-0" src="cssPostList/images/${post.postImages}" alt="..." /></a></div>
+                        <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded mb-5 mb-lg-0" src="cssPostList/images/${post.postImages}" alt="..." /></div>
                         <div class="col-lg-6">
                             <h2 class="fw-bolder">포스트 제목</h2>
                             <p class="lead fw-normal text-muted mb-0">작성자</p>
-                            <p class="lead fw-normal text-muted mb-0">작성내용</p>
+                            <p class="lead fw-normal text-muted mb-0">작성내용</p></a>
                         </div>
                     </div>
                 </div>
@@ -77,43 +77,42 @@
               
               
               
-            <!-- Team members section-->
+            <!-- 파워 블로거 -->
             <section class="py-5 bg-light">
                 <div class="container px-5 my-5">
                     <div class="text-center">
-                        <h2 class="fw-bolder">Our team</h2>
-                        <p class="lead fw-normal text-muted mb-5">Dedicated to quality and your success</p>
+                        <h2 class="fw-bolder"></h2>
+                        <p class="lead fw-normal text-muted mb-5">✨✨여행 파워 블로거✨✨</p>
                     </div>
                     <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
                         <div class="col mb-5 mb-5 mb-xl-0">
                             <div class="text-center">
-                                <img class="img-fluid rounded-circle mb-4 px-4" src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
-                                <h5 class="fw-bolder">Ibbie Eckart</h5>
+                                <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded-circle mb-4 px-4" src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
+                                <h5 class="fw-bolder">Ibbie Eckart</h5></a>
                                 <div class="fst-italic text-muted">Founder &amp; CEO</div>
                             </div>
                         </div>
                         <div class="col mb-5 mb-5 mb-xl-0">
                             <div class="text-center">
-                                <img class="img-fluid rounded-circle mb-4 px-4" src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
-                                <h5 class="fw-bolder">Arden Vasek</h5>
+                                <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded-circle mb-4 px-4" src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
+                                <h5 class="fw-bolder">Arden Vasek</h5></a>
                                 <div class="fst-italic text-muted">CFO</div>
                             </div>
                         </div>
                         <div class="col mb-5 mb-5 mb-sm-0">
                             <div class="text-center">
-                                <img class="img-fluid rounded-circle mb-4 px-4" src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
-                                <h5 class="fw-bolder">Toribio Nerthus</h5>
+                                <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded-circle mb-4 px-4" src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
+                                <h5 class="fw-bolder">Toribio Nerthus</h5></a>
                                 <div class="fst-italic text-muted">Operations Manager</div>
                             </div>
                         </div>
                         <div class="col mb-5">
                             <div class="text-center">
-                                <img class="img-fluid rounded-circle mb-4 px-4" src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
-                                <h5 class="fw-bolder">Malvina Cilla</h5>
+                                <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded-circle mb-4 px-4" src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
+                                <h5 class="fw-bolder">Malvina Cilla</h5></a>
                                 <div class="fst-italic text-muted">CTO</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-        </main>
