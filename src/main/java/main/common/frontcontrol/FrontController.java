@@ -28,6 +28,7 @@ import jayk.hotelinfo.control.AdminModifyHotelInfoControl;
 import jayk.hotelinfo.control.HotelListControl;
 import jayk.hotelinfo.control.GetHotelControl;
 import main.common.control.Control;
+import main.common.wook.admin.control.AdminModifyMemberControl;
 import main.common.wook.admin.control.adminDeclarationInfoControl;
 import main.common.wook.admin.control.adminDeclarationListControl;
 import main.common.wook.admin.control.adminMemberInfoControl;
@@ -36,6 +37,7 @@ import main.common.wook.admin.control.adminPageControl;
 import main.common.wook.admin.control.adminQnaControl;
 import main.common.wook.admin.control.adminReservationInfoControl;
 import main.common.wook.admin.control.adminReservationListControl;
+import main.common.wook.admin.control.allMemberListControl;
 import shin.admin.control.AdminPayListControl;
 import shin.notice.control.NoticeAddFormControl;
 import shin.notice.control.NoticeDetailControl;
@@ -70,6 +72,8 @@ public class FrontController extends HttpServlet{
 		map.put("/adminMemberInfo.do", new adminMemberInfoControl());
 		map.put("/adminDeclarationInfo.do", new adminDeclarationInfoControl());
 		map.put("/adminReservationInfo.do", new adminReservationInfoControl());
+		map.put("/allMemberList.do", new allMemberListControl());
+		map.put("/adminModifyMember.do", new AdminModifyMemberControl());
 		
 		
 		// 김자영
