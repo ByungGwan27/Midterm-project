@@ -49,9 +49,6 @@ public class adminPageControl implements Control {
 		session.setAttribute("monthTotalPay", monthTotalPay);
 		
 		
-		
-		
-		return "adminpage/adminPage.tiles";
 	}
-
+		
 }

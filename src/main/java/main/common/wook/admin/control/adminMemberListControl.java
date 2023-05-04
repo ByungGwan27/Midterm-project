@@ -23,7 +23,6 @@ public class adminMemberListControl implements Control {
 			
 		}
 		
-		return "adminpage/adminMemberList.tiles";
 	}
-
 }
+

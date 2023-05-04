@@ -14,6 +14,10 @@
 		<typeAlias alias="main" type="main.common.wook.main.domain.MainVO" />
 		<typeAlias alias="hotel" type="main.common.wook.main.domain.HotelVO" />
 		<typeAlias alias="admin" type="main.common.wook.admin.domain.AdminVO" />
+
+		<typeAlias alias="notice" type="shin.notice.domain.NoticeVO" />
+		<typeAlias alias="post" type="shin.post.domain.PostVO" />
+		
 		
 	</typeAliases>
 	<environments default="development">
@@ -34,6 +38,11 @@
 		<mapper resource="main/common/wook/admin/mapper/AdminMapper.xml"/>
 		<!-- 230504 jayk add -->
 		<mapper resource="jayk/hotelinfo/mapper/HotelInfoMapper.xml"/>
+	
+		<mapper resource="shin/notice/mapper/NoticeMapper.xml" />
+		<mapper resource="shin/post/mapper/PostMapper.xml" />
+		
+		
 		
 	</mappers>
 </configuration>
