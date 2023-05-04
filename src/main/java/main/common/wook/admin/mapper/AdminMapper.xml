@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!-- DAO와 같은 역할 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="main.common.wook.admin.mapper.AdminMapper"> <!-- mapper = 인터페이스 파일 부분 -->
+	<!-- 결제 건수 조회 -->
+	<select id="payCount" resultType="admin">
+		select count(*) as payCount from pay where pay_status = '결제완료'
+	</select>
+	
+	<!-- 결제 총 금액 조회 -->
+	<select id="totalPay" resultType="admin">
+	select sum(room_price) as totalPay from pay where pay_status = '결제완료'
+	</select>
+	
+	<!-- 일 결제 건수 조회 -->	
+	<select id="monthPayCount" resultType="admin">
+	select count(*) as monthPayCount from pay where pay_status = '결제완료' and substr(pay_date, 1, 8) = substr(sysdate, 1, 8)
+	</select>
+	
+	<!-- 월별 결제 금액 조회 -->
+	<select id="monthTotalPay" resultType="admin">
+	select sum(room_price) as totalPay from pay where pay_status = '결제완료' and substr(pay_date, 1, 5) = substr(sysdate, 1, 5)
+	</select>
+	
+	<!-- 전체 회원 정보 조회 -->
+	<select id="allMemberInfo" resultType="member">
+	select * from member
+	</select>
+	
+	<!-- 단일 회원 정보 조회 -->
+	<select id="memberInfo" resultType="member" parameterType="member">
+	select * from member where member_id=#{memberId}
+	</select>
+	
+	<!-- 회원 정보 수정 -->
+	<update id="modifyMemberInfo" parameterType="member">
+	update member
+	set
+	member_pw=#{memberPw},
+	member_name=#{memberName},
+	member_birth=#{memberBirth},
+	member_email=#{memberEmail},
+	member_phone=#{memberPhone},
+	member_status=#{memberStatus},
+	member_nickname=#{memberNickname},
+	member_profile=#{memberProfile},
+	member_point=#{memberPoint},
+	member_thema=#{memberThema},
+	member_joindate=#{memberJoindate},
+	member_grade=#{memberGrade}
+	Where member_id=#{memberId}
+	</update>
+</mapper>
