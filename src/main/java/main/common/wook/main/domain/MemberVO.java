@@ -1,6 +1,8 @@
 package main.common.wook.main.domain;
 
-import java.util.Date;
+
+
+import java.sql.Date;
 
 import lombok.Data;
 
@@ -20,5 +22,6 @@ public class MemberVO {
 	private String memberThema;
 	private Date memberJoindate;
 	private int memberGrade;
+	
 	
 }

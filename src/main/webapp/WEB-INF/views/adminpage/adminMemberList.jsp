@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <main id="main" class="main">
 
 	<div class="pagetitle">
@@ -22,7 +23,7 @@
 						<h5 class="card-title">회원목록</h5>
 
 						<!-- Table with stripped rows -->
-						<table class="table datatable">
+						<table class="table">
 							<thead>
 								<tr>
 									<th scope="col">#</th>
@@ -34,17 +35,18 @@
 
 								</tr>
 							</thead>
-							<tbody>
-
+							<tbody id="tbody">
+								<c:forEach var="member" items="${allMemberInfo}">
 								<tr class='member'>
-									<th scope="row">1</th>
-									<td>Brandon Jacob</td>
-									<td>Designer</td>
-									<td>28</td>
-									<td>2016-05-25</td>
-									<td>활동중</td>
+									<th scope="row"></th>
+									<td>${member.memberId}</td>
+									<td>${member.memberName}</td>
+									<td>${member.memberNickname}</td>
+									<td>${member.memberGrade}</td>
+									<td>${member.memberStatus}</td>
 								</tr>
-
+								</c:forEach>
+							
 							</tbody>
 						</table>
 						<!-- End Table with stripped rows -->
@@ -58,16 +60,33 @@
 
 </main>
 <script>
-	let member = document.querySelectorAll(".member");
-	console.log(member);
-	console.log('aa');
-	member.forEach(function(ele) {
-		console.log(ele);
-		ele.addEventListener("dblclick", function() {
-			console.log('클릭성공')
-			location.href = 'adminMemberInfo.do'
-		})
+	let tr = document.querySelectorAll('.member');
 
-	})
+	for (let i in tr){
+		tr[i].addEventListener('click', function(){
+			location.href = "adminMemberInfo.do?id="+this.children[1].innerText;
+		})
+	}
+	
+	// 	let tr = document.getElementById("member");
+	// 	let table =document.getElementById("member").parentElement;
+	// 	fetch("allMemberList.do")
+	// 	.then(resolve => resolve.json())
+	// 	.then(result => {
+	// 		allMemberInfo = result;
+	// 		for(let member of allMemberInfo){
+	// 			let clone = tr.cloneNode(true);
+	// 			console.log(clone);
+	// 			clone.childNodes[1].innerHTML = member.MemberId;
+	// 			clone.childNodes[2].innerHTML = member.MemberName;
+	// 			clone.childNodes[3].innerHTML = member.MemberNickname;
+	// 			clone.childNodes[4].innerHTML = member.MemberGrade;
+	// 			clone.childNodes[5].innerHTML = member.MemberStatus;
+				
+	// 			table.append(clone);
+		
+	// 	}
+	// })
+
 </script>
 

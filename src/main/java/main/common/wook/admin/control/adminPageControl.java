@@ -48,7 +48,7 @@ public class adminPageControl implements Control {
 		int monthTotalPay = vo1.getTotalPay();
 		session.setAttribute("monthTotalPay", monthTotalPay);
 		
-		
+		return "adminpage/adminPage.tiles";
 	}
 		
 }
