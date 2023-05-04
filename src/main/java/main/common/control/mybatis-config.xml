@@ -9,10 +9,18 @@
 		<setting name="jdbcTypeForNull" value="NULL"/>
 	</settings>
 	<typeAliases>
+		<!-- 20230503 wook -->
+		<typeAlias alias="member" type="main.common.wook.main.domain.MemberVO" />
+		<typeAlias alias="main" type="main.common.wook.main.domain.MainVO" />
+		<typeAlias alias="hotel" type="main.common.wook.main.domain.HotelVO" />
+		<typeAlias alias="admin" type="main.common.wook.admin.domain.AdminVO" />
 
 		<typeAlias alias="notice" type="shin.notice.domain.NoticeVO" />
 		<typeAlias alias="post" type="shin.post.domain.PostVO" />
 		
+		
+		<!-- gwan/myPage -->
+		<typeAlias alias="mp" type="gwan.mypage.domain.MyPageVO" />
 		
 	</typeAliases>
 	<environments default="development">
@@ -28,11 +36,19 @@
 	</environments>
 	<mappers>
 	<!-- mapper.xml을 만들면 추가 해줘야함 -->
+		
+		<mapper resource="main/common/wook/main/mapper/MainMapper.xml"/>
+		<mapper resource="main/common/wook/admin/mapper/AdminMapper.xml"/>
+		
+		<!-- 230504 jayk add -->
+		<mapper resource="jayk/hotelinfo/mapper/HotelInfoMapper.xml"/>
 	
 		<mapper resource="shin/notice/mapper/NoticeMapper.xml" />
 		<mapper resource="shin/post/mapper/PostMapper.xml" />
 		
 		
 		
+		<!-- gwan/myPage -->
+		<mapper resource="gwan/mypage/mapper/MyPageMapper.xml"/>
 	</mappers>
 </configuration>
