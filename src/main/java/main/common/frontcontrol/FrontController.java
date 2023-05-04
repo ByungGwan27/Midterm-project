@@ -68,7 +68,6 @@ public class FrontController extends HttpServlet{
 		
 		
 		// 김자영
-		
 		//숙소리스트
 		map.put("/dormListPage.do", new DormListControl());
 		//인포페이지
@@ -76,7 +75,7 @@ public class FrontController extends HttpServlet{
 		//관리자숙소추가페이지
 		map.put("/addDormPage.do", new AddDormControl());
 		//관리자숙소리스트페이지
-		map.put("/adminDormList,do", new AdminDormListControl());
+		map.put("/adminDormList.do", new AdminDormListControl());
 		//관리자숙소정보수정페이지
 		map.put("/dormInfoModifyPage.do", new ModifyDormInfoControl());
 		
