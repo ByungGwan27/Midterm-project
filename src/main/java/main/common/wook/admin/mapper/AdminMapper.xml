@@ -51,4 +51,11 @@
 	member_grade=#{memberGrade}
 	Where member_id=#{memberId}
 	</update>
+	
+	<!-- 탈퇴 회원 업데이트 -->
+	<update id="adminDelMember" parameterType="String">
+	update member 
+	set member_status='탈퇴회원'
+	where member_id=#{memberId}
+	</update>
 </mapper>

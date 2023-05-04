@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import main.common.control.Control;
 import main.common.wook.admin.service.AdminService;
@@ -37,15 +38,15 @@ public class AdminModifyMemberControl implements Control {
 		AdminService service = new AdminServiceImpl();
 		int result = service.modifyMemberInfo(member);
 		
-		System.out.println("result="+result);
+		HttpSession session = req.getSession();
 		
 		if(result==1) {
-			System.out.println("성공");
+			session.setAttribute("result", "성공");
 		}else {
-			System.out.println("실패");
+			session.setAttribute("result", "실패");
 		}
 		
-		return "adminMemberInfo.do?id="+req.getParameter("memberId");
+		return "adminpage/adminMemberInfo.tiles?id="+req.getParameter("memberId");
 		
 	}
 
