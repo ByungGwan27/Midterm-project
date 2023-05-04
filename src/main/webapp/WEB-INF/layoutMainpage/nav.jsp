@@ -11,12 +11,11 @@
 				class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
 				<li class="active"><a href="dormListPage.do">숙소</a></li>
 				<li><a href="postList.do">여행포스트</a></li>
-				<li><a href="">로그인</a></li>
+				<li><a href="loginPage.do">로그인</a></li>
 				<li><a href="">관리자페이지</a></li>
 				<li class="has-children"><a href="myPageHome.do">마이페이지</a>
 					<ul class="dropdown">
 						<li><a href="myPageWishList.do">위시리스트</a></li>
-						<li><a href="myPageUserInfoChange.do">회원정보수정</a></li>
 						<li><a href="myPageCoupon">쿠폰함</a></li>
 						<li><a href="myPageMessage">메세지함</a></li>
 						<li><a href="myPageQna.do">QnA</a></li>

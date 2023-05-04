@@ -15,6 +15,9 @@
 		<typeAlias alias="hotel" type="main.common.wook.main.domain.HotelVO" />
 		<typeAlias alias="admin" type="main.common.wook.admin.domain.AdminVO" />
 		
+		<!-- gwan/myPage -->
+		<typeAlias alias="mp" type="gwan.mypage.domain.MyPageVO" />
+		
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -32,5 +35,7 @@
 		
 		<mapper resource="main/common/wook/main/mapper/MainMapper.xml"/>
 		<mapper resource="main/common/wook/admin/mapper/AdminMapper.xml"/>
+		<!-- gwan/myPage -->
+		<mapper resource="gwan/mypage/mapper/MyPageMapper.xml"/>
 	</mappers>
 </configuration>
