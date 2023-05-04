@@ -19,6 +19,9 @@
 		<typeAlias alias="post" type="shin.post.domain.PostVO" />
 		
 		
+		<!-- gwan/myPage -->
+		<typeAlias alias="mp" type="gwan.mypage.domain.MyPageVO" />
+		
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -36,6 +39,7 @@
 		
 		<mapper resource="main/common/wook/main/mapper/MainMapper.xml"/>
 		<mapper resource="main/common/wook/admin/mapper/AdminMapper.xml"/>
+		
 		<!-- 230504 jayk add -->
 		<mapper resource="jayk/hotelinfo/mapper/HotelInfoMapper.xml"/>
 	
@@ -44,5 +48,7 @@
 		
 		
 		
+		<!-- gwan/myPage -->
+		<mapper resource="gwan/mypage/mapper/MyPageMapper.xml"/>
 	</mappers>
 </configuration>
