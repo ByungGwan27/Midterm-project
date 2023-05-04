@@ -1,10 +1,13 @@
 package main.common.wook.admin.service;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import main.common.control.DataSource;
 import main.common.wook.admin.domain.AdminVO;
 import main.common.wook.admin.mapper.AdminMapper;
+import main.common.wook.main.domain.MemberVO;
 
 public class AdminServiceImpl implements AdminService {
 	SqlSession session = DataSource.getInstance().openSession(true); // true = 자동커밋
@@ -31,6 +34,12 @@ public class AdminServiceImpl implements AdminService {
 	public AdminVO monthTotalPay() {
 		
 		return mapper.monthTotalPay();
+	}
+
+	@Override
+	public List<MemberVO> allMemberInfo() {
+		
+		return mapper.allMemberInfo();
 	}
 
 }

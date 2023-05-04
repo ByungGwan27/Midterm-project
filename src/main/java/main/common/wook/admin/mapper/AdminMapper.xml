@@ -22,4 +22,9 @@
 	<select id="monthTotalPay" resultType="admin">
 	select sum(room_price) as totalPay from pay where pay_status = '결제완료' and substr(pay_date, 1, 5) = substr(sysdate, 1, 5)
 	</select>
+	
+	<!-- 전체 회원 정보 조회 -->
+	<select id="allMemberInfo" resultType="member">
+	select * from member
+	</select>
 </mapper>
