@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jayk.dorminfo.control.AddDormControl;
 import jayk.dorminfo.control.DormListControl;
 import jayk.dorminfo.control.GetDormControl;
+import jayk.dorminfo.control.ModifyDormInfoControl;
 import gwan.mypage.control.MyPageCouponControl;
 import gwan.mypage.control.MyPageMessageControl;
 import gwan.mypage.control.MyPageQnaControl;
@@ -68,10 +70,14 @@ public class FrontController extends HttpServlet{
 		
 		//숙소리스트
 		map.put("/dormListPage.do", new DormListControl());
-		
 		//인포페이지
 		map.put("/dormInfoPage.do", new GetDormControl());
+		//관리자숙소추가페이지
+		map.put("/addDormPage.do", new AddDormControl());
+		//관리자숙소선택페이지
 		
+		//관리자숙소정보수정페이지
+		map.put("/dormInfoModifyPage.do", new ModifyDormInfoControl());
 		
 		// 신지은
 		
