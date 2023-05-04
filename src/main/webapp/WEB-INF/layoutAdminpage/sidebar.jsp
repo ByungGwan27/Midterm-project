@@ -13,7 +13,6 @@
       
         <li class="nav-item" id="QnA">
         <a class="nav-link collapsed" href="adminQna.do">
-<<<<<<< HEAD
           <i class="bi bi-chat-right-text"></i>
           <span>QnA</span>
         </a>
@@ -59,51 +58,6 @@
         <li class="nav-item">
         <a class="nav-link collapsed" href="adminReservationList.do">
           <i class="bi bi-receipt"></i>
-=======
-          <i class="bi bi-file-earmark"></i>
-          <span>QnA</span>
-        </a>
-      </li>
-      
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="adminHotelList.do">
-          <i class="bi bi-file-earmark"></i>
-          <span>숙소등록수정</span>
-        </a>
-      </li>
-      
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
-          <i class="bi bi-file-earmark"></i>
-          <span>메세지함</span>
-        </a>
-      </li>
-      
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="adminMemberList.do">
-          <i class="bi bi-file-earmark"></i>
-          <span>회원관리</span>
-        </a>
-      </li>
-
-	  <li class="nav-item">
-        <a class="nav-link collapsed" href="adminDeclarationList.do">
-          <i class="bi bi-file-earmark"></i>
-          <span>신고내역</span>
-        </a>
-      </li>
-      
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
-          <i class="bi bi-file-earmark"></i>
-          <span>결제정보</span>
-        </a>
-      </li>
-      
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="adminReservationList.do">
-          <i class="bi bi-file-earmark"></i>
->>>>>>> branch 'shin' of https://github.com/ByungGwan27/Midterm-project.git
           <span>예약관리</span>
         </a>
       </li>
