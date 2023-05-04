@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jayk.hotelinfo.mapper.HotelInfoMapper">
+
+	<select id="hotelList">
+select h.hotel_name, h.hotel_thema, h.hotel_location1, h.hotel_location2, h.hotel_point, h.hotel_image, min(i.room_price) as room_price
+from hotel h join room_info i
+on h.hotel_id = i.hotel_id
+group by h.hotel_id, h.hotel_name, h.hotel_thema, h.hotel_location1, h.hotel_location2, h.hotel_point, h.hotel_image
+	</select>
+</mapper>
