@@ -9,10 +9,12 @@
 		<setting name="jdbcTypeForNull" value="NULL"/>
 	</settings>
 	<typeAliases>
-		
+		<!-- 20230503 wook -->
 		<typeAlias alias="member" type="main.common.wook.main.domain.MemberVO" />
 		<typeAlias alias="main" type="main.common.wook.main.domain.MainVO" />
 		<typeAlias alias="hotel" type="main.common.wook.main.domain.HotelVO" />
+		<typeAlias alias="admin" type="main.common.wook.admin.domain.AdminVO" />
+		
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -29,5 +31,6 @@
 	<!-- mapper.xml을 만들면 추가 해줘야함 -->
 		
 		<mapper resource="main/common/wook/main/mapper/MainMapper.xml"/>
+		<mapper resource="main/common/wook/admin/mapper/AdminMapper.xml"/>
 	</mappers>
 </configuration>
