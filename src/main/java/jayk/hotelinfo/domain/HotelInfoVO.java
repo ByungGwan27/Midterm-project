@@ -20,7 +20,6 @@ public class HotelInfoVO {
 	private int hotelViews;
 	private int horelDec;
 	private int resCount;
-	private int avgpoint;
 	private int roomId;
 
 	//roomInfo
@@ -42,4 +41,6 @@ public class HotelInfoVO {
 	private Date wirteDate;
 	private Date checkinDate;
 	private int masterView;
+	private int rcount;
+	private double avgpoint;
 }

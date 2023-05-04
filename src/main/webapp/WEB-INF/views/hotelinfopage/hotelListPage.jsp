@@ -505,11 +505,11 @@
 				</td>
 				<td>${hotelList.hotelThema}</td>
 				<td rowspan="4"><div style="width: 200px;"></div></td>
-				<td>후기갯수</td>
+				<td>후기개수 : ${hotelList.rcount}</td>
 				<td></td>
 			</tr>
 			<tr>
-				<td>${hotelList.hotelPoint}</td>
+				<td>평점 : ${hotelList.avgpoint}</td>
 				<td></td>
 				<td></td>
 				<td></td>

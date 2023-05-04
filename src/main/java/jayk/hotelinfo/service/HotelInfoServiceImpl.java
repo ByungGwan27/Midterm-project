@@ -13,7 +13,7 @@ public class HotelInfoServiceImpl implements HotelInfoService{
 	HotelInfoMapper mapper = session.getMapper(HotelInfoMapper.class);
 	
 	@Override
-	public List<HotelInfoVO> dormList() {
+	public List<HotelInfoVO> hotelList() {
 		return mapper.hotelList();
 	}
 

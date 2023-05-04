@@ -9,7 +9,7 @@
 
 			<ul
 				class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-				<li class="active"><a href="dormListPage.do">숙소</a></li>
+				<li class="active"><a href="hotelListPage.do">숙소</a></li>
 				<li><a href="postList.do">여행포스트</a></li>
 				<li><a href="loginPage.do">로그인</a></li>
 				<li><a href="">관리자페이지</a></li>
@@ -72,7 +72,6 @@
 											<option value="">경상북도</option>
 											<option value="">경상남도</option>
 											<option value="">제주특별자치도</option>
-							
 										</select>
 									</div>
 									<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-5">

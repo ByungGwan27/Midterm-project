@@ -3,18 +3,18 @@
 <nav class="site-nav">
 		<div class="container">
 			<div class="site-navigation">
-				<a href="index.html" class="logo m-0">Traveller<span class="text-primary">.</span></a>
+				<a href="mainPage.do" class="logo m-0">Traveller<span class="text-primary">.</span></a>
 
 				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
 					<!--<li class="active"><a href="index.html">숙소</a></li>-->
 					
-					<li><a href="services.html">숙소,개인</a></li>
-					<li><a href="about.html">여행포스트</a></li>
+					<li><a href="hotelListPage.do">숙소</a></li>
+					<li><a href="postList.do">여행포스트</a></li>
 					<li class="has-children">
-						<a href="#">로그인|마이페이지</a>
+						<a href="loginPage.do">로그인</a>
 						<ul class="dropdown">
-							<li><a href="elements.html">회원정보수정</a></li>
-							<li><a href="#">예약정보</a></li>
+							<li><a href="myPageUserInfoChange.do">회원정보수정</a></li>
+							<li><a href="myPageHome.do">예약정보</a></li>
 							<!-- <li class="has-children">
 								<a href="#">위시리스트</a>
 								<ul class="dropdown">
@@ -23,11 +23,11 @@
 									<li><a href="#">Sub Menu Three</a></li>
 								</ul>
 							</li> -->
-							<li><a href="#">위시리스트</a></li>
-							<li><a href="#">QnA</a></li>
+							<li><a href="myPageWishList.do">위시리스트</a></li>
+							<li><a href="myPageQna.do">QnA</a></li>
 						</ul>
 					</li>
-					<li><a href="contact.html">공지사항</a></li>
+					<li><a href="noticeList.do">공지사항</a></li>
 				</ul>
 
 				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
