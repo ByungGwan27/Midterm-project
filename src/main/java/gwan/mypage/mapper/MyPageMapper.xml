@@ -6,19 +6,17 @@
 
 	<!-- 위시리스트 숙소 조회 -->
 	<select id="readWishList" resultType="mp">
-	SELECT h.hotel_name, h.hotel_location1, h.hotel_location2, h.hotel_thema, r.room_price
-FROM hotel h JOIN (SELECT
-                        hotel_id, room_price
-                    FROM
-                        (SELECT
-                            hotel_id, room_price,
-                            ROW_NUMBER() OVER(PARTITION BY hotel_id ORDER BY hotel_id) as hp
-                        FROM room_info)
-                    WHERE hp = 1
-                        AND hotel_id IN (SELECT hotel_id
-                                            FROM wishlist
-                                            WHERE member_id = #{memberId})) r
-ON (h.hotel_id = r.hotel_id)
+	 SELECT h.hotel_name, h.hotel_location1, h.hotel_location2, h.hotel_thema, r.room_price
+		FROM hotel h JOIN (SELECT hotel_id, room_price
+						   FROM
+								(SELECT hotel_id, room_price,
+										ROW_NUMBER() OVER(PARTITION BY hotel_id ORDER BY hotel_id) as hp
+										FROM room_info)
+								 WHERE hp = 1
+								 AND hotel_id IN (SELECT hotel_id
+												  FROM wishlist
+												  WHERE member_id = #{memberId})) r
+		ON (h.hotel_id = r.hotel_id)
 	</select>
 
 
