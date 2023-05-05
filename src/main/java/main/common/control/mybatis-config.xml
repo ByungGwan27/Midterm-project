@@ -21,6 +21,7 @@
 		
 		<!-- gwan/myPage -->
 		<typeAlias alias="mp" type="gwan.mypage.domain.MyPageVO" />
+		<typeAlias alias="lp" type="gwan.loginpage.domain.LoginPageVO" />
 		
 	</typeAliases>
 	<environments default="development">
@@ -35,7 +36,6 @@
 		</environment>
 	</environments>
 	<mappers>
-	<!-- mapper.xml을 만들면 추가 해줘야함 -->
 		
 		<mapper resource="main/common/wook/main/mapper/MainMapper.xml"/>
 		<mapper resource="main/common/wook/admin/mapper/AdminMapper.xml"/>
@@ -50,5 +50,6 @@
 		
 		<!-- gwan/myPage -->
 		<mapper resource="gwan/mypage/mapper/MyPageMapper.xml"/>
+		<mapper resource="gwan/loginpage/mapper/LoginPageMapper.xml"/>
 	</mappers>
 </configuration>

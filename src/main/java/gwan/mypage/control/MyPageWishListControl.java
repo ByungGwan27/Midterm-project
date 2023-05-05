@@ -21,7 +21,6 @@ public class MyPageWishListControl implements Control {
 		List<MyPageVO> result = service.readWishList(memberId);
 		
 		req.setAttribute("MainWishList", result);
-		System.out.println("위시리스트 조회"+ result);
 		return "mypage/myPageWishList.tiles";
 	}
 
