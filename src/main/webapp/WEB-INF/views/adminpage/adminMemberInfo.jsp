@@ -247,8 +247,8 @@
 
 									<div class="text-center">
 										<button type="submit" class="btn btn-primary">회원 수정</button>
-										<button type="button" class="btn btn-primary" id="delbtn">회원
-											삭제</button>
+										<button type="button" class="btn btn-primary" id="delbtn" onclick="location.href='adminDelMember.do?id=${memberInfo.memberId}'">회원
+											탈퇴</button>
 									</div>
 								</form>
 								<!-- End Profile Edit Form -->

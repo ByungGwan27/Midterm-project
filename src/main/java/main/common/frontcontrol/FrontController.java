@@ -31,6 +31,7 @@ import main.common.control.Control;
 import main.common.wook.admin.control.AdminModifyMemberControl;
 import main.common.wook.admin.control.adminDeclarationInfoControl;
 import main.common.wook.admin.control.adminDeclarationListControl;
+import main.common.wook.admin.control.adminDelMemberControl;
 import main.common.wook.admin.control.adminMemberInfoControl;
 import main.common.wook.admin.control.adminMemberListControl;
 import main.common.wook.admin.control.adminPageControl;
@@ -74,6 +75,7 @@ public class FrontController extends HttpServlet{
 		map.put("/adminReservationInfo.do", new adminReservationInfoControl());
 		map.put("/allMemberList.do", new allMemberListControl());
 		map.put("/adminModifyMember.do", new AdminModifyMemberControl());
+		map.put("/adminDelMember.do", new adminDelMemberControl());
 		
 		
 		// 김자영

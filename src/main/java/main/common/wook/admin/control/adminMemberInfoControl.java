@@ -25,8 +25,8 @@ public class adminMemberInfoControl implements Control {
 		
 		System.out.println(vo);
 		
-		HttpSession session = req.getSession();
-		session.setAttribute("memberInfo", vo);
+		
+		req.setAttribute("memberInfo", vo);
 		
 		return "adminpage/adminMemberInfo.tiles";
 	}

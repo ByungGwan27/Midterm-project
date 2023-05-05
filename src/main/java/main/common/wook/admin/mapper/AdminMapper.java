@@ -13,4 +13,5 @@ public interface AdminMapper {
 	public List<MemberVO> allMemberInfo();
 	public MemberVO memberInfo(MemberVO vo);
 	public int modifyMemberInfo(MemberVO vo);
+	public int adminDelMember(String memberId);
 }
