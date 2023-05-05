@@ -44,11 +44,16 @@ public class loginControl implements Control {
 			session.setAttribute("joindate", vo.getMemberJoindate());
 			session.setAttribute("grade", vo.getMemberGrade());
 			
-			return "mainpage/mainPage.tiles";
+			String prevUrl = (String) session.getAttribute("prevUrl");
+			
+			return prevUrl;
+			
+//			return req.getAttribute(prevUrl.substring(32));
 		} else {
 			return "gwanLoginPage/loginPage.tiles";
 		}
 		
 	}
+
 
 }

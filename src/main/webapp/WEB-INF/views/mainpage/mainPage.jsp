@@ -3,22 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <% 
-   //int memCount = (int) request.getAttribute("memberCount"); 
-   //int resCount = (int) request.getAttribute("reservationCount"); 
-   //int hotCount = (int) request.getAttribute("hotelCount"); 
-   //int revCount = (int) request.getAttribute("reviewCount"); 
-   
-   Integer memCountObj = (Integer) request.getAttribute("memberCount");
-   int memCount = memCountObj != null ? memCountObj.intValue() : 0;
-
-   Integer resCountObj = (Integer) request.getAttribute("reservationCount");
-   int resCount = resCountObj != null ? resCountObj.intValue() : 0;
-
-   Integer hotCountObj = (Integer) request.getAttribute("hotelCount");
-   int hotCount = hotCountObj != null ? hotCountObj.intValue() : 0;
-
-   Integer revCountObj = (Integer) request.getAttribute("reviewCount");
-   int revCount = revCountObj != null ? revCountObj.intValue() : 0;
+   int memCount = (int) request.getAttribute("memberCount"); 
+   int resCount = (int) request.getAttribute("reservationCount"); 
+   int hotCount = (int) request.getAttribute("hotelCount"); 
+   int revCount = (int) request.getAttribute("reviewCount"); 
    
    String[] resName = new String[6];
    String[] resLocation = new String[6];
