@@ -1,6 +1,7 @@
 package main.common.wook.admin.control;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +38,11 @@ public class AdminModifyMemberControl implements Control {
 		
 		AdminService service = new AdminServiceImpl();
 		int result = service.modifyMemberInfo(member);
+		
+		MemberVO vo = service.memberInfo(member);
+		
+		
+		req.setAttribute("memberInfo", vo);
 		
 		
 		
