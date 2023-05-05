@@ -20,8 +20,7 @@ public class adminMemberListControl implements Control {
 		AdminService service = new AdminServiceImpl();
 		List<MemberVO> list = service.allMemberInfo();
 		
-		HttpSession session = req.getSession();
-		session.setAttribute("allMemberInfo", list);
+		req.setAttribute("allMemberInfo", list);
 		
 		return "adminpage/adminMemberList.tiles";
 		

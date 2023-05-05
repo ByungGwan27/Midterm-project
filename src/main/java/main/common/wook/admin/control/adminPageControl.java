@@ -23,30 +23,30 @@ public class adminPageControl implements Control {
 		MainService service = new MainServiceImpl();
 		MainVO vo = service.memberCount();
 		int count = vo.getMemberCount();
-		HttpSession session = req.getSession();
-		session.setAttribute("memberCount", count);
+	
+		req.setAttribute("memberCount", count);
 		
 		
 		//관리자 페이지 결제건수 조회
 		AdminService service1 = new AdminServiceImpl();
 		AdminVO vo1 = service1.payCount();
 		int payCount = vo1.getPayCount();
-		session.setAttribute("payCount", payCount);
+		req.setAttribute("payCount", payCount);
 		
 		//관리자 페이지 월별 결제건수 조회
 		vo1 = service1.monthPayCount();
 		int MonthPayCount = vo1.getMonthPayCount();
-		session.setAttribute("MonthPayCount", MonthPayCount);
+		req.setAttribute("MonthPayCount", MonthPayCount);
 		
 		//관리자 페이지 결제총액 조회
 		vo1 = service1.totalPay();
 		int totalPay = vo1.getTotalPay();
-		session.setAttribute("totalPay", totalPay);
+		req.setAttribute("totalPay", totalPay);
 		
 		//관리자 페이지 월별 결제총액 조회
 		vo1 = service1.monthTotalPay();
 		int monthTotalPay = vo1.getTotalPay();
-		session.setAttribute("monthTotalPay", monthTotalPay);
+		req.setAttribute("monthTotalPay", monthTotalPay);
 		
 		return "adminpage/adminPage.tiles";
 	}

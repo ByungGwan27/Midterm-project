@@ -38,12 +38,12 @@ public class AdminModifyMemberControl implements Control {
 		AdminService service = new AdminServiceImpl();
 		int result = service.modifyMemberInfo(member);
 		
-		HttpSession session = req.getSession();
+		
 		
 		if(result==1) {
-			session.setAttribute("result", "성공");
+			req.setAttribute("result", "성공");
 		}else {
-			session.setAttribute("result", "실패");
+			req.setAttribute("result", "실패");
 		}
 		
 		return "adminpage/adminMemberInfo.tiles?id="+req.getParameter("memberId");

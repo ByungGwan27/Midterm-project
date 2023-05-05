@@ -1,19 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<% int memCount = (int) session.getAttribute("memberCount"); 
-   int resCount = (int) session.getAttribute("reservationCount"); 
-   int hotCount = (int) session.getAttribute("hotelCount"); 
-   int revCount = (int) session.getAttribute("reviewCount"); 
+<% int memCount = (int) request.getAttribute("memberCount"); 
+   int resCount = (int) request.getAttribute("reservationCount"); 
+   int hotCount = (int) request.getAttribute("hotelCount"); 
+   int revCount = (int) request.getAttribute("reviewCount"); 
    
    String[] resName = new String[6];
    String[] resLocation = new String[6];
    String[] resImage = new String[6];
    
    for(int i= 0; i<=5;i++){
-	  resName[i] =(String) session.getAttribute("orderHotelName"+i);
-	  resLocation[i] =(String) session.getAttribute("orderHotelLocation"+i);
-	  resImage[i] = (String) session.getAttribute("orderHotelImage"+i);
+	  resName[i] =(String) request.getAttribute("orderHotelName"+i);
+	  resLocation[i] =(String) request.getAttribute("orderHotelLocation"+i);
+	  resImage[i] = (String) request.getAttribute("orderHotelImage"+i);
    }
 %>
 

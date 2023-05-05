@@ -22,20 +22,20 @@ public class MainControl implements Control {
 		MainService service = new MainServiceImpl();
 		MainVO vo = service.memberCount();
 		int count = vo.getMemberCount();
-		HttpSession session = req.getSession();
-		session.setAttribute("memberCount", count);
+		
+		req.setAttribute("memberCount", count);
 		//예약수조회
 		vo = service.reservationCount();
 		int resCount = vo.getReservationCount();
-		session.setAttribute("reservationCount", resCount);
+		req.setAttribute("reservationCount", resCount);
 		//숙소수조회
 		vo = service.reservationCount();
 		int hotCount = vo.getReservationCount();
-		session.setAttribute("hotelCount", hotCount);
+		req.setAttribute("hotelCount", hotCount);
 		//리뷰수조회
 		vo = service.reviewCount();
 		int revCount = vo.getReviewCount();
-		session.setAttribute("reviewCount", revCount);
+		req.setAttribute("reviewCount", revCount);
 		System.out.println("리뷰 수 ="+ revCount);
 		
 		
@@ -50,10 +50,10 @@ public class MainControl implements Control {
 			String reshotelImage = hotel.getHotelImage();
 			System.out.println(reshotelImage);
 			
-			session.setAttribute("orderHotelId"+index, reshotelId);
-			session.setAttribute("orderHotelName"+index, reshotelName);
-			session.setAttribute("orderHotelLocation"+index, reshotelLocation);
-			session.setAttribute("orderHotelImage"+index, reshotelImage);
+			req.setAttribute("orderHotelId"+index, reshotelId);
+			req.setAttribute("orderHotelName"+index, reshotelName);
+			req.setAttribute("orderHotelLocation"+index, reshotelLocation);
+			req.setAttribute("orderHotelImage"+index, reshotelImage);
 			index++;
 		}
 		
@@ -67,10 +67,10 @@ public class MainControl implements Control {
 			System.out.println(reshotelImage);
 			
 			
-			session.setAttribute("orderHotelId"+index, reshotelId);
-			session.setAttribute("orderHotelName"+index, reshotelName);
-			session.setAttribute("orderHotelLocation"+index, reshotelLocation);
-			session.setAttribute("orderHotelImage"+index, reshotelImage);
+			req.setAttribute("orderHotelId"+index, reshotelId);
+			req.setAttribute("orderHotelName"+index, reshotelName);
+			req.setAttribute("orderHotelLocation"+index, reshotelLocation);
+			req.setAttribute("orderHotelImage"+index, reshotelImage);
 			index++;
 		}
 		
@@ -85,10 +85,10 @@ public class MainControl implements Control {
 			
 			
 			
-			session.setAttribute("orderHotelId"+index, reshotelId);
-			session.setAttribute("orderHotelName"+index, reshotelName);
-			session.setAttribute("orderHotelLocation"+index, reshotelLocation);
-			session.setAttribute("orderHotelImage"+index, reshotelImage);
+			req.setAttribute("orderHotelId"+index, reshotelId);
+			req.setAttribute("orderHotelName"+index, reshotelName);
+			req.setAttribute("orderHotelLocation"+index, reshotelLocation);
+			req.setAttribute("orderHotelImage"+index, reshotelImage);
 			index++;
 		}
 		
