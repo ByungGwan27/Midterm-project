@@ -16,7 +16,7 @@ public class logoutControl implements Control {
 		HttpSession session = req.getSession();
 		session.invalidate();
 		
-		return "mainpage/mainPage.tiles";
+		return "mainPage.do";
 	}
 
 }

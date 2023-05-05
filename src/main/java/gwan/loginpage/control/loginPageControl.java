@@ -17,7 +17,6 @@ public class loginPageControl implements Control {
 		
 		String prevUrl = req.getHeader("Referer"); // 이전 페이지 URL 가져오기
 		session.setAttribute("prevUrl", prevUrl); //세션에 저장
-		System.out.println("prevUrl 테스트 : " + prevUrl);
 		
 		return "gwanLoginPage/loginPage.tiles";
 	}
