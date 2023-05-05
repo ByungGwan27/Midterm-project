@@ -63,4 +63,6 @@
 		})
 
 	})
+	
+	fetch("adminDecList.do")
 </script>

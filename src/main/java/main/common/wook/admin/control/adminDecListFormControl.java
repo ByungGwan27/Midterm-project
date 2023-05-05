@@ -1,17 +1,26 @@
 package main.common.wook.admin.control;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.common.control.Control;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
-public class adminDeclarationListControl implements Control {
+import main.common.control.Control;
+import main.common.wook.admin.domain.DeclarationVO;
+import main.common.wook.admin.service.AdminService;
+import main.common.wook.admin.service.AdminServiceImpl;
+
+public class adminDecListFormControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
 		return "adminpage/adminDeclarationList.tiles";
 	}
 

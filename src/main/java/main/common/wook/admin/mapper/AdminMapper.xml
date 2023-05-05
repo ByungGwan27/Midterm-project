@@ -58,4 +58,9 @@
 	set member_status='탈퇴회원'
 	where member_id=#{memberId}
 	</update>
+	
+	<!-- 신고내역확인 -->
+	<select id="adminDecList" resultType="dec">
+		select * from declaration
+	</select>
 </mapper>

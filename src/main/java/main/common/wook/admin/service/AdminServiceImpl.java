@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import main.common.control.DataSource;
 import main.common.wook.admin.domain.AdminVO;
+import main.common.wook.admin.domain.DeclarationVO;
 import main.common.wook.admin.mapper.AdminMapper;
 import main.common.wook.main.domain.MemberVO;
 
@@ -58,6 +59,12 @@ public class AdminServiceImpl implements AdminService {
 	public int adminDelMember(String memberId) {
 		
 		return mapper.adminDelMember(memberId);
+	}
+
+	@Override
+	public List<DeclarationVO> adminDecList() {
+	
+		return mapper.adminDecList();
 	}
 
 	
