@@ -20,6 +20,11 @@ public class adminDecListFormControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		AdminService service = new AdminServiceImpl();
+		List<DeclarationVO> list = service.adminDecList();
+		
+		req.setAttribute("decList", list);
+		
 		
 		return "adminpage/adminDeclarationList.tiles";
 	}

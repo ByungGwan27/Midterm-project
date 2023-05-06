@@ -16,4 +16,7 @@ public interface AdminMapper {
 	public int modifyMemberInfo(MemberVO vo);
 	public int adminDelMember(String memberId);
 	public List<DeclarationVO> adminDecList();
+	public DeclarationVO decInfo(int decId);
+	public int decCancle(int decId);
+	public int decAccept(int decId);
 }

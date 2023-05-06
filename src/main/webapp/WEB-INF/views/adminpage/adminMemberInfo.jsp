@@ -24,7 +24,6 @@
 						<img src="assets/img/profile-img.jpg" alt="Profile"
 							class="rounded-circle">
 						<h2>${memberInfo.memberName}</h2>
-						<h3>${memberInfo.memberStatus}</h3>
 						<!-- <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>

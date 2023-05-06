@@ -63,4 +63,24 @@
 	<select id="adminDecList" resultType="dec">
 		select * from declaration
 	</select>
+	
+	<!-- 신고 상세 내역 조회-->
+	<select id="decInfo" resultType="dec" parameterType="int">
+		select * from declaration where dec_id=#{decId}
+	</select>
+	
+	<!-- 신고반려 -->
+	<update id="decCancle" parameterType="int">
+		update declaration
+		set dec_status='신고반려'
+		where dec_id=${decId}
+	</update>
+	
+	<!-- 신고처리 -->
+	<update id="decAccept" parameterType="int">
+		update declaration
+		set dec_status='신고처리'
+		where dec_id=${decId}
+	</update>
+	
 </mapper>

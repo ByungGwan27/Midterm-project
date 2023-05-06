@@ -36,7 +36,7 @@ public class MainControl implements Control {
 		vo = service.reviewCount();
 		int revCount = vo.getReviewCount();
 		req.setAttribute("reviewCount", revCount);
-		System.out.println("리뷰 수 ="+ revCount);
+	
 		
 		
 		//예약순 숙소 조회
@@ -48,7 +48,7 @@ public class MainControl implements Control {
 			String reshotelName = hotel.getHotelName();
 			String reshotelLocation = hotel.getHotelLocation1();
 			String reshotelImage = hotel.getHotelImage();
-			System.out.println(reshotelImage);
+			
 			
 			req.setAttribute("orderHotelId"+index, reshotelId);
 			req.setAttribute("orderHotelName"+index, reshotelName);
@@ -64,7 +64,7 @@ public class MainControl implements Control {
 			String reshotelName = hotel.getHotelName();
 			String reshotelLocation = hotel.getHotelLocation1();
 			String reshotelImage = hotel.getHotelImage();
-			System.out.println(reshotelImage);
+			
 			
 			
 			req.setAttribute("orderHotelId"+index, reshotelId);
@@ -81,7 +81,7 @@ public class MainControl implements Control {
 			String reshotelName = hotel.getHotelName();
 			String reshotelLocation = hotel.getHotelLocation1();
 			String reshotelImage = hotel.getHotelImage();
-			System.out.println(reshotelImage);
+			
 			
 			
 			

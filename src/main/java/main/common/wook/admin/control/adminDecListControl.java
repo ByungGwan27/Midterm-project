@@ -20,12 +20,13 @@ public class adminDecListControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		AdminService service = new AdminServiceImpl();
-		List<DeclarationVO> list = service.adminDecList();
+//		AdminService service = new AdminServiceImpl();
+//		List<DeclarationVO> list = service.adminDecList();
+//
+//		Gson gson = new GsonBuilder().create();
+//		String json = gson.toJson(list);
 
-		Gson gson = new GsonBuilder().create();
-		String json = gson.toJson(list);
-
-		return json + ".json";
+//		return json + ".json";
+		return null;
 	}
 }

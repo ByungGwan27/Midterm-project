@@ -67,6 +67,23 @@ public class AdminServiceImpl implements AdminService {
 		return mapper.adminDecList();
 	}
 
+	@Override
+	public DeclarationVO decInfo(int decId) {
+		
+		return mapper.decInfo(decId);
+	}
+
+	@Override
+	public int decCancle(int decId) {
+		
+		return mapper.decCancle(decId);
+	}
+
+	@Override
+	public int decAccept(int decId) {
+		return mapper.decAccept(decId);
+	}
+
 	
 
 }
