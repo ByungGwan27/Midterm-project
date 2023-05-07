@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <<<<<<< HEAD
-<% int memCount = (int) session.getAttribute("memberCount"); 
-   int payCount = (int) session.getAttribute("payCount");
-   int totalPay = (int) session.getAttribute("totalPay");
-   int MonthPayCount = (int)session.getAttribute("MonthPayCount");
-   int MonthTotalPay = (int) session.getAttribute("monthTotalPay");%>
+<% int memCount = (int) request.getAttribute("memberCount"); 
+   int payCount = (int) request.getAttribute("payCount");
+   int totalPay = (int) request.getAttribute("totalPay");
+   int MonthPayCount = (int)request.getAttribute("MonthPayCount");
+   int MonthTotalPay = (int) request.getAttribute("monthTotalPay");%>
 
 <main id="main" class="main">
 

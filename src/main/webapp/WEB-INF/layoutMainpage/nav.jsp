@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <nav class="site-nav">
 	<div class="container">
@@ -9,10 +10,17 @@
 
 			<ul
 				class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-				<li class="active"><a href="dormListPage.do">숙소</a></li>
+				<li class="active"><a href="hotelListPage.do">숙소</a></li>
 				<li><a href="postList.do">여행포스트</a></li>
-				<li><a href="loginPage.do">로그인</a></li>
-				<li><a href="">관리자페이지</a></li>
+				<c:choose>
+					<c:when test="${id == null }">
+						<li><a href="loginPage.do">로그인</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="logout.do">로그아웃</a></li>
+					</c:otherwise>
+				</c:choose>
+				<li><a href="adminPage.do">관리자페이지</a></li>
 				<li class="has-children"><a href="myPageHome.do">마이페이지</a>
 					<ul class="dropdown">
 						<li><a href="myPageWishList.do">위시리스트</a></li>

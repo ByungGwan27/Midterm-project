@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import gwan.loginpage.control.CreateUserPageControl;
 import gwan.loginpage.control.ForgotPasswordPageControl;
+import gwan.loginpage.control.loginControl;
 import gwan.loginpage.control.loginPageControl;
+import gwan.loginpage.control.logoutControl;
 import gwan.mypage.control.MyPageCouponControl;
 import gwan.mypage.control.MyPageMessageControl;
 import gwan.mypage.control.MyPageQnaControl;
@@ -31,6 +33,7 @@ import main.common.control.Control;
 import main.common.wook.admin.control.AdminModifyMemberControl;
 import main.common.wook.admin.control.adminDeclarationInfoControl;
 import main.common.wook.admin.control.adminDeclarationListControl;
+import main.common.wook.admin.control.adminDelMemberControl;
 import main.common.wook.admin.control.adminMemberInfoControl;
 import main.common.wook.admin.control.adminMemberListControl;
 import main.common.wook.admin.control.adminPageControl;
@@ -74,6 +77,7 @@ public class FrontController extends HttpServlet{
 		map.put("/adminReservationInfo.do", new adminReservationInfoControl());
 		map.put("/allMemberList.do", new allMemberListControl());
 		map.put("/adminModifyMember.do", new AdminModifyMemberControl());
+		map.put("/adminDelMember.do", new adminDelMemberControl());
 		
 		
 		// 김자영
@@ -123,8 +127,13 @@ public class FrontController extends HttpServlet{
 		//Q&A 질문 작성 페이지
 		map.put("/myPageQnaQ.do", new MyPageQnaQControl());
 		
-		//로그인페이지
+		//로그인페이지 이동
 		map.put("/loginPage.do", new loginPageControl());
+		//로그인 정보 확인(로그인시도)
+		map.put("/login.do", new loginControl());
+		//로그아웃
+		map.put("/logout.do", new logoutControl());
+		
 		//회원가입
 		map.put("/createUserPage.do", new CreateUserPageControl());
 		//pw찾기

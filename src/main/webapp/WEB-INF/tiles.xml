@@ -46,7 +46,6 @@
     <put-attribute name="blank" value="/WEB-INF/gwanLayoutLoginPage/blank.jsp" />
   </definition>
    
-  <!-- 5/4 gwan. loginpage tiles work-->
   <definition name="WILDCARD:gwanLoginPage/*" extends="gwanLoginPage">
     <put-attribute name="blank" value="/WEB-INF/views/gwanLoginPage/{1}.jsp"></put-attribute>
   </definition>

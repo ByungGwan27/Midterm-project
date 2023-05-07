@@ -54,6 +54,12 @@ public class AdminServiceImpl implements AdminService {
 		return mapper.modifyMemberInfo(vo);
 	}
 
+	@Override
+	public int adminDelMember(String memberId) {
+		
+		return mapper.adminDelMember(memberId);
+	}
+
 	
 
 }
