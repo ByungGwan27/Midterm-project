@@ -30,8 +30,12 @@ public class MyPageServiceImpl implements MyPageService {
 
 	@Override
 	public List<MyPageVO> visited(String memberId) {
-		// TODO Auto-generated method stub
 		return mapper.visited(memberId);
+	}
+
+	@Override
+	public boolean deleteWishList(int wishlistId) {
+		return mapper.deleteWishList(wishlistId) == 1;
 	}
 	
 	

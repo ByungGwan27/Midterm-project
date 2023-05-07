@@ -22,10 +22,10 @@ public class MyPageWishListControl implements Control {
 //		System.out.println("테스트1" + session.getAttribute("id"));
 //		List<MyPageVO> result = service.readWishList(memberId);
 		
-		HttpSession session = req.getSession();
-		MyPageService service = new MyPageServiceImpl();
-		List<MyPageVO> list = service.readWishList((String) session.getAttribute("id"));
-		req.setAttribute("MainWishList", list);
+//		HttpSession session = req.getSession();
+//		MyPageService service = new MyPageServiceImpl();
+//		List<MyPageVO> list = service.readWishList((String) session.getAttribute("id"));
+//		req.setAttribute("MainWishList", list);
 		
 		return "mypage/myPageWishList.tiles";
 	}

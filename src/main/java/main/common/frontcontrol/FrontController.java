@@ -18,6 +18,7 @@ import gwan.loginpage.control.loginControl;
 import gwan.loginpage.control.loginPageControl;
 import gwan.loginpage.control.logoutControl;
 import gwan.mypage.ajax.control.MyPageWishAjaxControl;
+import gwan.mypage.ajax.control.MyPageWishAjaxDeleteControl;
 import gwan.mypage.control.MyPageCouponControl;
 import gwan.mypage.control.MyPageHomeWillVisitControl;
 import gwan.mypage.control.MyPageMessageControl;
@@ -118,9 +119,12 @@ public class FrontController extends HttpServlet{
 		//마이페이지 -2
 		map.put("/myPageHomeWillVisit.do", new MyPageHomeWillVisitControl());
 		
-		//마이페이지 위시리스트(위시리스트)
+		//마이페이지(위시리스트)
 		map.put("/myPageWishList.do", new MyPageWishListControl());
 		map.put("/myPageWishListAjax.do", new MyPageWishAjaxControl());
+		//마이페이지(위시리스트) - 삭제
+		map.put("/myPageWishListAjaxDelete.do", new MyPageWishAjaxDeleteControl());
+		
 		//마이페이지(쿠폰)
 		map.put("/myPageCoupon.do", new MyPageCouponControl());
 		//마이페이지(메세지)

@@ -17,10 +17,12 @@ public class MyPageWishAjaxControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//session 값 가져옴
 		HttpSession session = req.getSession();
+		String id = (String) session.getAttribute("id");
+		// 가져온 값 쿼리문에 넣음
 		MyPageService service = new MyPageServiceImpl();
-		List<MyPageVO> list = service.readWishList((String) session.getAttribute("id"));
-		
+		List<MyPageVO> list = service.readWishList(id);
 		
 		String json="[";
 		for (int i=0; i<list.size();i++) {
@@ -28,7 +30,8 @@ public class MyPageWishAjaxControl implements Control {
 			json += "\"hotelLocation1\":\""+list.get(i).getHotelLocation1()+"\",";
 			json += "\"hotelLocation2\":\"" + list.get(i).getHotelLocation2() + "\",";
 			json += "\"HotelThema\":\"" + list.get(i).getHotelThema() + "\",";
-			json += "\"RoomPrice\":" + list.get(i).getRoomPrice() + "}";
+			json += "\"WishlistId\":\"" + list.get(i).getWishlistId() + "\",";
+			json += "\"RoomPrice\":\"" + list.get(i).getRoomPrice() + "\"}";
 			
 			if (i + 1 != list.size()) {
 				json += ",";
@@ -36,13 +39,9 @@ public class MyPageWishAjaxControl implements Control {
 		}
 		
 		json += "]";
-		System.out.println("wjson테스트 : "+ json);
-		return json+".json";
+		//System.out.println("json테스트"+json+"종료");
+		return json + ".json";
 		
-		
-		
-		
-//		return "mypage/myPageWishList.tiles";
 	}
 
 }

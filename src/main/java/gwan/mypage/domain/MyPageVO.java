@@ -27,4 +27,6 @@ public class MyPageVO {
 	
 	private String memberId;
 	
+	private int wishlistId;
+	
 }

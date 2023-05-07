@@ -42,7 +42,7 @@
 	
 	<!-- 위시리스트 숙소 조회 -->
 	<select id="readWishList" resultType="mp">
-	 SELECT h.hotel_name, h.hotel_location1, h.hotel_location2, h.hotel_thema, r.room_price
+	 SELECT h.hotel_name, h.hotel_location1, h.hotel_location2, h.hotel_thema, r.room_price, w.wishlist_id
 		FROM hotel h JOIN (SELECT hotel_id, room_price
 						   FROM
 								(SELECT hotel_id, room_price,
@@ -53,8 +53,13 @@
 												  FROM wishlist
 												  WHERE member_id = #{memberId})) r
 		ON (h.hotel_id = r.hotel_id)
+		JOIN wishlist w
+		ON (h.hotel_id = w.hotel_id)
 	</select>
 
+	<delete id="deleteWishList" parameterType="int">
+		DELETE FROM wishlist WHERE wishlist_id = #{wishlistId};
+	</delete>
 
 
 </mapper>
