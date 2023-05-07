@@ -21,7 +21,7 @@ public class HotelListControl implements Control {
 		HotelInfoService service = new HotelInfoServiceImpl();
 		List<HotelInfoVO> hotelList = service.hotelList();
 		req.setAttribute("hotelList", hotelList);
-		
+				
 		return "hotelinfopage/hotelListPage.tiles";
 	}
 

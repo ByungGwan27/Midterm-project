@@ -41,6 +41,7 @@ public class HotelInfoVO {
 	private Date wirteDate;
 	private Date checkinDate;
 	private int masterView;
+	//리뷰개수, 별점평균
 	private int rcount;
 	private double avgpoint;
 }

@@ -17,4 +17,19 @@ public class HotelInfoServiceImpl implements HotelInfoService{
 		return mapper.hotelList();
 	}
 
+	@Override
+	public HotelInfoVO getHotelInfo(int hotelId) {
+		return mapper.selectHotel(hotelId);
+	}
+
+	@Override
+	public List<HotelInfoVO> roomList(int hotelId) {
+		return mapper.roomList(hotelId);
+	}
+
+	@Override
+	public List<HotelInfoVO> reviewList(int hotelId) {
+		return mapper.reviewList(hotelId);
+	}
+
 }

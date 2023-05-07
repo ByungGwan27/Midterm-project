@@ -20,7 +20,7 @@ public class AdminHotelListControl implements Control {
 		HotelInfoService service = new HotelInfoServiceImpl();
 		List<HotelInfoVO> hotelList = service.hotelList();
 		req.setAttribute("hotelList", hotelList);
-		
+		System.out.println(hotelList);
 		return "adminpage/adminHotelList.tiles";
 	}
 

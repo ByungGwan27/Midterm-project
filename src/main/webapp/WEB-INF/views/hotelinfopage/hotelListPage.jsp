@@ -492,6 +492,9 @@
 	<div style="justify-content: center;">
 	<p align="right"><a href="#">높은가격순</a> / <a href="#">낮은가격순</a> / <a href="#">이름순</a> / <a href="#">인기순</a></p>
 	<hr>
+	<c:if test="${empty hotelList}">
+    <p>호텔 정보가 없습니다.</p>
+</c:if>
 	<c:forEach var="hotelList" items="${hotelList}">
 		<table>
 			<tr>
@@ -518,7 +521,7 @@
 				<td>${hotelList.hotelLocation1} ${hotelList.hotelLocation2}</td>
 				<td></td>
 				<td><h4>${hotelList.roomPrice}</h4></td>
-				<td><button>예약</button></td>
+				<td><button><a href="hotelInfoPage.do?hotelId=${hotelList.hotelId}">예약</a></button></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -549,7 +552,6 @@
 		</div>
 	</div>
 </div>
-
 
 
 
