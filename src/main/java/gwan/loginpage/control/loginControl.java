@@ -47,8 +47,7 @@ public class loginControl implements Control {
 			String prevUrl = (String) session.getAttribute("prevUrl");
 			
 			return prevUrl;
-			
-//			return req.getAttribute(prevUrl.substring(32));
+			// /2개 찍히는 경우 확인하기(오류 떴을떄 그러는거 같은데 임의로 서브스트링 같은걸로 잘라버리자)
 		} else {
 			return "gwanLoginPage/loginPage.tiles";
 		}

@@ -4,6 +4,42 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="gwan.mypage.mapper.MyPageMapper">
 
+	<!-- 예약내역 -->
+	<!-- 방문 예정 -->
+	<select id="willVisit" resultType="mp">
+		SELECT h.hotel_name, h.hotel_location1, h.hotel_location2, r.checkin_date, r.checkout_date, h.hotel_phone, i.room_name
+		FROM reservation r JOIN hotel h
+		ON (h.hotel_id = r.hotel_id)
+		JOIN room_info i
+		ON (r.room_id = i.room_id)
+		WHERE r.member_id = 'nari123'
+		    AND TO_CHAR(SYSDATE) <![CDATA[<]]> TO_CHAR(r.checkout_date)
+		    AND TO_CHAR(SYSDATE) <![CDATA[<]]> TO_CHAR(r.checkin_date)
+	</select>
+	
+	<!-- 방문 중 -->
+	<select id="visiting" resultType="mp">
+		SELECT h.hotel_name, h.hotel_location1, h.hotel_location2, r.checkin_date, r.checkout_date, h.hotel_phone, i.room_name
+		FROM reservation r JOIN hotel h
+		ON (h.hotel_id = r.hotel_id)
+		JOIN room_info i
+		ON (r.room_id = i.room_id)
+		WHERE r.member_id = 'nari123'
+		    AND TO_CHAR(SYSDATE) <![CDATA[<=]]> TO_CHAR(r.checkout_date-1)
+		    AND TO_CHAR(SYSDATE) <![CDATA[>=]]> TO_CHAR(r.checkin_date)
+	</select>
+
+	<!-- 방문 완료 -->
+	<select id="visited" resultType="mp">
+		SELECT h.hotel_name, h.hotel_location1, h.hotel_location2, r.checkin_date, r.checkout_date, h.hotel_phone, i.room_name
+		FROM reservation r JOIN hotel h
+		ON (h.hotel_id = r.hotel_id)
+		JOIN room_info i
+		ON (r.room_id = i.room_id)
+		WHERE r.member_id = 'nari123'
+		    AND TO_CHAR(SYSDATE) <![CDATA[>]]> TO_CHAR(r.checkout_date)
+	</select>
+	
 	<!-- 위시리스트 숙소 조회 -->
 	<select id="readWishList" resultType="mp">
 	 SELECT h.hotel_name, h.hotel_location1, h.hotel_location2, h.hotel_thema, r.room_price

@@ -7,13 +7,15 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">예약내역</h1>
 <p class="mb-4">
-	미방문 | 방문
+	<a class="btn btn-primary" onclick="searchFunction();">방문중</a>
+	<a class="btn btn-primary" href="#!">미방문</a> 
+	<a class="btn btn-primary" href="#!">방문</a>
 </p>
 
 <!-- 본문  -->
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
-		<h6 class="m-0 font-weight-bold text-primary">~~님의 미방문 예약내역입니다! 즐거운 여행 되세요!| ~~ 님의 방문하신곳입니다.</h6>
+		<h6 class="m-0 font-weight-bold text-primary">${nickname }님의 미방문 예약내역입니다! 즐거운 여행 되세요!| ~~ 님의 방문하신곳입니다.</h6>
 	</div>
 	
 	<!-- 한 단위 -->

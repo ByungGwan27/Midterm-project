@@ -6,7 +6,7 @@
 
 	<!-- 로그인 조회 -->
 	<select id="loginCheck" resultType="lp">
-		SELECT * FROM member WHERE member_id = #{memberId} AND member_pw = #{memberPw}
+		SELECT * FROM member WHERE member_id = #{memberId} AND member_pw = #{memberPw} AND member_status = '활동중'
 	</select>
 
 

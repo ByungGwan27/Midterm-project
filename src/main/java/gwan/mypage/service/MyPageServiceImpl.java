@@ -17,6 +17,22 @@ public class MyPageServiceImpl implements MyPageService {
 	public List<MyPageVO> readWishList(String memberId) {
 		return mapper.readWishList(memberId);
 	}
+
+	@Override
+	public List<MyPageVO> willVisit(String memberId) {
+		return mapper.willVisit(memberId);
+	}
+
+	@Override
+	public List<MyPageVO> visiting(String memberId) {
+		return mapper.visiting(memberId);
+	}
+
+	@Override
+	public List<MyPageVO> visited(String memberId) {
+		// TODO Auto-generated method stub
+		return mapper.visited(memberId);
+	}
 	
 	
 }
