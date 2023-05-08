@@ -41,27 +41,27 @@
 				<li><a href="#pageSubmenu1" data-toggle="collapse"
 					aria-expanded="false" class="dropdown-toggle">지역</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu1">
-						<li><a href="#pageSubmenu6" data-toggle="collapse"
-							aria-expanded="false" class="dropdown-toggle">서울특별시</a>
-							<ul class="collapse list-unstyled" id="pageSubmenu6">
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>종로구</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>중구</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>용산구</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>성동구</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>광진구</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>동대문구</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>중랑구</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>성북구</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>강북구</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>도봉구</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>노원구</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>은평구</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>서대문구</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>마포구</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>양천구</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>강서구</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>구로구</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>금천구</a></li>
+					<!--	<li><a href="#pageSubmenu6" data-toggle="collapse"
+							aria-expanded="false" class="dropdown-toggle">서울특별시</a> -->
+							<!-- <ul class="collapse list-unstyled" id="pageSubmenu6"> -->
+								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>서울특별시</a></li>
+								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>부산광역시</a></li>
+								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>대구광역시</a></li>
+								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>인천광역시</a></li>
+								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>광주광역시</a></li>
+								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>대전광역시</a></li>
+								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>울산광역시</a></li>
+								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>세종특별자치시</a></li>
+								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>경기도</a></li>
+								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>강원도</a></li>
+								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>충청북도</a></li>
+								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>충청남도</a></li>
+								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>전라북도</a></li>
+								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>전라남도</a></li>
+								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>경상북도</a></li>
+								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>경상남도</a></li>
+								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>제주특별자치도</a></li>
+								<!-- <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>금천구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>영등포구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>동작구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>관악구</a></li>
@@ -367,9 +367,12 @@
 							aria-expanded="false" class="dropdown-toggle">제주특별자치도</a>
 							<ul class="collapse list-unstyled" id="pageSubmenu22">
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>제주시</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>서귀포시</a></li>
-							</ul></li>
-					</ul></li>
+								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>서귀포시</a></li> 
+							</ul>
+						</li>-->
+						
+					</ul>
+				</li>
 				<li><a href="#pageSubmenu2" data-toggle="collapse"
 					aria-expanded="false" class="dropdown-toggle">가격</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu2">
@@ -509,6 +512,7 @@
 				</td>
 				<td>
 					<h3>${hotelList.hotelName}</h3>
+					${hotelList.hotelId}
 				</td>
 				<td>${hotelList.hotelThema}</td>
 				<td rowspan="4"><div style="width: 200px;"></div></td>
