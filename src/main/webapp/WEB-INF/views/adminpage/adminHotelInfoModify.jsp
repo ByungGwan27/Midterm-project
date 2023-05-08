@@ -8,19 +8,19 @@
 	<table class="table">
 		<tr>
 			<th>메인이미지</th>
-			<td><img width="200px" src="cssMainpage/images/slider-5.jpg"></td>
+			<td><img width="200px" src="cssMainpage/images/${adminHotelInfo.hotelImage }"></td>
 		</tr>
 		<tr>
 			<th>상호명</th>
-			<td><input type="text" name="nid" value="${noticeInfo.noticeId}"></td>
+			<td><input type="text" name="nid" value="${adminHotelInfo.hotelName}"></td>
 		</tr>
 		<tr>
 			<th>위치1(시도)</th>
-			<td><input type="text" name="title"	value="${noticeInfo.noticeTitle}"></td>
+			<td><input type="text" name="title"	value="${adminHotelInfo.hotelLocation1}"></td>
 		</tr>
 		<tr>
 			<th>위치2(시군구)</th>
-			<td><input type="text" name="title"	value="${noticeInfo.noticeTitle}"></td>
+			<td><input type="text" name="title"	value="${adminHotelInfo.hotelLocation2}"></td>
 		</tr>
 		<tr>
 			<th>시설정보</th>

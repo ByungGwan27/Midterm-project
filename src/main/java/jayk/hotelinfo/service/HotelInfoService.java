@@ -9,4 +9,7 @@ public interface HotelInfoService {
 	public HotelInfoVO getHotelInfo(int hotelId);
 	public List<HotelInfoVO> roomList(int hotelId);
 	public List<HotelInfoVO> reviewList(int hotelId);
+	public List<HotelInfoVO> similarList(int hotelId);
+	public List<HotelInfoVO> adminHotelList();
+	public HotelInfoVO getAdminHotel(int hotelId);
 }

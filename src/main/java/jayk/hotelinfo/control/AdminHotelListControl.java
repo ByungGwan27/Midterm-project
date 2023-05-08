@@ -18,9 +18,9 @@ public class AdminHotelListControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		HotelInfoService service = new HotelInfoServiceImpl();
-		List<HotelInfoVO> hotelList = service.hotelList();
-		req.setAttribute("hotelList", hotelList);
-		System.out.println(hotelList);
+		List<HotelInfoVO> adminHotelList = service.adminHotelList();
+		req.setAttribute("adminHotelList", adminHotelList);
+		System.out.println(adminHotelList);
 		return "adminpage/adminHotelList.tiles";
 	}
 

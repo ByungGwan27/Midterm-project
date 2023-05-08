@@ -9,5 +9,7 @@ public interface HotelInfoMapper {
 	public HotelInfoVO selectHotel(int hotelId); 
 	public List<HotelInfoVO> roomList(int hotelId);
 	public List<HotelInfoVO> reviewList(int hotelId);
-
+	public List<HotelInfoVO> similarList(int hotelId);
+	public List<HotelInfoVO> adminHotelList();
+	public HotelInfoVO selectAdminHotel(int hotelId);
 }

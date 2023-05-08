@@ -35,13 +35,13 @@
 	<!-- list -->
 	<main id="main" class="main">
 	<div style="justify-content: center;">
-	<c:forEach var="hotelList" items="${hotelList}">
+	<c:forEach var="adminHotelList" items="${adminHotelList}">
 		<table>
 			<tr>
-				<td rowspan="4"><img src="cssMainpage/images/${hotelList.hotelImage}" alt="hotelImage" width="200"></td>
+				<td rowspan="4"><img src="cssMainpage/images/${adminHotelList.hotelImage}" alt="hotelImage" width="200"></td>
 				<td>
 					<div style="margin: 10px;">
-						<h3>${hotelList.hotelName}</h3>
+						<h3>${adminHotelList.hotelName}</h3>
 					</div>
 				</td>
 				<td><div style="width: 200px;"></div></td>
@@ -55,7 +55,7 @@
 			<tr>
 				<td></td>
 				<td></td>
-				<td><button>수정</button></td>
+				<td><a href="adminHotelInfoModifyPage.do?hotelId=${adminHotelList.hotelId}"><button>수정</button></a></td>
 			</tr>
 		</table>
 		<hr>

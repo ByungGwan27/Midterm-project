@@ -21,6 +21,7 @@ public class HotelInfoVO {
 	private int horelDec;
 	private int resCount;
 	private int roomId;
+	private String locationDetail;
 
 	//roomInfo
 	private int roomNumber;
@@ -31,6 +32,10 @@ public class HotelInfoVO {
 	private int roomMax;
 	private int roomMin;
 	private int addPrice;
+	
+	//roomImage
+	private int imageId;
+	private String image;
 	
 	//review
 	private int reviewId;

@@ -24,13 +24,18 @@ public class GetHotelControl implements Control {
 		req.setAttribute("hotelInfo", hotelInfo);
 		//System.out.println(hotelInfo);
 		
+		//상세객실리스트
 		List<HotelInfoVO> roomList = service.roomList(Integer.parseInt(hotelId));
 		req.setAttribute("roomList", roomList);
 		//System.out.println(roomList);
 		
+		//리뷰리스트
 		List<HotelInfoVO> reviewList = service.reviewList(Integer.parseInt(hotelId));
 		req.setAttribute("reviewList", reviewList);
-		System.out.println(reviewList);
+		//System.out.println(reviewList);
+		
+		List<HotelInfoVO> similarList = service.similarList(Integer.parseInt(hotelId));
+		req.setAttribute("similarList", similarList);
 		
 		return "hotelinfopage/hotelInfoPage.tiles";
 	}
