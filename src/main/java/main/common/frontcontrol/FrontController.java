@@ -11,17 +11,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import gwan.loginpage.control.CreateUserControl;
 import gwan.loginpage.control.CreateUserPageControl;
 import gwan.loginpage.control.ForgotPasswordPageControl;
 import gwan.loginpage.control.loginControl;
 import gwan.loginpage.control.loginPageControl;
 import gwan.loginpage.control.logoutControl;
+import gwan.mypage.ajax.control.MyPageWishAjaxAllDeleteControl;
+import gwan.mypage.ajax.control.MyPageWishAjaxControl;
+import gwan.mypage.ajax.control.MyPageWishAjaxDeleteControl;
 import gwan.mypage.control.MyPageCouponControl;
+import gwan.mypage.control.MyPageHomeWillVisitControl;
 import gwan.mypage.control.MyPageMessageControl;
 import gwan.mypage.control.MyPageQnaControl;
 import gwan.mypage.control.MyPageQnaQControl;
 import gwan.mypage.control.MyPageUserInfoChangeControl;
+import gwan.mypage.control.MyPageUserInfoChangeInputControl;
+import gwan.mypage.control.MyPageUserInfoPwControl;
+import gwan.mypage.control.MyPageUserInfoPwInputControl;
 import gwan.mypage.control.MyPageWishListControl;
 import gwan.mypage.control.MypageHomeControl;
 import jayk.hotelinfo.control.AdminAddHotelControl;
@@ -113,14 +120,29 @@ public class FrontController extends HttpServlet{
 		//마이페이지
 		//마이페이지 홈(예약내역)
 		map.put("/myPageHome.do", new MypageHomeControl());
-		//마이페이지 위시리스트(위시리스트)
+		//마이페이지 -2
+		map.put("/myPageHomeWillVisit.do", new MyPageHomeWillVisitControl());
+		
+		//마이페이지(위시리스트)
 		map.put("/myPageWishList.do", new MyPageWishListControl());
+		map.put("/myPageWishListAjax.do", new MyPageWishAjaxControl());
+		//마이페이지(위시리스트) - 단건 삭제
+		map.put("/myPageWishListAjaxDelete.do", new MyPageWishAjaxDeleteControl());
+		//마이페이지(위시리스트) - 선택 삭제
+		map.put("/myPageWishListAjaxAllDelete.do", new MyPageWishAjaxAllDeleteControl());
+		
 		//마이페이지(쿠폰)
 		map.put("/myPageCoupon.do", new MyPageCouponControl());
 		//마이페이지(메세지)
 		map.put("/myPageMessage.do", new MyPageMessageControl());
-		//마이페이지(회원정보수정)
+		
+		//마이페이지(회원정보수정) - pw확인
+		map.put("/myPageUserInfoPw.do", new MyPageUserInfoPwControl());
+		map.put("/myPageUserInfoPwInput.do", new MyPageUserInfoPwInputControl());
+		//마이페이지(회원정보수정) - 정보 수정창
 		map.put("/myPageUserInfoChange.do", new MyPageUserInfoChangeControl());
+		map.put("/myPageUserInfoChangeInput.do", new MyPageUserInfoChangeInputControl());
+		
 		//마이페이지(Q&A)
 		map.put("/myPageQna.do", new MyPageQnaControl());
 		
@@ -136,6 +158,8 @@ public class FrontController extends HttpServlet{
 		
 		//회원가입
 		map.put("/createUserPage.do", new CreateUserPageControl());
+		map.put("/createUser.do", new CreateUserControl());
+		
 		//pw찾기
 		map.put("/forgotPasswordPage.do", new ForgotPasswordPageControl());
 		
