@@ -18,4 +18,10 @@ public class LoginPageServiceImpl implements LoginPageService {
 		return mapper.loginCheck(vo);
 	}
 
+	//회원가입
+	@Override
+	public boolean createUserCreate(LoginPageVO vo) {
+		return mapper.createUserCreate(vo) == 1;
+	}
+
 }

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import gwan.loginpage.control.CreateUserControl;
 import gwan.loginpage.control.CreateUserPageControl;
 import gwan.loginpage.control.ForgotPasswordPageControl;
 import gwan.loginpage.control.loginControl;
@@ -158,6 +158,8 @@ public class FrontController extends HttpServlet{
 		
 		//회원가입
 		map.put("/createUserPage.do", new CreateUserPageControl());
+		map.put("/createUser.do", new CreateUserControl());
+		
 		//pw찾기
 		map.put("/forgotPasswordPage.do", new ForgotPasswordPageControl());
 		
