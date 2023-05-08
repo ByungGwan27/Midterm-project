@@ -1,92 +1,67 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <main id="main" class="main">
 
 	<div class="pagetitle">
-		<h1>회원관리</h1>
+		<h1>결제정보</h1>
 		<nav>
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="adminPage.do">관리자 페이지</a></li>
-				<li class="breadcrumb-item active">회원관리</li>
+				<li class="breadcrumb-item active">결제정보</li>
 			</ol>
 		</nav>
 	</div>
 	<!-- End Page Title -->
 
-	<section class="section">
-		<div class="row">
-			<div class="col-lg-12">
 
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">회원목록</h5>
+	 <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
 
-						<!-- Table with stripped rows -->
-						<table class="table">
-							<thead>
-								<tr>
-									<th scope="col">#</th>
-									<th scope="col">회원아이디</th>
-									<th scope="col">회원이름</th>
-									<th scope="col">회원닉네임</th>
-									<th scope="col">회원등급</th>
-									<th scope="col">활동상태</th>
+        <div class="section-title">
+        </div>
 
-								</tr>
-							</thead>
-							<tbody id="tbody">
-								<c:forEach var="member" items="${allMemberInfo}">
-								<tr class='member'>
-									<th scope="row"></th>
-									<td>${member.memberId}</td>
-									<td>${member.memberName}</td>
-									<td>${member.memberNickname}</td>
-									<td>${member.memberGrade}</td>
-									<td>${member.memberStatus}</td>
-								</tr>
-								</c:forEach>
-							
-							</tbody>
-						</table>
-						<!-- End Table with stripped rows -->
+        <div class="row">
+          <div class="col-lg-4">
+            <img src="cssAdminPayList/assets/assets/img/profile-img.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-8 pt-4 pt-lg-0 content">
+            <h3>UI/UX Designer &amp; Web Developer.</h3>
+            <p class="fst-italic">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.
+            </p>
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>숙소명:</strong> <span>1 May 1995</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>숙소세부명:</strong> <span>www.example.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>호수:</strong> <span>+123 456 7890</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>인원수:</strong> <span>email@example.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>체크인 날짜:</strong> <span>New York, USA</span></li>
+                   <li><i class="bi bi-chevron-right"></i> <strong>체크아웃 날짜:</strong> <span>New York, USA</span></li>
+                
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>판매가격:</strong> <span>30</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>최종가격:</strong> <span>Master</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>마일리지:</strong> <span>email@example.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>사용된 쿠폰:</strong> <span>Available</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>결제일:</strong> <span>Available</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>결제방법:</strong> <span>Available</span></li>
+                </ul>
+              </div>
+            </div>
+            <p>
+              Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
+              Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque neque. Aliquid amet quidem ut quaerat cupiditate. Ab et eum qui repellendus omnis culpa magni laudantium dolores.
+            </p>
+          </div>
+        </div>
 
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</section>
-
+      </div>
+    </section><!-- End About Section -->
 </main>
-<script>
-	let tr = document.querySelectorAll('.member');
-
-	for (let i in tr){
-		tr[i].addEventListener('click', function(){
-			location.href = "adminMemberInfo.do?id="+this.children[1].innerText;
-		})
-	}
-	
-	// 	let tr = document.getElementById("member");
-	// 	let table =document.getElementById("member").parentElement;
-	// 	fetch("allMemberList.do")
-	// 	.then(resolve => resolve.json())
-	// 	.then(result => {
-	// 		allMemberInfo = result;
-	// 		for(let member of allMemberInfo){
-	// 			let clone = tr.cloneNode(true);
-	// 			console.log(clone);
-	// 			clone.childNodes[1].innerHTML = member.MemberId;
-	// 			clone.childNodes[2].innerHTML = member.MemberName;
-	// 			clone.childNodes[3].innerHTML = member.MemberNickname;
-	// 			clone.childNodes[4].innerHTML = member.MemberGrade;
-	// 			clone.childNodes[5].innerHTML = member.MemberStatus;
-				
-	// 			table.append(clone);
-		
-	// 	}
-	// })
-
-</script>
-

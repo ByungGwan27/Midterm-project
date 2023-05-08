@@ -91,9 +91,10 @@
   </definition>
   
     <definition name="adminpay" template="/WEB-INF/layoutAdminpay/template.jsp">
-    <put-attribute name="nav" value="/WEB-INF/layoutAdminpay/nav.jsp" />
+    <put-attribute name="header" value="/WEB-INF/layoutAdminpay/header.jsp" />
     <put-attribute name="body" value="/WEB-INF/layoutAdminpay/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/layoutAdminpay/footer.jsp" />
+     <put-attribute name="sidebar" value="/WEB-INF/layoutAdminpay/sidebar.jsp" />
   </definition>
 
   <definition name="WILDCARD:adminpay/*" extends="adminpay">

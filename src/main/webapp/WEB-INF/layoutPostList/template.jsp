@@ -36,7 +36,7 @@
 </head>
      <!-- Navigation-->
     	<tiles:insertAttribute name="nav"></tiles:insertAttribute>
-     <!-- Header-->
+     <!-- body-->
      <tiles:insertAttribute name="body"></tiles:insertAttribute>
     
       <!-- Footer-->
@@ -59,10 +59,11 @@
   <script src="cssMainpage/js/aos.js"></script>
   <script src="cssMainpage/js/moment.min.js"></script>
   <script src="cssMainpage/js/daterangepicker.js"></script>
-
   <script src="cssMainpage/js/typed.js"></script>
-
   <script src="cssMainpage/js/custom.js"></script>
-
+  
+  <!-- postList -->
+  <script src="cssPostList/assets/js/main.js"></script>
+  
 
 </html>
