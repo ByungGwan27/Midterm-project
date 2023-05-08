@@ -8,22 +8,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import main.common.control.Control;
-import main.common.wook.admin.domain.QnaVO;
+import main.common.wook.admin.domain.ReservationVO;
 import main.common.wook.admin.service.AdminService;
 import main.common.wook.admin.service.AdminServiceImpl;
 
-public class adminQnaControl implements Control {
+public class adminResAccept implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int resId = Integer.parseInt(req.getParameter("id"));
 		AdminService service = new AdminServiceImpl();
-		List<QnaVO> nonVO = service.qnaNoneAns();
-		List<QnaVO> ComVO = service.qnaComAns();
+		int result = service.resAccept(resId);
 		
-		req.setAttribute("NAQ", nonVO);
-		req.setAttribute("CAQ", ComVO);
+		List<ReservationVO> list = service.adminResList();
 		
-		return "adminpage/adminQnaPage.tiles";
+		req.setAttribute("resList", list);
+		return "adminpage/adminReservationList.tiles";
 	}
 
 }

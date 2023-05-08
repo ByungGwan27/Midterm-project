@@ -83,4 +83,55 @@
 		where dec_id=${decId}
 	</update>
 	
+	<!-- 예약 리스트 -->
+	<select id="adminResList" resultType="reservation">
+	select * 
+	from reservation join
+	(select room_id, room_name,hotel_id, hotel_name from room_info join (
+	select hotel_id, hotel_name from hotel)
+	using (hotel_id))
+	using(room_id)
+	</select>
+	
+	<!-- 단일 예약 조회 -->
+	<select id="adminResInfo" resultType="reservation" parameterType="int">
+	select * 
+	from reservation join
+	(select room_id, room_name, hotel_id, hotel_name from room_info join (
+	select hotel_id, hotel_name from hotel)
+	using (hotel_id))
+	using(room_id)
+	where reservation_id=${resId}
+	</select>
+	
+	<!-- 예약 수락 -->
+	<update id="resAccept" parameterType="int">
+		update reservation
+		set res_status='예약수락'
+		where reservation_id=${resId}
+	</update>
+	
+	<!-- 예약 거절 -->
+	<update id="resCancle" parameterType="int">
+		update reservation
+		set res_status='예약거절'
+		where reservation_id=${resId}
+	</update>
+	
+	<!-- qna 미답변 조회 -->
+	<select id="qnaNoneAns" resultType="qna">
+	select * from qna where answer_check='미답변'
+	</select>
+	
+	<!-- qna 답변완료 조회 -->
+	<select id="qnaComAns" resultType="qna">
+	select * from qna where answer_check='답변완료'
+	</select>
+	
+	<!-- qna 답변 작성 -->
+	<update id="qnaAnswer" parameterType="qna" >
+	update qna
+	set answer_content=#{answerContent}, answer_check='답변완료', answer_date=sysdate
+	where qna_id=#{qnaId}
+	</update>
 </mapper>

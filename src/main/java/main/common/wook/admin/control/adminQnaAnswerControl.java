@@ -12,11 +12,20 @@ import main.common.wook.admin.domain.QnaVO;
 import main.common.wook.admin.service.AdminService;
 import main.common.wook.admin.service.AdminServiceImpl;
 
-public class adminQnaControl implements Control {
+public class adminQnaAnswerControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int answerId = Integer.parseInt(req.getParameter("id"));
+		String answerContent = req.getParameter("content");
+		
+		QnaVO vo = new QnaVO();
+		vo.setAnswerContent(answerContent);
+		vo.setQnaId(answerId);
+		
 		AdminService service = new AdminServiceImpl();
+		int result = service.qnaAnswer(vo);
+		
 		List<QnaVO> nonVO = service.qnaNoneAns();
 		List<QnaVO> ComVO = service.qnaComAns();
 		

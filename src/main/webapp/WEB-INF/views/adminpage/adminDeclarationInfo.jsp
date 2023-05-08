@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="card">
 	<main id="main" class="main">
 		<div class="card-body">
@@ -45,19 +46,14 @@
 				</div>
 				<hr>
 
-			<%-- 	<c:if test="${decInfo.decStatus == '신고접수'}">
-					<c:choose>
-						<c:when test="${decInfo.decStatus == '신고접수'}"> --%>
-							<div class="text-center">
-								<button type="button" class="btn btn-primary"
-									onclick="location.href='adminDecAccept.do?id=${decInfo.decId}'">신고처리</button>
-								<button type="button" class="btn btn-secondary"
-									onclick="location.href='adminDecCancle.do?id=${decInfo.decId}'">신고반려</button>
-							</div>
-					<!-- 	</c:when>
-					</c:choose>
-
-				</c:if> -->
+				<c:if test="${decInfo.decStatus == '신고대기'}">
+					<div class="text-center">
+						<button type="button" class="btn btn-primary"
+							onclick="location.href='adminDecAccept.do?id=${decInfo.decId}'">신고처리</button>
+						<button type="button" class="btn btn-secondary"
+							onclick="location.href='adminDecCancle.do?id=${decInfo.decId}'">신고반려</button>
+					</div>
+				</c:if>
 				<!-- </form> -->
 				<!-- Vertical Form -->
 			</div>

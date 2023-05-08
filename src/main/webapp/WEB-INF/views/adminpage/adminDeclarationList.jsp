@@ -24,7 +24,7 @@
             <h5 class="card-title">신고내역</h5>
 
             <!-- Table with stripped rows -->
-            <table class="table">
+            <table class="table datatable">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -60,13 +60,17 @@
 
 </main>
 <script>
-  let dec = document.querySelectorAll(".dec");
-  dec.forEach(function (ele) {
-    ele.addEventListener("dblclick", function () {
-      location.href = 'adminDeclarationInfo.do?id='+this.children[1].innerText;
-    })
+document.addEventListener('DOMContentLoaded', function(){
+	
+	let dec = document.querySelectorAll("table tbody tr");
+	console.log(dec)
+	dec.forEach(function(dec) {
+		dec.addEventListener("dblclick", function() {
+			 location.href = 'adminDeclarationInfo.do?id='+this.children[1].innerText;
+		})
 
-  })
+	})
+})
 
   // let decTbody = document.getElementById('decTbody')
   // let decRow = document.getElementById('decRow')

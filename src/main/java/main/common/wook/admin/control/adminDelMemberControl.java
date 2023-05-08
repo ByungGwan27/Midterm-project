@@ -21,11 +21,13 @@ public class adminDelMemberControl implements Control {
 		AdminService service = new AdminServiceImpl();
 		int result = service.adminDelMember(id);
 		
-		List<DeclarationVO> list = service.adminDecList();
+//		List<DeclarationVO> list = service.adminDecList();
+//		
+//		req.setAttribute("allMemberInfo", list);
+//		
+//		return "adminpage/adminMemberList.tiles";
 		
-		req.setAttribute("allMemberInfo", list);
-		
-		return "adminpage/adminMemberList.tiles";
+		return "adminMemberList.do";
 	}
 
 }

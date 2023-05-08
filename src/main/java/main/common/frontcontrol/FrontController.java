@@ -39,7 +39,10 @@ import main.common.wook.admin.control.adminDelMemberControl;
 import main.common.wook.admin.control.adminMemberInfoControl;
 import main.common.wook.admin.control.adminMemberListControl;
 import main.common.wook.admin.control.adminPageControl;
+import main.common.wook.admin.control.adminQnaAnswerControl;
 import main.common.wook.admin.control.adminQnaControl;
+import main.common.wook.admin.control.adminResAccept;
+import main.common.wook.admin.control.adminResCancle;
 import main.common.wook.admin.control.adminReservationInfoControl;
 import main.common.wook.admin.control.adminReservationListControl;
 import main.common.wook.admin.control.allMemberListControl;
@@ -74,6 +77,8 @@ public class FrontController extends HttpServlet{
 		map.put("/adminPage.do", new adminPageControl());
 		//관리자 QnA
 		map.put("/adminQna.do" , new adminQnaControl());
+		//관리자 Qna 답변
+		map.put("/adminQnaAnswer.do" , new adminQnaAnswerControl());
 		//관리자 전체회원정보
 		map.put("/adminMemberList.do", new adminMemberListControl());
 		//관리자 단일회원정보
@@ -96,6 +101,11 @@ public class FrontController extends HttpServlet{
 		map.put("/adminReservationList.do", new adminReservationListControl());
 		//관리자 단일예약정보
 		map.put("/adminReservationInfo.do", new adminReservationInfoControl());
+		//관리자 예약수락
+		map.put("/adminResAccept.do", new adminResAccept());
+		//관리자 예약거절
+		map.put("/adminResCancle.do", new adminResCancle());
+		
 		//메인 페이지 회원 정보
 		map.put("/allMemberList.do", new allMemberListControl());
 		

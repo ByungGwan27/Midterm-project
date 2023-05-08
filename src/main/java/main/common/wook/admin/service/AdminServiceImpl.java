@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import main.common.control.DataSource;
 import main.common.wook.admin.domain.AdminVO;
 import main.common.wook.admin.domain.DeclarationVO;
+import main.common.wook.admin.domain.QnaVO;
+import main.common.wook.admin.domain.ReservationVO;
 import main.common.wook.admin.mapper.AdminMapper;
 import main.common.wook.main.domain.MemberVO;
 
@@ -83,6 +85,45 @@ public class AdminServiceImpl implements AdminService {
 	public int decAccept(int decId) {
 		return mapper.decAccept(decId);
 	}
+
+	@Override
+	public List<ReservationVO> adminResList() {
+		
+		return mapper.adminResList();
+	}
+
+	@Override
+	public ReservationVO adminResInfo(int resId) {
+	
+		return mapper.adminResInfo(resId);
+	}
+
+	@Override
+	public int resAccept(int resId) {
+		return mapper.resAccept(resId);
+	}
+
+	@Override
+	public int resCancle(int resId) {
+		return mapper.resCancle(resId);
+	}
+
+	@Override
+	public List<QnaVO> qnaNoneAns() {
+		return mapper.qnaNoneAns();
+	}
+
+	@Override
+	public List<QnaVO> qnaComAns() {
+		return mapper.qnaComAns();
+	}
+
+	@Override
+	public int qnaAnswer(QnaVO qna) {
+		return mapper.qnaAnswer(qna);
+	}
+
+	
 
 	
 
