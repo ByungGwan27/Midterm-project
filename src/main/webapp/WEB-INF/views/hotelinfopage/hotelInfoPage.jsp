@@ -12,7 +12,7 @@
 
 				<table border="1">
 					<tr>
-						<td colspan="2"><h3>상호명 : ${hotelInfo.hotelName}</h3></td>
+						<td colspan="2"><h3>상호명 : ${hotelInfo.hotelName}  ${hotelInfo.hotelInfo}</h3></td>
 						
 						<td rowspan="5">
 							<!-- 지도를 표시할 div 입니다 -->
@@ -88,9 +88,9 @@ marker.setMap(map);
 									<a href="#">${roomList.roomName} ${roomList.roomGrade}</a>
 								</h3>
 								<div class="price ml-auto">
-									<span>최대인원 ${roomList.roomMax}</span><br> <span>시설정보
-										${roomList.roomExpain}</span><br> <span>가격
-										${roomList.roomPrice}</span><br>
+									<span>최대인원 ${roomList.roomMax}</span><br> 
+									<span>시설정보 ${roomList.roomExpain}</span><br> 
+									<span>가격 ${roomList.roomPrice}</span><br>
 									<button>예약</button>
 								</div>
 							</div>

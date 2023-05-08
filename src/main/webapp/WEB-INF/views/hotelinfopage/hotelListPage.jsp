@@ -374,7 +374,11 @@
 					aria-expanded="false" class="dropdown-toggle">가격</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu2">
 						<li>
-							<div class="form-group d-flex">스크롤</div>
+							<div class="form-group d-flex">
+							<div class="slidecontainer">
+  					<input type="range" min="10000" max="900000" value="50" class="slider" id="myRange">
+						</div>
+							</div>
 						</li>
 						<li><div class="mb-5">
 								<form action="#" class="subscribe-form">
