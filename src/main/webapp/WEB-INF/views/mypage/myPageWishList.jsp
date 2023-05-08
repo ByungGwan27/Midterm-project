@@ -34,11 +34,11 @@
 	xhtp.send();
 	
 	xhtp.onload = function () {
-		//console.log(xhtp.responseText);
+		console.log(xhtp.responseText);
 		let ajaxwish = document.querySelector('#ajaxwish');
 		//responseText와 response의 차이점이????
-		let wdata = JSON.parse(xhtp.responseText);
-		
+		let wdata = JSON.parse(xhtp.response);
+		console.log(wdata);
 		
 		
 		for(let i = 0; i < wdata.length; i++) {
@@ -152,14 +152,14 @@
 	  })
 	}
 	
-	//폐기된 ajax
+	/* //폐기된 ajax
 	
-	/*let showWish = ['hotelName', 'hotelLocation1', 'hotelLocation2', 'HotelThema', 'RoomPrice'];
+	let showWish = ['hotelName', 'hotelLocation1', 'hotelLocation2', 'HotelThema', 'RoomPrice'];
 	let url = 'myPageWishListAjax.do';
 	
 	let wlist = document.querySelector('#ajaxwish');
-	let allWishList; */
-	/*  fetch(url)
+	let allWishList;
+	  fetch(url)
 	    .then(resolve => resolve.json())
 	    .then(result => {
 	      console.log(result); 
@@ -247,7 +247,7 @@
 		// 생성한 div를 원하는 요소에 추가
 		let ajaxwish = document.getElementById('ajaxwish');
 		ajaxwish.appendChild(div);
-	} */
+	}  */
 	
 </script>
 
