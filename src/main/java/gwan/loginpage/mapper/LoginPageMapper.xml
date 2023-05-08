@@ -6,9 +6,21 @@
 
 	<!-- 로그인 조회 -->
 	<select id="loginCheck" resultType="lp">
-		SELECT * FROM member WHERE member_id = #{memberId} AND member_pw = #{memberPw}
+		SELECT * FROM member WHERE member_id = #{memberId} AND member_pw = #{memberPw} AND member_status = '활동중'
 	</select>
-
-
+	
+	<!-- 회원가입 -->
+	<insert id="createUserCreate" parameterType="lp">
+		INSERT INTO member (member_id, member_pw, member_name, member_birth, member_phone, member_nickname
+		  <if test="memberEmail != null">
+		    , member_email
+		  </if>
+		  )
+		  VALUES(#{memberId}, #{memberPw}, #{memberName}, #{memberBirth}, #{memberPhone}, #{memberNickname}
+		  <if test="memberEmail != null">
+		    , #{memberEmail}
+		  </if>
+		  )
+	</insert>
 
 </mapper>

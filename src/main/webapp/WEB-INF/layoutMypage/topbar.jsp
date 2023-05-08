@@ -138,7 +138,7 @@
 							if they aren't good...</div>
 						<div class="small text-gray-500">Chicken the Dog · 2w</div>
 					</div>
-				</a> <a class="dropdown-item text-center small text-gray-500" href="myPageMessage.do">Read
+				</a> <a class="dropdown-item text-center small text-gray-500" href="myPageMessage.do?memberId=${id }">Read
 					More Messages</a>
 			</div></li>
 

@@ -31,8 +31,7 @@
 	</a></li>
 
 	<!-- Nav Item - 위시리스트 -->
-	<c:if test="URI"></c:if>
-	<li class="nav-item"><a class="nav-link" href="myPageWishList.do?memberId=">
+	<li class="nav-item"><a class="nav-link" href="myPageWishList.do">
 			<i class="fas fa-fw fa-tachometer-alt"></i> <span>위시리스트</span>
 	</a></li>
 	<!-- fas fa-fw fa-chart-area -->
@@ -51,7 +50,7 @@
 
 	<!-- Nav Item - 회원정보수정 -->
 	<li class="nav-item"><a class="nav-link"
-		href="myPageUserInfoChange.do"> <i class="fas fa-fw fa-wrench"></i>
+		href="myPageUserInfoPw.do"> <i class="fas fa-fw fa-wrench"></i>
 			<span>회원정보수정</span></a></li>
 
 	<!-- Nav Item - Q&A -->

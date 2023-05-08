@@ -28,33 +28,34 @@
 					</c:if></td>
 			</tr>
 			<tr>
-				<th>이메일글번호</th>
-				<td><input type="text" name="nid"
-					value="${noticeInfo.noticeId }" readonly></td>
+				<th>이메일</th>
+				<td><input type="text" name="email"></td>
 			</tr>
 			<tr>
 				<th>전화번호</th>
-				<td><input type="text" name="title"
-					value="${noticeInfo.noticeTitle }"></td>
+				<td><input type="text" name="phone"></td>
 			</tr>
 			<tr>
 				<th>닉네임</th>
-				<td><textarea rows="3" cols="20" name="subject">${noticeInfo.noticeSubject }</textarea></td>
-			</tr>
-			<tr>
-				<th>비밀번호</th>
-				<td><input type="text" name="writer"
-					value="${noticeInfo.noticeWriter }" readonly></td>
+				<td><input type="text" name="nickname"></input></td>
 			</tr>
 			<tr>
 				<th>관심테마</th>
-				<td><input type="text" name="writer"
-					value="${noticeInfo.noticeWriter }" readonly></td>
+				<!-- <td><textarea rows="3" cols="20" name="nickname"></textarea></td> -->
+				<td><input type="text" name="thema"></td>
+			</tr>
+			<tr>
+				<th>비밀번호</th>
+				<td><input type="password" name="pw"></td>
+			</tr>
+			<tr>
+				<th>비밀번호 확인</th>
+				<td><input type="password" name="pwcheck"></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button type="submit">저장(수정)</button>
-					<button type="button">삭제</button>
+					<button type="submit">수정</button>
+					<button type="button">돌아가기</button>
 				</td>
 			</tr>
 		</table>

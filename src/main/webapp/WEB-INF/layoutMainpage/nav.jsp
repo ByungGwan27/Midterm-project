@@ -24,8 +24,8 @@
 				<li class="has-children"><a href="myPageHome.do">마이페이지</a>
 					<ul class="dropdown">
 						<li><a href="myPageWishList.do">위시리스트</a></li>
-						<li><a href="myPageCoupon">쿠폰함</a></li>
-						<li><a href="myPageMessage">메세지함</a></li>
+						<li><a href="myPageCoupon.do">쿠폰함</a></li>
+						<li><a href="myPageMessage.do">메세지함</a></li>
 						<li><a href="myPageQna.do">QnA</a></li>
 						<!-- <li class="has-children"><a href="#">Menu Two</a>
 							<ul class="dropdown">
