@@ -19,12 +19,16 @@
 	<!-- 전체 선택 라벨 -->
 	<div class="row gx-4 gx-lg-5 align-items-center my-5">
 		<div class="col-lg-7 gwan-checkbox">
-			<input type="checkbox" name="wishcheckbox" value="selectAll2"
+			<input type="checkbox" name="wishcheckboxAll" value="selectAll2"
 				class="gwan-button-size gwan-button-type" id="selectAll" onclick='selectAll(this)' /> <label
 				for="selectAll" class="px-4">전체 선택</label>
 		</div>
+		<div>
+			<button class="btn btn-primary" id = "chooseDelete">선택삭제
+			</button>
+		</div>
 	</div>
-
+		<!-- 본문 -->
 </div>
 
 <script>
@@ -34,12 +38,12 @@
 	xhtp.send();
 	
 	xhtp.onload = function () {
-		console.log(xhtp.responseText);
+		//console.log(xhtp.responseText);
 		let ajaxwish = document.querySelector('#ajaxwish');
 		//responseText와 response의 차이점이????
 		let wdata = JSON.parse(xhtp.response);
-		console.log(wdata);
-		
+		//console.log(wdata);
+		//console.log(document.getElementsByClassName("chooseDelete"));
 		
 		for(let i = 0; i < wdata.length; i++) {
 		  let div = wmakeRow({
@@ -61,16 +65,47 @@
 	        hotelLocation2: wwlist[showWish[2]],
 	        HotelThema: wwlist[showWish[3]],
 	        RoomPrice: wwlist[showWish[4]]
-   		}); */
-
+   		});
+		}*/
+		
 		ajaxwish.appendChild(div);
 		}
-	}
+		
+		//선택삭제 만들기
+		let cDel = document.getElementById("chooseDelete");
+		console.log(cDel);
+		console.log(cDel.parentElement.parentElement.parentElement.children[2].children[0].children[0]);
+		//삭제하고 싶은 위치 value
+		console.log(cDel.parentElement.parentElement.parentElement.children[2]);
+		//let cDelL = cDel.parentElement.parentElement.parentElement.children[i];
+		//let mcDel = cDel.parentElement.parentElement.parentElement.children[2].children[0].children[0];
 
+		let checkBoxArr = [];
+		cDel.addEventListener("click", function (e) {
+			checkStr = '';
+  		let checkBoxes = document.querySelectorAll(
+    		'input[type="checkbox"][name="wishcheckbox"]:checked'
+  		);
+			for (let i = 0; i < checkBoxes.length; i++) {
+				checkStr += 'id='+checkBoxes[i].value+"&";
+				//id로 넘기기로했다
+			}
+			location.href="myPageWishListAjaxDelete.do?"+checkStr.substring(0, checkStr.length-1);
+		});
+
+		
+
+
+	}
+		
+	
+		
+		
+	//목록만들기
 	function wmakeRow(wwlist = {}, counter) {
 		
 		let div = document.createElement('div');
-		div.classList.add('row', 'gx-4', 'gx-lg-5', 'align-items-center', 'my-5');
+		div.classList.add('row', 'gx-4', 'gx-lg-5', 'align-items-center', 'my-5', 'ajax-del');
 		
 		let checkboxDiv = document.createElement('div');
 		checkboxDiv.classList.add('col-lg-7', 'gwan-checkbox');
@@ -80,6 +115,8 @@
 		checkbox.name = 'wishcheckbox';
 		checkbox.value = wwlist.WishlistId;
 		checkbox.classList.add('gwan-button-size', 'gwan-button-type');
+		//onclick = '함수명' : 함수명을 넣어서 바로 실행
+		checkbox.onclick = checkSelectAll;
 		checkbox.id = counter.toString();
 		
 		let checkboxLabel = document.createElement('label');
@@ -113,12 +150,41 @@
 		
 		//버튼 삭제기능 추가
 		let deleteButton = document.createElement('button');
-		/* deleteButton.addEventListener('click', function (e) {
+		
+		deleteButton.addEventListener('click', function (e) {
 			
-		} */
+			//value(WishListId)값 찾기
+			console.log(deleteButton.parentElement.parentElement.children[0].children[0].value);
+			let WishListId = deleteButton.parentElement.parentElement.children[0].children[0].value;
+			console.log("삭제벨류"+WishListId);
+			// 한 단위 선택
+			console.log(deleteButton.parentElement.parentElement);
+			let container = deleteButton.parentElement.parentElement;
+			
+			//Ajax 호출
+			let xhtp = new XMLHttpRequest();
+			xhtp.open('post', 'myPageWishListAjaxDelete.do')
+			xhtp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			//req.getParameter로 가져올 값을 적어줌(POST)
+			xhtp.send('wlId=' + WishListId);
+			
+			//로딩이 끝나면
+			xhtp.onload = function () {
+				let result = JSON.parse(xhtp.response);
+				console.log(result);
+				if (result.retCode == 'Success') {
+					// 화면에서 지우기
+					alert('삭제완료');
+					container.remove();
+				} else if (result.retCode == 'Fail') {
+					alert('처리중 에러.');
+				} else {
+					alert('알수 없는 반환값.');
+				}
+			}
+		})
 		
 		deleteButton.classList.add('btn', 'btn-primary');
-		deleteButton.href = '#!';
 		deleteButton.textContent = '삭제';
 
 		let reservationButton = document.createElement('a');
@@ -138,11 +204,28 @@
 		
 		return div;
 	}
+	
+	
+	function checkSelectAll()  {
+		  // 전체 체크박스
+		  const checkboxes 
+		    = document.querySelectorAll('input[name="wishcheckbox"]');
+		  // 선택된 체크박스
+		  const checked 
+		    = document.querySelectorAll('input[name="wishcheckbox"]:checked');
+		  // select all 체크박스
+		  const selectAll 
+		    = document.querySelector('input[name="wishcheckboxAll"]');
+		  
+		  if(checkboxes.length === checked.length)  {
+		    selectAll.checked = true;
+		  }else {
+		    selectAll.checked = false;
+		  }
 
+		}
 	
-	
-	
-	//전체 선택/취소
+ 	//전체 선택/취소
 	function selectAll(selectAll)  {
 	  const checkboxes 
 	       = document.getElementsByName('wishcheckbox');
@@ -150,6 +233,7 @@
 	  checkboxes.forEach((checkbox) => {
 	    checkbox.checked = selectAll.checked;
 	  })
+	 
 	}
 	
 	/* //폐기된 ajax

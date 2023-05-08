@@ -50,7 +50,7 @@
 
 	<!-- Nav Item - 회원정보수정 -->
 	<li class="nav-item"><a class="nav-link"
-		href="myPageUserInfoChange.do"> <i class="fas fa-fw fa-wrench"></i>
+		href="myPageUserInfoPw.do"> <i class="fas fa-fw fa-wrench"></i>
 			<span>회원정보수정</span></a></li>
 
 	<!-- Nav Item - Q&A -->

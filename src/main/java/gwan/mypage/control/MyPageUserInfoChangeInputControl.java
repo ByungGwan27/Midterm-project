@@ -8,13 +8,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.common.control.Control;
 
-public class MyPageUserInfoChangeControl implements Control {
+public class MyPageUserInfoChangeInputControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String email = req.getParameter("email");
+		String phone = req.getParameter("phone");
+		String nickname = req.getParameter("nickname");
+		String thema = req.getParameter("thema");
+		String pw = req.getParameter("pw");
 		
 		
-		return "mypage/myPageUserInfoChange.tiles";
+		
+		
+		return "logout.do";
 	}
 
 }

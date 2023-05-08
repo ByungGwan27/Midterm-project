@@ -18,6 +18,17 @@ public class MyPageWishAjaxDeleteControl implements Control {
 		MyPageService service = new MyPageServiceImpl();
 		String json = "";
 		
+		String[] ss = req.getParameterValues("id");
+		if(ss != null) {
+			
+			for (int i = 0; i < ss.length; i++) {
+				service.deleteWishList(Integer.parseInt(ss[i]));
+			}
+			
+			return "myPageWishList.do";
+			
+		}
+		
 		if (service.deleteWishList(Integer.parseInt(wlId))) {
 			json = "{\"retCode\":\"Success\"}";
 		} else {

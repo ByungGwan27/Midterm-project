@@ -55,11 +55,18 @@
 		ON (h.hotel_id = r.hotel_id)
 		JOIN wishlist w
 		ON (h.hotel_id = w.hotel_id)
+		WHERE member_id = #{memberId}
 	</select>
-
+	
+	<!-- 위시리스트 단건 삭제 -->
 	<delete id="deleteWishList" parameterType="int">
-		DELETE FROM wishlist WHERE wishlist_id = #{wishlistId};
+		DELETE FROM wishlist WHERE wishlist_id = #{wishlistId}
 	</delete>
-
+	
+	<!-- 위시리스트 전체 삭제 -->
+	<delete id="deleteWishListAll" parameterType="String">
+		DELETE FROM wishlist WHERE member_id= #{memberId}
+	</delete>
+	
 
 </mapper>

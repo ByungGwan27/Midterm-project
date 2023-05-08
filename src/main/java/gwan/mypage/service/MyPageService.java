@@ -13,4 +13,5 @@ public interface MyPageService {
 	public List<MyPageVO> visited(String memberId);
 	
 	public boolean deleteWishList(int wishlistId);
+	public boolean deleteWishListAll(String memberId);
 }

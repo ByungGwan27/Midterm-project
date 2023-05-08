@@ -37,6 +37,11 @@ public class MyPageServiceImpl implements MyPageService {
 	public boolean deleteWishList(int wishlistId) {
 		return mapper.deleteWishList(wishlistId) == 1;
 	}
+
+	@Override
+	public boolean deleteWishListAll(String memberId) {
+		return mapper.deleteWishListAll(memberId) == 1;
+	}
 	
 	
 }
