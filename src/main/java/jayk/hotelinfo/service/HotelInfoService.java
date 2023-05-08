@@ -12,4 +12,6 @@ public interface HotelInfoService {
 	public List<HotelInfoVO> similarList(int hotelId);
 	public List<HotelInfoVO> adminHotelList();
 	public HotelInfoVO getAdminHotel(int hotelId);
+	public boolean modifyAdminHotel(HotelInfoVO vo);
+	public boolean addAdminHotel(HotelInfoVO vo);
 }

@@ -47,4 +47,14 @@ public class HotelInfoServiceImpl implements HotelInfoService{
 		return mapper.selectAdminHotel(hotelId);
 	}
 
+	@Override
+	public boolean modifyAdminHotel(HotelInfoVO vo) {
+		return mapper.updateAdminHotel(vo) == 1;
+	}
+
+	@Override
+	public boolean addAdminHotel(HotelInfoVO vo) {
+		return mapper.insertAdminHotel(vo) == 1;
+	}
+
 }

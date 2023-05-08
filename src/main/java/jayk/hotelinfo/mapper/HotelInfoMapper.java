@@ -12,4 +12,6 @@ public interface HotelInfoMapper {
 	public List<HotelInfoVO> similarList(int hotelId);
 	public List<HotelInfoVO> adminHotelList();
 	public HotelInfoVO selectAdminHotel(int hotelId);
+	public int updateAdminHotel(HotelInfoVO vo);
+	public int insertAdminHotel(HotelInfoVO vo);
 }

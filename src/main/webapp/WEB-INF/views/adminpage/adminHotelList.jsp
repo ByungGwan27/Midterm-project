@@ -55,7 +55,7 @@
 			<tr>
 				<td></td>
 				<td></td>
-				<td><a href="adminHotelInfoModifyPage.do?hotelId=${adminHotelList.hotelId}"><button>수정</button></a></td>
+				<td><a href="adminHotelInfoPage.do?hotelId=${adminHotelList.hotelId}"><button>확인</button></a></td>
 			</tr>
 		</table>
 		<hr>
@@ -64,7 +64,7 @@
 
 <!-- 리스트끝 -->
 <div style="justify-content: center; margin: 10px;">
-	<button>추가</button>
+	<a href="adminAddHotelForm.do"><button>추가</button></a>
 </div>
 
 <!-- 페이징 20*10 -->
