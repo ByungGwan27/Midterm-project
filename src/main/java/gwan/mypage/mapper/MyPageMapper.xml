@@ -68,5 +68,17 @@
 		DELETE FROM wishlist WHERE member_id= #{memberId}
 	</delete>
 	
-
+	<!-- 회원정보수정 -->
+	<update id="updateMemberInfo" parameterType="mp">
+		UPDATE member
+		<set>
+			<if test="memberProfile != null and memberProfile != ''">member_profile = #{memberProfile},</if>
+	        <if test="memberEmail != null and memberEmail != ''">member_email = #{memberEmail},</if>
+	        <if test="memberPhone != null and memberPhone != ''">member_phone = #{memberPhone},</if>
+	        <if test="memberNickname != null and memberNickname != ''">member_nickname = #{memberNickname},</if>
+	        <if test="memberThema != null and memberThema != ''">member_thema = #{memberThema},</if>
+	        <if test="memberPw != null and memberPw != ''">member_pw = #{memberPw}</if>
+		</set>
+		WHERE member_id=#{memberId}
+	</update>
 </mapper>

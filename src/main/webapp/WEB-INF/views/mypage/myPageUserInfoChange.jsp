@@ -18,14 +18,11 @@
 
 
 
-	<form action="modifyNotice.do" method="post">
+	<form action="myPageUserInfoChangeInput.do" method="post" enctype="multipart/form-data">
 		<table class="table">
 			<tr>
 				<th>프로필사진</th>
-				<td><c:if
-						test="${noticeInfo.attachFile != null && noticeInfo.attachFile != ''}">
-						<img width="200px" src="images/${noticeInfo.attachFile }">
-					</c:if></td>
+				<td><input type="file" name="attach"></td>
 			</tr>
 			<tr>
 				<th>이메일</th>

@@ -16,5 +16,8 @@ public interface MyPageMapper {
 	public int deleteWishList(int wishlistId);
 	public int deleteWishListAll(String memberId);
 	
+	//회원정보수정
+	public int updateMemberInfo(MyPageVO vo);
+	
 	
 }

@@ -18,6 +18,7 @@ public class MyPageWishAjaxDeleteControl implements Control {
 		MyPageService service = new MyPageServiceImpl();
 		String json = "";
 		
+		//선택삭제용
 		String[] ss = req.getParameterValues("id");
 		if(ss != null) {
 			

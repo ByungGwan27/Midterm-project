@@ -14,4 +14,7 @@ public interface MyPageService {
 	
 	public boolean deleteWishList(int wishlistId);
 	public boolean deleteWishListAll(String memberId);
+	
+	//회원정보수정
+	public boolean updateMemberInfo(MyPageVO vo);
 }

@@ -29,4 +29,13 @@ public class MyPageVO {
 	
 	private int wishlistId;
 	
+	//회원정보수정
+	private String memberEmail;
+	private String memberPhone;
+	private String memberNickname;
+	private String memberThema;
+	private String memberPw;
+	private String memberProfile;
+	
+	
 }
