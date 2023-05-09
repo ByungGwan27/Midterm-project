@@ -7,7 +7,7 @@
 	<!-- 공지사항 관련 -->
 	<select id="noticeList" resultType="notice">
 		select * from notice
-		order by 1 desc
+		order by 1
 	</select>
 	<select id="noticeWithPage" resultType="notice">
 		<![CDATA[
@@ -25,7 +25,7 @@
 		(notice_id, member_id, notice_title,
 		notice_content, write_date, notice_views)
 		values(notice_seq.nextval, #{memberId}, #{noticeTitle},
-		#{noticeContent}, sysdate, #{noticeViews})
+		#{noticeContent}, sysDate, #{noticeViews})
 	</insert>
 	
 	<update id="updateNotice" parameterType="notice">

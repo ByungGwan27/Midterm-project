@@ -6,7 +6,7 @@ import jayk.hotelinfo.domain.HotelInfoVO;
 
 public interface HotelInfoService {
 	public List<HotelInfoVO> hotelList();
-	public HotelInfoVO getHotelInfo(int hotelId);
+	public HotelInfoVO getHotelInfo(int hotelId, String hotelLocation1);
 	public List<HotelInfoVO> roomList(int hotelId);
 	public List<HotelInfoVO> reviewList(int hotelId);
 	public List<HotelInfoVO> similarList(int hotelId);
@@ -14,4 +14,5 @@ public interface HotelInfoService {
 	public HotelInfoVO getAdminHotel(int hotelId);
 	public boolean modifyAdminHotel(HotelInfoVO vo);
 	public boolean addAdminHotel(HotelInfoVO vo);
+	public List<HotelInfoVO> similarList(int hotelId, String hotelLocation1);
 }
