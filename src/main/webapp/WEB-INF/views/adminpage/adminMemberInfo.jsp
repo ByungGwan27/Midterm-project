@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <main id="main" class="main">
 
 	<div class="pagetitle">
@@ -24,7 +25,6 @@
 						<img src="assets/img/profile-img.jpg" alt="Profile"
 							class="rounded-circle">
 						<h2>${memberInfo.memberName}</h2>
-						<h3>${memberInfo.memberStatus}</h3>
 						<!-- <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -151,13 +151,13 @@
                         <textarea name="about" class="form-control" id="about" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
                       </div>
                     </div> -->
-								<div class="row mb-3">
+									<div class="row mb-3">
 										<label for="company" class="col-md-4 col-lg-3 col-form-label">회원이름</label>
 										<div class="col-md-8 col-lg-9">
 											<input name="memberName" type="text" class="form-control"
 												id="memberName" value="${memberInfo.memberName}">
 										</div>
-									</div> 
+									</div>
 
 
 									<div class="row mb-3">
@@ -179,8 +179,16 @@
 									<div class="row mb-3">
 										<label for="Country" class="col-md-4 col-lg-3 col-form-label">활동상태</label>
 										<div class="col-md-8 col-lg-9">
-											<input name="memberStatus" type="text" class="form-control"
-												id="memberStatus " value="${memberInfo.memberStatus}">
+											<select name="memberStatus" type="text" class="form-control"
+												id="memberStatus ">
+												<option value="${memberInfo.memberStatus}" selected>${memberInfo.memberStatus}</option>
+												<c:if test="${memberInfo.memberStatus == '탈퇴회원'}" >
+												<option value="활동중">활동중</option>
+												</c:if>
+												<c:if test="${memberInfo.memberStatus == '활동중'}">
+												<option value="탈퇴회원">탈퇴회원</option>
+												</c:if>
+											</select>
 										</div>
 									</div>
 
@@ -247,8 +255,9 @@
 
 									<div class="text-center">
 										<button type="submit" class="btn btn-primary">회원 수정</button>
-										<button type="button" class="btn btn-primary" id="delbtn" onclick="location.href='adminDelMember.do?id=${memberInfo.memberId}'">회원
-											탈퇴</button>
+										<%-- <button type="button" class="btn btn-primary" id="delbtn"
+											onclick="location.href='adminDelMember.do?id=${memberInfo.memberId}'">회원
+											탈퇴</button> --%>
 									</div>
 								</form>
 								<!-- End Profile Edit Form -->

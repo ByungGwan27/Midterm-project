@@ -1,23 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+int i = 1;
+int j = 1;
+%>
+<main id="main" class="main">
 
-  <main id="main" class="main">
+	<div class="pagetitle">
+		<h1>QnA</h1>
+		<nav>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="adminPage.do">관리자 페이지</a></li>
+				<li class="breadcrumb-item active">QnA</li>
+			</ol>
+		</nav>
+	</div>
+	<!-- End Page Title -->
 
-    <div class="pagetitle">
-      <h1>QnA</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="adminPage.do">관리자 페이지</a></li>
-          <li class="breadcrumb-item active">QnA</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
+	<section class="section faq">
+		<div class="row">
+			<div class="col-lg-6">
 
-    <section class="section faq">
-      <div class="row">
-        <div class="col-lg-6">
-
-          <!-- <div class="card basic">
+				<!-- <div class="card basic">
             <div class="card-body">
               <h5 class="card-title">답변 미완료</h5>
 
@@ -39,72 +44,169 @@
             </div>
           </div> -->
 
-          <!-- F.A.Q Group 1 -->
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">미답변 </h5>
+				<!-- F.A.Q Group 1 -->
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">미답변</h5>
 
-              <div class="accordion accordion-flush" id="faq-group-1">
+						<c:forEach var="NAQ" items="${NAQ}">
+							<div class="accordion accordion-flush" id="faq-group-1">
 
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsOne-1" type="button" data-bs-toggle="collapse">
-                      환불가능한가요?
-                    </button>
-                  </h2>
-                  <div id="faqsOne-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
-                    <div class="accordion-body">
-                     예약을 취소했는데 환불이 가능한가요?
-                     <hr>
-                     <textarea placeholder="답변" cols="50"></textarea>
-                     <input type="submit" value="입력">
-                    </div>
-                  </div>
-                </div>
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<button class="accordion-button collapsed"
+											data-bs-target="#faqsOne-<%=j%>" type="button"
+											data-bs-toggle="collapse">${NAQ.qnaTitle}</button>
+									</h2>
+									<div id="faqsOne-<%=j%>" class="accordion-collapse collapse"
+										data-bs-parent="#faq-group-1">
+										<div class="accordion-body">
+											${NAQ.qnaContent} <br>
+											<p style="font-size: small;">작성자 : ${NAQ.memberId}</p>
+											<hr>
+											<form action="adminQnaAnswer.do">
 
-                
+												<div class="row mb-3">
+													<label for="inputPassword" class="col-sm-2 col-form-label">답변</label>
+													<div class="col-sm-10">
+														<textarea class="form-control" style="height: 100px"
+															name="content"></textarea>
+													</div>
+													<div class="row mb-3" style="display: none;">
+														<label for="inputText" class="col-sm-2 col-form-label">작성자</label>
+														<div class="col-sm-10">
+															<input type="text" class="form-control"
+																value="${NAQ.qnaId}" readonly name="id">
+														</div>
+													</div>
+													<div class="row mb-3">
 
-              </div>
+														<div class="col-sm-10">
+															<button type="submit" class="btn btn-primary">입력</button>
+														</div>
+													</div>
+												</div>
 
-            </div>
-          </div><!-- End F.A.Q Group 1 -->
+											</form>
+											<!-- End General Form Elements -->
+										</div>
+									</div>
 
-        </div>
+								</div>
 
-        <div class="col-lg-6">
 
-          <!-- F.A.Q Group 2 -->
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">답변 완료</h5>
 
-              <div class="accordion accordion-flush" id="faq-group-2">
+							</div>
+							<%
+							j++;
+							%>
+						</c:forEach>
+						<!--  -->
 
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse">
-                      숙소 등록은 어떻게 하나요?
-                    </button>
-                  </h2>
-                  <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
-                    <div class="accordion-body">
-                      숙소등록은 어떻게 하면 되나요?
-                    </div>
-                    <hr>
-                    <div class="accordion-body">
-                      숙소등록란에서 숙소등록이 가능합니다
-                    </div>
-                  </div>
-                </div>
+					</div>
+				</div>
+				<!-- End F.A.Q Group 1 -->
 
-                
-              </div>
+				<nav aria-label="Page navigation example">
+					<ul class="pagination">
+						<c:if test="${pageInfo1.prev}">
+							<li class="page-item"><a class="page-link"
+								href="adminQna.do?page1=${pageInfo1.startPage-1}"
+								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+							</a></li>
+						</c:if>
+						<c:forEach var="i" begin="${pageInfo1.startPage }"
+							end="${pageInfo1.endPage }">
+							<li class="page-item"><a class="page-link"
+								href="adminQna.do?page1=${i }">${i}</a></li>
+						</c:forEach>
+						<c:if test="${pageInfo1.next}">
+							<li class="page-item"><a class="page-link"
+								href="adminQna.do?page1=${pageInfo1.endPage+1}"
+								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+						</c:if>
+						</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="col-lg-6">
 
-            </div>
-          </div><!-- End F.A.Q Group 2 -->
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">답변 완료</h5>
 
-          <!-- F.A.Q Group 3 -->
-          <!-- <div class="card">
+
+						<div class="accordion accordion-flush" id="faq-group-2">
+
+							<!-- F.A.Q Group 2 -->
+							<div class="accordion-item">
+								<c:forEach var="CAQ" items="${CAQ}">
+									<h2 class="accordion-header">
+										<button class="accordion-button collapsed"
+											data-bs-target="#faqsTwo-<%=i%>" type="button"
+											data-bs-toggle="collapse">${CAQ.qnaTitle}</button>
+									</h2>
+									<div id="faqsTwo-<%=i%>" class="accordion-collapse collapse"
+										data-bs-parent="#faq-group-2">
+										<div class="accordion-body">${CAQ.qnaContent}</div>
+										<p style="font-size: small;">작성자 : ${CAQ.memberId}</p>
+										<hr>
+										<form action="adminQnaAnswer.do">
+											<textarea class="form-control" style="height: 100px"
+												name="content">${CAQ.answerContent}</textarea>
+
+											<hr>
+											<div class="col-sm-10">
+												<button type="submit" class="btn btn-primary">답변수정</button>
+											</div>
+											<div class="row mb-3" style="display: none;">
+												<label for="inputText" class="col-sm-2 col-form-label">작성자</label>
+												<div class="col-sm-10">
+													<input type="text" class="form-control"
+														value="${CAQ.qnaId}" readonly name="id">
+												</div>
+											</div>
+										</form>
+									</div>
+									<%
+									i++;
+									%>
+								</c:forEach>
+							</div>
+
+
+						</div>
+						<!--  -->
+
+					</div>
+				</div>
+				<nav aria-label="Page navigation example">
+					<ul class="pagination">
+						<c:if test="${pageInfo2.prev}">
+							<li class="page-item"><a class="page-link"
+								href="adminQna.do?page2=${pageInfo2.startPage-1}"
+								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+							</a></li>
+						</c:if>
+						<c:forEach var="i" begin="${pageInfo2.startPage }"
+							end="${pageInfo2.endPage }">
+							<li class="page-item"><a class="page-link"
+								href="adminQna.do?page2=${i }">${i}</a></li>
+						</c:forEach>
+						<c:if test="${pageInfo2.next}">
+						<li class="page-item"><a class="page-link"
+							href="adminQna.do?page2=${pageInfo2.endPage+1}" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+						</a></li>
+						</c:if>
+					</ul>
+				</nav>
+
+				<!-- End F.A.Q Group 2 -->
+
+				<!-- F.A.Q Group 3 -->
+				<!-- <div class="card">
             <div class="card-body">
               <h5 class="card-title">Dolore occaecati ducimus quam</h5>
 
@@ -178,13 +280,14 @@
               </div>
 
             </div>
-          </div> --><!-- End F.A.Q Group 3 -->
+          </div> -->
+				<!-- End F.A.Q Group 3 -->
 
-        </div>
+			</div>
 
-      </div>
-    </section>
+		</div>
+	</section>
 
-  </main><!-- End #main -->
+</main>
+<!-- End #main -->
 
- 
