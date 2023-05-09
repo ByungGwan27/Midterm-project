@@ -26,13 +26,8 @@ public class adminQnaAnswerControl implements Control {
 		AdminService service = new AdminServiceImpl();
 		int result = service.qnaAnswer(vo);
 		
-		List<QnaVO> nonVO = service.qnaNoneAns();
-		List<QnaVO> ComVO = service.qnaComAns();
 		
-		req.setAttribute("NAQ", nonVO);
-		req.setAttribute("CAQ", ComVO);
-		
-		return "adminpage/adminQnaPage.tiles";
+		return "adminQna.do";
 	}
 
 }

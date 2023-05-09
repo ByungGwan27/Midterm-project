@@ -91,7 +91,7 @@ int j = 1;
 											<!-- End General Form Elements -->
 										</div>
 									</div>
-									
+
 								</div>
 
 
@@ -107,22 +107,28 @@ int j = 1;
 				</div>
 				<!-- End F.A.Q Group 1 -->
 
-			<nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                 
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
+				<nav aria-label="Page navigation example">
+					<ul class="pagination">
+						<c:if test="${pageInfo1.prev}">
+							<li class="page-item"><a class="page-link"
+								href="adminQna.do?page1=${pageInfo1.startPage-1}"
+								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+							</a></li>
+						</c:if>
+						<c:forEach var="i" begin="${pageInfo1.startPage }"
+							end="${pageInfo1.endPage }">
+							<li class="page-item"><a class="page-link"
+								href="adminQna.do?page1=${i }">${i}</a></li>
+						</c:forEach>
+						<c:if test="${pageInfo1.next}">
+							<li class="page-item"><a class="page-link"
+								href="adminQna.do?page1=${pageInfo1.endPage+1}"
+								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+						</c:if>
+						</a>
+						</li>
+					</ul>
+				</nav>
 			</div>
 			<div class="col-lg-6">
 
@@ -160,7 +166,7 @@ int j = 1;
 													<input type="text" class="form-control"
 														value="${CAQ.qnaId}" readonly name="id">
 												</div>
-												</div>
+											</div>
 										</form>
 									</div>
 									<%
@@ -176,21 +182,27 @@ int j = 1;
 					</div>
 				</div>
 				<nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                 
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
+					<ul class="pagination">
+						<c:if test="${pageInfo2.prev}">
+							<li class="page-item"><a class="page-link"
+								href="adminQna.do?page2=${pageInfo2.startPage-1}"
+								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+							</a></li>
+						</c:if>
+						<c:forEach var="i" begin="${pageInfo2.startPage }"
+							end="${pageInfo2.endPage }">
+							<li class="page-item"><a class="page-link"
+								href="adminQna.do?page2=${i }">${i}</a></li>
+						</c:forEach>
+						<c:if test="${pageInfo2.next}">
+						<li class="page-item"><a class="page-link"
+							href="adminQna.do?page2=${pageInfo2.endPage+1}" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+						</a></li>
+						</c:if>
+					</ul>
+				</nav>
+
 				<!-- End F.A.Q Group 2 -->
 
 				<!-- F.A.Q Group 3 -->

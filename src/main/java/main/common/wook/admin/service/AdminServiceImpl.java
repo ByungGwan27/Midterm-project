@@ -109,18 +109,28 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<QnaVO> qnaNoneAns() {
-		return mapper.qnaNoneAns();
+	public List<QnaVO> qnaNoneAns(int page) {
+		return mapper.qnaNoneAns(page);
 	}
 
 	@Override
-	public List<QnaVO> qnaComAns() {
-		return mapper.qnaComAns();
+	public List<QnaVO> qnaComAns(int page) {
+		return mapper.qnaComAns(page);
 	}
 
 	@Override
 	public int qnaAnswer(QnaVO qna) {
 		return mapper.qnaAnswer(qna);
+	}
+
+	@Override
+	public int getQnaCount1() {
+		return mapper.getQnaCount1();
+	}
+
+	@Override
+	public int getQnaCount2() {
+		return mapper.getQnaCount2();
 	}
 
 	

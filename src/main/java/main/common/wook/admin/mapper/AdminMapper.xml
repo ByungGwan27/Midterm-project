@@ -5,133 +5,168 @@
 <mapper namespace="main.common.wook.admin.mapper.AdminMapper"> <!-- mapper = 인터페이스 파일 부분 -->
 	<!-- 결제 건수 조회 -->
 	<select id="payCount" resultType="admin">
-		select count(*) as payCount from pay where pay_status = '결제완료'
+		select count(*) as payCount
+		from pay where pay_status = '결제완료'
 	</select>
-	
+
 	<!-- 결제 총 금액 조회 -->
 	<select id="totalPay" resultType="admin">
-	select sum(room_price) as totalPay from pay where pay_status = '결제완료'
+		select sum(room_price) as totalPay from pay where pay_status = '결제완료'
 	</select>
-	
-	<!-- 일 결제 건수 조회 -->	
+
+	<!-- 일 결제 건수 조회 -->
 	<select id="monthPayCount" resultType="admin">
-	select count(*) as monthPayCount from pay where pay_status = '결제완료' and substr(pay_date, 1, 8) = substr(sysdate, 1, 8)
+		select count(*) as monthPayCount from pay where pay_status = '결제완료' and
+		substr(pay_date, 1, 8) = substr(sysdate, 1, 8)
 	</select>
-	
+
 	<!-- 월별 결제 금액 조회 -->
 	<select id="monthTotalPay" resultType="admin">
-	select sum(room_price) as totalPay from pay where pay_status = '결제완료' and substr(pay_date, 1, 5) = substr(sysdate, 1, 5)
+		select sum(room_price) as totalPay from pay where pay_status = '결제완료' and
+		substr(pay_date, 1, 5) = substr(sysdate, 1, 5)
 	</select>
-	
+
 	<!-- 전체 회원 정보 조회 -->
 	<select id="allMemberInfo" resultType="member">
-	select * from member
+		select * from member
 	</select>
-	
+
 	<!-- 단일 회원 정보 조회 -->
-	<select id="memberInfo" resultType="member" parameterType="member">
-	select * from member where member_id=#{memberId}
+	<select id="memberInfo" resultType="member"
+		parameterType="member">
+		select * from member where member_id=#{memberId}
 	</select>
-	
+
 	<!-- 회원 정보 수정 -->
 	<update id="modifyMemberInfo" parameterType="member">
-	update member
-	set
-	member_pw=#{memberPw},
-	member_name=#{memberName},
-	member_birth=#{memberBirth},
-	member_email=#{memberEmail},
-	member_phone=#{memberPhone},
-	member_status=#{memberStatus},
-	member_nickname=#{memberNickname},
-	member_profile=#{memberProfile},
-	member_point=#{memberPoint},
-	member_thema=#{memberThema},
-	member_joindate=#{memberJoindate},
-	member_grade=#{memberGrade}
-	Where member_id=#{memberId}
+		update member
+		set
+		member_pw=#{memberPw},
+		member_name=#{memberName},
+		member_birth=#{memberBirth},
+		member_email=#{memberEmail},
+		member_phone=#{memberPhone},
+		member_status=#{memberStatus},
+		member_nickname=#{memberNickname},
+		member_profile=#{memberProfile},
+		member_point=#{memberPoint},
+		member_thema=#{memberThema},
+		member_joindate=#{memberJoindate},
+		member_grade=#{memberGrade}
+		Where member_id=#{memberId}
 	</update>
-	
+
 	<!-- 탈퇴 회원 업데이트 -->
 	<update id="adminDelMember" parameterType="String">
-	update member 
-	set member_status='탈퇴회원'
-	where member_id=#{memberId}
+		update member
+		set member_status='탈퇴회원'
+		where member_id=#{memberId}
 	</update>
-	
+
 	<!-- 신고내역확인 -->
 	<select id="adminDecList" resultType="dec">
 		select * from declaration
 	</select>
-	
-	<!-- 신고 상세 내역 조회-->
+
+	<!-- 신고 상세 내역 조회 -->
 	<select id="decInfo" resultType="dec" parameterType="int">
-		select * from declaration where dec_id=#{decId}
+		select *
+		from declaration where dec_id=#{decId}
 	</select>
-	
+
 	<!-- 신고반려 -->
 	<update id="decCancle" parameterType="int">
 		update declaration
-		set dec_status='신고반려'
+		set
+		dec_status='신고반려'
 		where dec_id=${decId}
 	</update>
-	
+
 	<!-- 신고처리 -->
 	<update id="decAccept" parameterType="int">
 		update declaration
-		set dec_status='신고처리'
+		set
+		dec_status='신고처리'
 		where dec_id=${decId}
 	</update>
-	
+
 	<!-- 예약 리스트 -->
 	<select id="adminResList" resultType="reservation">
-	select * 
-	from reservation join
-	(select room_id, room_name,hotel_id, hotel_name from room_info join (
-	select hotel_id, hotel_name from hotel)
-	using (hotel_id))
-	using(room_id)
+		select *
+		from reservation join
+		(select room_id, room_name,hotel_id, hotel_name from room_info join (
+		select hotel_id, hotel_name from hotel)
+		using (hotel_id))
+		using(room_id)
 	</select>
-	
+
 	<!-- 단일 예약 조회 -->
-	<select id="adminResInfo" resultType="reservation" parameterType="int">
-	select * 
-	from reservation join
-	(select room_id, room_name, hotel_id, hotel_name from room_info join (
-	select hotel_id, hotel_name from hotel)
-	using (hotel_id))
-	using(room_id)
-	where reservation_id=${resId}
+	<select id="adminResInfo" resultType="reservation"
+		parameterType="int">
+		select *
+		from reservation join
+		(select room_id, room_name, hotel_id, hotel_name from room_info join (
+		select hotel_id, hotel_name from hotel)
+		using (hotel_id))
+		using(room_id)
+		where reservation_id=${resId}
 	</select>
-	
+
 	<!-- 예약 수락 -->
 	<update id="resAccept" parameterType="int">
 		update reservation
-		set res_status='예약수락'
+		set
+		res_status='예약수락'
 		where reservation_id=${resId}
 	</update>
-	
+
 	<!-- 예약 거절 -->
 	<update id="resCancle" parameterType="int">
 		update reservation
-		set res_status='예약거절'
+		set
+		res_status='예약거절'
 		where reservation_id=${resId}
 	</update>
-	
+
 	<!-- qna 미답변 조회 -->
-	<select id="qnaNoneAns" resultType="qna">
-	select * from qna where answer_check='미답변'
+	<select id="qnaNoneAns" resultType="qna" parameterType="int">
+		<!-- select * from qna where answer_check='미답변' -->
+	<![CDATA[
+		SELECT b.*
+		FROM (SELECT rownum rn , a.*
+		FROM (SELECT * FROM qna where answer_check = '미답변' order by 1 desc) a
+		WHERE rownum <= #{page} * 10) b
+		WHERE b.rn > (#{page}-1) * 10
+		]]>
 	</select>
-	
+
+
+
 	<!-- qna 답변완료 조회 -->
-	<select id="qnaComAns" resultType="qna">
-	select * from qna where answer_check='답변완료'
+	<select id="qnaComAns" resultType="qna" parameterType="int">
+		<!-- select * from qna where answer_check='답변완료' -->
+		<![CDATA[
+		SELECT b.*
+		FROM (SELECT rownum rn , a.*
+		FROM (SELECT * FROM qna where answer_check = '답변완료' order by 1 desc) a
+		WHERE rownum <= #{page} * 10) b
+		WHERE b.rn > (#{page}-1) * 10
+		]]>
+	</select>
+
+	<!-- qna 답변 작성 -->
+	<update id="qnaAnswer" parameterType="qna">
+		update qna
+		set answer_content=#{answerContent}, answer_check='답변완료',
+		answer_date=sysdate
+		where qna_id=#{qnaId}
+	</update>
+	
+	<select id="getQnaCount1" resultType="int">
+		select count(*) from qna where answer_check = '미답변'
 	</select>
 	
-	<!-- qna 답변 작성 -->
-	<update id="qnaAnswer" parameterType="qna" >
-	update qna
-	set answer_content=#{answerContent}, answer_check='답변완료', answer_date=sysdate
-	where qna_id=#{qnaId}
-	</update>
+	<select id="getQnaCount2" resultType="int">
+		select count(*) from qna where answer_check = '답변완료'
+	</select>
 </mapper>

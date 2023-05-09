@@ -25,8 +25,10 @@ public interface AdminMapper {
 	public ReservationVO adminResInfo(int resId);
 	public int resAccept(int resId);
 	public int resCancle(int resId);
-	public List<QnaVO> qnaNoneAns();
-	public List<QnaVO> qnaComAns();
+	public List<QnaVO> qnaNoneAns(int page);
+	public List<QnaVO> qnaComAns(int page);
 	public int qnaAnswer(QnaVO qna);
+	public int getQnaCount1();
+	public int getQnaCount2();
 }
 
