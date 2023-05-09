@@ -23,6 +23,7 @@ public class MyPageUserInfoChangeInputControl implements Control {
 		//사진 업로드
 		String saveDir = req.getServletContext().getRealPath("images");
 		
+		System.out.println("저장위치" + saveDir);
 		int maxSize = 5 * 1024 * 1024;
 		String encoding = "UTF-8";
 		DefaultFileRenamePolicy rn = new DefaultFileRenamePolicy();

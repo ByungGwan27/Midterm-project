@@ -27,7 +27,7 @@ public class loginControl implements Control {
 		
 		LoginPageService service = new LoginPageServiceImpl();
 		vo = service.loginCheck(vo);
-		System.out.println(vo);
+		System.out.println("유저 정보 : " + vo);
 		if(vo != null) {
 			
 			session.setAttribute("id", vo.getMemberId());
