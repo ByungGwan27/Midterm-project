@@ -17,7 +17,6 @@ import gwan.loginpage.control.ForgotPasswordPageControl;
 import gwan.loginpage.control.loginControl;
 import gwan.loginpage.control.loginPageControl;
 import gwan.loginpage.control.logoutControl;
-import gwan.mypage.ajax.control.MyPageWishAjaxAllDeleteControl;
 import gwan.mypage.ajax.control.MyPageWishAjaxControl;
 import gwan.mypage.ajax.control.MyPageWishAjaxDeleteControl;
 import gwan.mypage.control.MyPageCouponControl;
@@ -153,18 +152,16 @@ public class FrontController extends HttpServlet{
 		
 		// 강병관
 		//마이페이지
-		//마이페이지 홈(예약내역)
+		//마이페이지 홈(예약내역 이동)
 		map.put("/myPageHome.do", new MypageHomeControl());
-		//마이페이지 -2
+		//마이페이지 - Json 처리
 		map.put("/myPageHomeWillVisit.do", new MyPageHomeWillVisitControl());
 		
 		//마이페이지(위시리스트)
 		map.put("/myPageWishList.do", new MyPageWishListControl());
 		map.put("/myPageWishListAjax.do", new MyPageWishAjaxControl());
-		//마이페이지(위시리스트) - 단건 삭제
+		//마이페이지(위시리스트) - 삭제(button, checkbox)
 		map.put("/myPageWishListAjaxDelete.do", new MyPageWishAjaxDeleteControl());
-		//마이페이지(위시리스트) - 선택 삭제
-		map.put("/myPageWishListAjaxAllDelete.do", new MyPageWishAjaxAllDeleteControl());
 		
 		//마이페이지(쿠폰)
 		map.put("/myPageCoupon.do", new MyPageCouponControl());

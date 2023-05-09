@@ -14,11 +14,8 @@ public class MyPageWishAjaxDeleteControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String wlId = req.getParameter("wlId");
 		MyPageService service = new MyPageServiceImpl();
-		String json = "";
-		
-		//선택삭제용
+		//선택삭제용(선택된 길이 만큼 반복문)
 		String[] ss = req.getParameterValues("id");
 		if(ss != null) {
 			
@@ -29,6 +26,10 @@ public class MyPageWishAjaxDeleteControl implements Control {
 			return "myPageWishList.do";
 			
 		}
+		
+		// 삭제 버튼 누를시 삭제
+		String wlId = req.getParameter("wlId");
+		String json = "";
 		
 		if (service.deleteWishList(Integer.parseInt(wlId))) {
 			json = "{\"retCode\":\"Success\"}";

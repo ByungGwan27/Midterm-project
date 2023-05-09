@@ -7,7 +7,7 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">위시리스트</h1>
 <p class="mb-4">
-	${nickname }님의 위시리스트입니다!
+	${nickname }님의 위시리스트${pageInfo }입니다!
 </p>
 
 <!-- 본문  -->
@@ -28,13 +28,34 @@
 			</button>
 		</div>
 	</div>
+	<div>
 		<!-- 본문 -->
+	</div>
+</div>
+<hr>
+<!-- 버튼 -->
+<div class="center">
+	<div class="pagination">
+		<c:if test="${pageInfo.prev }">
+			<a href="myPageWishList.do?page=${pageInfo.startPage-1 }">Previous</a>
+		</c:if>
+		<c:forEach var="i" begin="${pageInfo.startPage }"
+			end="${pageInfo.endPage }">
+			<a class="${i == pageInfo.pageNum ? 'active' : '' }"
+				href="myPageWishList.do?page=${i }">${i }</a>
+		</c:forEach>
+		<c:if test="${pageInfo.next }">
+			<a href="myPageWishList.do?page=${pageInfo.endPage+1 }">Next</a>
+		</c:if>
+	</div>
 </div>
 
+
 <script>
+
 	let showWish = ['hotelName', 'hotelLocation1', 'hotelLocation2', 'HotelThema', 'WishlistId', 'RoomPrice'];
 	let xhtp = new XMLHttpRequest();
-	xhtp.open('get', 'myPageWishListAjax.do');
+	xhtp.open('get', 'myPageWishListAjax.do?page=${pageInfo.pageNum }');
 	xhtp.send();
 	
 	xhtp.onload = function () {
@@ -45,6 +66,8 @@
 		//console.log(wdata);
 		//console.log(document.getElementsByClassName("chooseDelete"));
 		
+		
+		// 목록생성
 		for(let i = 0; i < wdata.length; i++) {
 		  let div = wmakeRow({
 		    hotelName: wdata[i][showWish[0]],
@@ -74,9 +97,9 @@
 		//선택삭제 만들기
 		let cDel = document.getElementById("chooseDelete");
 		console.log(cDel);
-		console.log(cDel.parentElement.parentElement.parentElement.children[2].children[0].children[0]);
+		//console.log(cDel.parentElement.parentElement.parentElement.children[2].children[0].children[0]);
 		//삭제하고 싶은 위치 value
-		console.log(cDel.parentElement.parentElement.parentElement.children[2]);
+		//console.log(cDel.parentElement.parentElement.parentElement.children[2]);
 		//let cDelL = cDel.parentElement.parentElement.parentElement.children[i];
 		//let mcDel = cDel.parentElement.parentElement.parentElement.children[2].children[0].children[0];
 
@@ -92,13 +115,9 @@
 			}
 			location.href="myPageWishListAjaxDelete.do?"+checkStr.substring(0, checkStr.length-1);
 		});
-
-		
-
-
+		console.log(checkBoxArr);
+		console.log(checkBoxes);
 	}
-		
-	
 		
 		
 	//목록만들기

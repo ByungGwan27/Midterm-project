@@ -40,22 +40,32 @@
 		    AND TO_CHAR(SYSDATE) <![CDATA[>]]> TO_CHAR(r.checkout_date)
 	</select>
 	
+	
+	<!-- 위시리스트  -->
 	<!-- 위시리스트 숙소 조회 -->
 	<select id="readWishList" resultType="mp">
-	 SELECT h.hotel_name, h.hotel_location1, h.hotel_location2, h.hotel_thema, r.room_price, w.wishlist_id
-		FROM hotel h JOIN (SELECT hotel_id, room_price
-						   FROM
-								(SELECT hotel_id, room_price,
-										ROW_NUMBER() OVER(PARTITION BY hotel_id ORDER BY hotel_id) as hp
-										FROM room_info)
-								 WHERE hp = 1
-								 AND hotel_id IN (SELECT hotel_id
-												  FROM wishlist
-												  WHERE member_id = #{memberId})) r
-		ON (h.hotel_id = r.hotel_id)
-		JOIN wishlist w
-		ON (h.hotel_id = w.hotel_id)
-		WHERE member_id = #{memberId}
+	
+		<![CDATA[
+		SELECT b.hotel_name, b.hotel_location1, b.hotel_location2, b.hotel_thema, b.room_price, b.wishlist_id
+		FROM (SELECT rownum rn, a.*
+			FROM (SELECT *
+		    	  FROM hotel h JOIN (SELECT hotel_id, room_price
+		                    		 FROM (SELECT hotel_id, room_price,
+		                            			  ROW_NUMBER() OVER(PARTITION BY hotel_id ORDER BY hotel_id) as hp
+		                        		   FROM room_info)
+		                    			   WHERE hp = 1
+		                        		   AND hotel_id IN (SELECT hotel_id
+		                                   					FROM wishlist
+		                                   					WHERE member_id = #{memberId})) r
+		    	  ON (h.hotel_id = r.hotel_id)
+		    	  JOIN wishlist w
+		    	  ON (h.hotel_id = w.hotel_id)
+		    	  WHERE member_id = #{memberId}
+		    	  ORDER BY 1 DESC) a
+			WHERE rownum <= #{page} * 10 ) b
+		WHERE b.rn > (#{page} - 1) * 10
+		]]>
+	
 	</select>
 	
 	<!-- 위시리스트 단건 삭제 -->
@@ -63,10 +73,12 @@
 		DELETE FROM wishlist WHERE wishlist_id = #{wishlistId}
 	</delete>
 	
-	<!-- 위시리스트 전체 삭제 -->
-	<delete id="deleteWishListAll" parameterType="String">
-		DELETE FROM wishlist WHERE member_id= #{memberId}
-	</delete>
+	<!-- 위시리스트 건수 조회 -->
+	<select id="readWishPageCount" resultType="int">
+		SELECT count(*) FROM wishlist WHERE member_id = #{memberId}
+	</select>
+	
+	
 	
 	<!-- 회원정보수정 -->
 	<update id="updateMemberInfo" parameterType="mp">
