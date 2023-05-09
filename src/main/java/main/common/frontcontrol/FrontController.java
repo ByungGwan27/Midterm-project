@@ -97,8 +97,8 @@ public class FrontController extends HttpServlet{
 		//관리자숙소리스트페이지 
 		map.put("/adminHotelList.do", new AdminHotelListControl());
 		//관리자숙소추가페이지 
-		map.put("/adminAddHotelPage.do", new AdminAddHotelControl());
 		map.put("/adminAddHotelForm.do", new AdminAddHotelFormControl());
+		map.put("/adminAddHotelPage.do", new AdminAddHotelControl());
 		//관리자숙소상세페이지
 		map.put("/adminHotelInfoPage.do", new AdminGetHotelControl());
 		//관리자숙소정보수정페이지

@@ -22,6 +22,9 @@ public class AdminGetHotelControl implements Control {
 			HotelInfoVO adminHotelInfo = service.getAdminHotel(Integer.parseInt(hotelId));
 			System.out.println(adminHotelInfo);
 			req.setAttribute("adminHotelInfo", adminHotelInfo);
+			
+			List<HotelInfoVO> adminRoomList = service.roomList(Integer.parseInt(hotelId));
+			req.setAttribute("adminRoomList", adminRoomList);
 
 			
 			return "adminpage/adminGetHotelInfo.tiles";

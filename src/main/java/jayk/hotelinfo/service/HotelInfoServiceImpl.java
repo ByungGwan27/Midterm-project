@@ -18,8 +18,8 @@ public class HotelInfoServiceImpl implements HotelInfoService{
 	}
 
 	@Override
-	public HotelInfoVO getHotelInfo(int hotelId) {
-		return mapper.selectHotel(hotelId);
+	public HotelInfoVO getHotelInfo(int hotelId, String hotelLocation1) {
+		return mapper.selectHotel(hotelId, hotelLocation1);
 	}
 
 	@Override
@@ -33,8 +33,8 @@ public class HotelInfoServiceImpl implements HotelInfoService{
 	}
 
 	@Override
-	public List<HotelInfoVO> similarList(int hotelId) {
-		return mapper.similarList(hotelId);
+	public List<HotelInfoVO> similarList(int hotelId, String hotelLocation1) {
+		return mapper.similarList(hotelId, hotelLocation1);
 	}
 
 	@Override
@@ -55,6 +55,12 @@ public class HotelInfoServiceImpl implements HotelInfoService{
 	@Override
 	public boolean addAdminHotel(HotelInfoVO vo) {
 		return mapper.insertAdminHotel(vo) == 1;
+	}
+
+	@Override
+	public List<HotelInfoVO> similarList(int hotelId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
