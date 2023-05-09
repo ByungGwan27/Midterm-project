@@ -1,23 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-        
-    <wb-module deploy-name="MyProject-0.0.1-SNAPSHOT">
-                
-        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
-                
+    <wb-module deploy-name="TravellerProject">
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-                
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-                
-<<<<<<< HEAD
-=======
-        <property name="context-root" value="MyProject"/>
->>>>>>> branch 'jayk' of https://github.com/ByungGwan27/Midterm-project.git
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <property name="context-root" value="TravellerProject"/>
         <property name="java-output-path" value="/TravellerProject/target/classes"/>
-<<<<<<< HEAD
-        <property name="context-root" value="/"/>
-=======
->>>>>>> branch 'jayk' of https://github.com/ByungGwan27/Midterm-project.git
-            
     </wb-module>
-    
 </project-modules>
