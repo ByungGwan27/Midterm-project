@@ -49,6 +49,7 @@ import main.common.wook.admin.control.adminReservationInfoControl;
 import main.common.wook.admin.control.adminReservationListControl;
 import main.common.wook.admin.control.allMemberListControl;
 import shin.admin.control.AdminPayListControl;
+import shin.notice.control.AddNoticeControl;
 import shin.notice.control.NoticeAddFormControl;
 import shin.notice.control.NoticeDetailControl;
 import shin.notice.control.NoticeListControl;
@@ -105,7 +106,8 @@ public class FrontController extends HttpServlet{
 		map.put("/postList.do", new PostListControl());
 		//여행 포스트 상세페이지
 		map.put("/postDetail.do", new PostDetailControl());
-		
+		//공지사항 추가 페이지
+		map.put("/AddNotice.do", new AddNoticeControl());
 		//공지사항 작성페이지
 		map.put("/noticeAddForm.do", new NoticeAddFormControl());
 		//공지사항 상세페이지
@@ -114,6 +116,7 @@ public class FrontController extends HttpServlet{
 		map.put("/noticeList.do", new NoticeListControl());
 		//관리자 결제정보창
 		map.put("/adminPayList.do", new AdminPayListControl());
+		
 		
 		
 		// 강병관
