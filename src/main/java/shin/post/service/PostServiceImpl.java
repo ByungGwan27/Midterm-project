@@ -28,26 +28,16 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public PostVO getPost(int postId) {
-		//mapper.updateCount(postId);
+		mapper.updateCount(postId);
 		return mapper.searchPost(postId);
 	}
 
 
-//	@Override
-//	public int totalCount() {
-//	
-//		return mapper.getCount();
-//	}
-//	
-
+	@Override
+	public int totalCount() {
 	
-
-
-
-
-
-
-	
+		return mapper.getCount();
+	}
 	
 	
 }

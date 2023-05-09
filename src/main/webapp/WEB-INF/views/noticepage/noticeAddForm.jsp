@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 <script>
@@ -59,8 +59,17 @@
 					class="bx bx-home"></i> <span>공지사항 홈</span></a></li>
 			<li><a href="noticeDetail.do" class="nav-link scrollto"><i
 					class="bx bx-server"></i> <span>공지사항 상세페이지</span></a></li>
-			<li><a href="noticeAddForm.do" class="nav-link scrollto"><i
-					class="bx bx-file-blank"></i> <span>공지사항 작성</span></a></li>
+
+			<!-- admin만 공지사항 작성 가능 -->
+			<c:choose>
+				<c:when test="${memberList.memberId == admin}">
+					<li><a href="noticeAddForm.do" class="nav-link scrollto"><i
+							class="bx bx-file-blank"></i> <span>공지사항 작성</span></a></li>
+				</c:when>
+				<c:otherwise>
+					
+				</c:otherwise>
+			</c:choose>
 			<li><a href="#portfolio" class="nav-link scrollto"><i
 					class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
 			<li><a href="#contact" class="nav-link scrollto"><i
@@ -80,19 +89,19 @@
 				<table class="table">
 					<tr>
 						<th>제목</th>
-						<td><input type="text" name="pcode"></td>
+						<td><input type="text" name="notitle"></td>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" value=""
-								id="flexCheckChecked" checked="">
-								<label class="form-check-label" for="flexCheckChecked">
-								<font style="vertical-align: inherit;">
-								<font style="vertical-align: inherit;"> 중요공지사항 체크 </font></font></label>
+								id="flexCheckChecked" checked=""> <label
+								class="form-check-label" for="flexCheckChecked"> <font
+								style="vertical-align: inherit;"> <font
+									style="vertical-align: inherit;"> 중요공지사항 체크 </font></font></label>
 						</div>
-						
+
 					</tr>
 					<tr>
 						<th>작성자</th>
-						<td><input type="number" name="like" value="관리자"></td>
+						<td><input type="text" name="like" value="관리자"></td>
 					</tr>
 					<tr>
 						<th>공지유형</th>
@@ -102,7 +111,8 @@
 					</tr>
 					<tr>
 						<th>작성내용</th>
-						<td colspan="3"><textarea name="pdesc" cols="100" rows="10"></textarea></td>
+						<td colspan="3"><textarea name="noContent" cols="100"
+								rows="10"></textarea></td>
 					</tr>
 					<tr>
 						<td colspan="4" align="center"><input type="submit"
