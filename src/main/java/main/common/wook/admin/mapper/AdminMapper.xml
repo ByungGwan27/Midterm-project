@@ -171,8 +171,19 @@
 	</select>
 	
 	<!-- 결제건수 차트 데이터 조회 -->
-	<select id="payCountChartData" parameterType="String"> 
+	<select id="payCountChartData" parameterType="String" resultType="int"> 
 		select count(*) as monthPayCount from pay where pay_status = '결제완료' and
 		substr(pay_date, 1, 5) = #{dateStr}
+	</select>
+	
+	<!-- 매출 차트 데이터 조회 -->
+	<select id="payChartData" parameterType="String" resultType="int"> 
+		select nvl(sum(room_price),0) as totalPay from pay where pay_status = '결제완료' and
+		substr(pay_date, 1, 5) = #{dateStr}
+	</select>
+	
+	<!-- 회원 차트 데이터 수 조회 -->
+	<select id="memberChartData" parameterType="String" resultType="int">
+		  select count(*) as memberCount from member where substr(member_joindate, 1, 5) = #{dateStr}
 	</select>
 </mapper>
