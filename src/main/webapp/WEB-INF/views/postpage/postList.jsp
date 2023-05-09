@@ -4,8 +4,6 @@
 
 <style>
 
-
-
 * {box-sizing:border-box}
 
 /* Slideshow container */
@@ -137,7 +135,7 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
    
-   
+   <c:forEach var="post" items="${list}">
     <!-- ======= Gallery Section ======= -->
     <section id="gallery" class="gallery section-bg">
     
@@ -151,25 +149,25 @@
           <div class="swiper-wrapper align-items-center">
           
             <div class="swiper-slide"><a class="glightbox"  href="postDetail.do?memberId=${post.memberId}"><img
-                  class="img-fluid rounded-circle mb-4 px-4"
-                  src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." />
+                  class="img-fluid rounded mb-4 px-4"
+                  src="cssPostList/images/${post.postImages}" alt="..." />
                   <h5 class="fw-bolder">파워 블로거</h5></a>
                <div class="fst-italic text-muted">국내여행 전문 블로거</div></div>
                
                 <div class="swiper-slide"><a class="glightbox"  href="postDetail.do?memberId=${post.memberId}"><img
-                  class="img-fluid rounded-circle mb-4 px-4"
+                  class="img-fluid rounded mb-4 px-4"
+                  src="cssPostList/images/${post.postImages}" alt="..." />
+                  <h5 class="fw-bolder">파워 블로거</h5></a>
+               <div class="fst-italic text-muted">국내여행 전문 블로거</div></div>
+               
+                 <div class="swiper-slide"><a class="glightbox"  href="postDetail.do?memberId=${post.memberId}"><img
+                  class="img-fluid rounded mb-4 px-4"
                   src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
                   <h5 class="fw-bolder">파워 블로거</h5></a>
                <div class="fst-italic text-muted">국내여행 전문 블로거</div></div>
                
                  <div class="swiper-slide"><a class="glightbox"  href="postDetail.do?memberId=${post.memberId}"><img
-                  class="img-fluid rounded-circle mb-4 px-4"
-                  src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
-                  <h5 class="fw-bolder">파워 블로거</h5></a>
-               <div class="fst-italic text-muted">국내여행 전문 블로거</div></div>
-               
-                 <div class="swiper-slide"><a class="glightbox"  href="postDetail.do?memberId=${post.memberId}"><img
-                  class="img-fluid rounded-circle mb-4 px-4"
+                  class="img-fluid rounded mb-4 px-4"
                   src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
                   <h5 class="fw-bolder">파워 블로거</h5></a>
                <div class="fst-italic text-muted">국내여행 전문 블로거</div></div>
@@ -186,13 +184,12 @@
       </div>
       </div>
 
-      
     </section><!-- End Gallery Section -->
 
 
 <!-- 첫번째 포스트-->
 
-<c:forEach var="post" items="${list}">
+
 
 <section class="py-5 bg-light" id="scroll-target">
 	<div class="container px-5 my-5">
@@ -229,12 +226,29 @@
 		</div>
 	</div>
 </section>
-
-
 </c:forEach>
+
+<!--  
+<div class="center">
+	<div class="pagination">
+		<c:if test="${pageInfo.prev }">
+			<a href="noticeList.do?page=${pageInfo.startPage-1 }">Previous</a>
+		</c:if>
+		<c:forEach var="i" begin="${pageInfo.startPage }"
+			end="${pageInfo.endPage }">
+			<a class="${i == pageInfo.pageNum ? 'active' : '' }" href="noticeList.do?page=${i }">${i } </a>
+		</c:forEach>
+		<c:if test="${pageInfo.next }">
+			<a href="noticeList.do?page=${pageInfo.endPage+1 }">Next</a>
+		</c:if>
+	</div>
+</div>-->
 
 
 <!-- 파워 블로거 -->
+
+<c:forEach var="memberList" items="${memberList}">
+
 <section class="py-5 bg-light">
 	<div class="container px-5 my-5">
 		<div class="text-center">
@@ -248,8 +262,8 @@
 				<div class="text-center">
 					<a href="postDetail.do?memberId=${post.memberId}"><img
 						class="img-fluid rounded-circle mb-4 px-4"
-						src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
-						<h5 class="fw-bolder">Ibbie Eckart</h5></a>
+						src="${memberList.memberProfile }" alt="..." />
+						<h5 class="fw-bolder">${memberList.memberName}</h5></a>
 					<div class="fst-italic text-muted">Founder &amp; CEO</div>
 				</div>
 			</div>
@@ -258,7 +272,7 @@
 					<a href="postDetail.do?memberId=${post.memberId}"><img
 						class="img-fluid rounded-circle mb-4 px-4"
 						src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
-						<h5 class="fw-bolder">Arden Vasek</h5></a>
+						<h5 class="fw-bolder">${post.memberName}</h5></a>
 					<div class="fst-italic text-muted">CFO</div>
 				</div>
 			</div>
@@ -283,6 +297,7 @@
 		</div>
 	</div>
 </section>
+</c:forEach>
 
 	
 	<script>

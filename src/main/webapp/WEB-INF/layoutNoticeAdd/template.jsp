@@ -33,6 +33,17 @@
 
   <title>Traveller</title>
 </head>
+
+
+<body>
+	<div class="site-mobile-menu site-navbar-target">
+		<div class="site-mobile-menu-header">
+			<div class="site-mobile-menu-close">
+				<span class="icofont-close js-menu-toggle"></span>
+			</div>
+		</div>
+		<div class="site-mobile-menu-body"></div>
+	</div>
             <!-- Navigation-->
            	<tiles:insertAttribute name="nav"></tiles:insertAttribute>
             <!-- Header-->
@@ -63,7 +74,7 @@
 
   <script src="cssMainpage/js/custom.js"></script>
 
-
+</body>
 </html>
 
 
