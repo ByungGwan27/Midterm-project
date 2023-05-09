@@ -17,10 +17,13 @@ public class HotelListControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		HotelInfoService service = new HotelInfoServiceImpl();
-		List<HotelInfoVO> hotelList = service.dormList();
-		req.setAttribute("hotelList", hotelList);
 		
+		HotelInfoService service = new HotelInfoServiceImpl();
+		List<HotelInfoVO> hotelList = service.hotelList();
+		req.setAttribute("hotelList", hotelList);
+				
+		//String hotelLocation1 = req.getParameter("hotelLocation1");
+	
 		return "hotelinfopage/hotelListPage.tiles";
 	}
 

@@ -4,29 +4,39 @@
 <main id="main" class="main">
 	<h3>addhotelpage</h3>
 	<h5>숙소추가</h5>
-	<form action="" method="POST">
+	<form action="adminAddHotelPage.do" method="POST" enctype="multipart/form-data">
 		<table class="table">
 			<tr>
 				<th>메인이미지</th>
-				<td><img width="200px" src="cssMainpage/images/slider-5.jpg"></td>
+				<td><input type="file" name="hotelImage"></td>
 			</tr>
-			<tr>
+					<tr>
+				<th>hotelId</th>
+				<td><input type="text" name="hotelId"></td>
+			</tr>
+				<tr>
 				<th>상호명</th>
-				<td><input type="text" name="nid"
-					value="${noticeInfo.noticeId}"></td>
+				<td><input type="text" name="hotelName"></td>
 			</tr>
+			
 			<tr>
 				<th>위치1(시도)</th>
-				<td><input type="text" name="title"
-					value="${noticeInfo.noticeTitle}"></td>
+				<td><input type="text" name="hotelLocation1"></td>
 			</tr>
 			<tr>
 				<th>위치2(시군구)</th>
-				<td><input type="text" name="title"
-					value="${noticeInfo.noticeTitle}"></td>
+				<td><input type="text" name="hotelLocation2"></td>
 			</tr>
-			<tr>
-				<th>시설정보</th>
+					<tr>
+				<th>hotelImginfo</th>
+				<td><input type="file" name="hotelImginfo"></td>
+			</tr>
+				<tr>
+				<th>locationDetail</th>
+				<td><input type="text" name="locationDetail"></td>
+			</tr>
+	<!--	<tr>
+				 <th>시설정보</th>
 				<td><span class="fa fa-chevron-right mr-2"></span><input
 					type="checkbox">주차장 <span class="fa fa-chevron-right mr-2"></span><input
 					type="checkbox">wifi <span class="fa fa-chevron-right mr-2"></span><input
@@ -43,7 +53,7 @@
 				<th>객실개수</th>
 				<td><input type="text" name="nid"
 					value="${noticeInfo.noticeId}"></td>
-			</tr>
+			</tr> 
 			<td colspan="2" align="center">
 				<button type="submit">저장</button>
 				<button type="button">취소</button>
@@ -98,12 +108,13 @@
 					class="fa fa-chevron-right mr-2"></span><input type="checkbox">조식
 					<span class="fa fa-chevron-right mr-2"></span><input
 					type="checkbox">수영장</td>
-			</tr>
-
+			</tr> -->
+			<tr>
 			<td colspan="2" align="center">
 				<button type="submit">저장</button>
 				<button type="button">취소</button>
 			</td>
+			</tr> 
 		</table>
 	</form>
 

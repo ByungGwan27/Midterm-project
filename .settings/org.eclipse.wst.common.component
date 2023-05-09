@@ -8,8 +8,15 @@
                 
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
                 
+<<<<<<< HEAD
+=======
+        <property name="context-root" value="MyProject"/>
+>>>>>>> branch 'jayk' of https://github.com/ByungGwan27/Midterm-project.git
         <property name="java-output-path" value="/TravellerProject/target/classes"/>
+<<<<<<< HEAD
         <property name="context-root" value="/"/>
+=======
+>>>>>>> branch 'jayk' of https://github.com/ByungGwan27/Midterm-project.git
             
     </wb-module>
     

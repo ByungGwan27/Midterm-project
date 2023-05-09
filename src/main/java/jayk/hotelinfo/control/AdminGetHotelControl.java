@@ -12,16 +12,19 @@ import jayk.hotelinfo.service.HotelInfoService;
 import jayk.hotelinfo.service.HotelInfoServiceImpl;
 import main.common.control.Control;
 
-public class AdminHotelListControl implements Control {
+public class AdminGetHotelControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		String hotelId = req.getParameter("hotelId");
 		HotelInfoService service = new HotelInfoServiceImpl();
-		List<HotelInfoVO> adminHotelList = service.adminHotelList();
-		req.setAttribute("adminHotelList", adminHotelList);
-		System.out.println(adminHotelList);
-		return "adminpage/adminHotelList.tiles";
+	
+			HotelInfoVO adminHotelInfo = service.getAdminHotel(Integer.parseInt(hotelId));
+			System.out.println(adminHotelInfo);
+			req.setAttribute("adminHotelInfo", adminHotelInfo);
+
+			
+			return "adminpage/adminGetHotelInfo.tiles";
 	}
 
 }

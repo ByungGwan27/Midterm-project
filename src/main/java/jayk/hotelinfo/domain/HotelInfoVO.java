@@ -20,8 +20,8 @@ public class HotelInfoVO {
 	private int hotelViews;
 	private int horelDec;
 	private int resCount;
-	private int avgpoint;
 	private int roomId;
+	private String locationDetail;
 
 	//roomInfo
 	private int roomNumber;
@@ -33,6 +33,10 @@ public class HotelInfoVO {
 	private int roomMin;
 	private int addPrice;
 	
+	//roomImage
+	private int imageId;
+	private String image;
+	
 	//review
 	private int reviewId;
 	private String MemberId;
@@ -42,4 +46,7 @@ public class HotelInfoVO {
 	private Date wirteDate;
 	private Date checkinDate;
 	private int masterView;
+	//리뷰개수, 별점평균
+	private int rcount;
+	private double avgpoint;
 }
