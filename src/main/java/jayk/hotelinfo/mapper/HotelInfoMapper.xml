@@ -73,8 +73,6 @@
 
 	<select id="adminHotelList">
 		select * from hotel h
-		FULL OUTER JOIN room_info i
-		USING (hotel_id)
 	</select>
 
 	<select id="selectAdminHotel">
