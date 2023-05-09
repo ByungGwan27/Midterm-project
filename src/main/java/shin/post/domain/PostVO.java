@@ -14,5 +14,7 @@ public class PostVO {
 	private int postRec;
 	private int postViews;
 	private String postImages;
+	private String memberProfile;
+	private String memberName;
 	
 }

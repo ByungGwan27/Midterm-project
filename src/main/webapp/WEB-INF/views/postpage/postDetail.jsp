@@ -10,7 +10,7 @@
                             <div class="d-flex align-items-center mt-lg-5 mb-4">
                                 <img class="img-fluid rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
                                 <div class="ms-3">
-                                    <div class="fw-bold">작성자</div>
+                                    <div class="fw-bold">${memberList.memberName}</div>
                                     <div class="text-muted">News, Business</div>
                                 </div>
                             </div>
@@ -21,18 +21,16 @@
                                 <!-- Post header-->
                                 <header class="mb-4">
                                     <!-- Post title-->
-                                    <h1 class="fw-bolder mb-1">포스트 제목</h1>
+                                    <h1 class="fw-bolder mb-1">${post.postTitle}</h1>
                                     <!-- Post meta content-->
-                                    <div class="text-muted fst-italic mb-2">작성날짜</div>
-                                    <!-- Post categories-->
-                                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-                                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+                                    <div class="text-muted fst-italic mb-2">${post.writeDate}</div>
+                            
                                 </header>
                                 <!-- Preview image figure-->
                                 <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
                                 <!-- Post content-->
                                 <section class="mb-5">
-                                    <p class="fs-5 mb-4">포스트내용</p>
+                                    <p class="fs-5 mb-4">${post.postContent}</p>
                                   
                                 </section>
                             </article>

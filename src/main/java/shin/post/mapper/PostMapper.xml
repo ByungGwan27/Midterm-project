@@ -25,5 +25,15 @@
 		select * from post where post_id=#{postId}
 	</select>
 
+	<select id="getCount" resultType="int">
+		select count(*) from post
+	</select>
+	
+	<select id="memberByDept" resultType="map">
+	
+	select * from post p join member m on p.memberId = m.memberId
+	
+</select>
+	
 	
 </mapper>
