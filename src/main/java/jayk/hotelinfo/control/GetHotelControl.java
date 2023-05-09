@@ -18,11 +18,11 @@ public class GetHotelControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String hotelId = req.getParameter("hotelId");
+		String hotelLocation1 = req.getParameter("hotelLocation1");
 		HotelInfoService service = new HotelInfoServiceImpl();
-		HotelInfoVO hotelInfo = service.getHotelInfo(Integer.parseInt(hotelId));
-		
+		HotelInfoVO hotelInfo = service.getHotelInfo(Integer.parseInt(hotelId), hotelLocation1);
 		req.setAttribute("hotelInfo", hotelInfo);
-		//System.out.println(hotelInfo);
+		System.out.println(hotelInfo);
 		
 		//상세객실리스트
 		List<HotelInfoVO> roomList = service.roomList(Integer.parseInt(hotelId));
@@ -34,7 +34,7 @@ public class GetHotelControl implements Control {
 		req.setAttribute("reviewList", reviewList);
 		//System.out.println(reviewList);
 		
-		List<HotelInfoVO> similarList = service.similarList(Integer.parseInt(hotelId));
+		List<HotelInfoVO> similarList = service.similarList(Integer.parseInt(hotelId), hotelLocation1);
 		req.setAttribute("similarList", similarList);
 		
 		return "hotelinfopage/hotelInfoPage.tiles";

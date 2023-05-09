@@ -38,44 +38,32 @@
 			</td>
 		</tr>
 		<tr>
-			<th>유의사항</th>
-			<td><textarea rows="3" cols="20" name="subject">${noticeInfo.noticeSubject}</textarea></td>
-		</tr>
-	</table>
-
-<h5>숙소상세정보수정 * 객실전체조회해서보이게</h5>
-
-<c:forEach var="adminRoomList" items="${adminRoomList}">
-	<table class="table">
-	<tr>
-			<th>상세이미지</th>
-			<td><img width="200px" src="cssMainpage/images/${adminRoomList.image}" alt="roomImage"></td>
-		</tr>
-		<tr>
-			<th>객실명</th>
-			<td><input type="text" name="nid" value="${adminRoomList.roomName}"></td>
-		</tr>
-		<tr>
-			<th>가격</th>
-			<td><input type="text" name="nid" value="${adminRoomList.roomPrice}"></td>
-		</tr>
-		<tr>
-			<th>세부설명</th>
-			<td>
-			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">더블룸
-			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">트윈룸
-			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">주차장
-			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">wifi
-			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">애완동물동반가능여부
-			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">조식
-			<span class="fa fa-chevron-right mr-2"></span><input type="checkbox">수영장
+			<td colspan="2">
+				<h5>객실정보확인</h5>
 			</td>
 		</tr>
-</c:forEach>
+		<c:if test="${empty adminRoomList}">
+				<p>객실 정보가 없습니다.</p>
+		</c:if>
+	<c:forEach var="adminRoomList" items="${adminRoomList}">
+		<tr>
+			<th>객실사진</th>
+			<td><img width="200px" src="cssMainpage/images/hero-slider-1.jpg"></td>
+		<tr>
+			<th>방이름</th>
+			<td><input type="text" name="roomName"	value="${adminRoomList.roomName}"></td>
+		</tr>
+		<tr>
+			<th>객실가격</th>
+			<td><input type="text" name="roomPrice"	value="${adminRoomList.roomPrice}"></td>
+		</tr>
+		</c:forEach>
+		<tr>
 		<td colspan="2" align="center">
-			<button type="submit">저장</button>
+			<button type="submit">수정</button>
 			<button type="button">취소</button>
 		</td>
+		</tr>
 	</table>
 </form>
 </main>
