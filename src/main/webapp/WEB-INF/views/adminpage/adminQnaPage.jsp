@@ -62,7 +62,8 @@ int j = 1;
 										data-bs-parent="#faq-group-1">
 										<div class="accordion-body">
 											${NAQ.qnaContent} <br>
-											<p style="font-size: small;">작성자 : ${NAQ.memberId}</p>
+											<p style="font-size: small;">작성자 : ${NAQ.memberId} | 작성일
+												: ${NAQ.qnaDate}</p>
 											<hr>
 											<form action="adminQnaAnswer.do">
 
@@ -106,30 +107,32 @@ int j = 1;
 					</div>
 				</div>
 				<!-- End F.A.Q Group 1 -->
-
-				<nav aria-label="Page navigation example">
-					<ul class="pagination">
-						<c:if test="${pageInfo1.prev}">
-							<li class="page-item"><a class="page-link"
-								href="adminQna.do?page1=${pageInfo1.startPage-1}"
-								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-							</a></li>
-						</c:if>
-						<c:forEach var="i" begin="${pageInfo1.startPage }"
-							end="${pageInfo1.endPage }">
-							<li class="page-item"><a class="page-link"
-								href="adminQna.do?page1=${i }">${i}</a></li>
-						</c:forEach>
-						<c:if test="${pageInfo1.next}">
-							<li class="page-item"><a class="page-link"
-								href="adminQna.do?page1=${pageInfo1.endPage+1}"
-								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-						</c:if>
-						</a>
-						</li>
-					</ul>
-				</nav>
+				<div>
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+							<c:if test="${pageInfo1.prev}">
+								<li class="page-item"><a class="page-link"
+									href="adminQna.do?page1=${pageInfo1.startPage-1}"
+									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								</a></li>
+							</c:if>
+							<c:forEach var="i" begin="${pageInfo1.startPage }"
+								end="${pageInfo1.endPage }">
+								<li class="page-item"><a class="page-link"
+									href="adminQna.do?page1=${i }">${i}</a></li>
+							</c:forEach>
+							<c:if test="${pageInfo1.next}">
+								<li class="page-item"><a class="page-link"
+									href="adminQna.do?page1=${pageInfo1.endPage+1}"
+									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+							</c:if>
+							</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
 			</div>
+
 			<div class="col-lg-6">
 
 				<div class="card">
@@ -150,9 +153,11 @@ int j = 1;
 									<div id="faqsTwo-<%=i%>" class="accordion-collapse collapse"
 										data-bs-parent="#faq-group-2">
 										<div class="accordion-body">${CAQ.qnaContent}</div>
-										<p style="font-size: small;">작성자 : ${CAQ.memberId}</p>
+										<p style="font-size: small;">작성자 : ${CAQ.memberId} | 작성일 :
+											${CAQ.qnaDate}</p>
 										<hr>
 										<form action="adminQnaAnswer.do">
+											<p style="font-size: small;">답변작성일 : ${CAQ.answerDate}</p>
 											<textarea class="form-control" style="height: 100px"
 												name="content">${CAQ.answerContent}</textarea>
 
@@ -181,28 +186,29 @@ int j = 1;
 
 					</div>
 				</div>
-				<nav aria-label="Page navigation example">
-					<ul class="pagination">
-						<c:if test="${pageInfo2.prev}">
-							<li class="page-item"><a class="page-link"
-								href="adminQna.do?page2=${pageInfo2.startPage-1}"
-								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-							</a></li>
-						</c:if>
-						<c:forEach var="i" begin="${pageInfo2.startPage }"
-							end="${pageInfo2.endPage }">
-							<li class="page-item"><a class="page-link"
-								href="adminQna.do?page2=${i }">${i}</a></li>
-						</c:forEach>
-						<c:if test="${pageInfo2.next}">
-						<li class="page-item"><a class="page-link"
-							href="adminQna.do?page2=${pageInfo2.endPage+1}" aria-label="Next">
-								<span aria-hidden="true">&raquo;</span>
-						</a></li>
-						</c:if>
-					</ul>
-				</nav>
-
+				<div>
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+							<c:if test="${pageInfo2.prev}">
+								<li class="page-item"><a class="page-link"
+									href="adminQna.do?page2=${pageInfo2.startPage-1}"
+									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								</a></li>
+							</c:if>
+							<c:forEach var="i" begin="${pageInfo2.startPage }"
+								end="${pageInfo2.endPage }">
+								<li class="page-item"><a class="page-link"
+									href="adminQna.do?page2=${i }">${i}</a></li>
+							</c:forEach>
+							<c:if test="${pageInfo2.next}">
+								<li class="page-item"><a class="page-link"
+									href="adminQna.do?page2=${pageInfo2.endPage+1}"
+									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+								</a></li>
+							</c:if>
+						</ul>
+					</nav>
+				</div>
 				<!-- End F.A.Q Group 2 -->
 
 				<!-- F.A.Q Group 3 -->
@@ -290,4 +296,8 @@ int j = 1;
 
 </main>
 <!-- End #main -->
+
+<script>
+
+</script>
 
