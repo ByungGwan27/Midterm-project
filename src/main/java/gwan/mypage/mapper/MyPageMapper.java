@@ -21,6 +21,9 @@ public interface MyPageMapper {
 	// 위시리스트 갯수
 	public int readWishPageCount(String memberId);
 	
+	// 보유쿠폰
+	public List<MyPageVO> readCoupon(String memberId);
+	
 	//회원정보수정
 	public int updateMemberInfo(MyPageVO vo);
 	

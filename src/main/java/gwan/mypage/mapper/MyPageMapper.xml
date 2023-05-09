@@ -78,6 +78,13 @@
 		SELECT count(*) FROM wishlist WHERE member_id = #{memberId}
 	</select>
 	
+	<!-- 보유쿠폰함 -->
+	<!-- 쿠폰 조회 -->
+	<select id="readCoupon" parameterType="mp">
+		SELECT coupon_name, coupon_start, coupon_end, coupon_range, sale_per, sale_pri
+		FROM coupon WHERE member_id = #{memberId}
+		ORDER BY coupon_id
+	</select>
 	
 	
 	<!-- 회원정보수정 -->

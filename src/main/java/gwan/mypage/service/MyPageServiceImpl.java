@@ -47,6 +47,11 @@ public class MyPageServiceImpl implements MyPageService {
 	public int readWishPageCount(String memberId) {
 		return mapper.readWishPageCount(memberId);
 	}
+
+	@Override
+	public List<MyPageVO> readCoupon(String memberId) {
+		return mapper.readCoupon(memberId);
+	}
 	
 	
 }

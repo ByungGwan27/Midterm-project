@@ -17,15 +17,15 @@
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary">~~님의 보유 쿠폰입니다.</h6>
+			<h6 class="m-0 font-weight-bold text-primary">${nickname }님의 보유 쿠폰입니다.</h6>
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
 				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 					<thead>
 						<tr>
-							<th></th>
 							<th>쿠폰 이름</th>
+							<th>사용가능 숙소</th>
 							<th>쿠폰 기간(시작일)</th>
 							<th>쿠폰 기간(종료일)</th>
 							<th>적용 범위(금액)</th>
@@ -33,22 +33,16 @@
 						</tr>
 					</thead>
 					<tbody>
+					<c:forEach var="cL" items="${couponList }">
 						<tr>
-							<td><input type="checkbox" name="1" value="1" id="on"><label for="on"></label></td>
-							<td>회원 가입 축하</td>
-							<td>2023-05-02</td>
-							<td>2023-06-02</td>
-							<td>3만원 이상</td>
-							<td>10%</td>
+							<td>${cL.couponName }</td>
+							<td>${cL.couponRange }</td>
+							<td>${cL.couponStart }</td>
+							<td>${cL.couponEnd }</td>
+							<td>${cL.salePer }%</td>
+							<td>${cL.salePri }원 이상</td>
 						</tr>
-						<tr>
-							<td><input type="checkbox" name="2" value="2" id="on"><label for="on"></label></td>
-							<td>등급 업</td>
-							<td>2023-05-03</td>
-							<td>2023-06-03</td>
-							<td>5만원 이상</td>
-							<td>3%</td>
-						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
 			</div>
