@@ -133,6 +133,11 @@ public class AdminServiceImpl implements AdminService {
 		return mapper.getQnaCount2();
 	}
 
+	@Override
+	public int payCountChartData(String dateStr) {
+		return mapper.payCountChartData(dateStr);
+	}
+
 	
 
 	

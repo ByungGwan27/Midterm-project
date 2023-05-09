@@ -140,8 +140,9 @@
                   <h5 class="card-title">월별추이</h5>
 
                   <!-- Line Chart -->
+                 <div id="chart">
                  <div id="lineChart"></div>
-
+				 </div>
               <script>
                 document.addEventListener("DOMContentLoaded", () => {
                   new ApexCharts(document.querySelector("#lineChart"), {
@@ -207,4 +208,8 @@
       document.getElementById('totalValue').innerText = <%=MonthTotalPay%>
       document.getElementById('range1').innerText = "이번달"
     })
+    
+     document.addEventListener("DOMContentLoaded", () => {
+    	
+     }
     </script>

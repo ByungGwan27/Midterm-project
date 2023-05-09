@@ -31,4 +31,5 @@ public interface AdminService {
 	public int qnaAnswer(QnaVO qna);
 	public int getQnaCount1();
 	public int getQnaCount2();
+	public int payCountChartData(String dateStr);
 }
