@@ -30,5 +30,8 @@ public interface AdminMapper {
 	public int qnaAnswer(QnaVO qna);
 	public int getQnaCount1();
 	public int getQnaCount2();
+	public int payCountChartData(String dateStr);
+	public int payChartData(String dateStr);
+	public int memberChartData(String dateStr);
 }
 

@@ -20,21 +20,26 @@
 						<li><a href="logout.do">로그아웃</a></li>
 					</c:otherwise>
 				</c:choose>
-				<li><a href="adminPage.do">관리자페이지</a></li>
-				<li class="has-children"><a href="myPageHome.do">마이페이지</a>
-					<ul class="dropdown">
-						<li><a href="myPageWishList.do">위시리스트</a></li>
-						<li><a href="myPageCoupon.do">쿠폰함</a></li>
-						<li><a href="myPageMessage.do">메세지함</a></li>
-						<li><a href="myPageQna.do">QnA</a></li>
-						<!-- <li class="has-children"><a href="#">Menu Two</a>
+				<c:if test="${id != null }">
+					<c:if test="${grade == 5 }">
+						<li><a href="adminPage.do">관리자페이지</a></li>
+					</c:if>
+					
+						<li class="has-children"><a href="myPageHome.do">마이페이지</a>
+							<ul class="dropdown">
+								<li><a href="myPageWishList.do">위시리스트</a></li>
+								<li><a href="myPageCoupon.do">쿠폰함</a></li>
+								<li><a href="myPageMessage.do">메세지함</a></li>
+								<li><a href="myPageQna.do">QnA</a></li>
+								<!-- <li class="has-children"><a href="#">Menu Two</a>
 							<ul class="dropdown">
 								<li><a href="#">Sub Menu One</a></li>
 								<li><a href="#">Sub Menu Two</a></li>
 								<li><a href="#">Sub Menu Three</a></li>
 							</ul></li> -->
-					</ul></li>
-
+							</ul></li>
+					
+				</c:if>
 				<li><a href="noticeList.do">공지사항</a></li>
 			</ul>
 
@@ -86,8 +91,7 @@
 										<input type="text" class="form-control" name="daterange">
 									</div>
 									<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-3">
-										<input type="text" class="form-control"
-											placeholder="인원수">
+										<input type="text" class="form-control" placeholder="인원수">
 									</div>
 
 								</div>
@@ -96,7 +100,7 @@
 										<input type="submit" class="btn btn-primary btn-block"
 											value="검색">
 									</div>
-									
+
 								</div>
 							</form>
 						</div>
@@ -107,14 +111,14 @@
 				<div class="slides" style="height: 705px;">
 					<img src="cssMainpage/images/jeju.jpg" alt="Image"
 						class="img-fluid active" style="height: 705px;"> <img
-						src="cssMainpage/images/busan.jpg" alt="Image"
-						class="img-fluid" style="height: 705px;"> <img
+						src="cssMainpage/images/busan.jpg" alt="Image" class="img-fluid"
+						style="height: 705px;"> <img
 						src="cssMainpage/images/Gyeongju.jpg" alt="Image"
 						class="img-fluid" style="height: 705px;"> <img
-						src="cssMainpage/images/Seoul.jpg" alt="Image"
-						class="img-fluid" style="height: 705px;"> <img
-						src="cssMainpage/images/Jeonju.jpg" alt="Image"
-						class="img-fluid" style="height: 705px;">
+						src="cssMainpage/images/Seoul.jpg" alt="Image" class="img-fluid"
+						style="height: 705px;"> <img
+						src="cssMainpage/images/Jeonju.jpg" alt="Image" class="img-fluid"
+						style="height: 705px;">
 				</div>
 			</div>
 		</div>
