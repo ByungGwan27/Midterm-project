@@ -80,7 +80,6 @@
 											<option value="">경상북도</option>
 											<option value="">경상남도</option>
 											<option value="">제주특별자치도</option>
-							
 										</select>
 									</div>
 									<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-5">
