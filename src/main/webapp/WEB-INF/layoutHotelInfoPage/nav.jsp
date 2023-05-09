@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    
 <nav class="site-nav">
 		<div class="container">
 			<div class="site-navigation">
@@ -8,10 +10,16 @@
 				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
 					<!--<li class="active"><a href="index.html">숙소</a></li>-->
 					
-					<li><a href="hotelListPage.do">숙소</a></li>
-					<li><a href="postList.do">여행포스트</a></li>
-					<li class="has-children">
-						<a href="loginPage.do">로그인</a>
+					<li><a href="services.html">숙소,개인</a></li>
+					<li><a href="about.html">여행포스트</a></li>
+					<c:choose>
+						<c:when test="${id == null }">
+							<li><a href="loginPage.do">로그인</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="logout.do">로그아웃</a></li>
+						</c:otherwise>
+					</c:choose>
 						<ul class="dropdown">
 							<li><a href="myPageUserInfoChange.do">회원정보수정</a></li>
 							<li><a href="myPageHome.do">예약정보</a></li>

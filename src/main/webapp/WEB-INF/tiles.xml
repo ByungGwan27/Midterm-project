@@ -46,7 +46,6 @@
     <put-attribute name="blank" value="/WEB-INF/gwanLayoutLoginPage/blank.jsp" />
   </definition>
    
-  <!-- 5/4 gwan. loginpage tiles work-->
   <definition name="WILDCARD:gwanLoginPage/*" extends="gwanLoginPage">
     <put-attribute name="blank" value="/WEB-INF/views/gwanLoginPage/{1}.jsp"></put-attribute>
   </definition>
@@ -81,22 +80,10 @@
   </definition>
   
   <!-- 20230503 shin  -->
-  <definition name="noticepage" template="/WEB-INF/layoutNoticeAdd/template.jsp">
-    <put-attribute name="nav" value="/WEB-INF/layoutNoticeAdd/nav.jsp" />
-    <put-attribute name="body" value="/WEB-INF/layoutNoticeAdd/body.jsp" />
-    <put-attribute name="footer" value="/WEB-INF/layoutNoticeAdd/footer.jsp" />
-  </definition>
-  
-    <definition name="noticepage" template="/WEB-INF/layoutNoticeDetail/template.jsp">
-    <put-attribute name="nav" value="/WEB-INF/layoutNoticeDetail/nav.jsp" />
-    <put-attribute name="body" value="/WEB-INF/layoutNoticeDetail/body.jsp" />
-    <put-attribute name="footer" value="/WEB-INF/layoutNoticeDetail/footer.jsp" />
-  </definition>
-  
-   <definition name="noticepage" template="/WEB-INF/layoutNoticeList/template.jsp">
-    <put-attribute name="nav" value="/WEB-INF/layoutNoticeList/nav.jsp" />
-    <put-attribute name="body" value="/WEB-INF/layoutNoticeList/body.jsp" />
-    <put-attribute name="footer" value="/WEB-INF/layoutNoticeList/footer.jsp" />
+    <definition name="noticepage" template="/WEB-INF/layoutPostList/template.jsp">
+    <put-attribute name="nav" value="/WEB-INF/layoutPostList/nav.jsp" />
+    <put-attribute name="body" value="/WEB-INF/layoutPostList/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/layoutPostList/footer.jsp" />
   </definition>
 
   <definition name="WILDCARD:noticepage/*" extends="noticepage">
@@ -104,9 +91,10 @@
   </definition>
   
     <definition name="adminpay" template="/WEB-INF/layoutAdminpay/template.jsp">
-    <put-attribute name="nav" value="/WEB-INF/layoutAdminpay/nav.jsp" />
+    <put-attribute name="header" value="/WEB-INF/layoutAdminpay/header.jsp" />
     <put-attribute name="body" value="/WEB-INF/layoutAdminpay/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/layoutAdminpay/footer.jsp" />
+     <put-attribute name="sidebar" value="/WEB-INF/layoutAdminpay/sidebar.jsp" />
   </definition>
 
   <definition name="WILDCARD:adminpay/*" extends="adminpay">
