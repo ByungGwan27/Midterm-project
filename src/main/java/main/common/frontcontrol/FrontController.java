@@ -19,6 +19,7 @@ import gwan.loginpage.control.loginPageControl;
 import gwan.loginpage.control.logoutControl;
 import gwan.mypage.ajax.control.MyPageWishAjaxControl;
 import gwan.mypage.ajax.control.MyPageWishAjaxDeleteControl;
+import gwan.mypage.control.AdminMessagePageControl;
 import gwan.mypage.control.MyPageCouponControl;
 import gwan.mypage.control.MyPageHomeWillVisitControl;
 import gwan.mypage.control.MyPageMessageControl;
@@ -206,6 +207,9 @@ public class FrontController extends HttpServlet{
 		
 		//pw찾기
 		map.put("/forgotPasswordPage.do", new ForgotPasswordPageControl());
+		
+		//관리자 메세지 페이지
+		map.put("/adminMessagePage.do", new AdminMessagePageControl());
 		
 		
 	}
