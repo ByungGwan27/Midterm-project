@@ -38,13 +38,32 @@
 			</td>
 		</tr>
 		<tr>
-			<th>유의사항</th>
-			<td><textarea rows="3" cols="20" name="subject">${noticeInfo.noticeSubject}</textarea></td>
+			<td colspan="2">
+				<h5>객실정보확인</h5>
+			</td>
 		</tr>
+		<c:if test="${empty adminRoomList}">
+				<p>객실 정보가 없습니다.</p>
+		</c:if>
+	<c:forEach var="adminRoomList" items="${adminRoomList}">
+		<tr>
+			<th>객실사진</th>
+			<td><img width="200px" src="cssMainpage/images/hero-slider-1.jpg"></td>
+		<tr>
+			<th>방이름</th>
+			<td><input type="text" name="roomName"	value="${adminRoomList.roomName}" readonly></td>
+		</tr>
+		<tr>
+			<th>객실가격</th>
+			<td><input type="text" name="roomPrice"	value="${adminRoomList.roomPrice}" readonly></td>
+		</tr>
+		</c:forEach>
+		<tr>
 		<td colspan="2" align="center">
 			<button type="submit">수정</button>
 			<button type="button">취소</button>
 		</td>
+		</tr>
 	</table>
 </form>
 </main>

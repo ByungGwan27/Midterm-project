@@ -30,38 +30,55 @@
 .pagination a:hover:not(.active) {
 	background-color: #ddd;
 }
+
+.rate {
+	background:
+		url(https://aldo814.github.io/jobcloud/html/images/user/star_bg02.png)
+		no-repeat;
+	width: 121px;
+	height: 20px;
+	position: relative;
+}
+
+.rate span {
+	position: absolute;
+	background:
+		url(https://aldo814.github.io/jobcloud/html/images/user/star02.png);
+	width: auto;
+	height: 20px;
+}
 </style>
 
 <div class="row">
 	<!-- 사이드바 -->
 	<nav id="sidebar">
-		<div class="p-4 pt-5" style="center;">
+		<div class="p-4 pt-5" style="width: 280px;">
 			<h5>Categories</h5>
 			<ul class="list-unstyled components mb-5">
 				<li><a href="#pageSubmenu1" data-toggle="collapse"
 					aria-expanded="false" class="dropdown-toggle">지역</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu1">
-					<!--	<li><a href="#pageSubmenu6" data-toggle="collapse"
+						<!--	<li><a href="#pageSubmenu6" data-toggle="collapse"
 							aria-expanded="false" class="dropdown-toggle">서울특별시</a> -->
-							<!-- <ul class="collapse list-unstyled" id="pageSubmenu6"> -->
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>서울특별시</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>부산광역시</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>대구광역시</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>인천광역시</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>광주광역시</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>대전광역시</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>울산광역시</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>세종특별자치시</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>경기도</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>강원도</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>충청북도</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>충청남도</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>전라북도</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>전라남도</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>경상북도</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>경상남도</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>제주특별자치도</a></li>
-								<!-- <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>금천구</a></li>
+						<!-- <ul class="collapse list-unstyled" id="pageSubmenu6"> -->
+						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>서울특별시</a></li>
+						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>부산광역시</a></li>
+						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>대구광역시</a></li>
+						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>인천광역시</a></li>
+						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>광주광역시</a></li>
+						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>대전광역시</a></li>
+						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>울산광역시</a></li>
+						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>세종특별자치시</a></li>
+						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>경기도</a></li>
+						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>강원도</a></li>
+						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>충청북도</a></li>
+						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>충청남도</a></li>
+						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>전라북도</a></li>
+						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>전라남도</a></li>
+						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>경상북도</a></li>
+						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>경상남도</a></li>
+						<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>제주특별자치도</a></li>
+						<!-- <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>금천구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>영등포구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>동작구</a></li>
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>관악구</a></li>
@@ -370,17 +387,17 @@
 								<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>서귀포시</a></li> 
 							</ul>
 						</li>-->
-						
-					</ul>
-				</li>
+
+					</ul></li>
 				<li><a href="#pageSubmenu2" data-toggle="collapse"
 					aria-expanded="false" class="dropdown-toggle">가격</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu2">
 						<li>
 							<div class="form-group d-flex">
-							<div class="slidecontainer">
-  					<input type="range" min="10000" max="900000" value="50" class="slider" id="myRange">
-						</div>
+								<div class="slidecontainer">
+									<input type="range" min="10000" max="900000" value="50"
+										class="slider" id="myRange">
+								</div>
 							</div>
 						</li>
 						<li><div class="mb-5">
@@ -497,51 +514,64 @@
 
 	<!-- list -->
 	<div style="justify-content: center;">
-	<p align="right"><a href="#">높은가격순</a> / <a href="#">낮은가격순</a> / <a href="#">이름순</a> / <a href="#">인기순</a></p>
-	<hr>
-	<c:if test="${empty hotelList}">
-    <p>호텔 정보가 없습니다.</p>
-</c:if>
-	<c:forEach var="hotelList" items="${hotelList}">
-		<table>
-			<tr>
-				<td rowspan="4">
-					<div style="margin: 10px;">
-						<img src="cssMainpage/images/${hotelList.hotelImage}" alt="hotelImage" width="200">
-					</div>
-				</td>
-				<td>
-					<h3>${hotelList.hotelName}</h3>
-					${hotelList.hotelId}
-				</td>
-				<td>${hotelList.hotelThema}</td>
-				<td rowspan="4"><div style="width: 200px;"></div></td>
-				<td>후기개수 : ${hotelList.rcount}</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>평점 : ${hotelList.avgpoint}</td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>${hotelList.hotelLocation1} ${hotelList.hotelLocation2}</td>
-				<td></td>
-				<td><h4>${hotelList.roomPrice}</h4></td>
-				<td><button><a href="hotelInfoPage.do?hotelId=${hotelList.hotelId}">예약</a></button></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td>할인적용가</td>
-				<td></td>
-			</tr>
-		</table>
+		<p align="right">
+			<a href="#">높은가격순</a> / <a href="#">낮은가격순</a> / <a href="#">이름순</a> /
+			<a href="#">인기순</a>
+		</p>
 		<hr>
+		<c:if test="${empty hotelList}">
+			<p>호텔 정보가 없습니다.</p>
+		</c:if>
+		<c:forEach var="hotelList" items="${hotelList}">
+			<div style="width:800px">
+				<table border="1">
+					<tr>
+						<td rowspan="4">
+							<div style="margin: 10px; width: 205px;">
+								<img src="cssMainpage/images/${hotelList.hotelImage}"
+									alt="hotelImage" width="200">
+							</div>
+						</td>
+						<td>
+							<h3>${hotelList.hotelName}</h3>
+						</td>
+						<td>${hotelList.hotelThema}</td>
+						<td rowspan="4"><div style="width: 200px;"></div></td>
+						<td>
+							<div>후기개수 : ${hotelList.rcount}</div>
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>평점 : ${hotelList.avgpoint}
+							<div class="rate">
+								<span style="width: ${hotelList.avgstar}%;"></span>
+							</div>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>${hotelList.hotelLocation1}${hotelList.hotelLocation2}</td>
+						<td></td>
+						<td><h4>${hotelList.roomPrice}</h4></td>
+						<td><button>
+								<a href="hotelInfoPage.do?hotelLocation1=${hotelList.hotelLocation1}&hotelId=${hotelList.hotelId}">예약</a>
+							</button></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>할인적용가</td>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+			<hr>
 		</c:forEach>
 		<!-- 리스트끝 -->
-		
+
 		<!-- 페이징 20*10 -->
 		<div class="center">
 			<div class="pagination">
