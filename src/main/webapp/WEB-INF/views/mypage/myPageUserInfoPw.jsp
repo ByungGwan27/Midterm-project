@@ -16,7 +16,7 @@
 		<h6 class="m-0 font-weight-bold text-primary">PW를 확인해주세요</h6>
 	</div>
 
-	<form action="myPageUserInfoPwInput.do" method="post">
+	<form action="myPageUserInfoPwInput.do" method="post" onsubmit="return validateForm()">
 		<table class="table">
 			<tr>
 				<th>비밀번호 확인</th>
@@ -24,7 +24,8 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button type="submit" onclick="javascript:btn()">확인</button>
+					<button type="submit">확인</button>
+					<!--  onclick="javascript:btn() -->
 				</td>
 			</tr>
 		</table>
@@ -33,5 +34,14 @@
 </div>
 
 <script>
+	function validateForm() {
+	  let inputPw = document.getElementById("password").value;
+	  let pw = ${pw };
+
+	  if (inputPw !== pw) {
+	    alert("비밀번호를 확인해주세요.");
+	    return false; // form 전송을 막습니다.
+	  }
+	}
 
 </script>
