@@ -96,13 +96,7 @@
 										<input type="submit" class="btn btn-primary btn-block"
 											value="검색">
 									</div>
-									<div class="col-lg-8">
-										<label class="control control--checkbox mt-3"> <span
-											class="caption">설정 저장</span> <input
-											type="checkbox" checked="checked" />
-											<div class="control__indicator"></div>
-										</label>
-									</div>
+									
 								</div>
 							</form>
 						</div>

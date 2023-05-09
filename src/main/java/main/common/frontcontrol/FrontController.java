@@ -40,16 +40,22 @@ import jayk.hotelinfo.control.HotelListControl;
 import jayk.hotelinfo.control.GetHotelControl;
 import main.common.control.Control;
 import main.common.wook.admin.control.AdminModifyMemberControl;
+import main.common.wook.admin.control.adminDecAcceptControl;
+import main.common.wook.admin.control.adminDecListControl;
 import main.common.wook.admin.control.adminDeclarationInfoControl;
-import main.common.wook.admin.control.adminDeclarationListControl;
+import main.common.wook.admin.control.adminDecListFormControl;
 import main.common.wook.admin.control.adminDelMemberControl;
 import main.common.wook.admin.control.adminMemberInfoControl;
 import main.common.wook.admin.control.adminMemberListControl;
 import main.common.wook.admin.control.adminPageControl;
+import main.common.wook.admin.control.adminQnaAnswerControl;
 import main.common.wook.admin.control.adminQnaControl;
+import main.common.wook.admin.control.adminResAccept;
+import main.common.wook.admin.control.adminResCancle;
 import main.common.wook.admin.control.adminReservationInfoControl;
 import main.common.wook.admin.control.adminReservationListControl;
 import main.common.wook.admin.control.allMemberListControl;
+import main.common.wook.admin.control.AdminDecCancleControl;
 import shin.admin.control.AdminPayListControl;
 import shin.notice.control.NoticeAddFormControl;
 import shin.notice.control.NoticeDetailControl;
@@ -76,17 +82,41 @@ public class FrontController extends HttpServlet{
 		// 김성욱
 		
 		//관리자 페이지
+		//관리자 대시보드
 		map.put("/adminPage.do", new adminPageControl());
+		//관리자 QnA
 		map.put("/adminQna.do" , new adminQnaControl());
+		//관리자 Qna 답변
+		map.put("/adminQnaAnswer.do" , new adminQnaAnswerControl());
+		//관리자 전체회원정보
 		map.put("/adminMemberList.do", new adminMemberListControl());
-		map.put("/adminDeclarationList.do", new adminDeclarationListControl());
-		map.put("/adminReservationList.do", new adminReservationListControl());
+		//관리자 단일회원정보
 		map.put("/adminMemberInfo.do", new adminMemberInfoControl());
-		map.put("/adminDeclarationInfo.do", new adminDeclarationInfoControl());
-		map.put("/adminReservationInfo.do", new adminReservationInfoControl());
-		map.put("/allMemberList.do", new allMemberListControl());
+		//관리자 회원정보 수정
 		map.put("/adminModifyMember.do", new AdminModifyMemberControl());
+		//관리자 회원정보 탈퇴
 		map.put("/adminDelMember.do", new adminDelMemberControl());
+		//관리자 전체신고정보 폼
+		map.put("/adminDecListForm.do", new adminDecListFormControl());
+		//관리자 전체신고정보 //사용X
+		map.put("/adminDecList.do", new adminDecListControl());
+		//관리자 단일신고정보
+		map.put("/adminDeclarationInfo.do", new adminDeclarationInfoControl());
+		//관리자 신고반려
+		map.put("/adminDecCancle.do", new AdminDecCancleControl());
+		//관리자 신고처리
+		map.put("/adminDecAccept.do", new adminDecAcceptControl());
+		//관리자 전체예약정보
+		map.put("/adminReservationList.do", new adminReservationListControl());
+		//관리자 단일예약정보
+		map.put("/adminReservationInfo.do", new adminReservationInfoControl());
+		//관리자 예약수락
+		map.put("/adminResAccept.do", new adminResAccept());
+		//관리자 예약거절
+		map.put("/adminResCancle.do", new adminResCancle());
+		
+		//메인 페이지 회원 정보
+		map.put("/allMemberList.do", new allMemberListControl());
 		
 		
 		// 김자영

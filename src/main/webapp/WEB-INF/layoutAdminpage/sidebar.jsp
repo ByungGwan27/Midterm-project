@@ -41,7 +41,7 @@
       </li>
 
 	  <li class="nav-item">
-        <a class="nav-link collapsed" href="adminDeclarationList.do">
+        <a class="nav-link collapsed" href="adminDecListForm.do">
           <i class="bi bi-megaphone
  "></i>
           <span>신고내역</span>

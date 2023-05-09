@@ -23,7 +23,7 @@
 						<h5 class="card-title">회원목록</h5>
 
 						<!-- Table with stripped rows -->
-						<table class="table">
+						<table class="table datatable">
 							<thead>
 								<tr>
 									<th scope="col">#</th>
@@ -37,16 +37,16 @@
 							</thead>
 							<tbody id="tbody">
 								<c:forEach var="member" items="${allMemberInfo}">
-								<tr class='member'>
-									<th scope="row"></th>
-									<td>${member.memberId}</td>
-									<td>${member.memberName}</td>
-									<td>${member.memberNickname}</td>
-									<td>${member.memberGrade}</td>
-									<td>${member.memberStatus}</td>
-								</tr>
+									<tr class='member'>
+										<th scope="row"></th>
+										<td>${member.memberId}</td>
+										<td>${member.memberName}</td>
+										<td>${member.memberNickname}</td>
+										<td>${member.memberGrade}</td>
+										<td>${member.memberStatus}</td>
+									</tr>
 								</c:forEach>
-							
+
 							</tbody>
 						</table>
 						<!-- End Table with stripped rows -->
@@ -60,13 +60,17 @@
 
 </main>
 <script>
-	let tr = document.querySelectorAll('.member');
-
-	for (let i in tr){
-		tr[i].addEventListener('click', function(){
+document.addEventListener('DOMContentLoaded', function(){
+	
+	let mem = document.querySelectorAll("table tbody tr");
+	console.log(mem)
+	mem.forEach(function(mem) {
+		mem.addEventListener("dblclick", function() {
 			location.href = "adminMemberInfo.do?id="+this.children[1].innerText;
 		})
-	}
+
+	})
+})
 	
 	// 	let tr = document.getElementById("member");
 	// 	let table =document.getElementById("member").parentElement;
