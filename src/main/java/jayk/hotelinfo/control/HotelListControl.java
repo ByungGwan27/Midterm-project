@@ -22,6 +22,8 @@ public class HotelListControl implements Control {
 		List<HotelInfoVO> hotelList = service.hotelList();
 		req.setAttribute("hotelList", hotelList);
 				
+		//String hotelLocation1 = req.getParameter("hotelLocation1");
+	
 		return "hotelinfopage/hotelListPage.tiles";
 	}
 

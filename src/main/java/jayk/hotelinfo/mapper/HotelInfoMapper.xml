@@ -21,11 +21,20 @@
 	</select>
 
 	<select id="selectHotel">
-select *
-from hotel h 
-full outer join room_info i on h.hotel_id = i.hotel_id
-full outer join review r on h.hotel_id = r.hotel_id
-where h.hotel_id = #{hotelId}
+		SELECT h.hotel_id as hotelId, h.hotel_name, h.hotel_thema,
+		h.hotel_location1, h.hotel_location2, h.hotel_image,
+		MIN(i.room_price) AS room_price,
+		NVL(COUNT(r.review_point), 0) AS rcount,
+		NVL(ROUND(AVG(r.review_point), 1), 0) AS avgpoint
+		FROM hotel h
+		full outer JOIN room_info i ON
+		h.hotel_id = i.hotel_id
+		full outer JOIN review r ON h.hotel_id =
+		r.hotel_id
+        where h.hotel_id = #{hotelId}
+		GROUP BY h.hotel_id, h.hotel_name, h.hotel_thema,
+		h.hotel_location1,
+		h.hotel_location2, h.hotel_point, h.hotel_image
 	</select>
 
 	<select id="roomList">
@@ -46,7 +55,7 @@ SELECT h.hotel_id as hotelId, h.hotel_name, h.hotel_location1, h.hotel_location2
 	FROM hotel h
 	full outer JOIN room_info i ON h.hotel_id = i.hotel_id
 	full outer JOIN review r ON h.hotel_id = r.hotel_id
-	where h.hotel_location1=#{hotelLocation1} and h.hotel_id != #{hotelId}
+	where h.hotel_id != #{hotelId}
 	GROUP BY h.hotel_id, h.hotel_name, h.hotel_location1, h.hotel_location2, h.hotel_image
 	 ]]>
 	</select>

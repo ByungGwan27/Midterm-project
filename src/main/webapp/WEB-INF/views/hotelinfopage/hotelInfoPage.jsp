@@ -52,7 +52,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2">별점 :</td>
+						<td colspan="2">별점 : ${hotelInfo.avgpoint}</td>
 					</tr>
 					<tr>
 						<td colspan="2">후기1</td>
@@ -82,6 +82,9 @@
 		</div>
 		<div class="row"
 			style="display: flex; justify-content: center; align-items: center;">
+											<c:if test="${empty roomList}">
+				<p>정보가 없습니다.</p>
+			</c:if>
 			<c:forEach var="roomList" items="${roomList}">
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
 					<div class="media-1">
@@ -94,9 +97,9 @@
 									<a href="#">${roomList.roomName} ${roomList.roomGrade}</a>
 								</h3>
 								<div class="price ml-auto">
-									<span>최대인원 ${roomList.roomMax}</span><br> <span>시설정보
-										${roomList.roomExpain}</span><br> <span>가격
-										${roomList.roomPrice}</span><br>
+									<span>최대인원 ${roomList.roomMax}</span><br> 
+									<span>시설정보 ${roomList.roomExpain}</span><br> 
+									<span>가격 ${roomList.roomPrice}</span><br>
 									<button>예약</button>
 								</div>
 							</div>
@@ -232,6 +235,9 @@
 				</thead>
 				<tbody id="tlist">
 					<!-- 리뷰내용 -->
+								<c:if test="${empty reviewList}">
+				<p>리뷰 정보가 없습니다.</p>
+			</c:if>
 					<c:forEach var="reviewList" items="${reviewList}">
 						<tr>
 							<td>${reviewList.reviewId}</td>
