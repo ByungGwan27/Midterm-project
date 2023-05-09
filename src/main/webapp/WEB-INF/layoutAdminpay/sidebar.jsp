@@ -27,8 +27,7 @@
       
         <li class="nav-item">
         <a class="nav-link collapsed" href="pages-blank.html">
-          <i class="bi bi-envelope-open
- "></i>
+          <i class="bi bi-envelope-open"></i>
           <span>메세지함</span>
         </a>
       </li>

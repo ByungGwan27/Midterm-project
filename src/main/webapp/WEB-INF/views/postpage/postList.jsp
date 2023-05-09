@@ -91,9 +91,7 @@
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
-  
 
-  
 }
 
 
@@ -118,7 +116,7 @@
 
 <!--여행 포스터 영상-->
 
-<body>
+ <body>
 	<div class="content-center">
 		<video id="vid" width="970" height="763" autoplay="autoplay"
 			loop="loop" muted="muted" controls>
@@ -128,7 +126,7 @@
 			document.getElementById('vid').play();
 		</script>
 	</div>
-</body>
+
 
        <!-- 파워 블로거 슬라이드 -->
        
@@ -298,7 +296,7 @@
 	</div>
 </section>
 </c:forEach>
-
+</body>
 	
 	<script>
     const swiper = new Swiper('.swiper', {
