@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import main.common.control.Control;
+import main.common.control.PageDTO;
 import main.common.wook.admin.domain.QnaVO;
 import main.common.wook.admin.service.AdminService;
 import main.common.wook.admin.service.AdminServiceImpl;

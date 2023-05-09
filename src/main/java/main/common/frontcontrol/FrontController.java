@@ -36,14 +36,15 @@ import jayk.hotelinfo.control.AdminAddHotelFormControl;
 import jayk.hotelinfo.control.AdminGetHotelControl;
 import jayk.hotelinfo.control.AdminHotelListControl;
 import jayk.hotelinfo.control.AdminModifyHotelInfoControl;
-import jayk.hotelinfo.control.HotelListControl;
 import jayk.hotelinfo.control.GetHotelControl;
+import jayk.hotelinfo.control.HotelListControl;
 import main.common.control.Control;
+import main.common.wook.admin.control.AdminDecCancleControl;
 import main.common.wook.admin.control.AdminModifyMemberControl;
 import main.common.wook.admin.control.adminDecAcceptControl;
 import main.common.wook.admin.control.adminDecListControl;
-import main.common.wook.admin.control.adminDeclarationInfoControl;
 import main.common.wook.admin.control.adminDecListFormControl;
+import main.common.wook.admin.control.adminDeclarationInfoControl;
 import main.common.wook.admin.control.adminDelMemberControl;
 import main.common.wook.admin.control.adminMemberInfoControl;
 import main.common.wook.admin.control.adminMemberListControl;
@@ -55,7 +56,9 @@ import main.common.wook.admin.control.adminResCancle;
 import main.common.wook.admin.control.adminReservationInfoControl;
 import main.common.wook.admin.control.adminReservationListControl;
 import main.common.wook.admin.control.allMemberListControl;
-import main.common.wook.admin.control.AdminDecCancleControl;
+import main.common.wook.admin.control.memberChartDataControl;
+import main.common.wook.admin.control.payChartDataControl;
+import main.common.wook.admin.control.payCountChartDataControl;
 import shin.admin.control.AdminPayListControl;
 import shin.notice.control.AddNoticeControl;
 import shin.notice.control.NoticeAddFormControl;
@@ -85,6 +88,12 @@ public class FrontController extends HttpServlet{
 		//관리자 페이지
 		//관리자 대시보드
 		map.put("/adminPage.do", new adminPageControl());
+		//관리자 결제건수 차트 데이터
+		map.put("/payCountChartData.do", new payCountChartDataControl());
+		//관리자 매출 차트 데이터
+		map.put("/payChartData.do", new payChartDataControl());
+		//관리자 회원 차트 데이터
+		map.put("/memberChartData.do", new memberChartDataControl());
 		//관리자 QnA
 		map.put("/adminQna.do" , new adminQnaControl());
 		//관리자 Qna 답변
