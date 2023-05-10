@@ -34,15 +34,15 @@ public class PostDetailControl implements Control {
 		List<PostCommentVO> commentList = service.postCommentList();
 		
 		PostService service3 = new PostServiceImpl();
-		List<PostVO> list = service3.postList();
+		List<PostVO> post = service3.postList();
 		
 		req.setAttribute("allMemberInfo", memberList);
 		req.setAttribute("postCommentList", commentList);
-		req.setAttribute("postList", list);
+		req.setAttribute("postList", post);
 	
 		System.out.println(memberList);
 		System.out.println(commentList);
-		System.out.println(list);
+		System.out.println(post);
 		
 		return "postpage/postDetail.tiles";
 	}

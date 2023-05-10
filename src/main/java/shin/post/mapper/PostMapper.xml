@@ -4,7 +4,7 @@
 <mapper namespace="shin.post.mapper.PostMapper">
 
 	<select id="postList" resultType="post">
-		select * from post p join member m on p.memberId = m.memberId
+		select * from post p join member m on p.member_id = m.member_id
 
 	</select>
 
@@ -30,7 +30,7 @@
 	
 	<select id="memberByDept" resultType="map">
 	
-	select * from post p join member m on p.memberId = m.memberId
+	select * from post p join member m on p.member_id = m.member_id
 	
 </select>
 	

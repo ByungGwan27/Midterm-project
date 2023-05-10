@@ -4,7 +4,7 @@
 
 <!DOCTYPE html>
 
-<c:forEach var="post" items="${list}">
+<c:forEach var="post" items="${postList}">
 <section class="py-5">
 <div class="container px-5 my-5">
 	<div class="row gx-5">
@@ -13,7 +13,7 @@
 				<img class="img-fluid rounded-circle"
 					src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
 				<div class="ms-3">
-					<div class="fw-bold">${memberList.memberName}</div>
+					<div class="fw-bold">${post.memberName}</div>
 			<div class="text-muted">News, Business</div>
 		</div>
 	</div>
