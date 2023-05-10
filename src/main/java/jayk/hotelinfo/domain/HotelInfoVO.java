@@ -20,11 +20,11 @@ public class HotelInfoVO {
 	private int hotelViews;
 	private int horelDec;
 	private int resCount;
-	private int roomId;
 	private String locationDetail;
 
 	//roomInfo
 	private int roomNumber;
+	private int roomId;
 	private String roomName;
 	private String roomExpain;
 	private String roomGrade;

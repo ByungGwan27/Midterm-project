@@ -5,25 +5,32 @@
 <mapper namespace="jayk.hotelinfo.mapper.HotelInfoMapper">
 
 	<select id="hotelList">
-		SELECT h.hotel_id as hotelId, h.hotel_name, h.hotel_thema,
+		SELECT h.hotel_id as hotelId, h.hotel_name,
+		h.hotel_thema,
 		h.hotel_location1, h.hotel_location2, h.hotel_image,
 		MIN(i.room_price) AS room_price,
-		NVL(COUNT(r.review_point), 0) AS rcount,
+		NVL(COUNT(r.review_point), 0) AS
+		rcount,
 		NVL(ROUND(AVG(r.review_point), 1), 0) AS avgpoint,
 		NVL((ROUND(AVG(r.review_point), 1)*2 *10),0) as avgstar
 		FROM hotel h
 		full outer JOIN room_info i ON
 		h.hotel_id = i.hotel_id
-		full outer JOIN review r ON h.hotel_id =
+		full outer JOIN
+		review r ON h.hotel_id =
 		r.hotel_id
-		GROUP BY h.hotel_id, h.hotel_name, h.hotel_thema,
+		GROUP BY h.hotel_id, h.hotel_name,
+		h.hotel_thema,
 		h.hotel_location1,
-		h.hotel_location2, h.hotel_point, h.hotel_image
+		h.hotel_location2, h.hotel_point,
+		h.hotel_image
 	</select>
 
 	<select id="selectHotel" parameterType="Map">
-		SELECT h.hotel_id as hotelId, h.hotel_name, h.hotel_thema,
-		h.hotel_location1, h.hotel_location2, h.hotel_image,
+		SELECT h.hotel_id as
+		hotelId, h.hotel_name, h.hotel_thema,
+		h.hotel_location1,
+		h.hotel_location2, h.hotel_image,
 		MIN(i.room_price) AS room_price,
 		NVL(COUNT(r.review_point), 0) AS rcount,
 		NVL(ROUND(AVG(r.review_point), 1), 0) AS avgpoint,
@@ -31,10 +38,11 @@
 		h.location_detail
 		FROM hotel h
 		full outer JOIN room_info i ON
-		h.hotel_id = i.hotel_id
+		h.hotel_id
+		= i.hotel_id
 		full outer JOIN review r ON h.hotel_id =
 		r.hotel_id
-    where h.hotel_location1 = #{hotelLocation1} and h.hotel_id = #{hotelId}
+		where h.hotel_location1 = #{hotelLocation1} and h.hotel_id = #{hotelId}
 		GROUP BY h.hotel_id, h.hotel_name, h.hotel_thema,
 		h.hotel_location1,
 		h.hotel_location2, h.hotel_point, h.hotel_image, h.location_detail
@@ -42,7 +50,7 @@
 
 	<select id="roomList">
 		select * from room_info where hotel_id = #{hotelId}
-		order by room_name
+		order by room_id
 	</select>
 
 	<select id="reviewList">
@@ -72,14 +80,17 @@
 	</select>
 
 	<select id="adminHotelList">
-		select * from hotel h
+		select * from hotel
 	</select>
 
 	<select id="selectAdminHotel">
-		select * from hotel h
-		FULL OUTER JOIN room_info i
-		USING (hotel_id)
+		select * from hotel
 		where hotel_id = #{hotelId}
+	</select>
+	
+	<select id="selectAdminHotelRoom">
+		select * from room_info
+		where hotel_id=#{hotelId} and room_id=#{roomId}
 	</select>
 
 	<update id="updateAdminHotel">
@@ -88,11 +99,22 @@
 		where hotel_id = #{hotelId}
 	</update>
 
+	<update id="updateAdminHotelRoom" parameterType="hi">
+	<foreach item="hi" index="index" collection="hi">
+		update room_info
+		set room_name=#{roomName}, room_expain=#{roomExpain},
+		room_grade=#{roomGrade}, room_price=#{roomPrice}, room_max=#{roomMax},
+		room_min=#{roomMin}, add_price=#{addPrice}
+		where hotel_id=#{hotelId} and room_id=#{roomId}
+		</foreach>
+	</update>
+
 	<insert id="insertAdminHotel">
 		insert into hotel (hotel_id, hotel_name,
 		hotel_location1, hotel_location2, hotel_image, hotel_imginfo,
 		location_detail)
-		values(#{hotelId}, #{hotelName}, #{hotelLocation1}, #{hotelLocation2}, #{hotelImage},
+		values(#{hotelId}, #{hotelName}, #{hotelLocation1},
+		#{hotelLocation2}, #{hotelImage},
 		#{hotelImginfo}, #{locationDetail})
 	</insert>
 </mapper>

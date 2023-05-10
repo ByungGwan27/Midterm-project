@@ -2,6 +2,7 @@ package jayk.hotelinfo.service;
 
 import java.util.List;
 
+
 import jayk.hotelinfo.domain.HotelInfoVO;
 
 public interface HotelInfoService {
@@ -9,10 +10,11 @@ public interface HotelInfoService {
 	public HotelInfoVO getHotelInfo(int hotelId, String hotelLocation1);
 	public List<HotelInfoVO> roomList(int hotelId);
 	public List<HotelInfoVO> reviewList(int hotelId);
-	public List<HotelInfoVO> similarList(int hotelId);
+	public List<HotelInfoVO> similarList(int hotelId, String hotelLocation1);
 	public List<HotelInfoVO> adminHotelList();
 	public HotelInfoVO getAdminHotel(int hotelId);
+	public HotelInfoVO getAdminHotelRoom(int hotelId, int roomId);
 	public boolean modifyAdminHotel(HotelInfoVO vo);
+	public boolean modifyAdminHotelRoom(HotelInfoVO vo);
 	public boolean addAdminHotel(HotelInfoVO vo);
-	public List<HotelInfoVO> similarList(int hotelId, String hotelLocation1);
 }

@@ -142,6 +142,7 @@ public class FrontController extends HttpServlet{
 		map.put("/adminHotelInfoPage.do", new AdminGetHotelControl());
 		//관리자숙소정보수정페이지
 		map.put("/adminHotelInfoModifyPage.do", new AdminModifyHotelInfoControl());
+		//map.put("/adminHotelRoomInfoModifyPage.do", new AdminModifyHotelRoomInfoControl());
 		
 		// 신지은
 		

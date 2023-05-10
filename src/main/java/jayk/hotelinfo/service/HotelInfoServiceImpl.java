@@ -2,6 +2,7 @@ package jayk.hotelinfo.service;
 
 import java.util.List;
 
+
 import org.apache.ibatis.session.SqlSession;
 
 import jayk.hotelinfo.domain.HotelInfoVO;
@@ -58,9 +59,15 @@ public class HotelInfoServiceImpl implements HotelInfoService{
 	}
 
 	@Override
-	public List<HotelInfoVO> similarList(int hotelId) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean modifyAdminHotelRoom(HotelInfoVO vo) {
+		return mapper.updateAdminHotelRoom(vo) == 1;
 	}
 
+	@Override
+	public HotelInfoVO getAdminHotelRoom(int hotelId, int roomId) {
+		return mapper.selectAdminHotelRoom(hotelId, roomId);
+	}
+
+
+	
 }

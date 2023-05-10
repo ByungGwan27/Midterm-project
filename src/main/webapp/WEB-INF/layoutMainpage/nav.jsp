@@ -97,10 +97,8 @@
 								</div>
 								<div class="row align-items-center">
 									<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
-										<input type="submit" class="btn btn-primary btn-block"
-											value="검색">
+										<input type="submit" class="btn btn-primary btn-block" value="검색">							
 									</div>
-
 								</div>
 							</form>
 						</div>
