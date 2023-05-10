@@ -15,6 +15,12 @@ import main.common.control.Control;
 import main.common.wook.admin.service.AdminService;
 import main.common.wook.admin.service.AdminServiceImpl;
 import main.common.wook.main.domain.MemberVO;
+import shin.post.domain.PostCommentVO;
+import shin.post.domain.PostVO;
+import shin.post.service.PostCommentService;
+import shin.post.service.PostCommentServiceImpl;
+import shin.post.service.PostService;
+import shin.post.service.PostServiceImpl;
 
 public class PostDetailControl implements Control {
 
@@ -24,9 +30,19 @@ public class PostDetailControl implements Control {
 		AdminService service2 = new AdminServiceImpl();
 		List<MemberVO> memberList = service2.allMemberInfo();
 		
+		PostCommentService service = new PostCommentServiceImpl();
+		List<PostCommentVO> commentList = service.postCommentList();
+		
+		PostService service3 = new PostServiceImpl();
+		List<PostVO> post = service3.postList();
+		
 		req.setAttribute("allMemberInfo", memberList);
+		req.setAttribute("postCommentList", commentList);
+		req.setAttribute("postList", post);
 	
 		System.out.println(memberList);
+		System.out.println(commentList);
+		System.out.println(post);
 		
 		return "postpage/postDetail.tiles";
 	}

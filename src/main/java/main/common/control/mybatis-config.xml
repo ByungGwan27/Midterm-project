@@ -20,9 +20,10 @@
 
 		
 		
-
+		<!-- shin/ notice, post -->
 		<typeAlias alias="notice" type="shin.notice.domain.NoticeVO" />
 		<typeAlias alias="post" type="shin.post.domain.PostVO" />
+		<typeAlias alias="comment" type="shin.post.domain.PostCommentVO" />
 		
 		
 		<!-- gwan/myPage -->
@@ -57,5 +58,9 @@
 		<!-- gwan/myPage -->
 		<mapper resource="gwan/mypage/mapper/MyPageMapper.xml"/>
 		<mapper resource="gwan/loginpage/mapper/LoginPageMapper.xml"/>
+	
+		<!-- shin/postComment  -->
+		<mapper resource="shin/post/mapper/PostCommentMapper.xml"/>
+		
 	</mappers>
 </configuration>
