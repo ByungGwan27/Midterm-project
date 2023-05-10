@@ -218,7 +218,6 @@ public class FrontController extends HttpServlet{
 		map.put("/forgotPasswordPage.do", new ForgotPasswordPageControl());
 		//비밀번호찾기
 		map.put("/passwordReset.do", new passwordResetControl());
-		//map.put("/passwordReset.do", (Control) new passwordMail());
 		
 		//관리자 메세지 페이지
 		map.put("/adminMessagePage.do", new AdminMessagePageControl());

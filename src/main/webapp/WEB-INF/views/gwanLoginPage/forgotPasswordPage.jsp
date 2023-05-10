@@ -65,10 +65,14 @@
 				fetch("passwordReset.do?btnL=" + encodeURIComponent(btnL))
 					.then(resolve => resolve.json())
 					.then(result => {
-						
-						if (result.retCode == noChange) {
+						console.log(result.retCode);
+						if(result.retCode == 'Change') {
+							alert('메일이 전송되었습니다!');
+							location.href = 'mainPage.do';
+						} else if (result.retCode == 'noChange') {
 							alert('잠시후 다시 시도해 주세요!')
-						} else {
+						//} else if (result.retCode !== Change && result.retCode !== noChange) {
+						} else if (result.retCode != "Change" && result.retCode != "noChange") {
 							alert(result.retCode + "라는 메일이 존재하지 않습니다!")
 						}
 						

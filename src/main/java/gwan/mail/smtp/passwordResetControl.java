@@ -27,6 +27,7 @@ import main.common.control.Control;
 public class passwordResetControl implements Control {
 	
 	String code;
+	String receiver;
 	
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -41,25 +42,24 @@ public class passwordResetControl implements Control {
 		        validEmailList.add(memberEmail);
 		    }
 		}
-		System.out.println(validEmailList);
+		//존재하는 email
+		//System.out.println(validEmailList);
 		
-		System.out.println(list);
 		String json;
 		
 		String inputEmail = req.getParameter("btnL");
-		System.out.println("값 받아와지냐?"+inputEmail);
+		//System.out.println("email값 : " + inputEmail);
 		
 		// 이메일 검증
 		for (String email : validEmailList) {
-		    System.out.println("반복문 도는중");
-		    System.out.println(email);
 		    if (email.equals(inputEmail)) {
 		        mailSend();
 		        System.out.println("난수 최종 테스트: " + code);
 
 		        // 메일이 보내지고, 비밀번호가 변경됨
 		        if (service.updatePw(code, inputEmail)) {
-		            return "mainPage.do";
+		        	json = "{\"retCode\":\"Change\"}";
+		        	return json + ".json";
 		        } else {
 		            json = "{\"retCode\":\"noChange\"}";
 		            return json + ".json";
@@ -85,9 +85,8 @@ public class passwordResetControl implements Control {
 //				}
 //			}
 //		}
-		System.out.println("여기까지 도달!");
 		json = "{\"retCode\":\""+inputEmail+"\"}";
-		
+		System.out.println(json);
 		return json + ".json";
 	}
 	
@@ -108,7 +107,7 @@ public class passwordResetControl implements Control {
 			}
 		});
 		
-		String receiver = "byunggwan827@gmail.com"; // 메일 받을 주소
+		receiver = "byunggwan827@gmail.com"; // 메일 받을 주소
 		String title = "Traveller 비밀번호 찾기입니다.";
 		
 		//랜덤코드만들기
@@ -126,7 +125,8 @@ public class passwordResetControl implements Control {
 		System.out.println(code);
 		
 		
-		String content = "<h2>비밀번호 확인 코드입니다." + code + "</h2>";
+		String content = "<p>비밀번호 확인 코드입니다 : <h2>" + code + "</h2></p>"+
+				 "\n<p>해당 정보로 로그인 해주세요!<p>";
 		Message message = new MimeMessage(session);
 		try {
 			message.setFrom(new InternetAddress("sendMail@gmail.com", "관리자", "utf-8"));
