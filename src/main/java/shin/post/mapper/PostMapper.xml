@@ -4,8 +4,7 @@
 <mapper namespace="shin.post.mapper.PostMapper">
 
 	<select id="postList" resultType="post">
-		select * from post
-		order by 1
+		select * from post p join member m on p.memberId = m.memberId
 
 	</select>
 
