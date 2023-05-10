@@ -2,6 +2,21 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<%
+	//id 쿠키 사용
+	String cookie = "";
+	String checked = "";
+	Cookie[] cookies = request.getCookies(); //쿠키생성
+	if(cookies != null && cookies.length > 0)
+	for (int i = 0; i < cookies.length; i++){
+		if (cookies[i].getName().equals("userId")) { // 내가 원하는 쿠키명 찾아서 값 저장
+				cookie = cookies[i].getValue();
+				checked = "checked";
+		}
+	}
+%>
+
+
 <body class="bg-gradient-primary">
 
 	<div class="container">
@@ -27,21 +42,21 @@
 										<div class="form-group">
 											<input type="text" class="form-control form-control-user"
 												id="exampleInputEmail" aria-describedby="emailHelp"
-												placeholder="Enter Email Address..." name="loginId" required>
+												placeholder="Enter Email Address..." name="loginId" value="<%=cookie%>" required>
 										</div>
 										<div class="form-group">
 											<input type="password" class="form-control form-control-user"
 												id="exampleInputPassword" placeholder="Password" name="loginPw" required>
 										</div>
 										<!-- id 기억하기 체크박스 -->
-										<!-- <div class="form-group">
+										<div class="form-group">
 											<div class="custom-control custom-checkbox small">
 												<input type="checkbox" class="custom-control-input"
-													id="customCheck"> <label
+													id="customCheck" name="checkbox" <%=checked %>> <label
 													class="custom-control-label" for="customCheck">Remember
 													Me</label>
 											</div>
-										</div> -->
+										</div>
 <!-- 										<a href="index.html" -->
 										<button type="submit"
 											class="btn btn-primary btn-user btn-block"> Login </button>

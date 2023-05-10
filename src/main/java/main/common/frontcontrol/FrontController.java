@@ -196,11 +196,12 @@ public class FrontController extends HttpServlet{
 		//Q&A 질문 작성 페이지
 		map.put("/myPageQnaQ.do", new MyPageQnaQControl());
 		
-		//로그인페이지 이동
+		//로그인 페이지 관련
+		// 로그인페이지(이동)
 		map.put("/loginPage.do", new loginPageControl());
-		//로그인 정보 확인(로그인시도)
+		// 로그인정보 확인(로그인시도)
 		map.put("/login.do", new loginControl());
-		//로그아웃
+		// 로그아웃
 		map.put("/logout.do", new logoutControl());
 		
 		//회원가입
@@ -210,7 +211,7 @@ public class FrontController extends HttpServlet{
 		map.put("/createUserReadIdAjax.do", new CreateUserReadIdAjaxControl());
 		map.put("/createUserReadNicknameAjax.do", new CreateUserReadNicknameAjaxControl());
 		
-		//pw찾기
+		//pw찾기(이동)
 		map.put("/forgotPasswordPage.do", new ForgotPasswordPageControl());
 		
 		//관리자 메세지 페이지

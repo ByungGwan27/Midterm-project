@@ -3,6 +3,7 @@ package gwan.loginpage.control;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,10 +21,26 @@ public class loginControl implements Control {
 		
 		String id = req.getParameter("loginId");
 		String pw = req.getParameter("loginPw");
+		String checkbox = req.getParameter("checkbox");
 		
 		LoginPageVO vo = new LoginPageVO();
 		vo.setMemberId(id);
 		vo.setMemberPw(pw);
+		
+		// 아이디 기억하기
+		Cookie cookie = new Cookie("userId", id);
+		
+		System.out.println("쿠키" + checkbox);
+		if (checkbox != null) { // 체크박스 체크여부에 따라 쿠키 저장 확인
+			// 체크박스 체크 되었을 때
+			// 쿠키 저장
+			resp.addCookie(cookie);
+		} else {
+			// 체크박스 체크 해제되었을 때
+			// 쿠키 유효시간 0으로 해서 브라우저에서 삭제하게 한다.
+			cookie.setMaxAge(0);
+			resp.addCookie(cookie);
+		}
 		
 		LoginPageService service = new LoginPageServiceImpl();
 		vo = service.loginCheck(vo);
