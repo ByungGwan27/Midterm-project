@@ -65,14 +65,23 @@
 
 	<!-- 신고내역확인 -->
 	<select id="adminDecList" resultType="dec">
-		select * from declaration
+		select * from declaration order by dec_date desc
 	</select>
 
 	<!-- 신고 상세 내역 조회 -->
 	<select id="decInfo" resultType="dec" parameterType="int">
-		select *
-		from declaration where dec_id=#{decId}
+	select *
+	from (select *
+	from declaration join 
+	(select hotel_id, count(*) as dec_count 
+	from declaration
+	group by hotel_id)
+	using (hotel_id)
+	where dec_id=${decId}) join 
+	(select hotel_id, hotel_name from hotel)
+	left using (hotel_id)
 	</select>
+
 
 	<!-- 신고반려 -->
 	<update id="decCancle" parameterType="int">
@@ -92,12 +101,13 @@
 
 	<!-- 예약 리스트 -->
 	<select id="adminResList" resultType="reservation">
-		select *
+	 	select *
 		from reservation join
 		(select room_id, room_name,hotel_id, hotel_name from room_info join (
 		select hotel_id, hotel_name from hotel)
 		using (hotel_id))
 		using(room_id)
+        order by res_status asc, checkin_date asc
 	</select>
 
 	<!-- 단일 예약 조회 -->
@@ -116,7 +126,8 @@
 	<update id="resAccept" parameterType="int">
 		update reservation
 		set
-		res_status='예약수락'
+		res_status='예약수락',
+		complete_date = sysdate
 		where reservation_id=${resId}
 	</update>
 
@@ -124,7 +135,8 @@
 	<update id="resCancle" parameterType="int">
 		update reservation
 		set
-		res_status='예약거절'
+		res_status='예약거절',
+		complete_date = sysdate
 		where reservation_id=${resId}
 	</update>
 
@@ -134,7 +146,7 @@
 	<![CDATA[
 		SELECT b.*
 		FROM (SELECT rownum rn , a.*
-		FROM (SELECT * FROM qna where answer_check = '미답변' order by 1 desc) a
+		FROM (SELECT * FROM qna where answer_check = '미답변' order by qna_date desc) a
 		WHERE rownum <= #{page} * 10) b
 		WHERE b.rn > (#{page}-1) * 10
 		]]>
@@ -148,7 +160,7 @@
 		<![CDATA[
 		SELECT b.*
 		FROM (SELECT rownum rn , a.*
-		FROM (SELECT * FROM qna where answer_check = '답변완료' order by 1 desc) a
+		FROM (SELECT * FROM qna where answer_check = '답변완료' order by qna_date desc) a
 		WHERE rownum <= #{page} * 10) b
 		WHERE b.rn > (#{page}-1) * 10
 		]]>
@@ -186,4 +198,48 @@
 	<select id="memberChartData" parameterType="String" resultType="int">
 		  select count(*) as memberCount from member where substr(member_joindate, 1, 5) = #{dateStr}
 	</select>
+	
+	<!-- 임박(7일) 예약 조회 -->
+	<select id="imminentRes" resultType="reservation" parameterType="int">
+	<![CDATA[
+	SELECT b.*
+		FROM (SELECT rownum rn , a.*
+		FROM (SELECT * FROM 
+           (select *
+from reservation join (
+select reservation_id,(round(checkin_date-sysdate)) as dday
+from reservation  join
+(select room_id, room_name,hotel_id, hotel_name from room_info join (
+select hotel_id, hotel_name from hotel)
+using (hotel_id))
+using(room_id)
+where res_status = '대기중'
+order by checkin_date asc)
+using (reservation_id)
+where checkin_date-7 < sysdate
+and checkin_date > sysdate)
+        ) a
+		WHERE rownum <= #{page} * 5) b
+		WHERE b.rn > (#{page}-1) * 5
+	]]>
+	</select>
+	
+	<select id="imminentResCount" resultType="int">
+	<![CDATA[
+	    select count(*) from (select *
+	from reservation join (
+	select reservation_id,(round(checkin_date-sysdate)) as dday
+	from reservation  join
+	(select room_id, room_name,hotel_id, hotel_name from room_info join (
+	select hotel_id, hotel_name from hotel)
+	using (hotel_id))
+	using(room_id)
+	where res_status = '대기중'
+	order by checkin_date asc)
+	using (reservation_id)
+	where checkin_date-7 < sysdate
+	and checkin_date > sysdate)
+	]]>
+	</select>
+	
 </mapper>
