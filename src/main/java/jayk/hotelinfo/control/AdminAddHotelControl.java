@@ -53,7 +53,7 @@ public class AdminAddHotelControl implements Control {
 				
 		if(service.addAdminHotel(addHotel)) {
 			System.out.println("성공");
-			return "adminHotelList.do";
+			return "admimAddRoomForm.do";
 		}else {
 			return "adminAddHotelPage.do";
 		}

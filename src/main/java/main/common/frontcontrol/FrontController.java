@@ -32,6 +32,7 @@ import gwan.mypage.control.MyPageWishListControl;
 import gwan.mypage.control.MypageHomeControl;
 import jayk.hotelinfo.control.AdminAddHotelControl;
 import jayk.hotelinfo.control.AdminAddHotelFormControl;
+import jayk.hotelinfo.control.AdminAddRoomFormControl;
 import jayk.hotelinfo.control.AdminGetHotelControl;
 import jayk.hotelinfo.control.AdminHotelListControl;
 import jayk.hotelinfo.control.AdminModifyHotelInfoControl;
@@ -138,11 +139,13 @@ public class FrontController extends HttpServlet{
 		//관리자숙소추가페이지 
 		map.put("/adminAddHotelForm.do", new AdminAddHotelFormControl());
 		map.put("/adminAddHotelPage.do", new AdminAddHotelControl());
+		//관리자숙소객실추가페이지
+		map.put("/admimAddRoomForm.do", new AdminAddRoomFormControl());
 		//관리자숙소상세페이지
 		map.put("/adminHotelInfoPage.do", new AdminGetHotelControl());
 		//관리자숙소정보수정페이지
 		map.put("/adminHotelInfoModifyPage.do", new AdminModifyHotelInfoControl());
-		//map.put("/adminHotelRoomInfoModifyPage.do", new AdminModifyHotelRoomInfoControl());
+		
 		
 		// 신지은
 		

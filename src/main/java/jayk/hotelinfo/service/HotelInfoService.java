@@ -1,7 +1,7 @@
 package jayk.hotelinfo.service;
 
 import java.util.List;
-
+import java.util.Map;
 
 import jayk.hotelinfo.domain.HotelInfoVO;
 
@@ -17,4 +17,5 @@ public interface HotelInfoService {
 	public boolean modifyAdminHotel(HotelInfoVO vo);
 	public boolean modifyAdminHotelRoom(HotelInfoVO vo);
 	public boolean addAdminHotel(HotelInfoVO vo);
+	void modifyAdminHotelRoom(Map<String, Object> params);
 }
