@@ -16,4 +16,10 @@ public interface LoginPageService {
 	public List<LoginPageVO> readNickname();
 	//id 확인
 	public List<LoginPageVO> readId();
+	
+	// pw찾기
+	//email확인
+	public List<LoginPageVO> readEmail();
+	//email변경
+	public boolean updatePw(String memberPw, String memberEmail);
 }

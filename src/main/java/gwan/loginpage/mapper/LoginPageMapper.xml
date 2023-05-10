@@ -33,5 +33,15 @@
 	<select id="readId" parameterType="lp">
 		SELECT member_id FROM member
 	</select>
+	
+	<!-- email확인 -->
+	<select id="readEmail" parameterType="lp">
+		SELECT member_email FROM member
+	</select>
+	<!-- pw변경 -->
+	<update id="updatePw" parameterType="String">
+		UPDATE member SET member_pw = #{memberPw} WHERE member_email= #{memberEmail}
+	</update>
+	
 
 </mapper>
