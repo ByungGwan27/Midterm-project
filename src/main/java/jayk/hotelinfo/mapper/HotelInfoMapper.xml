@@ -100,7 +100,7 @@
 	</update>
 
 	<update id="updateAdminHotelRoom" parameterType="hi">
-	<foreach item="hi" index="index" collection="hi">
+	<foreach item="roomId" index="index" collection="hi">
 		update room_info
 		set room_name=#{roomName}, room_expain=#{roomExpain},
 		room_grade=#{roomGrade}, room_price=#{roomPrice}, room_max=#{roomMax},
