@@ -37,5 +37,16 @@ public class MyPageVO {
 	private String memberPw;
 	private String memberProfile;
 	
+	//쿠폰함
+	private String couponName;
+	private Date couponStart;
+	private Date couponEnd;
+	private int couponRange;
+	private int salePer;
+	private int salePri;
+	private int couponId;
+	private int couponCheck;
+	
+	
 	
 }
