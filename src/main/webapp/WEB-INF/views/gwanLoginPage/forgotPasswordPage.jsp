@@ -22,16 +22,18 @@
                                         <p class="mb-4">We get it, stuff happens. Just enter your email address below
                                             and we'll send you a link to reset your password!</p>
                                     </div>
+                                    
                                     <form class="user">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                                placeholder="Enter Email Address..." name="email">
                                         </div>
-                                        <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                        <a href="#" onclick="sendMail()" class="btn btn-primary btn-user btn-block">
                                             Reset Password
                                         </a>
                                     </form>
+                                    
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href="createUserPage.do">Create an Account!</a>
@@ -52,3 +54,27 @@
     </div>
 
 </body>
+
+<script>
+	function sendMail() {
+
+		let btnL = document.getElementById('exampleInputEmail').value;
+			if (confirm("해당 이메일이 맞으십니까?\nEmail: " + btnL)) {
+				
+				//이메일 검사
+				fetch("passwordReset.do?btnL=" + encodeURIComponent(btnL))
+					.then(resolve => resolve.json())
+					.then(result => {
+						
+						if (result.retCode == noChange) {
+							alert('잠시후 다시 시도해 주세요!')
+						} else {
+							alert(result.retCode + "라는 메일이 존재하지 않습니다!")
+						}
+						
+					})
+					.catch(error => console.error(error));
+					
+			}
+	}
+</script>

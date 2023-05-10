@@ -249,6 +249,8 @@
 					document.userCreate.submit();
 					
 				})
+				//5.10추가했는데 안되면 다시 찾아보자
+				.catch(error => console.error(error));
 			})
 			.catch(error => console.error(error));
 		

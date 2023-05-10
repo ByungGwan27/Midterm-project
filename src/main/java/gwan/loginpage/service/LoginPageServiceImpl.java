@@ -34,4 +34,14 @@ public class LoginPageServiceImpl implements LoginPageService {
 		return mapper.readId();
 	}
 
+	@Override
+	public List<LoginPageVO> readEmail() {
+		return mapper.readEmail();
+	}
+
+	@Override
+	public boolean updatePw(String memberPw, String memberEmail) {
+		return mapper.updatePw(memberPw, memberEmail) == 1;
+	}
+
 }
