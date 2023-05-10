@@ -44,6 +44,9 @@ public class MyPageVO {
 	private int couponRange;
 	private int salePer;
 	private int salePri;
+	private int couponId;
+	private int couponCheck;
+	
 	
 	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import gwan.loginpage.domain.LoginPageVO;
 import gwan.mypage.domain.MyPageVO;
 
 public interface MyPageMapper {
@@ -25,7 +26,7 @@ public interface MyPageMapper {
 	public List<MyPageVO> readCoupon(String memberId);
 	
 	//회원정보수정
-	public int updateMemberInfo(MyPageVO vo);
+	public int updateMemberInfo(LoginPageVO vo);
 	
 	
 }

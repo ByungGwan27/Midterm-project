@@ -1,6 +1,8 @@
 package gwan.loginpage.service;
 
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import gwan.loginpage.domain.LoginPageVO;
@@ -12,16 +14,24 @@ public class LoginPageServiceImpl implements LoginPageService {
 	SqlSession session = DataSource.getInstance().openSession(true);
 	LoginPageMapper mapper = session.getMapper(LoginPageMapper.class);
 	
-	// 로그인 조회
 	@Override
 	public LoginPageVO loginCheck(LoginPageVO vo) {
 		return mapper.loginCheck(vo);
 	}
 
-	//회원가입
 	@Override
 	public boolean createUserCreate(LoginPageVO vo) {
 		return mapper.createUserCreate(vo) == 1;
+	}
+
+	@Override
+	public List<LoginPageVO> readNickname() {
+		return mapper.readNickname();
+	}
+
+	@Override
+	public List<LoginPageVO> readId() {
+		return mapper.readId();
 	}
 
 }

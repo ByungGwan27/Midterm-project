@@ -2,6 +2,7 @@ package gwan.mypage.service;
 
 import java.util.List;
 
+import gwan.loginpage.domain.LoginPageVO;
 import gwan.mypage.domain.MyPageVO;
 
 public interface MyPageService {
@@ -22,5 +23,5 @@ public interface MyPageService {
 	public List<MyPageVO> readCoupon(String memberId);
 	
 	//회원정보수정
-	public boolean updateMemberInfo(MyPageVO vo);
+	public boolean updateMemberInfo(LoginPageVO vo);
 }
