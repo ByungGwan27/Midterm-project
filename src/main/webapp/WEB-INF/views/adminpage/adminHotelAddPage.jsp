@@ -27,14 +27,11 @@
 				<th>위치2(시군구)</th>
 				<td><input type="text" name="hotelLocation2"></td>
 			</tr>
-					<tr>
-				<th>hotelImginfo</th>
-				<td><input type="file" name="hotelImginfo"></td>
-			</tr>
 				<tr>
 				<th>locationDetail</th>
 				<td><input type="text" name="locationDetail"></td>
 			</tr>
+			
 	<!--	<tr>
 				 <th>시설정보</th>
 				<td><span class="fa fa-chevron-right mr-2"></span><input

@@ -1,12 +1,13 @@
 package jayk.hotelinfo.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
 @Data
 public class HotelInfoVO {
-	//hotel
+	// hotel
 	private int hotelId;
 	private String hotelName;
 	private String hotelLocation1;
@@ -22,7 +23,7 @@ public class HotelInfoVO {
 	private int resCount;
 	private String locationDetail;
 
-	//roomInfo
+	// roomInfo
 	private int roomNumber;
 	private int roomId;
 	private String roomName;
@@ -32,12 +33,12 @@ public class HotelInfoVO {
 	private int roomMax;
 	private int roomMin;
 	private int addPrice;
-	
-	//roomImage
+
+	// roomImage
 	private int imageId;
 	private String image;
-	
-	//review
+
+	// review
 	private int reviewId;
 	private String MemberId;
 	private int reviewPoint;
@@ -46,9 +47,11 @@ public class HotelInfoVO {
 	private Date wirteDate;
 	private Date checkinDate;
 	private int masterView;
-	
-	//리뷰개수, 별점평균
+
+	// 리뷰개수, 별점평균
 	private int rcount;
 	private double avgpoint;
 	private int avgstar;
+
+	private List<String> roomIds;
 }

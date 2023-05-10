@@ -1,7 +1,7 @@
 package jayk.hotelinfo.service;
 
 import java.util.List;
-
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -68,6 +68,10 @@ public class HotelInfoServiceImpl implements HotelInfoService{
 		return mapper.selectAdminHotelRoom(hotelId, roomId);
 	}
 
-
+	@Override
+	public void modifyAdminHotelRoom(Map<String, Object> params) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
