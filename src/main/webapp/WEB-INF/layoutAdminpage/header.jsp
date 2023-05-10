@@ -225,6 +225,8 @@
 
 				//페이징 생성
 				let pageNumberSection = document.getElementById('pageNumberSection')
+				console.log(pageInfo)
+				console.log(pageInfo.startPage)
 				for (let i = pageInfo.startPage; i <= pageInfo.endPage; i++) {
 					let pageing = document.getElementById('pageNumber').cloneNode(true);
 

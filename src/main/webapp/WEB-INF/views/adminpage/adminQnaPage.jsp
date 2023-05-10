@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%
-int i = 1;
-int j = 1;
-int pageOne;
-int pageTwo;
-%>
+
 <main id="main" class="main">
 
 	<div class="pagetitle">
@@ -28,56 +23,47 @@ int pageTwo;
 				<div class="card">
 					<div class="card-body">
 						<h5 class="card-title">미답변</h5>
-
-						
-							<div class="accordion accordion-flush" id="faq-group-1">
-
-								<div class="accordion-item">
-									<h2 class="accordion-header">
-										<button class="accordion-button collapsed" data-bs-target="#faqsOne-1" type="button"
-											data-bs-toggle="collapse"><div>1</div></button>
-									</h2>
-									<div id="faqsOne-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
-										<div class="accordion-body">
-											<div id="content">2 </div><br>
-											<hr>
-											<p style="font-size: small;">3</p>
-											<hr>
-											<form action="adminQnaAnswer.do">
-
-												<div class="row mb-3">
-													<label for="inputPassword" class="col-sm-2 col-form-label">답변</label>
+						<div class="accordion accordion-flush" id="faq-group-1">
+							<div class="accordion-item">
+								<h2 class="accordion-header">
+									<button class="accordion-button collapsed" data-bs-target="#faqsOne-1" type="button"
+										data-bs-toggle="collapse">
+										<div></div>
+									</button>
+								</h2>
+								<div id="faqsOne-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
+									<div class="accordion-body">
+										<div id="content"> </div><br>
+										<hr>
+										<p style="font-size: small;">3</p>
+										<hr>
+										<form action="adminQnaAnswer.do">
+											<div class="row mb-3">
+												<label for="inputPassword" class="col-sm-2 col-form-label">답변</label>
+												<div class="col-sm-10">
+													<textarea class="form-control" style="height: 100px" name="content"></textarea>
+												</div>
+												<div class="row mb-3" style="display: none;">
+													<label for="inputText" class="col-sm-2 col-form-label">작성자</label>
 													<div class="col-sm-10">
-														<textarea class="form-control" style="height: 100px" name="content"></textarea>
-													</div>
-													<div class="row mb-3" style="display: none;">
-														<label for="inputText" class="col-sm-2 col-form-label">작성자</label>
-														<div class="col-sm-10">
-															<input type="text" class="form-control" value="4" readonly name="id">
-														</div>
-													</div>
-													<div class="row mb-3">
-
-														<div class="col-sm-10">
-															<button type="submit" class="btn btn-primary">입력</button>
-														</div>
+														<input type="text" class="form-control" value="4" readonly name="id">
 													</div>
 												</div>
-
-											</form>
-											<!-- End General Form Elements -->
-										</div>
+												<div class="row mb-3">
+													<div class="col-sm-10">
+														<button type="submit" class="btn btn-primary">입력</button>
+													</div>
+												</div>
+											</div>
+										</form>
+										<!-- End General Form Elements -->
 									</div>
-
 								</div>
-
-
-
 							</div>
-							
-						
+						</div>
+						<div id="all">
+						</div>
 						<!--  -->
-
 					</div>
 				</div>
 				<!-- End F.A.Q Group 1 -->
@@ -85,19 +71,15 @@ int pageTwo;
 				<div style="text-align: center;">
 					<nav aria-label="Page navigation example" style="display: inline-block;">
 						<ul class="pagination">
-							<c:if test="${pageInfo1.prev}">
-								<li class="page-item"><a class="page-link" href="adminQna.do?page1=${pageInfo1.startPage-1}"
-										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-									</a></li>
-							</c:if>
-							<c:forEach var="i" begin="${pageInfo1.startPage }" end="${pageInfo1.endPage }">
-								<li class="page-item"><a class="page-link mypage" href="adminQna.do?page1=${i }">${i}</a></li>
-							</c:forEach>
-							<c:if test="${pageInfo1.next}">
-								<li class="page-item"><a class="page-link" href="adminQna.do?page1=${pageInfo1.endPage+1}"
-										aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-									</a></li>
-							</c:if>
+							<li class="page-item" id="myPagePrev1"><a class="page-link" aria-label="Previous"> <span
+										aria-hidden="true">&laquo;</span>
+								</a></li>
+							<div id="pageNumberSection1">
+								<li class="page-item pages" id="pageNumber1"><a class="page-link mypage">$</a></li>
+							</div>
+							<li class="page-item" id="myPageNext1"><a class="page-link" aria-label="Next"> <span
+										aria-hidden="true">&raquo;</span>
+								</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -111,75 +93,61 @@ int pageTwo;
 						<h5 class="card-title">답변 완료</h5>
 
 
-						<c:forEach var="CAQ" items="${CAQ}">
-							<div class="accordion accordion-flush" id="faq-group-2">
-
-								<!-- F.A.Q Group 2 -->
-								<div class="accordion-item">
-									<h2 class="accordion-header">
-										<button class="accordion-button collapsed" data-bs-target="#faqsTwo-<%=i%>" type="button"
-											data-bs-toggle="collapse">${CAQ.qnaTitle}</button>
-									</h2>
-									<div id="faqsTwo-<%=i%>" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
-										<div class="accordion-body">${CAQ.qnaContent}
-											<hr>
-											<p style="font-size: small;">작성자 : ${CAQ.memberId} | 작성일 : ${CAQ.qnaDate}</p>
-											<hr>
-											<form action="adminQnaAnswer.do">
-												<p style="font-size: small;">답변작성일 : ${CAQ.answerDate}</p>
-												<textarea class="form-control" style="height: 100px"
-													name="content">${CAQ.answerContent}</textarea>
-
+						<!-- F.A.Q Group 2 -->
+						<div class="accordion accordion-flush" id="faq-group-2">
+							<div class="accordion-item">
+								<h2 class="accordion-header">
+									<button class="accordion-button collapsed" data-bs-target="#faqsTwo-1" type="button"
+										data-bs-toggle="collapse">
+										<div>제목</div>
+									</button>
+								</h2>
+								<div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+									<div class="accordion-body">
+										<div>내용</div>
+										<hr>
+										<p style="font-size: small;">작성자 | 작성일 </p>
+										<hr>
+										<form action="adminQnaAnswer.do">
+											<div class="row mb-3">
+												<p style="font-size: small;">답변작성일 </p>
+												<textarea class="form-control" style="height: 100px" name="content">답변내용</textarea>
 												<hr>
 												<div class="col-sm-10">
 													<button type="submit" class="btn btn-primary">답변수정</button>
 												</div>
-												<div class="row mb-3" style="display: none;">
-													<label for="inputText" class="col-sm-2 col-form-label">작성자</label>
-													<div class="col-sm-10">
-														<input type="text" class="form-control" value="${CAQ.qnaId}" readonly name="id">
-													</div>
-												</div>
-											</form>
-										</div>
+											</div>
+										</form>
 									</div>
 								</div>
-
-
 							</div>
-							<%
-							i++;
-							%>
-						</c:forEach>
+						</div>
+						<div id="all1">
+						</div>
 					</div>
-				</div>	
-				<!-- End F.A.Q Group 2 -->
-				<!-- 페이지 2 -->
+					<!-- End F.A.Q Group 2 -->
+					<!-- 페이지 2 -->
+					<!-- 페이지 2 끝-->
+					
+					
+				</div>
 				<div style="text-align: center;">
 					<nav aria-label="Page navigation example" style="display: inline-block;">
 						<ul class="pagination">
-							<c:if test="${pageInfo2.prev}">
-								<li class="page-item"><a class="page-link" href="adminQna.do?page2=${pageInfo2.startPage-1}"
-										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-									</a></li>
-							</c:if>
-							<c:forEach var="i" begin="${pageInfo2.startPage }" end="${pageInfo2.endPage }">
-								<li class="page-item"><a class="page-link mypage" href="adminQna.do?page2=${i }">${i}</a></li>
-							</c:forEach>
-							<c:if test="${pageInfo2.next}">
-								<li class="page-item"><a class="page-link" href="adminQna.do?page2=${pageInfo2.endPage+1}"
-										aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-									</a></li>
-							</c:if>
+							<li class="page-item" id="myPagePrev2"><a class="page-link" aria-label="Previous"> <span
+										aria-hidden="true">&laquo;</span>
+								</a></li>
+							<div id="pageNumberSection2">
+								<li class="page-item pages" id="pageNumber2"><a class="page-link mypage">$</a></li>
+							</div>
+							<li class="page-item" id="myPageNext2"><a class="page-link" aria-label="Next"> <span
+										aria-hidden="true">&raquo;</span>
+								</a></li>
 						</ul>
 					</nav>
 				</div>
-				<!-- 페이지 2 끝-->
-			
 
 			</div>
-
-		</div>
 	</section>
 
 </main>
@@ -188,30 +156,145 @@ int pageTwo;
 <!-- End #main -->
 
 <script>
-	document.addEventListener('DOMContentLoaded', function(){
-		qnaData(1);
+	document.addEventListener('DOMContentLoaded', function () {
+		getPage1(1);
+		qnaData1(1);
+		getPage2(1);
+		qnaData2(1);
 	})
 
-	function qnaData(page){
-		fetch('adminQnaPage1.do?page1='+page)
-		.then(resolve => resolve.json())
-		.then(result => {
-			let NAQ = result.NAQ;
-			console.log(NAQ)
+	function qnaData1(page) {
+		fetch('adminQnaPage1.do?page1=' + page)
+			.then(resolve => resolve.json())
+			.then(result => {
+				let NAQ = result.NAQ;
+				console.log('naq=' + NAQ)
 
-			let group = document.getElementById('faq-group-1').cloneNode(true);
-			console.log(group)
-			console.log(group.childNodes[1].childNodes[3].childNodes[1].childNodes[1]);
-			for(let data of NAQ){
-				// console.log(group.childNodes[1].childNodes[1]);
-				// console.log(group.childNodes[1].childNodes[1].childNodes[1]);
-				// console.log(group.childNodes[1].childNodes[1].childNodes[1].childNodes[0]);
-				group.childNodes[1].childNodes[1].childNodes[1].childNodes[0].innerText= data.qnaTitle
-				group.childNodes[1].childNodes[3].childNodes[1].childNodes[1].innerText= '작성자 : '+data.memberId+' | 작성날짜 : '+ data.qnaDate
-			
+				console.log('fetch!');
+
+				//데이터 넣기
+				let all = document.getElementById('all')
+				let i = 1;
+				for (let data of NAQ) {
+					let group = document.getElementById('faq-group-1').cloneNode(true);
+					group.childNodes[1].childNodes[1].childNodes[1].setAttribute('data-bs-target', '#faqsOne-' + i);
+					group.childNodes[1].childNodes[3].setAttribute('id', 'faqsOne-' + i)
+					group.childNodes[1].childNodes[1].childNodes[1].childNodes[1].innerText = data.qnaTitle
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[1].innerText = data.qnaContent
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[6].innerText = '작성자 : ' + data.memberId +
+						' | 작성날짜 : ' + data.qnaDate
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[8].childNodes[1]
+					console.log(group.childNodes[1].childNodes[3].childNodes[1].childNodes[6])
+
+					all.append(group)
+
+					i++;
+				}
+				document.getElementById('faq-group-1').style.display = 'none';
+
+			})
+	}
+
+	function qnaData2(page) {
+		fetch('adminQnaPage2.do?page2=' + page)
+			.then(resolve => resolve.json())
+			.then(result => {
+				let CAQ = result.CAQ;
+				// console.log('caq='+CAQ)
+
+				// console.log('fetch!');
+
+				//데이터 넣기
+				let all1 = document.getElementById('all1')
+				let j = 1;
+				for (let data of CAQ) {
+					let group = document.getElementById('faq-group-2').cloneNode(true);
+					
+					group.childNodes[1].childNodes[1].childNodes[1].setAttribute('data-bs-target', '#faqsTwo-' + j);
+					group.childNodes[1].childNodes[3].setAttribute('id', 'faqsTwo-' + j)
+					
+					group.childNodes[1].childNodes[1].childNodes[1].childNodes[1].innerText = data.qnaTitle
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[1].innerText = data.qnaContent
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[5].innerText = '작성자 : ' + data.memberId +
+					' | 작성날짜 : ' + data.qnaDate
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[9].childNodes[1].childNodes[1].innerText = "답변작성일 : "+ data.answerDate;
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[9].childNodes[1].childNodes[3].innerText = data.answerContent;
+					
+					
+					
+					all1.append(group)
+
+					j++;
+				}
+				document.getElementById('faq-group-2').style.display = 'none';
+
+			})
+	}
+
+	function getPage1(page) {
+		fetch('adminQnaPage1.do?page1=' + page)
+			.then(resolve => resolve.json())
+			.then(result => {
+				let pageInfo1 = result.page1;
+
+				let pageNumberSection = document.getElementById('pageNumberSection1')
+				for (let i = pageInfo1.startPage; i <= pageInfo1.endPage; i++) {
+					let pageing = document.getElementById('pageNumber1').cloneNode(true);
+
+					pageing.addEventListener('click', function () {
+						document.getElementById('faq-group-1').style.display = 'block';
+						document.getElementById('all').replaceChildren();
+						console.log('click');
+						qnaData1(i)
+					})
+					pageing.childNodes[0].innerText = i;
+					pageing.style.display = 'inline-block';
+					pageNumberSection.append(pageing);
+
+				}
+				document.getElementById('pageNumber1').style.display = 'none';
+
+				if (pageInfo1.prev == false) {
+					document.getElementById('myPagePrev1').style.display = 'none';
+				}
+				if (pageInfo1.next == false) {
+					document.getElementById('myPageNext1').style.display = 'none';
+				}
+
+			})
+	}
+
+	function getPage2(page) {
+		fetch('adminQnaPage2.do?page2=' + page)
+			.then(resolve => resolve.json())
+			.then(result => {
+				let pageInfo2 = result.page2;
+
+				let pageNumberSection = document.getElementById('pageNumberSection2')
+				for (let j = pageInfo2.startPage; j <= pageInfo2.endPage; j++) {
+					let pageing = document.getElementById('pageNumber2').cloneNode(true);
+
+					pageing.addEventListener('click', function () {
+						document.getElementById('faq-group-2').style.display = 'block';
+						document.getElementById('all1').replaceChildren();
+						console.log('click');
+						qnaData2(j)
+					})
+					pageing.childNodes[0].innerText = j;
+					pageing.style.display = 'inline-block';
+					pageNumberSection.append(pageing);
+
+				}
+				document.getElementById('pageNumber2').style.display = 'none';
+
+				if (pageInfo2.prev == false) {
+					document.getElementById('myPagePrev2').style.display = 'none';
+				}
+				if (pageInfo2.next == false) {
+					document.getElementById('myPageNext2').style.display = 'none';
 				}
 
 
-		})
+			})
 	}
 </script>
