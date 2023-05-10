@@ -78,10 +78,20 @@
 		SELECT count(*) FROM wishlist WHERE member_id = #{memberId}
 	</select>
 	
+	<!-- 보유쿠폰함 -->
+	<!-- 쿠폰 조회 -->
+	<select id="readCoupon" parameterType="mp">
+		SELECT coupon_name, coupon_start, coupon_end, coupon_range, sale_per, sale_pri
+		FROM coupon WHERE member_id = #{memberId}
+		AND TO_CHAR(SYSDATE) <![CDATA[>=]]> TO_CHAR(coupon_start)
+		AND TO_CHAR(SYSDATE) <![CDATA[<=]]> TO_CHAR(coupon_end)
+		AND coupon_check = 1
+		ORDER BY coupon_id
+	</select>
 	
 	
 	<!-- 회원정보수정 -->
-	<update id="updateMemberInfo" parameterType="mp">
+	<update id="updateMemberInfo" parameterType="lp">
 		UPDATE member
 		<set>
 			<if test="memberProfile != null and memberProfile != ''">member_profile = #{memberProfile},</if>

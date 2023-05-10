@@ -124,9 +124,9 @@ int j = 1;
 							<li class="page-item"><a class="page-link"
 								href="adminQna.do?page1=${pageInfo1.endPage+1}"
 								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-						</c:if>
 						</a>
 						</li>
+						</c:if>
 					</ul>
 				</nav>
 			</div>

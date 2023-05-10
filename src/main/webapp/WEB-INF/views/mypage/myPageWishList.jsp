@@ -7,7 +7,7 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">위시리스트</h1>
 <p class="mb-4">
-	${nickname }님의 위시리스트${pageInfo }입니다!
+	${nickname }님의 위시리스트입니다!
 </p>
 
 <!-- 본문  -->

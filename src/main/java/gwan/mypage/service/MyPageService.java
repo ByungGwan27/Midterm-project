@@ -2,6 +2,7 @@ package gwan.mypage.service;
 
 import java.util.List;
 
+import gwan.loginpage.domain.LoginPageVO;
 import gwan.mypage.domain.MyPageVO;
 
 public interface MyPageService {
@@ -18,6 +19,9 @@ public interface MyPageService {
 	// 위시리스트 갯수
 	public int readWishPageCount(String memberId);
 	
+	// 보유쿠폰
+	public List<MyPageVO> readCoupon(String memberId);
+	
 	//회원정보수정
-	public boolean updateMemberInfo(MyPageVO vo);
+	public boolean updateMemberInfo(LoginPageVO vo);
 }

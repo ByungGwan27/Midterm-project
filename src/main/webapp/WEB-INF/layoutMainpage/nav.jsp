@@ -17,7 +17,9 @@
 						<li><a href="loginPage.do">로그인</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="logout.do">로그아웃</a></li>
+						<!-- 5.10 강병관. 로그아웃시 알림 기능 -->
+						<li><a href="#" onclick='logOut()' id='gwanLogout'>로그아웃</a></li>
+						<!-- <li><a href="logout.do">로그아웃</a></li> -->
 					</c:otherwise>
 				</c:choose>
 				<c:if test="${id != null }">
@@ -124,3 +126,14 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	//5.10 강병관 로그아웃시 알림 기능
+	function logOut() {
+		let btnL = document.getElementById('gwanLogout');
+			if (confirm("정말 로그아웃 하시겠습니까?")) {
+				alert("로그아웃되었습니다");
+				location.href = 'logout.do';
+			}
+	}
+</script>
