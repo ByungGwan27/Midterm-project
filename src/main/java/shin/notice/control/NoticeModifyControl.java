@@ -15,40 +15,32 @@ public class NoticeModifyControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		// get 방식 요청
-				NoticeService service = new NoticeServiceImpl();
+		NoticeService service = new NoticeServiceImpl();
+		if (req.getMethod().equals("POST")) {
+			String noticeId = req.getParameter("noticeId");
+			String noticeTitle = req.getParameter("noticeTitle");
+			String noticeContent = req.getParameter("noticeContent");
+			// 값을 불러오기 위해 새롭게 생성 후 셋팅
+			NoticeVO noticeInfo = new NoticeVO();
+			noticeInfo.setNoticeId(Integer.parseInt(noticeId));
+			noticeInfo.setNoticeTitle(noticeTitle);
+			noticeInfo.setNoticeContent(noticeContent);
+			
+			req.setAttribute("noticeInfo", noticeInfo);
 
-				if (req.getMethod().equals("GET")) {
-					
-					String nid = req.getParameter("nid");
-					NoticeVO vo = service.getNotice(Integer.parseInt(nid));
-					req.setAttribute("noticeInfo", vo);
+			if (service.modifyNotice(noticeInfo)) {
+				System.out.println("성공");
+				return "noticeList.do";
 
-					return "notice/noticeModify.tiles";
-
-					// post 방식 요청
-				} else if (req.getMethod().equals("POST")) {
-					String nid = req.getParameter("nid");
-					String title = req.getParameter("title");
-					String noticeContent = req.getParameter("noticeContent");
-					//값을 불러오기 위해 새롭게 생성 후 셋팅
-					NoticeVO vo = new NoticeVO();
-					vo.setNoticeId(Integer.parseInt(nid));
-					vo.setNoticeTitle(title);
-					vo.setNoticeContent(noticeContent);
-					
-					if(service.modifyNotice(vo)) {
-						return "noticeList.do";
-						
-					}else {
-						return "noticeModify.do";
-					}
-					
-				}
-				return null;
-				
-
+			} else {
+				return "noticeModify.do";
 			}
+
+		}
+		return "noticepage/noticeModify.tiles";
+
+	}
 
 }

@@ -84,15 +84,48 @@
 
 <section class="py-5">
 	<div class="container px-4 px-lg-5 my-5">
-	<h3>공지사항 작성페이지</h3>
+		<h3>공지사항 작성페이지</h3>
 		<div class="row gx-4 gx-lg-5 align-items-center">
 			<form action="addNotice.do" method="post"
 				enctype="multipart/form-data">
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" value=""
+						id="flexCheckChecked" checked=""> <label
+						class="form-check-label" for="flexCheckChecked"> <font
+						style="vertical-align: inherit;"> <font
+							style="vertical-align: inherit;"> 중요공지사항 체크 </font>
+					</font>
+					</label>
+				</div>
 				<table class="table">
-				
+				<!--  
+					<section>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label> <input type="text" name="name"
+										id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label> <input type="text"
+										name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="3"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message" /></li>
+							</ul>
+
+						</form>
+					</section>
+					-->
+					
 					<tr>
 						<th>작성자</th>
-						<td><input type="text" name="writer" value="관리자" readonly ></td>
+						<td><input type="text" name="writer" value="관리자" readonly></td>
 					</tr>
 					<tr>
 						<th>아이디</th>
@@ -101,15 +134,6 @@
 					<tr>
 						<th>제목</th>
 						<td><input type="text" name="noticeTitle"></td>
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="flexCheckChecked" checked=""> <label
-								class="form-check-label" for="flexCheckChecked"> <font
-								style="vertical-align: inherit;"> <font
-									style="vertical-align: inherit;"> 중요공지사항 체크 </font>
-							</font>
-							</label>
-						</div>
 
 					</tr>
 					<tr>
@@ -117,9 +141,7 @@
 						<td colspan="3"><textarea name="noticeContent" cols="100"
 								rows="10"></textarea></td>
 					</tr>
-
-				
-					
+ 				
 					<tr>
 						<td colspan="4" align="center"><input type="submit"
 							value="등록"> <input type="reset" value="취소"></td>

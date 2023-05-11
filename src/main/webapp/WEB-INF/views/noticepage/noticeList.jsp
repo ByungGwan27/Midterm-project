@@ -98,12 +98,15 @@
 		<tr>
 			<td><c:out value="${no=no+1 }"></c:out></td>
 			<!-- <td><a href="getNotice.do?page=${pageInfo.pageNum}&nid=${notice.noticeId }">${notice.noticeId }</a></td> -->
-			<td>${notice.noticeTitle }</td>
+			<td><a href="noticeDetail.do?page=${pageInfo.pageNum }&noticeId=${notice.noticeId}">${notice.noticeTitle }</a></td>
 			<td>${notice.memberId }</td>
 			<td>${notice.writeDate }</td>
 			<td>${notice.noticeViews }</td>
-			<td colspan="4" align="center"><input type="submit"
-							value="수정"> <input type="reset" value="삭제"></td>
+			<td colspan="2" align="center">
+			<button type="submit"><a href="noticeModify.do">저장(수정)</a></button>
+			<button type="button"><a href="noticeDelete.do">삭제</a></button>
+		</td>
+
 		</tr>
 	</c:forEach>
 </table>
@@ -135,8 +138,7 @@
 </div>
 </div>
 </section>
-
-<script>
+<!--<script>
 document.addEventListener('DOMContentLoaded', function(){
 	
 	let res1 = document.querySelectorAll("table tbody tr");
@@ -150,4 +152,5 @@ document.addEventListener('DOMContentLoaded', function(){
 	})
 })
 </script>
+          -->
         

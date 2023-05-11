@@ -265,11 +265,11 @@
 
   </section><!-- End Testimonials Section -->
 
-
+</c:forEach>
   <!-- 첫번째 포스트-->
 
 
-
+<c:forEach var="post" items="${list}">
   <section class="py-5 bg-light" id="scroll-target">
     <div class="container px-5 my-5">
       <div class="row gx-5 align-items-center">
@@ -324,15 +324,14 @@
 
 <!-- 파워 블로거 -->
 
-<c:forEach var="memberList" items="${memberList}">
 
+<c:forEach var="memberList" items="${memberList}">
   <section class="py-5 bg-light">
     <div class="container px-5 my-5">
       <div class="text-center">
         <h2 class="fw-bolder"></h2>
         <p class="lead fw-normal text-muted mb-5">✨✨여행 파워 블로거✨✨</p>
       </div>
-
 
       <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
         <div class="col mb-5 mb-5 mb-xl-0">
@@ -344,6 +343,7 @@
             <div class="fst-italic text-muted">Founder &amp; CEO</div>
           </div>
         </div>
+       
         <div class="col mb-5 mb-5 mb-xl-0">
           <div class="text-center">
             <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded-circle mb-4 px-4"
@@ -374,7 +374,7 @@
       </div>
     </div>
   </section>
-</c:forEach>
+ </c:forEach>
 
 <script>
   const swiper = new Swiper('.swiper', {
@@ -399,6 +399,7 @@
     },
   });
 </script>
+
 <script src="cssPostList/assets2/vendor/purecounter/purecounter_vanilla.js"></script>
 <script src="cssPostList/assets2/vendor/aos/aos.js"></script>
 <script src="cssPostList/assets2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
