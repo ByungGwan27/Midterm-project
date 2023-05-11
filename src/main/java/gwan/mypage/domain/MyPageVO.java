@@ -47,6 +47,10 @@ public class MyPageVO {
 	private int couponId;
 	private int couponCheck;
 	
+	//Q&A
+	private String qnaTitle;
+	private String qnaContent;
+	private String qnaType;
 	
 	
 }

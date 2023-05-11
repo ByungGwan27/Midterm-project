@@ -4,6 +4,14 @@
 
 <title>Traveller - 위시리스트</title>
 
+<style>
+	.btn {
+		margin-right: 10px;
+	}
+	#pagecenter {
+		justify-content: space-around;
+	}
+</style>
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">위시리스트</h1>
 <p class="mb-4">
@@ -37,15 +45,15 @@
 <div class="center">
 	<div class="pagination">
 		<c:if test="${pageInfo.prev }">
-			<a href="myPageWishList.do?page=${pageInfo.startPage-1 }">Previous</a>
+			<a href="myPageWishList.do?page=${pageInfo.startPage-1 }" class="btn btn-primary" id="pagecenter">Previous</a>
 		</c:if>
 		<c:forEach var="i" begin="${pageInfo.startPage }"
 			end="${pageInfo.endPage }">
-			<a class="${i == pageInfo.pageNum ? 'active' : '' }"
+			<a class="${i == pageInfo.pageNum ? 'active' : '' } btn btn-primary" id="pagecenter"
 				href="myPageWishList.do?page=${i }">${i }</a>
 		</c:forEach>
 		<c:if test="${pageInfo.next }">
-			<a href="myPageWishList.do?page=${pageInfo.endPage+1 }">Next</a>
+			<a href="myPageWishList.do?page=${pageInfo.endPage+1 }" class="btn btn-primary" id="pagecenter">Next</a>
 		</c:if>
 	</div>
 </div>

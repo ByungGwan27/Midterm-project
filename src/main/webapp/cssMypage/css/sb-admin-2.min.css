@@ -5271,7 +5271,8 @@ input[type=submit].btn-block {
   display: flex;
   padding-left: 0;
   list-style: none;
-  border-radius: .35rem
+  border-radius: .35rem;
+  justify-content: space-around;
 }
 
 .page-link {
