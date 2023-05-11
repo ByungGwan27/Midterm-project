@@ -160,7 +160,7 @@
 		<![CDATA[
 		SELECT b.*
 		FROM (SELECT rownum rn , a.*
-		FROM (SELECT * FROM qna where answer_check = '답변완료' order by qna_date desc) a
+		FROM (SELECT * FROM qna where answer_check = '답변완료' order by answer_date desc) a
 		WHERE rownum <= #{page} * 10) b
 		WHERE b.rn > (#{page}-1) * 10
 		]]>
@@ -200,12 +200,10 @@
 	</select>
 	
 	<!-- 임박(7일) 예약 조회 -->
-	<select id="imminentRes" resultType="reservation" parameterType="int">
+	<select id="imminentRes" resultType="reservation">
 	<![CDATA[
-	SELECT b.*
-		FROM (SELECT rownum rn , a.*
-		FROM (SELECT * FROM 
-           (select *
+
+		select *
 from reservation join (
 select reservation_id,(round(checkin_date-sysdate)) as dday
 from reservation  join
@@ -216,11 +214,8 @@ using(room_id)
 where res_status = '대기중'
 order by checkin_date asc)
 using (reservation_id)
-where checkin_date-7 < sysdate
-and checkin_date > sysdate)
-        ) a
-		WHERE rownum <= #{page} * 5) b
-		WHERE b.rn > (#{page}-1) * 5
+where checkin_date-3 < sysdate
+and checkin_date > sysdate
 	]]>
 	</select>
 	
@@ -237,7 +232,7 @@ and checkin_date > sysdate)
 	where res_status = '대기중'
 	order by checkin_date asc)
 	using (reservation_id)
-	where checkin_date-7 < sysdate
+	where checkin_date-3 < sysdate
 	and checkin_date > sysdate)
 	]]>
 	</select>

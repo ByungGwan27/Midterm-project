@@ -20,9 +20,9 @@
 	<nav class="header-nav ms-auto">
 		<ul class="d-flex align-items-center">
 
-			<li class="nav-item d-block d-lg-none"><a class="nav-link nav-icon search-bar-toggle " href="#"> <i
+			<!-- <li class="nav-item d-block d-lg-none"><a class="nav-link nav-icon search-bar-toggle " href="#"> <i
 						class="bi bi-search"></i>
-				</a></li>
+				</a></li> -->
 			<!-- End Search Icon-->
 
 
@@ -34,7 +34,7 @@
 				<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
 					<li class="dropdown-header" id="mytext">1</li>
 
-					<div id="innerAlarm">
+					<div id="innerAlarm" >
 						<div id="copy">
 							<!-- 개별 -->
 							<li class="notification-item" id="none"><i class="bi bi-info-circle text-primary"></i>
@@ -49,7 +49,7 @@
 						</div>
 					</div>
 					<!-- 개별 끝-->
-					<li class="dropdown-footer">
+					<!-- <li class="dropdown-footer">
 						<div style="text-align: center;">
 							<nav aria-label="Page navigation example" style="display: inline-block;">
 								<ul class="pagination">
@@ -65,7 +65,7 @@
 								</ul>
 							</nav>
 						</div>
-					</li>
+					</li> -->
 
 
 				</ul> <!-- End Notification Dropdown Items -->
@@ -75,9 +75,9 @@
 			<!-- 알림부분 끝 -->
 
 			<!-- 메세지란 -->
-			<li class="nav-item dropdown"><a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown"> <i
+			<!-- <li class="nav-item dropdown"><a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown"> <i
 						class="bi bi-chat-left-text"></i> <span class="badge bg-success badge-number">3</span>
-				</a> <!-- End Messages Icon -->
+				</a> End Messages Icon
 
 				<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
 					<li class="dropdown-header">You have 3 new messages <a href="#"><span
@@ -127,8 +127,8 @@
 					<li class="dropdown-footer"><a href="#">Show all messages</a>
 					</li>
 
-				</ul> <!-- End Messages Dropdown Items -->
-			</li>
+				</ul> End Messages Dropdown Items
+			</li> -->
 			<!-- 메세지란 끝 -->
 
 
@@ -224,7 +224,7 @@
 				}
 
 				//페이징 생성
-				let pageNumberSection = document.getElementById('pageNumberSection')
+				/* let pageNumberSection = document.getElementById('pageNumberSection')
 				console.log(pageInfo)
 				console.log(pageInfo.startPage)
 				for (let i = pageInfo.startPage; i <= pageInfo.endPage; i++) {
@@ -242,11 +242,10 @@
 				}
 				if (pageInfo.next == false) {
 					document.getElementById('myPageNext').style.display = 'none';
-				}
+				}*/
 				document.getElementById('count').innerText = pageInfo.total;
+				document.getElementById('mytext').innerText = '처리대기중인 체크인날짜 임박 숙소가 ' + pageInfo.total + '개 입니다'; 
 				document.getElementById('none').style.display = 'none';
-				document.getElementById('mytext').innerText = '처리대기중인 체크인날짜 임박 숙소가 ' + pageInfo.total + '개 입니다';
-
 			})
 	}
 </script>

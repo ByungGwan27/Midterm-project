@@ -149,8 +149,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<ReservationVO> imminentRes(int page) {
-		return mapper.imminentRes(page);
+	public List<ReservationVO> imminentRes() {
+		return mapper.imminentRes();
 	}
 
 	@Override

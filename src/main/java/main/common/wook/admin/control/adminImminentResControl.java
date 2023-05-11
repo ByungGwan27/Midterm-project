@@ -27,7 +27,7 @@ public class adminImminentResControl implements Control {
 		//System.out.println("page는"+page);
 		
 		AdminService service = new AdminServiceImpl();
-		List<ReservationVO> list = service.imminentRes(page);
+		List<ReservationVO> list = service.imminentRes();
 		int total = service.imminentResCount();
 		
 		PageIn5DTO dto = new PageIn5DTO(page, total);

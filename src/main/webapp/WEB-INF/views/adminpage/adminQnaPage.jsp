@@ -33,7 +33,7 @@
 								</h2>
 								<div id="faqsOne-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
 									<div class="accordion-body">
-										<div id="content"> </div><br>
+										<div id="content"> </div><div></div>
 										<hr>
 										<p style="font-size: small;">3</p>
 										<hr>
@@ -44,7 +44,7 @@
 													<textarea class="form-control" style="height: 100px" name="content"></textarea>
 												</div>
 												<div class="row mb-3" style="display: none;">
-													<label for="inputText" class="col-sm-2 col-form-label">작성자</label>
+													
 													<div class="col-sm-10">
 														<input type="text" class="form-control" value="4" readonly name="id">
 													</div>
@@ -113,6 +113,11 @@
 												<p style="font-size: small;">답변작성일 </p>
 												<textarea class="form-control" style="height: 100px" name="content">답변내용</textarea>
 												<hr>
+												<div class="row mb-3" style="display: none;">
+													<div class="col-sm-10">
+														<input type="text" class="form-control" value="4" readonly name="id">
+													</div>
+												</div>
 												<div class="col-sm-10">
 													<button type="submit" class="btn btn-primary">답변수정</button>
 												</div>
@@ -183,8 +188,8 @@
 					group.childNodes[1].childNodes[3].childNodes[1].childNodes[1].innerText = data.qnaContent
 					group.childNodes[1].childNodes[3].childNodes[1].childNodes[6].innerText = '작성자 : ' + data.memberId +
 						' | 작성날짜 : ' + data.qnaDate
-					group.childNodes[1].childNodes[3].childNodes[1].childNodes[8].childNodes[1]
-					console.log(group.childNodes[1].childNodes[3].childNodes[1].childNodes[6])
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[10].childNodes[1].childNodes[5].childNodes[1].childNodes[1].setAttribute('value',data.qnaId)
+					
 
 					all.append(group)
 
@@ -219,7 +224,7 @@
 					' | 작성날짜 : ' + data.qnaDate
 					group.childNodes[1].childNodes[3].childNodes[1].childNodes[9].childNodes[1].childNodes[1].innerText = "답변작성일 : "+ data.answerDate;
 					group.childNodes[1].childNodes[3].childNodes[1].childNodes[9].childNodes[1].childNodes[3].innerText = data.answerContent;
-					
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[9].childNodes[1].childNodes[7].childNodes[1].childNodes[1].setAttribute('value',data.qnaId);
 					
 					
 					all1.append(group)

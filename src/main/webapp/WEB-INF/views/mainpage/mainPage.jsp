@@ -9,10 +9,12 @@
    int revCount = (int) request.getAttribute("reviewCount"); 
    
    String[] resName = new String[6];
+   String[] resId = new String [6];
    String[] resLocation = new String[6];
    String[] resImage = new String[6];
    
    for(int i= 0; i<=5;i++){
+	  resId[i] =""+ (request.getAttribute("orderHotelId"+i));
 	  resName[i] =(String) request.getAttribute("orderHotelName"+i);
 	  resLocation[i] =(String) request.getAttribute("orderHotelLocation"+i);
 	  resImage[i] = (String) request.getAttribute("orderHotelImage"+i);
@@ -137,8 +139,8 @@
 			<div class="owl-carousel owl-3-slider">
 
 				<div class="item">
-					<a class="media-thumb" href="cssMainpage/images/hero-slider-1.jpg"
-						data-fancybox="gallery">
+					<a class="media-thumb" onclick="location.href='hotelInfoPage.do?hotelId=<%=resId[0] %>&hotelLocation1=<%=resLocation[0] %>'"
+						>
 						<div class="media-text">
 							<h3><%=resName[0] %></h3>
 							<span class="location"><%=resLocation[0] %></span><br>
@@ -148,8 +150,8 @@
 				</div>
 
 				<div class="item">
-					<a class="media-thumb" href="cssMainpage/images/hero-slider-2.jpg"
-						data-fancybox="gallery">
+					<a class="media-thumb" onclick="location.href='hotelInfoPage.do?hotelId=<%=resId[1] %>&hotelLocation1=<%=resLocation[1] %>'"
+						>
 						<div class="media-text">
 							<h3><%=resName[1] %></h3>
 							<span class="location"><%=resLocation[1] %></span><br>
@@ -159,8 +161,8 @@
 				</div>
 
 				<div class="item">
-					<a class="media-thumb" href="cssMainpage/images/hero-slider-3.jpg"
-						data-fancybox="gallery">
+					<a class="media-thumb" onclick="location.href='hotelInfoPage.do?hotelId=<%=resId[2] %>&hotelLocation1=<%=resLocation[2] %>'"
+						>
 						<div class="media-text">
 							<h3><%=resName[2] %></h3>
 							<span class="location"><%=resLocation[2] %></span><br>
@@ -171,8 +173,8 @@
 
 
 				<div class="item">
-					<a class="media-thumb" href="cssMainpage/images/hero-slider-4.jpg"
-						data-fancybox="gallery">
+					<a class="media-thumb" onclick="location.href='hotelInfoPage.do?hotelId=<%=resId[3] %>&hotelLocation1=<%=resLocation[3] %>'"
+						>
 						<div class="media-text">
 							<h3><%=resName[3] %></h3>
 							<span class="location"><%=resLocation[3] %></span><br>
@@ -182,8 +184,8 @@
 				</div>
 
 				<div class="item">
-					<a class="media-thumb" href="cssMainpage/images/hero-slider-5.jpg"
-						data-fancybox="gallery">
+					<a class="media-thumb" onclick="location.href='hotelInfoPage.do?hotelId=<%=resId[4] %>&hotelLocation1=<%=resLocation[4] %>'"
+						>
 						<div class="media-text">
 							<h3><%=resName[4] %></h3>
 							<span class="location"><%=resLocation[4] %></span><br>
@@ -193,8 +195,8 @@
 				</div>
 
 				<div class="item">
-					<a class="media-thumb" href="cssMainpage/images/hero-slider-1.jpg"
-						data-fancybox="gallery">
+					<a class="media-thumb" onclick="location.href='hotelInfoPage.do?hotelId=<%=resId[5] %>&hotelLocation1=<%=resLocation[5] %>'"
+						>
 						<div class="media-text">
 							<h3><%=resName[5] %></h3>
 							<span class="location"><%=resLocation[5] %></span><br>
@@ -413,3 +415,9 @@
 			</div>
 		</div>
 	</div> -->
+	<script>
+		let fancy = document.getElementsByClassName('fancybox-content');
+		for(let f of fancy){
+			console.log(f)
+		}
+	</script>
