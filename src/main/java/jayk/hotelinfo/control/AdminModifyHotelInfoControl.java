@@ -30,8 +30,11 @@ public class AdminModifyHotelInfoControl implements Control {
 			req.setAttribute("adminHotelInfo", adminHotelInfo);
 
 			// String roomId = req.getParameter("roomId");
-			List<HotelInfoVO> adminRoomList = service.roomList(Integer.parseInt(hotelId));
-			req.setAttribute("adminRoomList", adminRoomList);
+			/*
+			 * List<HotelInfoVO> adminRoomList =
+			 * service.roomList(Integer.parseInt(hotelId));
+			 * req.setAttribute("adminRoomList", adminRoomList);
+			 */
 
 			return "adminpage/adminHotelInfoModify.tiles";
 
@@ -52,34 +55,30 @@ public class AdminModifyHotelInfoControl implements Control {
 			// 여기까진됨ㅇㅇ
 
 			// 여기서부터객실정보수정
-			String roomId = req.getParameter("roomId");
-			String[] roomIds = roomId.split(",");
-
-			String roomName = req.getParameter("roomName");
-			String roomExpain = req.getParameter("roomExpain");
-			String roomGrade = req.getParameter("roomGrade");
-			String roomPrice = req.getParameter("roomPrice");
-			String roomMax = req.getParameter("roomMax");
-			String roomMin = req.getParameter("roomMin");
-			String addPrice = req.getParameter("addPrice");
-
-			for (String id : roomIds) {
-			    HotelInfoVO room = new HotelInfoVO();
-			    room.setHotelId(Integer.parseInt(hotelId));
-			    room.setRoomId(Integer.parseInt(id));
-			    room.setRoomName(roomName);
-			    room.setRoomExpain(roomExpain);
-			    room.setRoomGrade(roomGrade);
-			    room.setRoomPrice(Integer.parseInt(roomPrice));
-			    room.setRoomMax(Integer.parseInt(roomMax));
-			    room.setRoomMin(Integer.parseInt(roomMin));
-			    room.setAddPrice(Integer.parseInt(addPrice));
-
-			    service.modifyAdminHotelRoom(room);
-			}
-
-
-			
+			/*
+			 * String roomId = req.getParameter("roomId"); String[] roomIds =
+			 * roomId.split(",");
+			 * 
+			 * String roomName = req.getParameter("roomName"); String roomExpain =
+			 * req.getParameter("roomExpain"); String roomGrade =
+			 * req.getParameter("roomGrade"); String roomPrice =
+			 * req.getParameter("roomPrice"); String roomMax = req.getParameter("roomMax");
+			 * String roomMin = req.getParameter("roomMin"); String addPrice =
+			 * req.getParameter("addPrice");
+			 * 
+			 * for (String id : roomIds) { HotelInfoVO room = new HotelInfoVO();
+			 * room.setHotelId(Integer.parseInt(hotelId));
+			 * room.setRoomId(Integer.parseInt(id)); room.setRoomName(roomName);
+			 * room.setRoomExpain(roomExpain); room.setRoomGrade(roomGrade);
+			 * room.setRoomPrice(Integer.parseInt(roomPrice));
+			 * room.setRoomMax(Integer.parseInt(roomMax));
+			 * room.setRoomMin(Integer.parseInt(roomMin));
+			 * room.setAddPrice(Integer.parseInt(addPrice));
+			 * 
+			 * service.modifyAdminHotelRoom(room); }
+			 * 
+			 * 
+			 */
 			
 				/*
 				 * String roomId = req.getParameter("roomId");

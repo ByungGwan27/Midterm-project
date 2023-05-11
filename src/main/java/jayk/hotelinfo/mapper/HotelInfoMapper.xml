@@ -119,4 +119,9 @@
 		values(#{hotelId}, #{hotelName}, #{hotelLocation1},
 		#{hotelLocation2}, #{hotelImage}, #{locationDetail})
 	</insert>
+	
+	<insert id="insertAdminRoom" parameterType="hi">
+		insert into room_info (hotel_id, room_id, room_name, room_price, room_max, room_min, add_price)
+		values (#{hotelId}, #{roomId}, #{roomName}, #{roomPrice},#{roomMax},#{roomMin}, #{addPrice})
+	</insert>
 </mapper>

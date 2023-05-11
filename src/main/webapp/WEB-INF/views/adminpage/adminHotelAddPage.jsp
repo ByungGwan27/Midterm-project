@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <main id="main" class="main">
-	<h3>addhotelpage</h3>
+	<h3>addroomformpage</h3>
 	<h5>숙소추가</h5>
 	<form action="adminAddHotelPage.do" method="POST" enctype="multipart/form-data">
 		<table class="table">
@@ -18,7 +18,6 @@
 				<th>상호명</th>
 				<td><input type="text" name="hotelName"></td>
 			</tr>
-			
 			<tr>
 				<th>위치1(시도)</th>
 				<td><input type="text" name="hotelLocation1"></td>

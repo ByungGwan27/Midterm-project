@@ -18,5 +18,6 @@ public interface HotelInfoMapper {
 	public int updateAdminHotel(HotelInfoVO vo);
 	public int updateAdminHotelRoom(HotelInfoVO vo);
 	public int insertAdminHotel(HotelInfoVO vo);
+	public int insertAdminRoom(HotelInfoVO vo);
 
 }

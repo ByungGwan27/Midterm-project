@@ -68,10 +68,10 @@ public class HotelInfoServiceImpl implements HotelInfoService{
 		return mapper.selectAdminHotelRoom(hotelId, roomId);
 	}
 
+
 	@Override
-	public void modifyAdminHotelRoom(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		
+	public boolean addAdminRoom(HotelInfoVO vo) {
+		return mapper.insertAdminRoom(vo) == 1;
 	}
 	
 }

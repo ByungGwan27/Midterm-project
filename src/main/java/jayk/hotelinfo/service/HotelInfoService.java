@@ -17,5 +17,6 @@ public interface HotelInfoService {
 	public boolean modifyAdminHotel(HotelInfoVO vo);
 	public boolean modifyAdminHotelRoom(HotelInfoVO vo);
 	public boolean addAdminHotel(HotelInfoVO vo);
-	void modifyAdminHotelRoom(Map<String, Object> params);
+	public boolean addAdminRoom(HotelInfoVO vo);
+
 }
