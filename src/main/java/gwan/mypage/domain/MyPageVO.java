@@ -11,6 +11,8 @@ public class MyPageVO {
 	private String hotelName;
 	private String hotelLocation1;
 	private String hotelLocation2;
+	private String locationDetail;
+	
 	
 	private Date checkinDate;
 	private Date checkoutDate;
@@ -55,6 +57,18 @@ public class MyPageVO {
 	private String answerDate;
 	private String answerCheck;
 	private String qnaType;
+	
+	//메세지함
+	private int messageId;
+	private String messageContent;
+	private String messageImg;
+	private String messageDate;
+	private int messageCheck;
+	private int messageField;
+	private int messageDelete;
+	private int messageTime;
+	private int messageTime2;
+	private String messageApm;
 	
 	
 }

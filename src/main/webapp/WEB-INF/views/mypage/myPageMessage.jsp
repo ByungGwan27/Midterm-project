@@ -186,6 +186,13 @@ tbody {
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
+#profileimage {
+	width: 50px;
+	height: 50px;
+	margin-left: 10px;
+	margin-top: 10px;
+	
+}
 </style>
 <script>
 	$(function() {
@@ -246,7 +253,7 @@ tbody {
 			</thead>
 			<tbody class="gwan-scroll-body">
 				<tr>
-					<td>1번타자</td>
+					<td><img class="img-profile rounded-circle" src="images/nong10.jpg" id="profileimage">1번타자</td>
 				</tr>
 				<tr>
 					<td>2번타자</td>
@@ -304,3 +311,11 @@ tbody {
 	</div>
 
 </div>
+
+<script>
+	fetch()
+	.then(resolve => resolve.json())
+	.then(result => {
+
+
+</script>

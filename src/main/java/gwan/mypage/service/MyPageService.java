@@ -32,4 +32,8 @@ public interface MyPageService {
 	public List<MyPageVO> readQnaSelf(String memberId);
 	// Q&A작성
 	public boolean createQnaQ(MyPageVO vo);
+	
+	//메세지
+	// 프로필 조회
+	public List<MyPageVO> readProfile(MyPageVO vo);
 }

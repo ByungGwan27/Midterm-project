@@ -7,7 +7,7 @@
 	<!-- 예약내역 -->
 	<!-- 방문 예정 -->
 	<select id="willVisit" resultType="mp">
-		SELECT h.hotel_name, h.hotel_location1, h.hotel_location2, r.checkin_date, r.checkout_date, h.hotel_phone, i.room_name
+		SELECT h.hotel_name, h.location_detail, r.checkin_date, r.checkout_date, h.hotel_phone, i.room_name
 		FROM reservation r JOIN hotel h
 		ON (h.hotel_id = r.hotel_id)
 		JOIN room_info i
@@ -19,7 +19,7 @@
 	
 	<!-- 방문 중 -->
 	<select id="visiting" resultType="mp">
-		SELECT h.hotel_name, h.hotel_location1, h.hotel_location2, r.checkin_date, r.checkout_date, h.hotel_phone, i.room_name
+		SELECT h.hotel_name, h.location_detail, r.checkin_date, r.checkout_date, h.hotel_phone, i.room_name
 		FROM reservation r JOIN hotel h
 		ON (h.hotel_id = r.hotel_id)
 		JOIN room_info i
@@ -31,7 +31,7 @@
 
 	<!-- 방문 완료 -->
 	<select id="visited" resultType="mp">
-		SELECT h.hotel_name, h.hotel_location1, h.hotel_location2, r.checkin_date, r.checkout_date, h.hotel_phone, i.room_name
+		SELECT h.hotel_name, h.location_detail, r.checkin_date, r.checkout_date, h.hotel_phone, i.room_name
 		FROM reservation r JOIN hotel h
 		ON (h.hotel_id = r.hotel_id)
 		JOIN room_info i
@@ -129,6 +129,18 @@
 		INSERT INTO qna(qna_id, member_id, qna_title, qna_content, qna_type)
 		VALUES ((SELECT NVL(MAX(qna_id), 0) + 1 FROM qna), #{memberId}, #{qnaTitle}, #{qnaContent}, #{qnaType})
 	</insert>
+	
+	<!-- 프로필 조회 -->
+	<select id="readProfile" resultType="mp">
+		SELECT u.member_nickname, u.member_profile, m.message_id, m.message_content, m.message_img, m.message_date, m.message_check, m.message_delete
+		FROM (
+		  SELECT * FROM message
+		  WHERE member_id = #{memberId}
+		  ORDER BY message_id DESC
+		) m
+		JOIN member u ON (u.member_id = m.member_id)
+		WHERE ROWNUM = 1
+	</select>
 	
 	
 </mapper>

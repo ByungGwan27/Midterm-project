@@ -68,6 +68,11 @@ public class MyPageServiceImpl implements MyPageService {
 	public List<MyPageVO> readQnaBest() {
 		return mapper.readQnaBest();
 	}
+
+	@Override
+	public List<MyPageVO> readProfile(MyPageVO vo) {
+		return mapper.readProfile(vo);
+	}
 	
 	
 }

@@ -36,5 +36,9 @@ public interface MyPageMapper {
 	// Q&A작성
 	public int createQnaQ(MyPageVO vo);
 	
+	//메세지
+	// 프로필 조회
+	public List<MyPageVO> readProfile(MyPageVO vo);
+	
 	
 }

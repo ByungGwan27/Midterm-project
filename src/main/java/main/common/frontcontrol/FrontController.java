@@ -195,6 +195,7 @@ public class FrontController extends HttpServlet{
 		
 		//마이페이지(쿠폰)
 		map.put("/myPageCoupon.do", new MyPageCouponControl());
+		
 		//마이페이지(메세지)
 		map.put("/myPageMessage.do", new MyPageMessageControl());
 		
