@@ -19,7 +19,7 @@
 
 <body class="bg-gradient-primary">
 
-	<div class="container">
+	<div class="container" style="margin-top: 100px;">
 
 		<!-- Outer Row -->
 		<div class="row justify-content-center">
