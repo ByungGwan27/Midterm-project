@@ -27,7 +27,7 @@
 					<c:if test="${grade == 5 }">
 						<li><a href="adminPage.do">관리자페이지</a></li>
 					</c:if>
-					
+					<c:if test="${grade != 5 }">
 						<li class="has-children"><a href="myPageHome.do">마이페이지</a>
 							<ul class="dropdown">
 								<li><a href="myPageWishList.do">위시리스트</a></li>
@@ -41,7 +41,8 @@
 								<li><a href="#">Sub Menu Three</a></li>
 							</ul></li> -->
 							</ul></li>
-					
+					</c:if>
+
 				</c:if>
 				<li><a href="noticeList.do">공지사항</a></li>
 			</ul>

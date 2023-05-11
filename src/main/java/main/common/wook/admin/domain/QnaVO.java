@@ -1,6 +1,6 @@
 package main.common.wook.admin.domain;
 
-import java.sql.Date;
+
 
 import lombok.Data;
 
@@ -22,8 +22,8 @@ public class QnaVO {
 	private String qnaContent;
 	private String answerContent;
 	private String answerCheck;
-	private Date qnaDate;
-	private Date answerDate;
+	private String qnaDate;
+	private String answerDate;
 	private String memberId;
 	
 }

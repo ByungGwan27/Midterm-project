@@ -32,6 +32,7 @@ public class ReservationVO {
 	private String checkinPhone;
 	private String hotelName;
 	private String roomName;
+	private int dday;
 	
 	
 	

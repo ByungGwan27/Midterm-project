@@ -233,15 +233,6 @@
 												id="memberBirth" value="${memberInfo.memberBirth}">
 										</div>
 									</div>
-
-									<div class="row mb-3">
-										<label for="Twitter" class="col-md-4 col-lg-3 col-form-label">관심테마</label>
-										<div class="col-md-8 col-lg-9">
-											<input name="memberThema" type="text" class="form-control"
-												id="memberThema" value="${memberInfo.memberThema}">
-										</div>
-									</div>
-
 									<div class="row mb-3">
 										<label for="Facebook" class="col-md-4 col-lg-3 col-form-label">회원
 											등급</label>

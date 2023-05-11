@@ -19,6 +19,9 @@ public class adminQnaAnswerControl implements Control {
 		int answerId = Integer.parseInt(req.getParameter("id"));
 		String answerContent = req.getParameter("content");
 		
+		System.out.println(answerId);
+		System.out.println(answerContent);
+		
 		QnaVO vo = new QnaVO();
 		vo.setAnswerContent(answerContent);
 		vo.setQnaId(answerId);
@@ -27,7 +30,7 @@ public class adminQnaAnswerControl implements Control {
 		int result = service.qnaAnswer(vo);
 		
 		
-		return "adminQna.do";
+		return "adminQnaForm.do";
 	}
 
 }

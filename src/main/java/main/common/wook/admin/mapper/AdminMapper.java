@@ -33,5 +33,7 @@ public interface AdminMapper {
 	public int payCountChartData(String dateStr);
 	public int payChartData(String dateStr);
 	public int memberChartData(String dateStr);
+	public List<ReservationVO> imminentRes();
+	public int imminentResCount();
 }
 
