@@ -23,7 +23,7 @@ public class NoticeListControl implements Control {
 		String pageStr = req.getParameter("page");
 		pageStr = pageStr == null ? "1" : pageStr; 
 		int page = Integer.parseInt(pageStr);
-		
+	
 		NoticeService service = new NoticeServiceImpl();
 		int total = service.totalCount();
 		List<NoticeVO> list = service.noticeList(page); 

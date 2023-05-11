@@ -72,6 +72,7 @@ import shin.notice.control.AddNoticeControl;
 import shin.notice.control.NoticeAddFormControl;
 import shin.notice.control.NoticeDetailControl;
 import shin.notice.control.NoticeListControl;
+import shin.notice.control.NoticeModifyControl;
 import shin.post.control.PostDetailControl;
 import shin.post.control.PostListControl;
 
@@ -161,7 +162,6 @@ public class FrontController extends HttpServlet{
 		map.put("/adminHotelInfoModifyPage.do", new AdminModifyHotelInfoControl());
 		
 		// 신지은
-		
 		//여행 포스트 리스트
 		map.put("/postList.do", new PostListControl());
 		//여행 포스트 상세페이지
@@ -170,8 +170,10 @@ public class FrontController extends HttpServlet{
 		map.put("/addNotice.do", new AddNoticeControl());
 		//공지사항 작성페이지
 		map.put("/noticeAddForm.do", new NoticeAddFormControl());
-		//공지사항 상세페이지
+		//공지사항 상세페이지(단건조회)
 		map.put("/noticeDetail.do", new NoticeDetailControl());
+		//공지사항 수정페이지
+		map.put("/noticeModify.do", new NoticeModifyControl());
 		//공지사항 리스트
 		map.put("/noticeList.do", new NoticeListControl());
 		//관리자 결제정보창
