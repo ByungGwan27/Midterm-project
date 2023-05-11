@@ -142,7 +142,7 @@
 <!-- ======= Call To Action Section ======= -->
 <section id="call-to-action" class="call-to-action">
   <div class="container text-center" data-aos="zoom-out">
-    <video id="vid" width="1000" height="763" autoplay="autoplay" loop="loop" muted="muted" controls>
+    <video id="vid" width="1258" height="900" autoplay="autoplay" loop="loop" muted="muted" controls>
       <source src="cssPostList/video/-70796 (1).mp4" type="video/mp4">
     </video>
   </div>

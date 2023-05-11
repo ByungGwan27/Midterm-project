@@ -19,6 +19,8 @@ import gwan.loginpage.control.ForgotPasswordPageControl;
 import gwan.loginpage.control.loginControl;
 import gwan.loginpage.control.loginPageControl;
 import gwan.loginpage.control.logoutControl;
+import gwan.mail.smtp.passwordMail;
+import gwan.mail.smtp.passwordResetControl;
 import gwan.mypage.ajax.control.MyPageWishAjaxControl;
 import gwan.mypage.ajax.control.MyPageWishAjaxDeleteControl;
 import gwan.mypage.control.AdminMessagePageControl;
@@ -27,6 +29,7 @@ import gwan.mypage.control.MyPageHomeWillVisitControl;
 import gwan.mypage.control.MyPageMessageControl;
 import gwan.mypage.control.MyPageQnaControl;
 import gwan.mypage.control.MyPageQnaQControl;
+import gwan.mypage.control.MyPageQnaQCreateControl;
 import gwan.mypage.control.MyPageUserInfoChangeControl;
 import gwan.mypage.control.MyPageUserInfoChangeInputControl;
 import gwan.mypage.control.MyPageUserInfoPwControl;
@@ -48,11 +51,14 @@ import main.common.wook.admin.control.adminDecListControl;
 import main.common.wook.admin.control.adminDecListFormControl;
 import main.common.wook.admin.control.adminDeclarationInfoControl;
 import main.common.wook.admin.control.adminDelMemberControl;
+import main.common.wook.admin.control.adminImminentResControl;
 import main.common.wook.admin.control.adminMemberInfoControl;
 import main.common.wook.admin.control.adminMemberListControl;
 import main.common.wook.admin.control.adminPageControl;
 import main.common.wook.admin.control.adminQnaAnswerControl;
 import main.common.wook.admin.control.adminQnaControl;
+import main.common.wook.admin.control.adminQnaFormControl;
+import main.common.wook.admin.control.adminQnaSecondControl;
 import main.common.wook.admin.control.adminResAccept;
 import main.common.wook.admin.control.adminResCancle;
 import main.common.wook.admin.control.adminReservationInfoControl;
@@ -96,8 +102,13 @@ public class FrontController extends HttpServlet{
 		map.put("/payChartData.do", new payChartDataControl());
 		//관리자 회원 차트 데이터
 		map.put("/memberChartData.do", new memberChartDataControl());
-		//관리자 QnA
-		map.put("/adminQna.do" , new adminQnaControl());
+		//관히자 QnA 폼
+		map.put("/adminQnaForm.do" , new adminQnaFormControl());
+		//관리자 QnA 데이터
+		//관리자 Qna page1
+		map.put("/adminQnaPage1.do" , new adminQnaControl());		
+		//관리자 Qna page2
+		map.put("/adminQnaPage2.do", new adminQnaSecondControl());
 		//관리자 Qna 답변
 		map.put("/adminQnaAnswer.do" , new adminQnaAnswerControl());
 		//관리자 전체회원정보
@@ -127,6 +138,9 @@ public class FrontController extends HttpServlet{
 		//관리자 예약거절
 		map.put("/adminResCancle.do", new adminResCancle());
 		
+		//관리자 임박 예약 조회
+		map.put("/adminImminentRes.do",new adminImminentResControl());
+		
 		//메인 페이지 회원 정보
 		map.put("/allMemberList.do", new allMemberListControl());
 		
@@ -153,7 +167,7 @@ public class FrontController extends HttpServlet{
 		//여행 포스트 상세페이지
 		map.put("/postDetail.do", new PostDetailControl());
 		//공지사항 추가 페이지
-		map.put("/AddNotice.do", new AddNoticeControl());
+		map.put("/addNotice.do", new AddNoticeControl());
 		//공지사항 작성페이지
 		map.put("/noticeAddForm.do", new NoticeAddFormControl());
 		//공지사항 상세페이지
@@ -192,27 +206,30 @@ public class FrontController extends HttpServlet{
 		
 		//마이페이지(Q&A)
 		map.put("/myPageQna.do", new MyPageQnaControl());
-		
-		//Q&A 질문 작성 페이지
+		//Q&A(질문 작성)
 		map.put("/myPageQnaQ.do", new MyPageQnaQControl());
+		map.put("/myPageQnaQCreate.do", new MyPageQnaQCreateControl());
 		
-		//로그인 페이지 관련
-		// 로그인페이지(이동)
+		// 로그인 페이지 관련
+		//로그인페이지(이동)
 		map.put("/loginPage.do", new loginPageControl());
-		// 로그인정보 확인(로그인시도)
+		//로그인정보 확인(로그인시도)
 		map.put("/login.do", new loginControl());
-		// 로그아웃
+		
+		//로그아웃
 		map.put("/logout.do", new logoutControl());
 		
 		//회원가입
 		map.put("/createUserPage.do", new CreateUserPageControl());
 		map.put("/createUser.do", new CreateUserControl());
-		// 회원가입(중복검사)
+		//회원가입(중복검사)
 		map.put("/createUserReadIdAjax.do", new CreateUserReadIdAjaxControl());
 		map.put("/createUserReadNicknameAjax.do", new CreateUserReadNicknameAjaxControl());
 		
 		//pw찾기(이동)
 		map.put("/forgotPasswordPage.do", new ForgotPasswordPageControl());
+		//비밀번호찾기
+		map.put("/passwordReset.do", new passwordResetControl());
 		
 		//관리자 메세지 페이지
 		map.put("/adminMessagePage.do", new AdminMessagePageControl());

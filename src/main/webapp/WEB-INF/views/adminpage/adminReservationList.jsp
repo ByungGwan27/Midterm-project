@@ -30,7 +30,7 @@
 									<th scope="col">예약번호</th>
 									<th scope="col">숙소명</th>
 									<th scope="col">숙소세부명</th>
-									<th scope="col">예약날짜</th>
+									<th scope="col">체크인날짜</th>
 									<th scope="col">인원수</th>
 									<th scope="col">예약자이름</th>
 									<th scope="col">연락처</th>
@@ -44,7 +44,7 @@
 										<td>${res.reservationId }</td>
 										<td>${res.hotelName }</td>
 										<td>${res.roomName }</td>
-										<td>${res.completeDate }</td>
+										<td>${res.checkinDate }</td>
 										<td>${res.resPeople }</td>
 										<td>${res.checkinName }</td>
 										<td>${res.checkinPhone }</td>

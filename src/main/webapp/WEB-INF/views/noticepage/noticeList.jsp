@@ -77,7 +77,9 @@
                 
 <c:set var="no" value="0"></c:set>
 <section class="py-5">
+
     <div class="container px-4 px-lg-5 my-5">
+    	<h2>공지사항 홈</h2>
         <div class="row gx-4 gx-lg-5 align-items-center">
             <form action="noticeAdd.do" method="POST">
                 <table class="table">
@@ -106,7 +108,13 @@
 	</c:forEach>
 </table>
 
-
+ <h3 class="sidebar-title">Search</h3>
+              <div class="sidebar-item search-form">
+               <form action="noticeAdd.do" method="POST">
+                  <input type="text">
+                  <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+              </div><!-- End sidebar search formn-->
 
 
 <div class="center">

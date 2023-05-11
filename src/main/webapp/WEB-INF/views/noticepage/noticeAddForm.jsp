@@ -84,17 +84,19 @@
 
 <section class="py-5">
 	<div class="container px-4 px-lg-5 my-5">
+	<h3>공지사항 작성페이지</h3>
 		<div class="row gx-4 gx-lg-5 align-items-center">
 			<form action="addNotice.do" method="post"
 				enctype="multipart/form-data">
 				<table class="table">
+				
 					<tr>
 						<th>작성자</th>
-						<td><input type="text" name="writer" value="관리자" readonly></td>
+						<td><input type="text" name="writer" value="관리자" readonly ></td>
 					</tr>
 					<tr>
 						<th>아이디</th>
-						<td><input type="text" name="memberId" value="admin" readonly></td>
+						<td><input type="text" name="memberId" value="관리자" readonly></td>
 					</tr>
 					<tr>
 						<th>제목</th>
@@ -116,13 +118,8 @@
 								rows="10"></textarea></td>
 					</tr>
 
-					<tr>
-						<th>첨부파일</th>
-						<td><input type="file" name="attach"></td>
-					</tr>
-					<tr>
-						<th>비밀번호</th>
-						<td><input type="password" name="memberPw"></td>
+				
+					
 					<tr>
 						<td colspan="4" align="center"><input type="submit"
 							value="등록"> <input type="reset" value="취소"></td>

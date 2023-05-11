@@ -12,7 +12,7 @@
       </li><!-- End Dashboard Nav -->
       
         <li class="nav-item" id="QnA">
-        <a class="nav-link collapsed" href="adminQna.do">
+        <a class="nav-link collapsed" href="adminQnaForm.do">
           <i class="bi bi-chat-right-text"></i>
           <span>QnA</span>
         </a>
