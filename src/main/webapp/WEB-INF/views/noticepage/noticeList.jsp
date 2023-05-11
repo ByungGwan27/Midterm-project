@@ -77,32 +77,46 @@
                 
 <c:set var="no" value="0"></c:set>
 <section class="py-5">
+
     <div class="container px-4 px-lg-5 my-5">
+    	<h2>공지사항 홈</h2>
         <div class="row gx-4 gx-lg-5 align-items-center">
-            <form action="productAdd.do" method="POST">
+            <form action="noticeAdd.do" method="POST">
                 <table class="table">
 
 	<thead>
 		<tr>
 			<th>순번</th>
-			<th>제목></th>
+			<th>제목</th>
 			<th>작성자</th>
 			<th>작성날짜</th>
 			<th>조회수</th>
+		
 		</tr>
 	</thead>
 	<c:forEach var="notice" items="${list }">
 		<tr>
 			<td><c:out value="${no=no+1 }"></c:out></td>
 			<!-- <td><a href="getNotice.do?page=${pageInfo.pageNum}&nid=${notice.noticeId }">${notice.noticeId }</a></td> -->
-			<td><a href="getNotice.do?page=${pageInfo.pageNum}&nTit=${notice.noticeTitle }">${notice.noticeTitle }</a></td>
+			<td>${notice.noticeTitle }</td>
 			<td>${notice.memberId }</td>
 			<td>${notice.writeDate }</td>
 			<td>${notice.noticeViews }</td>
+			<td colspan="4" align="center"><input type="submit"
+							value="수정"> <input type="reset" value="삭제"></td>
 		</tr>
 	</c:forEach>
 </table>
-<hr>
+
+ <h3 class="sidebar-title">Search</h3>
+              <div class="sidebar-item search-form">
+               <form action="noticeAdd.do" method="POST">
+                  <input type="text">
+                  <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+              </div><!-- End sidebar search formn-->
+
+
 <div class="center">
 	<div class="pagination">
 		<c:if test="${pageInfo.prev }">
@@ -121,4 +135,19 @@
 </div>
 </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+	
+	let res1 = document.querySelectorAll("table tbody tr");
+	console.log(res1)
+	res1.forEach(function(res1) {
+		res1.addEventListener("dblclick", function() {
+			location.href = 'noticeDetail.do?id='
+					+ this.children[1].innerText;
+		})
+
+	})
+})
+</script>
         

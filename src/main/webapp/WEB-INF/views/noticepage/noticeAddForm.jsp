@@ -46,7 +46,6 @@
   ======================================================== -->
 </head>
 
-
 <!-- ======= Mobile nav toggle button ======= -->
 <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
 <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
@@ -67,7 +66,7 @@
 							class="bx bx-file-blank"></i> <span>공지사항 작성</span></a></li>
 				</c:when>
 				<c:otherwise>
-					
+
 				</c:otherwise>
 			</c:choose>
 			<li><a href="#portfolio" class="nav-link scrollto"><i
@@ -79,41 +78,48 @@
 	<!-- .nav-menu -->
 
 </header>
+
 <!-- End Header -->
 
 
 <section class="py-5">
 	<div class="container px-4 px-lg-5 my-5">
+	<h3>공지사항 작성페이지</h3>
 		<div class="row gx-4 gx-lg-5 align-items-center">
-			<form action="noticeAddForm.do" method="POST">
+			<form action="addNotice.do" method="post"
+				enctype="multipart/form-data">
 				<table class="table">
+				
+					<tr>
+						<th>작성자</th>
+						<td><input type="text" name="writer" value="관리자" readonly ></td>
+					</tr>
+					<tr>
+						<th>아이디</th>
+						<td><input type="text" name="memberId" value="관리자" readonly></td>
+					</tr>
 					<tr>
 						<th>제목</th>
-						<td><input type="text" name="notitle"></td>
+						<td><input type="text" name="noticeTitle"></td>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" value=""
 								id="flexCheckChecked" checked=""> <label
 								class="form-check-label" for="flexCheckChecked"> <font
 								style="vertical-align: inherit;"> <font
-									style="vertical-align: inherit;"> 중요공지사항 체크 </font></font></label>
+									style="vertical-align: inherit;"> 중요공지사항 체크 </font>
+							</font>
+							</label>
 						</div>
 
 					</tr>
 					<tr>
-						<th>작성자</th>
-						<td><input type="text" name="like" value="관리자"></td>
-					</tr>
-					<tr>
-						<th>공지유형</th>
-						<td><input type="number" name="price" value="3500"></td>
-						<th>할인가격</th>
-						<td><input type="number" name="sprice" value="2500"></td>
-					</tr>
-					<tr>
 						<th>작성내용</th>
-						<td colspan="3"><textarea name="noContent" cols="100"
+						<td colspan="3"><textarea name="noticeContent" cols="100"
 								rows="10"></textarea></td>
 					</tr>
+
+				
+					
 					<tr>
 						<td colspan="4" align="center"><input type="submit"
 							value="등록"> <input type="reset" value="취소"></td>

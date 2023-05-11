@@ -14,5 +14,4 @@ public interface NoticeService {
 	public NoticeVO getNotice(int noticeId);
 	public int totalCount();
 	
-	
 }

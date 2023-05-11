@@ -10,7 +10,7 @@
 
 			<ul
 				class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-				<li class="active"><a href="hotelListPage.do">숙소</a></li>
+				<li><a href="hotelListPage.do">숙소</a></li>
 				<li><a href="postList.do">여행포스트</a></li>
 				<c:choose>
 					<c:when test="${id == null }">

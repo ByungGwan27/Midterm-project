@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="shin.notice.mapper.NoticeMapper">
 
@@ -20,12 +18,12 @@
 		]]>
 	</select>
 
-	<insert id="insertNotice" parameterType="notice">
+	<insert id="insertNotice" >
 		insert into notice
 		(notice_id, member_id, notice_title,
-		notice_content, write_date, notice_views)
+		notice_content, write_date)
 		values(notice_seq.nextval, #{memberId}, #{noticeTitle},
-		#{noticeContent}, sysDate, #{noticeViews})
+		#{noticeContent}, sysDate )
 	</insert>
 	
 	<update id="updateNotice" parameterType="notice">
