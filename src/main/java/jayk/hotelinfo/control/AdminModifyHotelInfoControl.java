@@ -29,13 +29,6 @@ public class AdminModifyHotelInfoControl implements Control {
 			// System.out.println(adminHotelInfo);
 			req.setAttribute("adminHotelInfo", adminHotelInfo);
 
-			// String roomId = req.getParameter("roomId");
-			/*
-			 * List<HotelInfoVO> adminRoomList =
-			 * service.roomList(Integer.parseInt(hotelId));
-			 * req.setAttribute("adminRoomList", adminRoomList);
-			 */
-
 			return "adminpage/adminHotelInfoModify.tiles";
 
 		} else if (req.getMethod().equals("POST")) {
@@ -56,8 +49,9 @@ public class AdminModifyHotelInfoControl implements Control {
 
 			// 여기서부터객실정보수정
 			/*
-			 * String roomId = req.getParameter("roomId"); String[] roomIds =
-			 * roomId.split(",");
+			 * String roomId = req.getParameter("roomId"); 
+			 * String[] roomIds =
+			 *roomId.split(",");
 			 * 
 			 * String roomName = req.getParameter("roomName"); String roomExpain =
 			 * req.getParameter("roomExpain"); String roomGrade =

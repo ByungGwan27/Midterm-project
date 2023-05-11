@@ -32,82 +32,50 @@
 				<td><input type="text" name="hotelLocation2"
 					value="${adminHotelInfo.hotelLocation2}" readonly></td>
 			</tr>
-			
-			<%-- <tr>
-				<td><h5>객실정보확인</h5></td>
-			</tr>
-			<c:if test="${empty adminRoomList}">
-				<tr>
-					<td colspan="2">
-						<p>객실 정보가 없습니다.</p>
-					</td>
-				</tr>
-			</c:if>
-			<c:forEach var="adminRoomList" items="${adminRoomList}">
-				<tr>
-					<th>객실사진</th>
-					<td><img width="200px"
-						src="cssMainpage/images/hero-slider-1.jpg"></td>
-				</tr>
-				<tr>
-					<th>roomId</th>
-					<td><input type="text" name="roomId"
-						value="${adminRoomList.roomId}" readonly></td>
-				</tr>
-				<tr>
-					<th>방이름</th>
-					<td><input type="text" name="roomName"
-						value="${adminRoomList.roomName}" readonly></td>
-				</tr>
-				<tr>
-					<th>방설명</th>
-					<td><input type="text" name="roomExpain"
-						value="${adminRoomList.roomExpain}" readonly></td>
-				</tr>
-				<tr>
-					<th>방등급</th>
-					<td><input type="text" name="roomGrade"
-						value="${adminRoomList.roomGrade}" readonly></td>
-				</tr>
-				<tr>
-					<th>객실가격</th>
-					<td><input type="text" name="roomPrice"
-						value="${adminRoomList.roomPrice}" readonly></td>
-				</tr>
-				<tr>
-					<th>최소인원</th>
-					<td><input type="text" name="roomMin"
-						value="${adminRoomList.roomMin}" readonly></td>
-				</tr>
-				<tr>
-					<th>최대인원</th>
-					<td><input type="text" name="roomMax"
-						value="${adminRoomList.roomMax}" readonly></td>
-				</tr>
-				<tr>
-					<th>인원추가시발생금액</th>
-					<td><input type="text" name="addPrice"
-						value="${adminRoomList.addPrice}" readonly></td>
-				</tr>
-				<tr>
-					<th>시설정보</th>
-					<td><span class="fa fa-chevron-right mr-2"><input
-							type="checkbox">주차장</span> <span
-						class="fa fa-chevron-right mr-2"><input type="checkbox">wifi</span>
-						<span class="fa fa-chevron-right mr-2"><input
-							type="checkbox">애완동물동반가능여부</span> <span
-						class="fa fa-chevron-right mr-2"> <input type="checkbox">조식
-					</span> <span class="fa fa-chevron-right mr-2"><input
-							type="checkbox">수영장</span></td>
-				</tr>
-			</c:forEach> --%>
 			<tr>
 				<td colspan="2" align="center">
 					<button type="submit">수정</button>
-					<a href = "adminRoomInfoPage.do?hotelId=${adminHotelInfo.hotelId}"><button type="button">객실정보수정</button></a>
 					<button type="button">취소</button>
 				</td>
 			</tr>
+		</table>
+		<hr>
+		<h5>객실정보확인</h5>
+		<table class="table">
+			<c:choose>
+				<c:when test="${empty adminRoomList}">
+					<tr>
+						<td>객실정보없음</td>
+					</tr>
+				</c:when>
+				<c:otherwise>
+					<tr>
+						<th>객실</th>
+						<td><select id="adminRoomList">
+								<option value="">선택</option>
+								<c:forEach var="adminRoomList" items="${adminRoomList}">
+									<option value="${adminRoomList.roomId}">${adminRoomList.roomName}</option>
+								</c:forEach>
+						</select></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+							<button type="button" onclick="getRoomInfo()">객실정보확인</button>
+						</td>
+					</tr>
+					<script>
+						var getRoomInfo = function() {
+							var selectElement = document
+									.getElementById("adminRoomList");
+							var selectedValue = selectElement.value;
+							var hotelId = "${adminHotelInfo.hotelId}";
+							var url = "adminRoomInfoPage.do?hotelId=" + hotelId
+									+ "&roomId=" + selectedValue;
+							window.location.href = url;
+						}
+					</script>
+				</c:otherwise>
+			</c:choose>
 		</table>
 	</form>
 </main>

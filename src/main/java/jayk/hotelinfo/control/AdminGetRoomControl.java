@@ -16,11 +16,14 @@ public class AdminGetRoomControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		String hotelId = req.getParameter("hotelId");
+		String roomId = req.getParameter("roomId");
 		HotelInfoService service = new HotelInfoServiceImpl();
 		
-		List<HotelInfoVO> adminRoomList = service.roomList(Integer.parseInt(hotelId));
-		req.setAttribute("adminRoomList", adminRoomList);
+		HotelInfoVO adminRoomInfo = service.getAdminHotelRoom(Integer.parseInt(hotelId), Integer.parseInt(roomId));
+		req.setAttribute("adminRoomInfo", adminRoomInfo);
+		//System.out.println(adminRoomInfo);
 		
 		return "adminpage/adminGetRoomInfo.tiles";
 	}
