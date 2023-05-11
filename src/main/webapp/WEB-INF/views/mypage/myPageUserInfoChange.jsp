@@ -18,7 +18,7 @@
 
 
 
-	<form action="myPageUserInfoChangeInput.do" method="post" enctype="multipart/form-data">
+	<form name="userInfoChange" action="myPageUserInfoChangeInput.do" method="post" enctype="multipart/form-data">
 		<table class="table">
 			<tr>
 				<th>프로필사진</th>
@@ -26,35 +26,52 @@
 			</tr>
 			<tr>
 				<th>이메일</th>
-				<td><input type="text" name="email"></td>
+				<td><input type="email" name="email" placeholder='${email }'></td>
 			</tr>
 			<tr>
 				<th>전화번호</th>
-				<td><input type="text" name="phone"></td>
+				<td><input type="tel" name="phone" placeholder='${phone }'></td>
 			</tr>
 			<tr>
 				<th>닉네임</th>
-				<td><input type="text" name="nickname"></input></td>
+				<td><input type="text" name="nickname" placeholder='${nickname }'></input>
 			</tr>
 			<tr>
 				<th>관심테마</th>
 				<!-- <td><textarea rows="3" cols="20" name="nickname"></textarea></td> -->
-				<td><input type="text" name="thema"></td>
+				<td><input type="text" name="thema" placeholder='${thema }'></td>
 			</tr>
 			<tr>
 				<th>비밀번호</th>
-				<td><input type="password" name="pw"></td>
+				<td><input type="password" name="pw" id="pw"></td>
 			</tr>
 			<tr>
 				<th>비밀번호 확인</th>
-				<td><input type="password" name="pwcheck"></td>
+				<td><input type="password" name="pwcheck" id="pwc"></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button type="submit">수정</button>
+					<button type="button" onclick="joinform_check();">수정</button>
 					<button type="button">돌아가기</button>
 				</td>
 			</tr>
 		</table>
 	</form>
 </div>
+
+<script>
+	function joinform_check() {
+	  //변수에 담아주기
+	  let pwd = document.getElementById("pw");
+	  let repwd = document.getElementById("pwc");
+	  
+	  if (repwd.value !== pwd.value) {
+		    alert("비밀번호가 일치하지 않습니다..");
+		    repwd.focus();
+		    return false;
+		  };
+		  
+	  //입력 값 전송
+	  document.userInfoChange.submit(); //유효성 검사의 포인트 
+	}
+</script>

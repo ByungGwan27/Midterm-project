@@ -52,6 +52,7 @@
 
 	<!-- Navigation-->
 	<tiles:insertAttribute name="nav"></tiles:insertAttribute>
+	<tiles:insertAttribute name="navmain"></tiles:insertAttribute>
 	
 	<!-- Body -->
 	<tiles:insertAttribute name="body"></tiles:insertAttribute>
@@ -80,6 +81,7 @@
 	<script src="cssMainpage/js/daterangepicker.js"></script>
 
 	<script src="cssMainpage/js/typed.js"></script>
+	
 	<script>
 		$(function() {
 			var slides = $('.slides'),

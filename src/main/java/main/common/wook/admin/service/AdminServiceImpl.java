@@ -148,6 +148,16 @@ public class AdminServiceImpl implements AdminService {
 		return mapper.memberChartData(dateStr);
 	}
 
+	@Override
+	public List<ReservationVO> imminentRes() {
+		return mapper.imminentRes();
+	}
+
+	@Override
+	public int imminentResCount() {
+		return mapper.imminentResCount();
+	}
+
 	
 
 	

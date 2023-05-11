@@ -1,6 +1,7 @@
 package gwan.loginpage.control;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +25,8 @@ public class CreateUserControl implements Control {
 		String bd = req.getParameter("truebd");
 		
 		LoginPageVO vo = new LoginPageVO();
+		LoginPageService service = new LoginPageServiceImpl();
+		
 		vo.setMemberName(name);
 		vo.setMemberNickname(nname);
 		vo.setMemberId(id);
@@ -31,9 +34,7 @@ public class CreateUserControl implements Control {
 		vo.setMemberPw(pw);
 		vo.setMemberPhone(phone);
 		vo.setMemberBirth(bd);
-		System.out.println(vo);
-		
-		LoginPageService service = new LoginPageServiceImpl();
+		System.out.println("회원가입 정보 받기 : " + vo);
 		
 		if (service.createUserCreate(vo)) {
 			return "mainPage.do";
