@@ -103,4 +103,12 @@
 		</set>
 		WHERE member_id=#{memberId}
 	</update>
+	
+	<!-- Q&A -->
+	<insert id="createQnaQ" parameterType="mp">
+		INSERT INTO qna(qna_id, member_id, qna_title, qna_content, qna_type)
+		VALUES ((SELECT NVL(MAX(qna_id), 0) + 1 FROM qna), #{memberId}, #{qnaTitle}, #{qnaContent}, #{qnaType})
+	</insert>
+	
+	
 </mapper>

@@ -24,4 +24,8 @@ public interface MyPageService {
 	
 	//회원정보수정
 	public boolean updateMemberInfo(LoginPageVO vo);
+	
+	//Q&A
+	// Q&A작성
+	public boolean createQnaQ(MyPageVO vo);
 }
