@@ -6,10 +6,14 @@
 	<h5>숙소객실추가</h5>
 	<form action="adminAddRoomPage.do" method="POST" enctype="multipart/form-data">
 		<table class='table'>
-			<!-- 		<tr>
-				<th>객실이미지</th> room_image, room_detail 조인할 것ㅇㅇ
-				<td><input type="file" name="roomImage"></td>
-			</tr> -->
+			<tr>
+				<th>이미지Id</th> 
+				<td><input type="text" name="imageId"></td>
+			</tr>
+			<tr>
+				<th>객실이미지</th> 
+				<td><input type="file" name="image"></td>
+			</tr>
 			<tr>
 				<th>hotelId</th>
 				<td><input type="text" name="hotelId"></td>

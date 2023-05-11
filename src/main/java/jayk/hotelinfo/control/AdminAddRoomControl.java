@@ -39,6 +39,8 @@ public class AdminAddRoomControl implements Control {
 		String roomMax = multi.getParameter("roomMax");
 		String roomMin = multi.getParameter("roomMin");
 		String addPrice = multi.getParameter("addPrice");
+		String imageId = multi.getParameter("imageId");
+		String image = multi.getFilesystemName("image");
 		
 		HotelInfoVO addRoom = new HotelInfoVO();
 		addRoom.setHotelId(Integer.parseInt(hotelId));
@@ -48,10 +50,12 @@ public class AdminAddRoomControl implements Control {
 		addRoom.setRoomMax(Integer.parseInt(roomMax));
 		addRoom.setRoomMin(Integer.parseInt(roomMin));
 		addRoom.setAddPrice(Integer.parseInt(addPrice));
+		addRoom.setImageId(Integer.parseInt(imageId));
+		addRoom.setImage(image);
 		
 		HotelInfoService service = new HotelInfoServiceImpl();
 				
-		if(service.addAdminRoom(addRoom)) {
+		if(service.addAdminRoom(addRoom) && service.addAdminRoomImage(addRoom)) {
 			System.out.println("성공");
 			return "adminHotelList.do";
 		}else {
