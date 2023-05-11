@@ -5,7 +5,7 @@
 
 <body class="bg-gradient-primary">
 
-	<div class="container">
+	<div class="container" style="margin-top: 100px;">
 		<div class="card o-hidden border-0 shadow-lg my-5">
 			<div class="card-body p-0">
 				<!-- Nested Row within Card Body -->

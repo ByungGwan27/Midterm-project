@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%
-int i = 1;
-int j = 1;
-%>
+
 <main id="main" class="main">
 
 	<div class="pagetitle">
@@ -22,114 +19,73 @@ int j = 1;
 		<div class="row">
 			<div class="col-lg-6">
 
-				<!-- <div class="card basic">
-            <div class="card-body">
-              <h5 class="card-title">답변 미완료</h5>
-
-              <div>
-                <h6>환불이 가능한가요?</h6>
-                <p>예약 후 취소를 하려는데 환불이 가능한가요?</p>
-              </div>
-
-              <div class="pt-2">
-                <h6>2. Reiciendis dolores repudiandae?</h6>
-                <p>Id ipsam non ut. Placeat doloremque deserunt quia tenetur inventore laboriosam dolores totam odio. Aperiam incidunt et. Totam ut quos sunt atque modi molestiae dolorem.</p>
-              </div>
-
-              <div class="pt-2">
-                <h6>3. Qui qui reprehenderit ut est illo numquam voluptatem?</h6>
-                <p>Enim inventore in consequuntur ipsam voluptatem consequatur beatae. Nostrum consequuntur voluptates et blanditiis.</p>
-              </div>
-
-            </div>
-          </div> -->
-
 				<!-- F.A.Q Group 1 -->
 				<div class="card">
 					<div class="card-body">
 						<h5 class="card-title">미답변</h5>
-
-						<c:forEach var="NAQ" items="${NAQ}">
-							<div class="accordion accordion-flush" id="faq-group-1">
-
-								<div class="accordion-item">
-									<h2 class="accordion-header">
-										<button class="accordion-button collapsed"
-											data-bs-target="#faqsOne-<%=j%>" type="button"
-											data-bs-toggle="collapse">${NAQ.qnaTitle}</button>
-									</h2>
-									<div id="faqsOne-<%=j%>" class="accordion-collapse collapse"
-										data-bs-parent="#faq-group-1">
-										<div class="accordion-body">
-											${NAQ.qnaContent} <br>
-											<p style="font-size: small;">작성자 : ${NAQ.memberId}</p>
-											<hr>
-											<form action="adminQnaAnswer.do">
-
-												<div class="row mb-3">
-													<label for="inputPassword" class="col-sm-2 col-form-label">답변</label>
+						<div class="accordion accordion-flush" id="faq-group-1">
+							<div class="accordion-item">
+								<h2 class="accordion-header">
+									<button class="accordion-button collapsed" data-bs-target="#faqsOne-1" type="button"
+										data-bs-toggle="collapse">
+										<div></div>
+									</button>
+								</h2>
+								<div id="faqsOne-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
+									<div class="accordion-body">
+										<div id="content"> </div><div></div>
+										<hr>
+										<p style="font-size: small;">3</p>
+										<hr>
+										<form action="adminQnaAnswer.do">
+											<div class="row mb-3">
+												<label for="inputPassword" class="col-sm-2 col-form-label">답변</label>
+												<div class="col-sm-10">
+													<textarea class="form-control" style="height: 100px" name="content"></textarea>
+												</div>
+												<div class="row mb-3" style="display: none;">
+													
 													<div class="col-sm-10">
-														<textarea class="form-control" style="height: 100px"
-															name="content"></textarea>
-													</div>
-													<div class="row mb-3" style="display: none;">
-														<label for="inputText" class="col-sm-2 col-form-label">작성자</label>
-														<div class="col-sm-10">
-															<input type="text" class="form-control"
-																value="${NAQ.qnaId}" readonly name="id">
-														</div>
-													</div>
-													<div class="row mb-3">
-
-														<div class="col-sm-10">
-															<button type="submit" class="btn btn-primary">입력</button>
-														</div>
+														<input type="text" class="form-control" value="4" readonly name="id">
 													</div>
 												</div>
-
-											</form>
-											<!-- End General Form Elements -->
-										</div>
+												<div class="row mb-3">
+													<div class="col-sm-10">
+														<button type="submit" class="btn btn-primary">입력</button>
+													</div>
+												</div>
+											</div>
+										</form>
+										<!-- End General Form Elements -->
 									</div>
-
 								</div>
-
-
-
 							</div>
-							<%
-							j++;
-							%>
-						</c:forEach>
+						</div>
+						<div id="all">
+						</div>
 						<!--  -->
-
 					</div>
 				</div>
 				<!-- End F.A.Q Group 1 -->
-
-				<nav aria-label="Page navigation example">
-					<ul class="pagination">
-						<c:if test="${pageInfo1.prev}">
-							<li class="page-item"><a class="page-link"
-								href="adminQna.do?page1=${pageInfo1.startPage-1}"
-								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-							</a></li>
-						</c:if>
-						<c:forEach var="i" begin="${pageInfo1.startPage }"
-							end="${pageInfo1.endPage }">
-							<li class="page-item"><a class="page-link"
-								href="adminQna.do?page1=${i }">${i}</a></li>
-						</c:forEach>
-						<c:if test="${pageInfo1.next}">
-							<li class="page-item"><a class="page-link"
-								href="adminQna.do?page1=${pageInfo1.endPage+1}"
-								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-						</a>
-						</li>
-						</c:if>
-					</ul>
-				</nav>
+				<!-- 페이지 1 -->
+				<div style="text-align: center;">
+					<nav aria-label="Page navigation example" style="display: inline-block;">
+						<ul class="pagination">
+							<li class="page-item" id="myPagePrev1"><a class="page-link" aria-label="Previous"> <span
+										aria-hidden="true">&laquo;</span>
+								</a></li>
+							<div id="pageNumberSection1">
+								<li class="page-item pages" id="pageNumber1"><a class="page-link mypage">$</a></li>
+							</div>
+							<li class="page-item" id="myPageNext1"><a class="page-link" aria-label="Next"> <span
+										aria-hidden="true">&raquo;</span>
+								</a></li>
+						</ul>
+					</nav>
+				</div>
+				<!-- 페이지 1 끝-->
 			</div>
+
 			<div class="col-lg-6">
 
 				<div class="card">
@@ -137,157 +93,213 @@ int j = 1;
 						<h5 class="card-title">답변 완료</h5>
 
 
+						<!-- F.A.Q Group 2 -->
 						<div class="accordion accordion-flush" id="faq-group-2">
-
-							<!-- F.A.Q Group 2 -->
 							<div class="accordion-item">
-								<c:forEach var="CAQ" items="${CAQ}">
-									<h2 class="accordion-header">
-										<button class="accordion-button collapsed"
-											data-bs-target="#faqsTwo-<%=i%>" type="button"
-											data-bs-toggle="collapse">${CAQ.qnaTitle}</button>
-									</h2>
-									<div id="faqsTwo-<%=i%>" class="accordion-collapse collapse"
-										data-bs-parent="#faq-group-2">
-										<div class="accordion-body">${CAQ.qnaContent}</div>
-										<p style="font-size: small;">작성자 : ${CAQ.memberId}</p>
+								<h2 class="accordion-header">
+									<button class="accordion-button collapsed" data-bs-target="#faqsTwo-1" type="button"
+										data-bs-toggle="collapse">
+										<div>제목</div>
+									</button>
+								</h2>
+								<div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+									<div class="accordion-body">
+										<div>내용</div>
+										<hr>
+										<p style="font-size: small;">작성자 | 작성일 </p>
 										<hr>
 										<form action="adminQnaAnswer.do">
-											<textarea class="form-control" style="height: 100px"
-												name="content">${CAQ.answerContent}</textarea>
-
-											<hr>
-											<div class="col-sm-10">
-												<button type="submit" class="btn btn-primary">답변수정</button>
-											</div>
-											<div class="row mb-3" style="display: none;">
-												<label for="inputText" class="col-sm-2 col-form-label">작성자</label>
+											<div class="row mb-3">
+												<p style="font-size: small;">답변작성일 </p>
+												<textarea class="form-control" style="height: 100px" name="content">답변내용</textarea>
+												<hr>
+												<div class="row mb-3" style="display: none;">
+													<div class="col-sm-10">
+														<input type="text" class="form-control" value="4" readonly name="id">
+													</div>
+												</div>
 												<div class="col-sm-10">
-													<input type="text" class="form-control"
-														value="${CAQ.qnaId}" readonly name="id">
+													<button type="submit" class="btn btn-primary">답변수정</button>
 												</div>
 											</div>
 										</form>
 									</div>
-									<%
-									i++;
-									%>
-								</c:forEach>
+								</div>
 							</div>
-
-
 						</div>
-						<!--  -->
-
+						<div id="all1">
+						</div>
 					</div>
+					<!-- End F.A.Q Group 2 -->
+					<!-- 페이지 2 -->
+					<!-- 페이지 2 끝-->
+					
+					
 				</div>
-				<nav aria-label="Page navigation example">
-					<ul class="pagination">
-						<c:if test="${pageInfo2.prev}">
-							<li class="page-item"><a class="page-link"
-								href="adminQna.do?page2=${pageInfo2.startPage-1}"
-								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-							</a></li>
-						</c:if>
-						<c:forEach var="i" begin="${pageInfo2.startPage }"
-							end="${pageInfo2.endPage }">
-							<li class="page-item"><a class="page-link"
-								href="adminQna.do?page2=${i }">${i}</a></li>
-						</c:forEach>
-						<c:if test="${pageInfo2.next}">
-						<li class="page-item"><a class="page-link"
-							href="adminQna.do?page2=${pageInfo2.endPage+1}" aria-label="Next">
-								<span aria-hidden="true">&raquo;</span>
-						</a></li>
-						</c:if>
-					</ul>
-				</nav>
-
-				<!-- End F.A.Q Group 2 -->
-
-				<!-- F.A.Q Group 3 -->
-				<!-- <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Dolore occaecati ducimus quam</h5>
-
-              <div class="accordion accordion-flush" id="faq-group-3">
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsThree-1" type="button" data-bs-toggle="collapse">
-                      Assumenda doloribus est fugiat sint incidunt animi totam nisi?
-                    </button>
-                  </h2>
-                  <div id="faqsThree-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-3">
-                    <div class="accordion-body">
-                      Ut quasi odit odio totam accusamus vero eius. Nostrum asperiores voluptatem eos nulla ab dolores est asperiores iure. Quo est quis praesentium aut maiores. Corrupti sed aut expedita fugit vero dolorem. Nemo rerum sapiente. A quaerat dignissimos.
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsThree-2" type="button" data-bs-toggle="collapse">
-                      Consequatur saepe explicabo odio atque nisi?
-                    </button>
-                  </h2>
-                  <div id="faqsThree-2" class="accordion-collapse collapse" data-bs-parent="#faq-group-3">
-                    <div class="accordion-body">
-                      In minus quia impedit est quas deserunt deserunt et. Nulla non quo dolores minima fugiat aut saepe aut inventore. Qui nesciunt odio officia beatae iusto sed voluptatem possimus quas. Officia vitae sit voluptatem nostrum a.
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsThree-3" type="button" data-bs-toggle="collapse">
-                      Voluptates vel est fugiat molestiae rem sit eos sint?
-                    </button>
-                  </h2>
-                  <div id="faqsThree-3" class="accordion-collapse collapse" data-bs-parent="#faq-group-3">
-                    <div class="accordion-body">
-                      Voluptates magni amet enim perspiciatis atque excepturi itaque est. Sit beatae animi incidunt eum repellat sequi ea saepe inventore. Id et vel et et. Nesciunt itaque corrupti quia ducimus. Consequatur maiores voluptatum fuga quod ut non fuga.
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsThree-4" type="button" data-bs-toggle="collapse">
-                      Ab ipsa cum autem voluptas doloremque velit?
-                    </button>
-                  </h2>
-                  <div id="faqsThree-4" class="accordion-collapse collapse" data-bs-parent="#faq-group-3">
-                    <div class="accordion-body">
-                      Numquam ut reiciendis aliquid. Quia veritatis quasi ipsam sed quo ut eligendi et non. Doloremque sed voluptatem at in voluptas aliquid dolorum.
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsThree-5" type="button" data-bs-toggle="collapse">
-                      Aliquam magni ducimus facilis numquam dolorum harum eveniet iusto?
-                    </button>
-                  </h2>
-                  <div id="faqsThree-5" class="accordion-collapse collapse" data-bs-parent="#faq-group-3">
-                    <div class="accordion-body">
-                      Aut necessitatibus maxime quis dolor et. Nihil laboriosam molestiae qui molestias placeat corrupti non quo accusamus. Nemo qui quis harum enim sed. Aliquam molestias pariatur delectus voluptas quidem qui rerum id quisquam. Perspiciatis voluptatem voluptatem eos. Vel aut minus labore at rerum eos.
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-          </div> -->
-				<!-- End F.A.Q Group 3 -->
+				<div style="text-align: center;">
+					<nav aria-label="Page navigation example" style="display: inline-block;">
+						<ul class="pagination">
+							<li class="page-item" id="myPagePrev2"><a class="page-link" aria-label="Previous"> <span
+										aria-hidden="true">&laquo;</span>
+								</a></li>
+							<div id="pageNumberSection2">
+								<li class="page-item pages" id="pageNumber2"><a class="page-link mypage">$</a></li>
+							</div>
+							<li class="page-item" id="myPageNext2"><a class="page-link" aria-label="Next"> <span
+										aria-hidden="true">&raquo;</span>
+								</a></li>
+						</ul>
+					</nav>
+				</div>
 
 			</div>
-
-		</div>
 	</section>
 
 </main>
+
+
 <!-- End #main -->
 
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		getPage1(1);
+		qnaData1(1);
+		getPage2(1);
+		qnaData2(1);
+	})
+
+	function qnaData1(page) {
+		fetch('adminQnaPage1.do?page1=' + page)
+			.then(resolve => resolve.json())
+			.then(result => {
+				let NAQ = result.NAQ;
+				console.log('naq=' + NAQ)
+
+				console.log('fetch!');
+
+				//데이터 넣기
+				let all = document.getElementById('all')
+				let i = 1;
+				for (let data of NAQ) {
+					let group = document.getElementById('faq-group-1').cloneNode(true);
+					group.childNodes[1].childNodes[1].childNodes[1].setAttribute('data-bs-target', '#faqsOne-' + i);
+					group.childNodes[1].childNodes[3].setAttribute('id', 'faqsOne-' + i)
+					group.childNodes[1].childNodes[1].childNodes[1].childNodes[1].innerText = data.qnaTitle
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[1].innerText = data.qnaContent
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[6].innerText = '작성자 : ' + data.memberId +
+						' | 작성날짜 : ' + data.qnaDate
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[10].childNodes[1].childNodes[5].childNodes[1].childNodes[1].setAttribute('value',data.qnaId)
+					
+
+					all.append(group)
+
+					i++;
+				}
+				document.getElementById('faq-group-1').style.display = 'none';
+
+			})
+	}
+
+	function qnaData2(page) {
+		fetch('adminQnaPage2.do?page2=' + page)
+			.then(resolve => resolve.json())
+			.then(result => {
+				let CAQ = result.CAQ;
+				// console.log('caq='+CAQ)
+
+				// console.log('fetch!');
+
+				//데이터 넣기
+				let all1 = document.getElementById('all1')
+				let j = 1;
+				for (let data of CAQ) {
+					let group = document.getElementById('faq-group-2').cloneNode(true);
+					
+					group.childNodes[1].childNodes[1].childNodes[1].setAttribute('data-bs-target', '#faqsTwo-' + j);
+					group.childNodes[1].childNodes[3].setAttribute('id', 'faqsTwo-' + j)
+					
+					group.childNodes[1].childNodes[1].childNodes[1].childNodes[1].innerText = data.qnaTitle
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[1].innerText = data.qnaContent
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[5].innerText = '작성자 : ' + data.memberId +
+					' | 작성날짜 : ' + data.qnaDate
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[9].childNodes[1].childNodes[1].innerText = "답변작성일 : "+ data.answerDate;
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[9].childNodes[1].childNodes[3].innerText = data.answerContent;
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[9].childNodes[1].childNodes[7].childNodes[1].childNodes[1].setAttribute('value',data.qnaId);
+					
+					
+					all1.append(group)
+
+					j++;
+				}
+				document.getElementById('faq-group-2').style.display = 'none';
+
+			})
+	}
+
+	function getPage1(page) {
+		fetch('adminQnaPage1.do?page1=' + page)
+			.then(resolve => resolve.json())
+			.then(result => {
+				let pageInfo1 = result.page1;
+
+				let pageNumberSection = document.getElementById('pageNumberSection1')
+				for (let i = pageInfo1.startPage; i <= pageInfo1.endPage; i++) {
+					let pageing = document.getElementById('pageNumber1').cloneNode(true);
+
+					pageing.addEventListener('click', function () {
+						document.getElementById('faq-group-1').style.display = 'block';
+						document.getElementById('all').replaceChildren();
+						console.log('click');
+						qnaData1(i)
+					})
+					pageing.childNodes[0].innerText = i;
+					pageing.style.display = 'inline-block';
+					pageNumberSection.append(pageing);
+
+				}
+				document.getElementById('pageNumber1').style.display = 'none';
+
+				if (pageInfo1.prev == false) {
+					document.getElementById('myPagePrev1').style.display = 'none';
+				}
+				if (pageInfo1.next == false) {
+					document.getElementById('myPageNext1').style.display = 'none';
+				}
+
+			})
+	}
+
+	function getPage2(page) {
+		fetch('adminQnaPage2.do?page2=' + page)
+			.then(resolve => resolve.json())
+			.then(result => {
+				let pageInfo2 = result.page2;
+
+				let pageNumberSection = document.getElementById('pageNumberSection2')
+				for (let j = pageInfo2.startPage; j <= pageInfo2.endPage; j++) {
+					let pageing = document.getElementById('pageNumber2').cloneNode(true);
+
+					pageing.addEventListener('click', function () {
+						document.getElementById('faq-group-2').style.display = 'block';
+						document.getElementById('all1').replaceChildren();
+						console.log('click');
+						qnaData2(j)
+					})
+					pageing.childNodes[0].innerText = j;
+					pageing.style.display = 'inline-block';
+					pageNumberSection.append(pageing);
+
+				}
+				document.getElementById('pageNumber2').style.display = 'none';
+
+				if (pageInfo2.prev == false) {
+					document.getElementById('myPagePrev2').style.display = 'none';
+				}
+				if (pageInfo2.next == false) {
+					document.getElementById('myPageNext2').style.display = 'none';
+				}
+
+
+			})
+	}
+</script>

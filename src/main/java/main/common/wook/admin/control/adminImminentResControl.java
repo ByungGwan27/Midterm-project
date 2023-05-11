@@ -13,48 +13,36 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import main.common.control.Control;
-import main.common.control.PageDTO;
-import main.common.wook.admin.domain.QnaVO;
+import main.common.wook.admin.domain.ReservationVO;
 import main.common.wook.admin.service.AdminService;
 import main.common.wook.admin.service.AdminServiceImpl;
 
-public class adminQnaControl implements Control {
+public class adminImminentResControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String pageStr1 = req.getParameter("page1");
-		System.out.println(pageStr1);
-		pageStr1 = (pageStr1 == null ? "1" : pageStr1);
-		int page1= Integer.parseInt(pageStr1);
-		
-		
-		//jsonpormat 라이브러리 추가
+		String pageStr = req.getParameter("page");
+		pageStr = (pageStr == null ? "1" : pageStr);
+		int page= Integer.parseInt(pageStr);
+		//System.out.println("page는"+page);
 		
 		AdminService service = new AdminServiceImpl();
-		List<QnaVO> nonVO = service.qnaNoneAns(page1);
+		List<ReservationVO> list = service.imminentRes();
+		int total = service.imminentResCount();
 		
-		int total1 = service.getQnaCount1();
+		PageIn5DTO dto = new PageIn5DTO(page, total);
 		
-		
-		PageDTO dto1 = new PageDTO(page1, total1);
-		
-		
-		//ajax로 변경
 		Map<String, Object> map = new HashMap<>();
-		map.put("NAQ", nonVO);
 		
-		map.put("page1",dto1);
+		map.put("data", list);
+		map.put("page", dto);
 		
 		
 		Gson gson = new GsonBuilder().create();
 		String json = gson.toJson(map);
 		
-		//req.setAttribute("NAQ", nonVO);
-		//req.setAttribute("CAQ", ComVO);
-		//req.setAttribute("pageInfo1", dto1);
-		//req.setAttribute("pageInfo2", dto2);
 		
-//		return "adminpage/adminQnaPage.tiles";
+		
 		return json+".json";
 	}
 

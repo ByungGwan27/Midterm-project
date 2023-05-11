@@ -61,7 +61,7 @@
 </main>
 <script>
 document.addEventListener('DOMContentLoaded', function(){
-	
+
 	let dec = document.querySelectorAll("table tbody tr");
 	console.log(dec)
 	dec.forEach(function(dec) {

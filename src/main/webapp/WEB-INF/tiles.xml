@@ -8,6 +8,7 @@
   <!-- main page -->
   <definition name="mainpage" template="/WEB-INF/layoutMainpage/template.jsp">
     <put-attribute name="nav" value="/WEB-INF/layoutMainpage/nav.jsp" />
+    <put-attribute name="navmain" value="/WEB-INF/layoutMainpage/navmain.jsp" />
     <put-attribute name="body" value="/WEB-INF/layoutMainpage/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/layoutMainpage/footer.jsp" />
   </definition>
@@ -43,6 +44,7 @@
   
   <!-- 5/4 gwan. loginpage tiles work -->
   <definition name="gwanLoginPage" template="/WEB-INF/gwanLayoutLoginPage/template.jsp">
+  	<put-attribute name="nav" value="/WEB-INF/layoutMainpage/nav.jsp" />
     <put-attribute name="blank" value="/WEB-INF/gwanLayoutLoginPage/blank.jsp" />
   </definition>
    
