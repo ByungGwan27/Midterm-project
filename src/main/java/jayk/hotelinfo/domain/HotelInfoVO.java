@@ -53,5 +53,15 @@ public class HotelInfoVO {
 	private double avgpoint;
 	private int avgstar;
 
-	private List<String> roomIds;
+	//시설정보
+	private int parking;
+	private int wifi;
+	private int pet;
+	private int pool;
+	private int singleRoom;
+	private int twinRoom;
+	private int doubleRoom;
+	private int tripleRoom;
+	private int breakfast;
+	
 }

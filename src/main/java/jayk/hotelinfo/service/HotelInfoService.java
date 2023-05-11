@@ -19,5 +19,5 @@ public interface HotelInfoService {
 	public boolean addAdminHotel(HotelInfoVO vo);
 	public boolean addAdminRoom(HotelInfoVO vo);
 	public boolean addAdminRoomImage(HotelInfoVO vo);
-
+	public boolean addAdminRoomDetail(HotelInfoVO vo);
 }

@@ -7,11 +7,11 @@
 	<form action="adminAddRoomPage.do" method="POST" enctype="multipart/form-data">
 		<table class='table'>
 			<tr>
-				<th>이미지Id</th> 
+				<th>이미지Id</th>
 				<td><input type="text" name="imageId"></td>
 			</tr>
 			<tr>
-				<th>객실이미지</th> 
+				<th>객실이미지</th>
 				<td><input type="file" name="image"></td>
 			</tr>
 			<tr>
@@ -42,7 +42,34 @@
 				<th>인원추가시발생하는금액</th>
 				<td><input type="text" name="addPrice"></td>
 			</tr>
-
+			<tr>
+				<th>시설정보</th>
+				<td>
+					<span class="fa fa-chevron-right mr-2">
+					<input type="checkbox" name="singleRoom" value="2">싱글룸</span>
+					<span class="fa fa-chevron-right mr-2">
+					<input type="checkbox" name="twinRoom" value="2">트윈룸</span>
+					<span class="fa fa-chevron-right mr-2">
+					<input type="checkbox" name="doubleRoom" value="1" checked>더블룸</span>
+					<span class="fa fa-chevron-right mr-2">
+					<input type="checkbox" name="tripleRoom" value="2">트리플룸</span>
+					</td>
+					</tr>
+					<tr>
+					<th>시설정보</th>
+					<td>
+					<span class="fa fa-chevron-right mr-2">
+					<input type="checkbox" name="parking" value="2">주차장</span> 
+					<span class="fa fa-chevron-right mr-2">
+					<input type="checkbox" name="wifi" value="2">wifi</span> 
+					<span class="fa fa-chevron-right mr-2">
+					<input type="checkbox" name="pet" value="2">애완동물동반가능여부</span>
+					<span class="fa fa-chevron-right mr-2"> 
+					<input type="checkbox" name="breakfast" value="2">조식</span> 
+					<span class="fa fa-chevron-right mr-2">
+					<input type="checkbox" name="pool" value="2">수영장</span>
+				</td>
+			</tr>
 			<tr>
 				<td colspan="2" align="center">
 					<button type="submit">저장</button>
@@ -54,7 +81,7 @@
 </main>
 
 
-	<!-- 폐기 이거 안 됨 <h5>숙소상세정보기입 * 상기객실개수받아표시</h5>
+<!-- 폐기 이거 안 됨 <h5>숙소상세정보기입 * 상기객실개수받아표시</h5>
 	<input type="text" id="roomCount" placeholder="객실개수">
 	<button type="button" onclick="showAddRoomForm()">확인</button>
 	<hr>
@@ -181,5 +208,5 @@
 			form.style.display = 'block';
 		}
 	</script> -->
-	
+
 

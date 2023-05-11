@@ -8,10 +8,10 @@ import jayk.hotelinfo.domain.HotelInfoVO;
 import jayk.hotelinfo.mapper.HotelInfoMapper;
 import main.common.control.DataSource;
 
-public class HotelInfoServiceImpl implements HotelInfoService{
+public class HotelInfoServiceImpl implements HotelInfoService {
 	SqlSession session = DataSource.getInstance().openSession(true);
 	HotelInfoMapper mapper = session.getMapper(HotelInfoMapper.class);
-	
+
 	@Override
 	public List<HotelInfoVO> hotelList() {
 		return mapper.hotelList();
@@ -69,8 +69,14 @@ public class HotelInfoServiceImpl implements HotelInfoService{
 
 	@Override
 	public boolean addAdminRoom(HotelInfoVO vo) {
-		mapper.insertAdminRoomImage(vo);
-		return mapper.insertAdminRoom(vo) == 1;
+		int cnt = 0, cnt1 = 0, cnt2 = 0;
+		cnt = mapper.insertAdminRoom(vo);
+		cnt1 = mapper.insertAdminRoomImage(vo);
+		cnt2 = mapper.insertAdminRoomDetail(vo);
+		if (cnt > 0 && cnt1 > 0 && cnt2 > 0) {
+			return true;
+		}
+		return false;
 	}
 
 	@Override
@@ -78,5 +84,9 @@ public class HotelInfoServiceImpl implements HotelInfoService{
 		return false;
 	}
 
-	
+	@Override
+	public boolean addAdminRoomDetail(HotelInfoVO vo) {
+		return false;
+	}
+
 }

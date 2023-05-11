@@ -128,5 +128,9 @@
 		insert into room_image values (#{imageId}, #{roomId}, #{image}, #{hotelId})
 	</insert>
 	
+	<insert id="insertAdminRoomDetail" parameterType="hi">
+		insert into room_detail values(#{roomId}, #{parking}, #{wifi}, #{pet}, #{pool}, #{hotelId}, #{singleRoom}, #{twinRoom}, #{doubleRoom}, #{tripleRoom}, #{breakfast})
+	</insert>
+	
 	
 </mapper>
