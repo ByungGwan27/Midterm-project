@@ -67,6 +67,7 @@
 					</div>
 				</div>
 				<!-- End F.A.Q Group 1 -->
+<<<<<<< HEAD
 				<!-- 페이지 1 -->
 				<div style="text-align: center;">
 					<nav aria-label="Page navigation example" style="display: inline-block;">
@@ -84,6 +85,31 @@
 					</nav>
 				</div>
 				<!-- 페이지 1 끝-->
+=======
+
+				<nav aria-label="Page navigation example">
+					<ul class="pagination">
+						<c:if test="${pageInfo1.prev}">
+							<li class="page-item"><a class="page-link"
+								href="adminQna.do?page1=${pageInfo1.startPage-1}"
+								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+							</a></li>
+						</c:if>
+						<c:forEach var="i" begin="${pageInfo1.startPage }"
+							end="${pageInfo1.endPage }">
+							<li class="page-item"><a class="page-link"
+								href="adminQna.do?page1=${i }">${i}</a></li>
+						</c:forEach>
+						<c:if test="${pageInfo1.next}">
+							<li class="page-item"><a class="page-link"
+								href="adminQna.do?page1=${pageInfo1.endPage+1}"
+								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+						</a>
+						</li>
+						</c:if>
+					</ul>
+				</nav>
+>>>>>>> branch 'master' of https://github.com/ByungGwan27/Midterm-project.git
 			</div>
 
 			<div class="col-lg-6">

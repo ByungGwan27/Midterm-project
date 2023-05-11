@@ -26,7 +26,7 @@
       </li>
       
         <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
+        <a class="nav-link collapsed" href="adminMessagePage.do">
           <i class="bi bi-envelope-open
  "></i>
           <span>메세지함</span>
