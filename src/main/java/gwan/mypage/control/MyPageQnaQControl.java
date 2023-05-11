@@ -12,8 +12,13 @@ public class MyPageQnaQControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String pageInfo = "myPageQna.do";
 		
-		return "mypage/myPageQnaQ.tiles";
+		if (req.getMethod().equals("GET")) {
+			pageInfo = "mypage/myPageQnaQ.tiles";
+		} 
+		
+		return pageInfo;
 	}
 
 }

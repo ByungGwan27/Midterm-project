@@ -28,5 +28,9 @@ public interface MyPageMapper {
 	//회원정보수정
 	public int updateMemberInfo(LoginPageVO vo);
 	
+	//Q&A
+	// Q&A작성
+	public int createQnaQ(MyPageVO vo);
+	
 	
 }
