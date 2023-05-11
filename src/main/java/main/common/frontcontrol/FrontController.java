@@ -66,6 +66,7 @@ import main.common.wook.admin.control.allMemberListControl;
 import main.common.wook.admin.control.memberChartDataControl;
 import main.common.wook.admin.control.payChartDataControl;
 import main.common.wook.admin.control.payCountChartDataControl;
+import main.common.wook.pay.control.payPageFormcontrol;
 import shin.admin.control.AdminPayListControl;
 import shin.notice.control.AddNoticeControl;
 import shin.notice.control.NoticeAddFormControl;
@@ -142,6 +143,9 @@ public class FrontController extends HttpServlet{
 		
 		//메인 페이지 회원 정보
 		map.put("/allMemberList.do", new allMemberListControl());
+		
+		//결제창 페이지
+		map.put("/payPageForm.do", new payPageFormcontrol());
 		
 		
 		// 김자영

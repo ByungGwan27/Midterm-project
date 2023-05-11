@@ -20,5 +20,13 @@ public class HotelVO {
 	private int horelDec;
 	private int resCount;
 	private int avgpoint;
+	private String checkinDate;
+	private String checkoutDate;
+	private int roomMax;
+	private int roomMin;
+	private int people;
+	private int rcount;
+	private int avgstar;
+	private int roomPrice;
 	
 }

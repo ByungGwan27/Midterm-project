@@ -29,6 +29,18 @@
     <put-attribute name="body" value="/WEB-INF/views/adminpage/{1}.jsp"></put-attribute>
   </definition>
   
+  <!-- 5/11 wook payPage -->
+  <definition name="payPage" template="/WEB-INF/layoutPayPage/template.jsp">
+    <put-attribute name="nav" value="/WEB-INF/layoutPayPage/nav.jsp" />
+    <put-attribute name="body" value="/WEB-INF/layoutPayPage/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/layoutPayPage/footer.jsp" />
+  </definition>
+
+  
+  <definition name="WILDCARD:wookPayPage/*" extends="payPage">
+    <put-attribute name="body" value="/WEB-INF/views/wookPayPage/{1}.jsp"></put-attribute>
+  </definition>
+  
   <!-- 5/2 gwan. mypage tiles work -->
   <definition name="mypage" template="/WEB-INF/layoutMypage/template.jsp">
     <put-attribute name="topbar" value="/WEB-INF/layoutMypage/topbar.jsp" />
