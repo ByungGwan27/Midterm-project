@@ -37,7 +37,6 @@ public class AdminAddHotelControl implements Control {
 		String hotelLocation1 = multi.getParameter("hotelLocation1");
 		String hotelLocation2 = multi.getParameter("hotelLocation2");
 		String hotelImage = multi.getFilesystemName("hotelImage");
-		String hotelImginfo = multi.getFilesystemName("hotelImginfo");
 		String locationDetail = multi.getParameter("locationDetail");
 		
 		HotelInfoVO addHotel = new HotelInfoVO();
@@ -46,7 +45,6 @@ public class AdminAddHotelControl implements Control {
 		addHotel.setHotelLocation1(hotelLocation1);
 		addHotel.setHotelLocation2(hotelLocation2);
 		addHotel.setHotelImage(hotelImage);
-		addHotel.setHotelImginfo(hotelImginfo);
 		addHotel.setLocationDetail(locationDetail);
 		
 		HotelInfoService service = new HotelInfoServiceImpl();

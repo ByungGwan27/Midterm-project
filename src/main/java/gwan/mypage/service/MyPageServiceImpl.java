@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import gwan.loginpage.domain.LoginPageVO;
 import gwan.mypage.domain.MyPageVO;
 import gwan.mypage.mapper.MyPageMapper;
 import main.common.control.DataSource;
@@ -39,13 +40,18 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public boolean updateMemberInfo(MyPageVO vo) {
+	public boolean updateMemberInfo(LoginPageVO vo) {
 		return mapper.updateMemberInfo(vo) == 1;
 	}
 
 	@Override
 	public int readWishPageCount(String memberId) {
 		return mapper.readWishPageCount(memberId);
+	}
+
+	@Override
+	public List<MyPageVO> readCoupon(String memberId) {
+		return mapper.readCoupon(memberId);
 	}
 	
 	

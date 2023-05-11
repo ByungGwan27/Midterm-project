@@ -1,3 +1,4 @@
+
 package jayk.hotelinfo.control;
 
 import java.io.IOException;
@@ -12,8 +13,9 @@ public class AdminAddRoomFormControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
 		return "adminpage/adminRoomAddPage.tiles";
 	}
 
 }
+

@@ -90,9 +90,10 @@
 	</select>
 
 	<select id="selectAdminHotelRoom">
-		select * from room_info
-		where hotel_id=#{hotelId} and
-		room_id=#{roomId}
+		SELECT *
+		from room_info i
+		full outer join room_image m on i.room_id = m.room_id
+		where i.hotel_id=#{hotelId} and i.room_id=#{roomId}
 	</select>
 
 	<update id="updateAdminHotel">
@@ -101,16 +102,13 @@
 		where hotel_id = #{hotelId}
 	</update>
 
-
-	<update id="updateAdminHotelRoom" parameterType="java.util.Map">
-		<foreach item="item" index="index" collection="roomIds">
+	<update id="updateAdminHotelRoom">
 			update room_info
 			set room_name=#{roomName}, room_expain=#{roomExpain},
 			room_grade=#{roomGrade}, room_price=#{roomPrice},
-			room_max=#{roomMax},
+			room_max=#{roomMax},	
 			room_min=#{roomMin}, add_price=#{addPrice}
-			where hotel_id=#{hotelId} and room_id=#{item}
-		</foreach>
+			where hotel_id=#{hotelId} and room_id=#{roomId}
 	</update>
 
 
@@ -120,4 +118,15 @@
 		values(#{hotelId}, #{hotelName}, #{hotelLocation1},
 		#{hotelLocation2}, #{hotelImage}, #{locationDetail})
 	</insert>
+	
+	<insert id="insertAdminRoom" parameterType="hi">
+		insert into room_info (hotel_id, room_id, room_name, room_price, room_max, room_min, add_price)
+		values (#{hotelId}, #{roomId}, #{roomName}, #{roomPrice},#{roomMax},#{roomMin}, #{addPrice})
+	</insert>
+	
+	<insert id = "insertAdminRoomImage" parameterType="hi">
+		insert into room_image values (#{imageId}, #{roomId}, #{image}, #{hotelId})
+	</insert>
+	
+	
 </mapper>

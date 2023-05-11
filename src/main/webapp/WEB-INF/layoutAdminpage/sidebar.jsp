@@ -12,7 +12,7 @@
       </li><!-- End Dashboard Nav -->
       
         <li class="nav-item" id="QnA">
-        <a class="nav-link collapsed" href="adminQna.do">
+        <a class="nav-link collapsed" href="adminQnaForm.do">
           <i class="bi bi-chat-right-text"></i>
           <span>QnA</span>
         </a>
@@ -26,7 +26,7 @@
       </li>
       
         <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
+        <a class="nav-link collapsed" href="adminMessagePage.do">
           <i class="bi bi-envelope-open
  "></i>
           <span>메세지함</span>

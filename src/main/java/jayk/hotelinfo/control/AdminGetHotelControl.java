@@ -17,7 +17,6 @@ public class AdminGetHotelControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String hotelId = req.getParameter("hotelId");
-		String roomId = req.getParameter("roomId");
 		HotelInfoService service = new HotelInfoServiceImpl();
 
 		// 숙소개별정보
@@ -27,10 +26,6 @@ public class AdminGetHotelControl implements Control {
 
 		// 상세객실리스트
 		List<HotelInfoVO> adminRoomList = service.roomList(Integer.parseInt(hotelId));
-//		HotelInfoVO adminHotelRoom = service.getAdminHotelRoom(Integer.parseInt(hotelId), Integer.parseInt(roomId));
-//		for (int i = 0; i < adminRoomList.size(); i++) {
-//			adminRoomList.set(i, adminHotelRoom);
-//		}
 		req.setAttribute("adminRoomList", adminRoomList);
 		//System.out.println("adminRoomList : " + adminRoomList);
 		

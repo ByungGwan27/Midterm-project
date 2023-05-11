@@ -16,5 +16,7 @@ public class DeclarationVO {
 	private Date decDate;
 	private String decContent;
 	private String decStatus;
+	private int decCount;
+	private String hotelName;
 	
 }

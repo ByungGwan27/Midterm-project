@@ -14,6 +14,10 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
+<!-- 메인페이지 네비게이션 양식 -->
+<link rel="stylesheet" href="cssMainpage/css/style.css">
+
+
 
 <!-- Custom fonts for this template-->
 <link href="cssMypage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -27,6 +31,7 @@
 
 </head>
 <body>
+<tiles:insertAttribute name="nav"></tiles:insertAttribute>
 <tiles:insertAttribute name="blank"></tiles:insertAttribute>
    <!-- Bootstrap core JavaScript-->
     <script src="cssMypage/vendor/jquery/jquery.min.js"></script>
