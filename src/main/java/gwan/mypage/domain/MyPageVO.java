@@ -50,6 +50,10 @@ public class MyPageVO {
 	//Q&A
 	private String qnaTitle;
 	private String qnaContent;
+	private String answerContent;
+	private String qnaDate;
+	private String answerDate;
+	private String answerCheck;
 	private String qnaType;
 	
 	

@@ -1,7 +1,6 @@
 package gwan.mypage.control;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,18 +12,31 @@ import gwan.mypage.service.MyPageService;
 import gwan.mypage.service.MyPageServiceImpl;
 import main.common.control.Control;
 
-public class MyPageCouponControl implements Control {
+public class MyPageQnaQCreateCkeditorControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		MyPageVO vo = new MyPageVO();
+		MyPageService service = new MyPageServiceImpl();
+		
+		String title = req.getParameter("title");
+		String qnaType = req.getParameter("title");
+		String content = req.getParameter("pdesc");
+		
 		HttpSession session = req.getSession();
 		String id = (String) session.getAttribute("id");
-		MyPageService service = new MyPageServiceImpl();
-		List<MyPageVO> list = service.readCoupon(id);
 		
-		req.setAttribute("couponList", list);
+		vo.setMemberId(id);
+		vo.setQnaTitle(title);
+		vo.setQnaType(qnaType);
+		vo.setQnaContent(content);
 		
-		return "mypage/myPageCoupon.tiles";
+		if (service.createQnaQ(vo)) {
+			return "myPageQna.do";
+		} else {
+			return "myPageQnaQ.do";
+		}
+		
 	}
 
 }

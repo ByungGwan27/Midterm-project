@@ -29,6 +29,10 @@ public interface MyPageMapper {
 	public int updateMemberInfo(LoginPageVO vo);
 	
 	//Q&A
+	// 자주묻는 질문
+	public List<MyPageVO> readQnaBest();
+	// 자신 qna 가져오기
+	public List<MyPageVO> readQnaSelf(String memberId);
 	// Q&A작성
 	public int createQnaQ(MyPageVO vo);
 	

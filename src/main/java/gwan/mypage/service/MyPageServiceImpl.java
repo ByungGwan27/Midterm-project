@@ -58,6 +58,16 @@ public class MyPageServiceImpl implements MyPageService {
 	public boolean createQnaQ(MyPageVO vo) {
 		return mapper.createQnaQ(vo) == 1;
 	}
+
+	@Override
+	public List<MyPageVO> readQnaSelf(String memberId) {
+		return mapper.readQnaSelf(memberId);
+	}
+
+	@Override
+	public List<MyPageVO> readQnaBest() {
+		return mapper.readQnaBest();
+	}
 	
 	
 }

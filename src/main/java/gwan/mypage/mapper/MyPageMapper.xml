@@ -105,6 +105,26 @@
 	</update>
 	
 	<!-- Q&A -->
+	<!-- 자주묻는 질문 -->
+	<select id="readQnaBest" resultType="mp">
+	SELECT qna_title, qna_content, answer_content, qna_type, answer_check
+	FROM qna WHERE answer_check = '답변완료'
+	AND qna_type = (SELECT qna_type
+    	            FROM (
+                        SELECT qna_type, COUNT(*) AS type_count,
+                        RANK() OVER (ORDER BY COUNT(*) DESC) AS rank
+                        FROM qna
+                        GROUP BY qna_type) subquery
+                        WHERE rank = 1)
+	</select>
+	<!-- 자기 질문 -->
+	<select id="readQnaSelf" resultType="mp">
+		SELECT qna_title, qna_content, answer_content, qna_type, qna_date, answer_date, answer_check
+		FROM qna 
+		WHERE member_id = #{memberId}
+		ORDER BY qna_id DESC
+	</select>
+	
 	<insert id="createQnaQ" parameterType="mp">
 		INSERT INTO qna(qna_id, member_id, qna_title, qna_content, qna_type)
 		VALUES ((SELECT NVL(MAX(qna_id), 0) + 1 FROM qna), #{memberId}, #{qnaTitle}, #{qnaContent}, #{qnaType})

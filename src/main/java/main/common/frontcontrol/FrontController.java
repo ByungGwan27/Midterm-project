@@ -29,6 +29,7 @@ import gwan.mypage.control.MyPageHomeWillVisitControl;
 import gwan.mypage.control.MyPageMessageControl;
 import gwan.mypage.control.MyPageQnaControl;
 import gwan.mypage.control.MyPageQnaQControl;
+import gwan.mypage.control.MyPageQnaQCreateCkeditorControl;
 import gwan.mypage.control.MyPageQnaQCreateControl;
 import gwan.mypage.control.MyPageUserInfoChangeControl;
 import gwan.mypage.control.MyPageUserInfoChangeInputControl;
@@ -209,6 +210,7 @@ public class FrontController extends HttpServlet{
 		//Q&A(질문 작성)
 		map.put("/myPageQnaQ.do", new MyPageQnaQControl());
 		map.put("/myPageQnaQCreate.do", new MyPageQnaQCreateControl());
+		map.put("/myPageQnaQCreateCkeditor.do", new MyPageQnaQCreateCkeditorControl());
 		
 		// 로그인 페이지 관련
 		//로그인페이지(이동)
