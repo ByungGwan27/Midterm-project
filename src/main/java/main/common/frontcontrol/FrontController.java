@@ -155,7 +155,7 @@ public class FrontController extends HttpServlet{
 		//여행 포스트 상세페이지
 		map.put("/postDetail.do", new PostDetailControl());
 		//공지사항 추가 페이지
-		map.put("/AddNotice.do", new AddNoticeControl());
+		map.put("/addNotice.do", new AddNoticeControl());
 		//공지사항 작성페이지
 		map.put("/noticeAddForm.do", new NoticeAddFormControl());
 		//공지사항 상세페이지

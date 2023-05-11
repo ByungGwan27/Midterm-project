@@ -31,22 +31,28 @@ public class AddNoticeControl implements Control {
 
 		MultipartRequest multi //
 				= new MultipartRequest(req, saveDir, maxSize, encoding, rn);
-
-		String title = multi.getParameter("title");
-		String member = multi.getParameter("member");
-		String content = multi.getParameter("content");
+		
+		String memberId = multi.getParameter("memberId");
+		String noticeTitle = multi.getParameter("noticeTitle");
+		String noticeContent = multi.getParameter("noticeContent");
+		String writeDate = multi.getParameter("writeDate");
 		// String attach = multi.getFilesystemName("attach");
 		// 사용자의 입력값을 NoticeVO에 담아서 입력.
 		NoticeVO vo = new NoticeVO();
 		// vo.setAttachFile(attach);
-		vo.setNoticeTitle(title);
-		vo.setMemberId(member);
-		vo.setNoticeContent(content);
-
+		//vo.setNoticeId(Integer.parseInt(noticeId));
+		vo.setNoticeTitle(memberId);
+		vo.setNoticeTitle(noticeTitle);
+		vo.setNoticeContent(noticeContent);
+		vo.setMemberId(writeDate);
+		
+		
 		NoticeService service = new NoticeServiceImpl();
+		//boolean result = service.addNotice(vo);
 		// 정상처리-> 목록으로 이동.
 
 		if (service.addNotice(vo)) {
+			System.out.println("성공");
 			return "noticeList.do";
 
 		} else {
