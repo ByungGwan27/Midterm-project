@@ -21,9 +21,9 @@ public class PostCommentAddControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String memberId = req.getParameter("member_id");
-		String commentContent = req.getParameter("comment_content");
-		String postId = req.getParameter("post_id");
+		String memberId = req.getParameter("memberId");
+		String commentContent = req.getParameter("commentContent");
+		String postId = req.getParameter("postId");
 		
 		PostCommentVO vo = new PostCommentVO();
 		vo.setMemberId(memberId);
