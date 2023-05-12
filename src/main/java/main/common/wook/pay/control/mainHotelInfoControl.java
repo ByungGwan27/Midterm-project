@@ -20,14 +20,17 @@ public class mainHotelInfoControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String location = req.getParameter("location");
-		System.out.println(location);
+		
 		String date = req.getParameter("daterange");
+		
+		System.out.println(date);
+		
 		int people = Integer.parseInt(req.getParameter("people"));
 		String inDate = date.substring(0, 10);
 		String outDate = date.substring(13, 23);
 		// 입력 될 날짜
-		String checkin = date.substring(8, 10) + date.substring(2, 6) + date.substring(0, 2);
-		String checkout = outDate.substring(8, 10) + outDate.substring(2, 6) + outDate.substring(0, 2);
+		String checkin = date.substring(8, 10)+"/"  + date.substring(0, 2) + date.substring(2, 5);
+		String checkout = outDate.substring(8, 10)+"/"  + outDate.substring(0, 2) + outDate.substring(2, 5);
 		MainService service = new MainServiceImpl();
 		
 		HotelVO hotel = new HotelVO();

@@ -15,11 +15,40 @@
 	
 	<!-- 결제자 보유 쿠폰 조회 -->
 	<select id="getPayMemberCouponInfo" resultType="pay" parameterType="String">
-	select * from coupon where member_id=#{memberId}
+	select * from coupon where member_id=#{memberId} and coupon_check = 1
 	</select>
 
 	<!-- 해당 숙소 상세 이미지 조회 -->
 	<select id="getRoomInfoImages" resultType="pay" parameterType="int">
 	select * from room_image where room_id = #{roomId}
 	</select>
+	
+	<!-- 쿠폰 사용 처리 -->
+	<update id="useCouponUpdate" parameterType="int">
+		update coupon set coupon_check = 2 where coupon_id = #{couponId}
+	</update>
+	
+	<!-- 결제 성공 시 주문 테이블-->
+	<insert id="putResTable" parameterType="success">
+	insert into reservation
+	values (NVL((SELECT MAX(reservation_id) FROM reservation), 1) + 1,#{memberId},#{hotelId},#{roomId},#{finalPrice},#{resPeople},#{checkinDate},#{checkoutDate},#{checkinName},#{checkinPhone},'대기중',null)
+	</insert>
+	
+	<!--결제 테이블에 들어갈 예약아이디 조회-->
+	<select id="getResId" resultType="int">
+		select NVL(MAX(reservation_id),1) from reservation
+	</select>
+	
+	<!-- 결제 성공 시 결제 테이블 -->
+	<insert id="putPayTable" parameterType="success">
+		insert into pay
+values (NVL((SELECT MAX(pay_id) FROM pay), 1) + 1,#{memberId},#{roomId},#{couponId},#{reservationId},#{roomPrice},'온라인',sysdate,'결제완료')
+	</insert>
+	
+	<!-- 사용 마일리지 수정-->
+	<update id="usePointUpdate" parameterType="success">
+		update member
+		set member_point = #{canUsePoint}
+		where member_id=#{memberId}
+	</update>
 </mapper>

@@ -18,6 +18,7 @@
 		<typeAlias alias="reservation" type="main.common.wook.admin.domain.ReservationVO" />
 		<typeAlias alias="qna" type="main.common.wook.admin.domain.QnaVO" />
 		<typeAlias alias="pay" type="main.common.wook.pay.domain.PayVO" />
+		<typeAlias alias="success" type="main.common.wook.pay.domain.paySuccessVO" />
 
 		
 		
