@@ -7,14 +7,35 @@
 	<!-- 예약내역 -->
 	<!-- 방문 예정 -->
 	<select id="willVisit" resultType="mp">
-		SELECT h.hotel_name, h.location_detail, r.checkin_date, r.checkout_date, h.hotel_phone, i.room_name
-		FROM reservation r JOIN hotel h
-		ON (h.hotel_id = r.hotel_id)
-		JOIN room_info i
-		ON (r.room_id = i.room_id)
-		WHERE r.member_id = 'nari123'
-		    AND TO_CHAR(SYSDATE) <![CDATA[<]]> TO_CHAR(r.checkout_date)
-		    AND TO_CHAR(SYSDATE) <![CDATA[<]]> TO_CHAR(r.checkin_date)
+	<![CDATA[
+		SELECT b.hotel_name, b.location_detail, b.checkin_date, b.checkout_date, b.hotel_phone, b.room_name, b.reservation_id
+		FROM (SELECT rownum rn, a.*
+		      FROM (SELECT *
+		            FROM reservation r JOIN hotel h
+		            ON (h.hotel_id = r.hotel_id)
+		            JOIN room_info i
+		            ON (r.room_id = i.room_id)
+		            WHERE r.member_id = #{memberId}
+		            AND TO_CHAR(SYSDATE) < TO_CHAR(r.checkout_date)
+		            AND TO_CHAR(SYSDATE) < TO_CHAR(r.checkin_date)
+		            ORDER BY 1 DESC) a
+		       WHERE rownum <= #{page} * 5) b
+		WHERE b.rn > (#{page} - 1) * 5
+		ORDER BY checkin_date
+	]]>
+	</select>
+	
+	<!-- 방문 예정 예약 취소 -->
+	<delete id="deleteWillVisit" parameterType="int">
+		DELETE FROM reservation WHERE reservation_id = #{reservationId}
+	</delete>
+	
+	<!-- 방문 예정 건수 조회 -->
+	<select id="readWillvisitPageCount" resultType="int">
+		SELECT count(*) FROM reservation
+		WHERE member_id = #{memberId}
+		AND TO_CHAR(SYSDATE) <![CDATA[<]]> TO_CHAR(checkout_date)
+		AND TO_CHAR(SYSDATE) <![CDATA[<]]> TO_CHAR(checkin_date)
 	</select>
 	
 	<!-- 방문 중 -->
@@ -24,7 +45,7 @@
 		ON (h.hotel_id = r.hotel_id)
 		JOIN room_info i
 		ON (r.room_id = i.room_id)
-		WHERE r.member_id = 'nari123'
+		WHERE r.member_id = #{memberId}
 		    AND TO_CHAR(SYSDATE) <![CDATA[<=]]> TO_CHAR(r.checkout_date-1)
 		    AND TO_CHAR(SYSDATE) <![CDATA[>=]]> TO_CHAR(r.checkin_date)
 	</select>
@@ -36,7 +57,7 @@
 		ON (h.hotel_id = r.hotel_id)
 		JOIN room_info i
 		ON (r.room_id = i.room_id)
-		WHERE r.member_id = 'nari123'
+		WHERE r.member_id = #{memberId}
 		    AND TO_CHAR(SYSDATE) <![CDATA[>]]> TO_CHAR(r.checkout_date)
 	</select>
 	

@@ -12,7 +12,7 @@ public class MyPageVO {
 	private String hotelLocation1;
 	private String hotelLocation2;
 	private String locationDetail;
-	
+	private String reservationId;
 	
 	private Date checkinDate;
 	private Date checkoutDate;
