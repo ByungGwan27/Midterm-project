@@ -13,4 +13,5 @@ public interface MainService {
 	public List<HotelVO> OrderResHotel();
 	public List<HotelVO> OrderReviewHotel();
 	public List<HotelVO> OrderPointHotel();
+	public List<HotelVO> selectHotelList(HotelVO hotel);
 }

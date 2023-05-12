@@ -16,11 +16,12 @@ public class AdminHotelListControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
 		
 		HotelInfoService service = new HotelInfoServiceImpl();
 		List<HotelInfoVO> adminHotelList = service.adminHotelList();
 		req.setAttribute("adminHotelList", adminHotelList);
-		System.out.println(adminHotelList);
+		//System.out.println(adminHotelList);
 		return "adminpage/adminHotelList.tiles";
 	}
 

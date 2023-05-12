@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
+
 <nav class="site-nav">
 	<div class="container">
 		<div class="site-navigation">
@@ -55,6 +56,7 @@
 		</div>
 	</div>
 </nav>
+
 <!-- 5.11 강병관 nav 영역 분리 작업 -->
 <script>
 	//5.10 강병관 로그아웃시 알림 기능
@@ -66,3 +68,4 @@
 			}
 	}
 </script>
+

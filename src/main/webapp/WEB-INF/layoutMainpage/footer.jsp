@@ -25,11 +25,10 @@
 			<div class="row">
 				<div class="col-md-6 col-lg-4">
 					<div class="widget">
-						<h3 class="heading">About Tour</h3>
-						<p>Far far away, behind the word mountains, far from the
-							countries Vokalia and Consonantia, there live the blind texts.</p>
+						<h3 class="heading">Traveller</h3>
+						<p>404 found 조의 여행숙소 홈페이지 입니다!</p>
 					</div>
-					<div class="widget">
+					<!-- <div class="widget">
 						<ul class="list-unstyled social">
 							<li><a href="#"><span class="icon-twitter"></span></a></li>
 							<li><a href="#"><span class="icon-instagram"></span></a></li>
@@ -40,25 +39,25 @@
 							<li><a href="#"><span class="icon-apple"></span></a></li>
 							<li><a href="#"><span class="icon-google"></span></a></li>
 						</ul>
-					</div>
+					</div> -->
 				</div>
 				<div class="col-md-6 col-lg-2 pl-lg-5">
 					<div class="widget">
-						<h3 class="heading">Pages</h3>
+						<h3 class="heading">팀장</h3>
 						<ul class="links list-unstyled">
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">About</a></li>
-							<li><a href="#">Contact</a></li>
+							<li><a href="#">팀원</a></li>
+							<li><a href="#">팀원</a></li>
+							<li><a href="#">팀원</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-2">
 					<div class="widget">
-						<h3 class="heading">Resources</h3>
+						<h3 class="heading">강병관</h3>
 						<ul class="links list-unstyled">
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">About</a></li>
-							<li><a href="#">Contact</a></li>
+							<li><a href="#">김자영</a></li>
+							<li><a href="#">신지은</a></li>
+							<li><a href="#">김성욱</a></li>
 						</ul>
 					</div>
 				</div>

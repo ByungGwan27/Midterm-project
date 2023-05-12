@@ -20,8 +20,8 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public List<MyPageVO> willVisit(String memberId) {
-		return mapper.willVisit(memberId);
+	public List<MyPageVO> willVisit(String memberId, int page) {
+		return mapper.willVisit(memberId, page);
 	}
 
 	@Override
@@ -57,6 +57,31 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public boolean createQnaQ(MyPageVO vo) {
 		return mapper.createQnaQ(vo) == 1;
+	}
+
+	@Override
+	public List<MyPageVO> readQnaSelf(String memberId) {
+		return mapper.readQnaSelf(memberId);
+	}
+
+	@Override
+	public List<MyPageVO> readQnaBest() {
+		return mapper.readQnaBest();
+	}
+
+	@Override
+	public List<MyPageVO> readProfile(MyPageVO vo) {
+		return mapper.readProfile(vo);
+	}
+
+	@Override
+	public boolean deleteWillVisit(int reservationId) {
+		return mapper.deleteWillVisit(reservationId) == 1;
+	}
+
+	@Override
+	public int readWillvisitPageCount(String memberId) {
+		return mapper.readWillvisitPageCount(memberId);
 	}
 	
 	

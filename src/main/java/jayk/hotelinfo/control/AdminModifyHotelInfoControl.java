@@ -1,7 +1,11 @@
 package jayk.hotelinfo.control;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,35 +20,88 @@ public class AdminModifyHotelInfoControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		HotelInfoService service = new HotelInfoServiceImpl();
-		
-		if(req.getMethod().equals("GET")) {
+
+		if (req.getMethod().equals("GET")) {
 			String hotelId = req.getParameter("hotelId");
 			HotelInfoVO adminHotelInfo = service.getAdminHotel(Integer.parseInt(hotelId));
-			//System.out.println(adminHotelInfo);
+			// System.out.println(adminHotelInfo);
 			req.setAttribute("adminHotelInfo", adminHotelInfo);
-			
+
 			return "adminpage/adminHotelInfoModify.tiles";
-			
-		}else if(req.getMethod().equals("POST")) {
+
+		} else if (req.getMethod().equals("POST")) {
 			HotelInfoVO admimModifyHotel = new HotelInfoVO();
-			
+
 			String hotelId = req.getParameter("hotelId");
 			String hotelName = req.getParameter("hotelName");
 			String hotelLocation1 = req.getParameter("hotelLocation1");
 			String hotelLocation2 = req.getParameter("hotelLocation2");
-			
+
 			admimModifyHotel.setHotelId(Integer.parseInt(hotelId));
 			admimModifyHotel.setHotelName(hotelName);
 			admimModifyHotel.setHotelLocation1(hotelLocation1);
 			admimModifyHotel.setHotelLocation2(hotelLocation2);
-			
+
 			service.modifyAdminHotel(admimModifyHotel);
+			// 여기까진됨ㅇㅇ
+
+			// 여기서부터객실정보수정
+			/*
+			 * String roomId = req.getParameter("roomId"); 
+			 * String[] roomIds =
+			 *roomId.split(",");
+			 * 
+			 * String roomName = req.getParameter("roomName"); String roomExpain =
+			 * req.getParameter("roomExpain"); String roomGrade =
+			 * req.getParameter("roomGrade"); String roomPrice =
+			 * req.getParameter("roomPrice"); String roomMax = req.getParameter("roomMax");
+			 * String roomMin = req.getParameter("roomMin"); String addPrice =
+			 * req.getParameter("addPrice");
+			 * 
+			 * for (String id : roomIds) { HotelInfoVO room = new HotelInfoVO();
+			 * room.setHotelId(Integer.parseInt(hotelId));
+			 * room.setRoomId(Integer.parseInt(id)); room.setRoomName(roomName);
+			 * room.setRoomExpain(roomExpain); room.setRoomGrade(roomGrade);
+			 * room.setRoomPrice(Integer.parseInt(roomPrice));
+			 * room.setRoomMax(Integer.parseInt(roomMax));
+			 * room.setRoomMin(Integer.parseInt(roomMin));
+			 * room.setAddPrice(Integer.parseInt(addPrice));
+			 * 
+			 * service.modifyAdminHotelRoom(room); }
+			 * 
+			 * 
+			 */
 			
-			return "adminHotelList.do";
-		}
-			
+				/*
+				 * String roomId = req.getParameter("roomId");
+				 * 
+				 * //List<HotelInfoVO> updateHotelRoom =
+				 * service.roomList(Integer.parseInt(hotelId)); admimModifyHotel = new
+				 * HotelInfoVO(); String roomName = req.getParameter("roomName"); String
+				 * roomExpain = req.getParameter("roomExpain"); String roomGrade =
+				 * req.getParameter("roomGrade"); String roomPrice =
+				 * req.getParameter("roomPrice"); String roomMax = req.getParameter("roomMax");
+				 * String roomMin = req.getParameter("roomMin"); String addPrice =
+				 * req.getParameter("addPrice");
+				 * 
+				 * admimModifyHotel.setHotelId(Integer.parseInt(hotelId));
+				 * admimModifyHotel.setRoomId(Integer.parseInt(roomId));
+				 * admimModifyHotel.setRoomName(roomName);
+				 * admimModifyHotel.setRoomExpain(roomExpain);
+				 * admimModifyHotel.setRoomGrade(roomGrade);
+				 * admimModifyHotel.setRoomPrice(Integer.parseInt(roomPrice));
+				 * admimModifyHotel.setRoomMax(Integer.parseInt(roomMax));
+				 * admimModifyHotel.setRoomMin(Integer.parseInt(roomMin));
+				 * admimModifyHotel.setAddPrice(Integer.parseInt(addPrice));
+				 * 
+				 * service.modifyAdminHotelRoom(admimModifyHotel);
+				 */
+
+					return "adminHotelList.do";
+			}
+
 		return null;
 	}
 

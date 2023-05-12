@@ -17,6 +17,7 @@
 		<typeAlias alias="dec" type="main.common.wook.admin.domain.DeclarationVO" />
 		<typeAlias alias="reservation" type="main.common.wook.admin.domain.ReservationVO" />
 		<typeAlias alias="qna" type="main.common.wook.admin.domain.QnaVO" />
+		<typeAlias alias="pay" type="main.common.wook.pay.domain.PayVO" />
 
 		
 		
@@ -29,6 +30,9 @@
 		<!-- gwan/myPage -->
 		<typeAlias alias="mp" type="gwan.mypage.domain.MyPageVO" />
 		<typeAlias alias="lp" type="gwan.loginpage.domain.LoginPageVO" />
+		
+		<!-- jayk/HotelInfo -->
+		<typeAlias alias="hi" type="jayk.hotelinfo.domain.HotelInfoVO" />
 		
 	</typeAliases>
 	<environments default="development">
@@ -46,6 +50,7 @@
 		<!-- 230503 wook -->
 		<mapper resource="main/common/wook/main/mapper/MainMapper.xml"/>
 		<mapper resource="main/common/wook/admin/mapper/AdminMapper.xml"/>
+		<mapper resource="main/common/wook/pay/mapper/PayPageMapper.xml"/>
 		
 		<!-- 230504 jayk add -->
 		<mapper resource="jayk/hotelinfo/mapper/HotelInfoMapper.xml"/>

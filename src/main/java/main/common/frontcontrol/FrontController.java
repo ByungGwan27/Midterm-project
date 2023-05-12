@@ -25,10 +25,12 @@ import gwan.mypage.ajax.control.MyPageWishAjaxControl;
 import gwan.mypage.ajax.control.MyPageWishAjaxDeleteControl;
 import gwan.mypage.control.AdminMessagePageControl;
 import gwan.mypage.control.MyPageCouponControl;
+import gwan.mypage.control.MyPageHomeDelWillVisitControl;
 import gwan.mypage.control.MyPageHomeWillVisitControl;
 import gwan.mypage.control.MyPageMessageControl;
 import gwan.mypage.control.MyPageQnaControl;
 import gwan.mypage.control.MyPageQnaQControl;
+import gwan.mypage.control.MyPageQnaQCreateCkeditorControl;
 import gwan.mypage.control.MyPageQnaQCreateControl;
 import gwan.mypage.control.MyPageUserInfoChangeControl;
 import gwan.mypage.control.MyPageUserInfoChangeInputControl;
@@ -38,9 +40,13 @@ import gwan.mypage.control.MyPageWishListControl;
 import gwan.mypage.control.MypageHomeControl;
 import jayk.hotelinfo.control.AdminAddHotelControl;
 import jayk.hotelinfo.control.AdminAddHotelFormControl;
+import jayk.hotelinfo.control.AdminAddRoomControl;
+import jayk.hotelinfo.control.AdminAddRoomFormControl;
 import jayk.hotelinfo.control.AdminGetHotelControl;
+import jayk.hotelinfo.control.AdminGetRoomControl;
 import jayk.hotelinfo.control.AdminHotelListControl;
 import jayk.hotelinfo.control.AdminModifyHotelInfoControl;
+import jayk.hotelinfo.control.AdminModifyRoomInfoControl;
 import jayk.hotelinfo.control.GetHotelControl;
 import jayk.hotelinfo.control.HotelListControl;
 import main.common.control.Control;
@@ -67,6 +73,8 @@ import main.common.wook.admin.control.allMemberListControl;
 import main.common.wook.admin.control.memberChartDataControl;
 import main.common.wook.admin.control.payChartDataControl;
 import main.common.wook.admin.control.payCountChartDataControl;
+import main.common.wook.pay.control.payPageFormcontrol;
+import main.common.wook.pay.control.successPayControl;
 import shin.admin.control.AdminPayListControl;
 import shin.notice.control.AddNoticeControl;
 import shin.notice.control.NoticeAddFormControl;
@@ -146,6 +154,11 @@ public class FrontController extends HttpServlet{
 		//메인 페이지 회원 정보
 		map.put("/allMemberList.do", new allMemberListControl());
 		
+		//결제창 페이지
+		map.put("/payPageForm.do", new payPageFormcontrol());
+		//결제 완료 시 테이블에 데이터 입력
+		map.put("/successPay.do", new successPayControl());
+		
 		
 		// 김자영
 		//숙소리스트
@@ -157,10 +170,19 @@ public class FrontController extends HttpServlet{
 		//관리자숙소추가페이지 
 		map.put("/adminAddHotelForm.do", new AdminAddHotelFormControl());
 		map.put("/adminAddHotelPage.do", new AdminAddHotelControl());
-		//관리자숙소상세페이지
+		//관리자숙소객실추가페이지
+		map.put("/admimAddRoomForm.do", new AdminAddRoomFormControl());
+		map.put("/adminAddRoomPage.do", new AdminAddRoomControl());
+		//관리자숙소확인페이지
 		map.put("/adminHotelInfoPage.do", new AdminGetHotelControl());
 		//관리자숙소정보수정페이지
 		map.put("/adminHotelInfoModifyPage.do", new AdminModifyHotelInfoControl());
+		//관리자숙소객실확인페이지
+		map.put("/adminRoomInfoPage.do", new AdminGetRoomControl());
+		//관리자숙소정보수정페이지
+		map.put("/adminRoomInfoModifyPage.do", new AdminModifyRoomInfoControl());
+		
+	
 		
 		// 신지은
 		//여행 포스트 리스트
@@ -190,6 +212,7 @@ public class FrontController extends HttpServlet{
 		map.put("/myPageHome.do", new MypageHomeControl());
 		//마이페이지 - Json 처리
 		map.put("/myPageHomeWillVisit.do", new MyPageHomeWillVisitControl());
+		map.put("/myPageHomeDelWillVisit.do", new MyPageHomeDelWillVisitControl());
 		
 		//마이페이지(위시리스트)
 		map.put("/myPageWishList.do", new MyPageWishListControl());
@@ -199,6 +222,7 @@ public class FrontController extends HttpServlet{
 		
 		//마이페이지(쿠폰)
 		map.put("/myPageCoupon.do", new MyPageCouponControl());
+		
 		//마이페이지(메세지)
 		map.put("/myPageMessage.do", new MyPageMessageControl());
 		
@@ -214,6 +238,7 @@ public class FrontController extends HttpServlet{
 		//Q&A(질문 작성)
 		map.put("/myPageQnaQ.do", new MyPageQnaQControl());
 		map.put("/myPageQnaQCreate.do", new MyPageQnaQCreateControl());
+		map.put("/myPageQnaQCreateCkeditor.do", new MyPageQnaQCreateCkeditorControl());
 		
 		// 로그인 페이지 관련
 		//로그인페이지(이동)

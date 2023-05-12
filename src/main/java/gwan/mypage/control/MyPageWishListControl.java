@@ -40,8 +40,8 @@ public class MyPageWishListControl implements Control {
 		PageDTO dto = new PageDTO(page, total);
 		req.setAttribute("pageInfo", dto);
 		
-		System.out.println("페이지" + page);
-		System.out.println("토탈" + total);
+		//System.out.println("페이지" + page);
+		//System.out.println("토탈" + total);
 		
 		
 		return "mypage/myPageWishList.tiles";

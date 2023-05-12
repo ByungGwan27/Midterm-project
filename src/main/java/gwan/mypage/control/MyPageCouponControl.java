@@ -23,7 +23,6 @@ public class MyPageCouponControl implements Control {
 		List<MyPageVO> list = service.readCoupon(id);
 		
 		req.setAttribute("couponList", list);
-		System.out.println("테스트"+list);
 		
 		return "mypage/myPageCoupon.tiles";
 	}

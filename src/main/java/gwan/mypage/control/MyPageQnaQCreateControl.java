@@ -11,6 +11,7 @@ import com.google.gson.JsonObject;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import gwan.mypage.domain.MyPageVO;
 import main.common.control.Control;
 
 public class MyPageQnaQCreateControl implements Control {
@@ -40,6 +41,7 @@ public class MyPageQnaQCreateControl implements Control {
 		json.addProperty("fileName", fileName);
 		json.addProperty("url", fileUrl);
 		
+		System.out.println("ck확인" + json);
 		return json + ".json";
 	}
 

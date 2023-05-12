@@ -14,4 +14,5 @@ public interface MainMapper {
 	public List<HotelVO> OrderResHotel();
 	public List<HotelVO> OrderReviewHotel();
 	public List<HotelVO> OrderPointHotel();
+	public List<HotelVO> selectHotelList(HotelVO hotel);
 }

@@ -52,4 +52,32 @@
 	where rownum<3
 	]]>	
 	</select>
+	
+	
+	<!-- 조건 숙소 조회 -->
+	<select id="selectHotelList" resultType="hotel" parameterType="hotel">
+	<![CDATA[ 		
+select * 
+from (SELECT h.hotel_id as hotelId, h.hotel_name, h.hotel_thema,
+h.hotel_location1, h.hotel_location2, h.hotel_image,
+MIN(i.room_price) AS room_price,
+NVL(COUNT(r.review_point), 0) AS rcount,
+NVL(ROUND(AVG(r.review_point), 1), 0) AS avgpoint,
+NVL((ROUND(AVG(r.review_point), 1)*2 *10),0) as avgstar
+FROM hotel h
+full outer JOIN room_info i ON
+h.hotel_id = i.hotel_id
+full outer JOIN review r ON h.hotel_id =
+r.hotel_id
+GROUP BY h.hotel_id, h.hotel_name, h.hotel_thema,
+h.hotel_location1,
+h.hotel_location2, h.hotel_point, h.hotel_image) 
+ join     
+(select hotel_id as hotelId
+from (select * from room_info where #{people} between room_min and room_max)
+left join (select * from reservation where checkin_date = null or not checkin_date between #{checkinDate} and #{checkoutDate})using (hotel_id)
+join (select * from hotel where hotel_location1 =#{hotelLocation1}) using (hotel_id)
+group by hotel_id) using (hotelId)
+	]]>	
+	</select>
 </mapper>

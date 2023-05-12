@@ -55,4 +55,10 @@ public class MainServiceImpl implements MainService{
 		return mapper.OrderPointHotel();
 	}
 
+	@Override
+	public List<HotelVO> selectHotelList(HotelVO hotel) {
+		
+		return mapper.selectHotelList(hotel);
+	}
+
 }
