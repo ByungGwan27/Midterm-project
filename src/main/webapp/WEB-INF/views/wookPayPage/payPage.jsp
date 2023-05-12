@@ -220,14 +220,21 @@
 				let usePoint = document.getElementById('usePoint');
 				let canUsePoint = document.getElementById('canUsePoint');
 				usePoint.addEventListener('blur',function(){
-				if(${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent>=0){
+					if(${payMemberInfo.memberPoint }-usePoint.value>=0 ){
 
-					canUsePoint.value = ${payMemberInfo.memberPoint }-usePoint.value
-					salePrice.value = ${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent
-				}else{
-					alert('사용할 수 없는 값입니다')
-					usePoint.value = 0;
-				}
+						if(${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent>=0){
+		
+							canUsePoint.value = ${payMemberInfo.memberPoint }-usePoint.value
+							salePrice.value = ${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent
+						}else{
+							alert('사용할 수 없는 값입니다')
+							usePoint.value = 0;
+						}
+
+					}else {
+						alert('초과된 마일리지입니다')
+						usePoint.value = 0;
+					}
 
 				
 				})
