@@ -6,9 +6,12 @@ import shin.post.domain.PostVO;
 
 public interface PostService {
 	
-	public List<PostVO> postList();
-	public List<PostVO> postList(int page);
+	public List<PostVO> postList(int postId);
 	public PostVO getPost(int postId);
 	public int totalCount();
+	
+	public List<PostVO> postmember();
+	public List<PostVO> postmain();
+	public List<PostVO> postmemberdetail();
 	
 }

@@ -16,5 +16,6 @@ public class PostVO {
 	private String postImages;
 	private String memberProfile;
 	private String memberName;
+	private String memberNickName;
 	
 }

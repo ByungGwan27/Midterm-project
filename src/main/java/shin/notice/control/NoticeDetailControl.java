@@ -18,17 +18,29 @@ public class NoticeDetailControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String pageStr = req.getParameter("page");
-		pageStr = pageStr == null ? "1" : pageStr; 
-		int page = Integer.parseInt(pageStr);
-		
+		String noticeId = req.getParameter("noticeId");
+		String page = req.getParameter("page");
+		System.out.println(noticeId);
+		System.out.println(page);
 		NoticeService service = new NoticeServiceImpl();
+		NoticeVO noticeInfo = service.getNotice(Integer.parseInt(noticeId), Integer.parseInt(page));
+		req.setAttribute("noticeInfo", noticeInfo);
+		System.out.println(noticeId);
+		//공지사항 상세페이지
+		List<NoticeVO> noticeList = service.noticeList(Integer.parseInt(page));
+		req.setAttribute("noticeList", noticeList);
+		
+//		String pageStr = req.getParameter("page");
+//		pageStr = pageStr == null ? "1" : pageStr; 
+//		int page = Integer.parseInt(pageStr);
+		
+		
 		//int total = service.totalCount();
-		List<NoticeVO> list = service.noticeList(page); 
+		//List<NoticeVO> list = service.noticeList(page); 
 		
 	//	PageDTO dto = new PageDTO(page, total);
 		
-		req.setAttribute("list", list);
+		//req.setAttribute("list", list);
 		//req.setAttribute("pageInfo", dto);
 		
 		

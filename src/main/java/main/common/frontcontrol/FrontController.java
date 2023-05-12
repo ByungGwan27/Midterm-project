@@ -78,8 +78,10 @@ import shin.notice.control.AddNoticeControl;
 import shin.notice.control.NoticeAddFormControl;
 import shin.notice.control.NoticeDetailControl;
 import shin.notice.control.NoticeListControl;
+import shin.notice.control.NoticeModifyControl;
 import shin.post.control.PostDetailControl;
 import shin.post.control.PostListControl;
+import shin.post.control.PostMemberDetailControl;
 
 public class FrontController extends HttpServlet{
 	private Map<String, Control> map;
@@ -176,17 +178,20 @@ public class FrontController extends HttpServlet{
 	
 		
 		// 신지은
-		
 		//여행 포스트 리스트
 		map.put("/postList.do", new PostListControl());
 		//여행 포스트 상세페이지
 		map.put("/postDetail.do", new PostDetailControl());
+		//인플루언서 선택 시 상세페이지
+		map.put("/postMemberDetail.do", new PostMemberDetailControl());
 		//공지사항 추가 페이지
 		map.put("/addNotice.do", new AddNoticeControl());
 		//공지사항 작성페이지
 		map.put("/noticeAddForm.do", new NoticeAddFormControl());
-		//공지사항 상세페이지
+		//공지사항 상세페이지(단건조회)
 		map.put("/noticeDetail.do", new NoticeDetailControl());
+		//공지사항 수정페이지
+		map.put("/noticeModify.do", new NoticeModifyControl());
 		//공지사항 리스트
 		map.put("/noticeList.do", new NoticeListControl());
 		//관리자 결제정보창

@@ -35,7 +35,7 @@
             <div class="row">
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>숙소명:</strong> <span>1 May 1995</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>숙소명:</strong> <span>${adminHotelList.hotelName }</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>숙소세부명:</strong> <span>www.example.com</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>호수:</strong> <span>+123 456 7890</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>인원수:</strong> <span>email@example.com</span></li>
