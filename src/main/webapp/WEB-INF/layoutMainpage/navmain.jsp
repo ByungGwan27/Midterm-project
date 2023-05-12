@@ -16,7 +16,7 @@
 
 					<div class="row">
 						<div class="col-12">
-							<form class="form" action="hotelListPage.do">
+							<form class="form" action="mainHotelInfo.do">
 								<div class="row mb-2">
 									<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
 										<select name="location" class="form-control custom-select">

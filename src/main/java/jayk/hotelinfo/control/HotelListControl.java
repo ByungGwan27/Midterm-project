@@ -11,50 +11,61 @@ import jayk.hotelinfo.domain.HotelInfoVO;
 import jayk.hotelinfo.service.HotelInfoService;
 import jayk.hotelinfo.service.HotelInfoServiceImpl;
 import main.common.control.Control;
-import main.common.wook.main.domain.HotelVO;
-import main.common.wook.main.service.MainService;
-import main.common.wook.main.service.MainServiceImpl;
+
+import main.common.control.PageDTO;
 
 public class HotelListControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		String location = req.getParameter("location");
+		/*
+		 * String pageStr = req.getParameter("page"); pageStr = pageStr == null ? "1" :
+		 * pageStr; int page = Integer.parseInt(pageStr);
+		 */
 
-		if (location == null) {
-			System.out.println("null 입니다");
-			HotelInfoService service = new HotelInfoServiceImpl();
-			List<HotelInfoVO> hotelList = service.hotelList();
-			req.setAttribute("hotelList", hotelList);
-
-			// String hotelLocation1 = req.getParameter("hotelLocation1");
-
-			return "hotelinfopage/hotelListPage.tiles";
-		} else {
-
-			String date = req.getParameter("daterange");
-			int people = Integer.parseInt(req.getParameter("people"));
-			String inDate = date.substring(0, 10);
-			String outDate = date.substring(13, 23);
-			// 입력 될 날짜
-			String checkin = date.substring(8, 10) + date.substring(2, 6) + date.substring(0, 2);
-			String checkout = outDate.substring(8, 10) + outDate.substring(2, 6) + outDate.substring(0, 2);
-			MainService service = new MainServiceImpl();
-			
-			HotelVO hotel = new HotelVO();
-			hotel.setPeople(people);
-			hotel.setCheckinDate(checkin);
-			hotel.setCheckoutDate(checkout);
-			hotel.setHotelLocation1(location);
-			
-			List<HotelVO> list = service.selectHotelList(hotel);
-
-			req.setAttribute("hotelList", list);
-
-			return "hotelinfopage/hotelListPage.tiles";
+		//System.out.println(pageStr);
+		
+		String hotelLocation1 = req.getParameter("hotelLocation1");
+		String hotelThema = req.getParameter("hotelThema");
+		String roomMax = req.getParameter("roomMax");
+		String roomMin = req.getParameter("roomMin");
+		String roomPrice = req.getParameter("roomPrice");
+		System.out.println(hotelThema);
+		
+		HotelInfoService service = new HotelInfoServiceImpl();
+		int total = service.totalCount();
+		List<HotelInfoVO> hotelList = service.hotelList();
+		List<HotelInfoVO> navListLoca = service.navListLoca();
+		List<HotelInfoVO> navListThema = service.navListThema();
+		
+		//PageDTO dto = new PageDTO(page, total);
+		//req.setAttribute("pageInfo", dto);
+		System.out.println("1번"+hotelList);
+		System.out.println("1번"+navListLoca);
+		System.out.println("1번"+navListThema);
+		
+		if (hotelLocation1 != null) {
+			hotelList = service.hotelListLoca(hotelLocation1);
+		} else if (hotelThema != null) {
+			hotelList = service.hotelListThema(hotelThema);
+		} else if (roomMax != null && roomMin != null) {
+			hotelList = service.hotelListNum(Integer.parseInt(roomMax), Integer.parseInt(roomMin));
+		}else if(roomPrice != null) {
+			hotelList = service.hotelListPrice(Integer.parseInt(roomPrice));
+		}else {
+			hotelList = service.hotelList();
 		}
 
-	}
+	
+		req.setAttribute("hotelList", hotelList);
+		req.setAttribute("navListLoca", navListLoca);
+		req.setAttribute("navListThema", navListThema);
+		System.out.println(hotelList);
+		System.out.println(navListLoca);
+		System.out.println(navListThema);
+		
+		return "hotelinfopage/hotelListPage.tiles";
 
+	}
 }
