@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
 <div class="py-5 cta-section">
 	<div class="container">
-		<!-- <div class="row text-center">
+		<div class="row text-center">
 			<div class="col-md-12">
 				<h2 class="mb-2 text-white">Lets you Explore the Best. Contact
 					Us Now</h2>
@@ -15,7 +14,7 @@
 						in touch</a>
 				</p>
 			</div>
-		</div> -->
+		</div>
 	</div>
 </div>
 
@@ -25,10 +24,11 @@
 			<div class="row">
 				<div class="col-md-6 col-lg-4">
 					<div class="widget">
-						<h3 class="heading">Traveller</h3>
-						<p>404 found 조의 여행숙소 홈페이지 입니다!</p>
+						<h3 class="heading">About Tour</h3>
+						<p>Far far away, behind the word mountains, far from the
+							countries Vokalia and Consonantia, there live the blind texts.</p>
 					</div>
-					<!-- <div class="widget">
+					<div class="widget">
 						<ul class="list-unstyled social">
 							<li><a href="#"><span class="icon-twitter"></span></a></li>
 							<li><a href="#"><span class="icon-instagram"></span></a></li>
@@ -39,25 +39,25 @@
 							<li><a href="#"><span class="icon-apple"></span></a></li>
 							<li><a href="#"><span class="icon-google"></span></a></li>
 						</ul>
-					</div> -->
+					</div>
 				</div>
 				<div class="col-md-6 col-lg-2 pl-lg-5">
 					<div class="widget">
-						<h3 class="heading">팀장</h3>
+						<h3 class="heading">Pages</h3>
 						<ul class="links list-unstyled">
-							<li><a href="#">팀원</a></li>
-							<li><a href="#">팀원</a></li>
-							<li><a href="#">팀원</a></li>
+							<li><a href="#">Blog</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Contact</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-2">
 					<div class="widget">
-						<h3 class="heading">강병관</h3>
+						<h3 class="heading">Resources</h3>
 						<ul class="links list-unstyled">
-							<li><a href="#">김자영</a></li>
-							<li><a href="#">신지은</a></li>
-							<li><a href="#">김성욱</a></li>
+							<li><a href="#">Blog</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Contact</a></li>
 						</ul>
 					</div>
 				</div>

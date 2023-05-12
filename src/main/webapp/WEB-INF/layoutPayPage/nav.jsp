@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-
 
 <nav class="site-nav">
 	<div class="container">
 		<div class="site-navigation">
-			<a href="mainPage.do" class="logo m-0">Traveller <span
-				class="text-primary">.</span></a>
-
+			<a href="mainPage.do" class="logo m-0">Traveller<span class="text-primary">.</span></a>
 			<ul
 				class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
 				<li class="active"><a href="hotelListPage.do">숙소</a></li>
@@ -47,17 +43,23 @@
 				</c:if>
 				<li><a href="noticeList.do">공지사항</a></li>
 			</ul>
-
-			<a href="#"
-				class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light"
-				data-toggle="collapse" data-target="#main-navbar"> <span></span>
-			</a>
-
 		</div>
 	</div>
 </nav>
 
-<!-- 5.11 강병관 nav 영역 분리 작업 -->
+
+<div class="hero hero-inner">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6 mx-auto text-center">
+				<div class="intro-wrap">
+					<h1 class="mb-0">결제 페이지</h1>
+					<p class="text-white">결제 페이지 만드는 중~~! </p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <script>
 	//5.10 강병관 로그아웃시 알림 기능
 	function logOut() {
@@ -68,4 +70,3 @@
 			}
 	}
 </script>
-

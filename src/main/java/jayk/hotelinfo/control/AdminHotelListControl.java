@@ -16,6 +16,7 @@ public class AdminHotelListControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
 		
 		HotelInfoService service = new HotelInfoServiceImpl();
 		List<HotelInfoVO> adminHotelList = service.adminHotelList();
