@@ -39,7 +39,7 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public NoticeVO getNotice(int noticeId) {
+	public NoticeVO getNotice(int noticeId, int page) {
 		
 		mapper.updateCount(noticeId);
 		return mapper.searchNotice(noticeId);
@@ -49,6 +49,12 @@ public class NoticeServiceImpl implements NoticeService {
 	public int totalCount() {
 	
 		return mapper.getCount();
+	}
+
+	@Override
+	public List<NoticeVO> noticeList() {
+	
+		return mapper.noticeList();
 	}
 
 }

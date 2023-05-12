@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shin.admin.mapper.AdminPayListMapper">
+
+	<select id="hotelList">
+		SELECT h.hotel_id as hotelId, h.hotel_name, h.hotel_thema,
+		h.hotel_location1, h.hotel_location2, h.hotel_image,
+		MIN(i.room_price) AS room_price,
+		NVL(COUNT(r.review_point), 0) AS rcount,
+		NVL(ROUND(AVG(r.review_point), 1), 0) AS avgpoint,
+		NVL((ROUND(AVG(r.review_point), 1)*2 *10),0) as avgstar
+		FROM hotel h
+		full outer JOIN room_info i ON
+		h.hotel_id = i.hotel_id
+		full outer JOIN review r ON h.hotel_id =
+		r.hotel_id
+		GROUP BY h.hotel_id, h.hotel_name, h.hotel_thema,
+		h.hotel_location1,
+		h.hotel_location2, h.hotel_point, h.hotel_image
+	</select>
+
+	<select id="selectHotel" parameterType="Map">
+		SELECT h.hotel_id as hotelId, h.hotel_name, h.hotel_thema,
+		h.hotel_location1, h.hotel_location2, h.hotel_image,
+		MIN(i.room_price) AS room_price,
+		NVL(COUNT(r.review_point), 0) AS rcount,
+		NVL(ROUND(AVG(r.review_point), 1), 0) AS avgpoint,
+		NVL((ROUND(AVG(r.review_point), 1)*2 *10),0) as avgstar,
+		h.location_detail
+		FROM hotel h
+		full outer JOIN room_info i ON
+		h.hotel_id = i.hotel_id
+		full outer JOIN review r ON h.hotel_id =
+		r.hotel_id
+    where h.hotel_location1 = #{hotelLocation1} and h.hotel_id = #{hotelId}
+		GROUP BY h.hotel_id, h.hotel_name, h.hotel_thema,
+		h.hotel_location1,
+		h.hotel_location2, h.hotel_point, h.hotel_image, h.location_detail
+	</select>
+
+	<select id="roomList">
+		select * from room_info where hotel_id = #{hotelId}
+		order by room_name
+	</select>
+
+	<select id="reviewList">
+		select * from review where hotel_id = #{hotelId}
+		order by review_id
+	</select>
+
+	<select id="similarList">
+
+<![CDATA[
+   SELECT h.hotel_id as hotelId, h.hotel_name, h.hotel_thema,
+		h.hotel_location1, h.hotel_location2, h.hotel_image,
+		MIN(i.room_price) AS room_price,
+		NVL(COUNT(r.review_point), 0) AS rcount,
+		NVL(ROUND(AVG(r.review_point), 1), 0) AS avgpoint
+		FROM hotel h
+		full outer JOIN room_info i ON
+		h.hotel_id = i.hotel_id
+		full outer JOIN review r ON h.hotel_id =
+		r.hotel_id
+         where h.hotel_location1 = #{hotelLocation1} and h.hotel_id != #{hotelId} and rownum <= 3
+		GROUP BY h.hotel_id, h.hotel_name, h.hotel_thema,
+		h.hotel_location1,
+		h.hotel_location2, h.hotel_point, h.hotel_image
+        order by h.hotel_id
+]]>
+	</select>
+
+	<select id="adminHotelList">
+		select * from hotel h
+		FULL OUTER JOIN room_info i
+		USING (hotel_id)
+	</select>
+
+	<select id="selectAdminHotel">
+		select * from hotel h
+		FULL OUTER JOIN room_info i
+		USING (hotel_id)
+		where hotel_id = #{hotelId}
+	</select>
+
+	<update id="updateAdminHotel">
+		update hotel set hotel_name=#{hotelName},
+		hotel_location1=#{hotelLocation1}, hotel_location2=#{hotelLocation2}
+		where hotel_id = #{hotelId}
+	</update>
+
+	<insert id="insertAdminHotel">
+		insert into hotel (hotel_id, hotel_name,
+		hotel_location1, hotel_location2, hotel_image, hotel_imginfo,
+		location_detail)
+		values(#{hotelId}, #{hotelName}, #{hotelLocation1}, #{hotelLocation2}, #{hotelImage},
+		#{hotelImginfo}, #{locationDetail})
+	</insert>
+</mapper>

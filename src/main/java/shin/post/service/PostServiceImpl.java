@@ -13,18 +13,7 @@ public class PostServiceImpl implements PostService {
 	
 	SqlSession session = DataSource.getInstance().openSession(true);
 	PostMapper mapper = session.getMapper(PostMapper.class);
-	
-	@Override
-	public List<PostVO> postList() {
-		
-		return mapper.postList();
-	}
 
-	@Override
-	public List<PostVO> postList(int page) {
-
-		return mapper.postWithPage(page);
-	}
 
 	@Override
 	public PostVO getPost(int postId) {
@@ -37,6 +26,32 @@ public class PostServiceImpl implements PostService {
 	public int totalCount() {
 	
 		return mapper.getCount();
+	}
+
+
+
+	@Override
+	public List<PostVO> postList(int postId) {
+		return mapper.postList(postId);
+	}
+
+
+	@Override
+	public List<PostVO> postmember() {
+		return mapper.postmember();
+	}
+
+
+
+	@Override
+	public List<PostVO> postmain() {
+		return mapper.postmain();
+	}
+
+
+	@Override
+	public List<PostVO> postmemberdetail() {
+		return mapper.postmemberdetail();
 	}
 	
 	

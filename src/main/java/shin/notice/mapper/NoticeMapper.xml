@@ -3,11 +3,12 @@
 <mapper namespace="shin.notice.mapper.NoticeMapper">
 
 	<!-- 공지사항 관련 -->
-	<select id="noticeList" resultType="notice">
-		select * from notice
-		order by 1
+	<select id="noticeList" >
+		select * from notice n join member m on n.member_id = m.member_id
+	
 	</select>
-	<select id="noticeWithPage" resultType="notice">
+	
+	<select id="noticeWithPage" >
 		<![CDATA[
 		select b.*
 		from (select rownum rn, a.*
@@ -35,7 +36,7 @@
 		notice_id = #{noticeId}
 	</update>
 	
-	<delete id="deleteNotice" parameterType="int">
+	<delete id="deleteNotice">
 		delete from notice
 		where notice_id=#{noticeId}
 	</delete>
