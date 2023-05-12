@@ -51,8 +51,8 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button type="button" onclick="joinform_check();">수정</button>
-					<button type="button">돌아가기</button>
+					<button type="button" onclick="joinform_check();" class="btn btn-primary">수정</button>
+					<button type="button" class="btn btn-primary">돌아가기</button>
 				</td>
 			</tr>
 		</table>

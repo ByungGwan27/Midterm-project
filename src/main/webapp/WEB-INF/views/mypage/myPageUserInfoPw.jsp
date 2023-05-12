@@ -24,7 +24,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button type="submit">확인</button>
+					<button type="submit" class="btn btn-primary">확인</button>
 					<!--  onclick="javascript:btn() -->
 				</td>
 			</tr>

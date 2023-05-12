@@ -53,6 +53,11 @@ public class MyPageServiceImpl implements MyPageService {
 	public List<MyPageVO> readCoupon(String memberId) {
 		return mapper.readCoupon(memberId);
 	}
+
+	@Override
+	public boolean createQnaQ(MyPageVO vo) {
+		return mapper.createQnaQ(vo) == 1;
+	}
 	
 	
 }
