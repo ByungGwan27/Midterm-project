@@ -14,6 +14,7 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 
 	@Override
 	public List<HotelInfoVO> hotelList() {
+		//mapper.hotelListLoca(hotelLocation1);
 		return mapper.hotelList();
 	}
 
@@ -88,5 +89,28 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 	public boolean addAdminRoomDetail(HotelInfoVO vo) {
 		return false;
 	}
+
+	@Override
+	public List<HotelInfoVO> hotelListLoca(String hotelLocation1) {
+		return mapper.hotelListLoca(hotelLocation1);
+	}
+
+	@Override
+	public List<HotelInfoVO> hotelListThema(String hotelThema) {
+		return mapper.hotelListThema(hotelThema);
+	}
+
+	@Override
+	public List<HotelInfoVO> navListLoca() {
+		// TODO Auto-generated method stub
+		return mapper.navListLoca();
+	}
+
+	@Override
+	public List<HotelInfoVO> navListThema() {
+		// TODO Auto-generated method stub
+		return mapper.navListThema();
+	}
+
 
 }
