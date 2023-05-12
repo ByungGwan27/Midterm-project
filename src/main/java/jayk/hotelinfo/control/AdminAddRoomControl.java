@@ -88,7 +88,8 @@ public class AdminAddRoomControl implements Control {
 			//System.out.println("성공");
 			return "adminHotelList.do";
 		}else {
-			return "adminAddHotelPage.do";
+			
+			return "adminHotelList.do";
 		}
 	}
 
