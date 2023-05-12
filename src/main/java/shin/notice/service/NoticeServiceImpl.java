@@ -51,4 +51,10 @@ public class NoticeServiceImpl implements NoticeService {
 		return mapper.getCount();
 	}
 
+	@Override
+	public List<NoticeVO> noticeList() {
+	
+		return mapper.noticeList();
+	}
+
 }

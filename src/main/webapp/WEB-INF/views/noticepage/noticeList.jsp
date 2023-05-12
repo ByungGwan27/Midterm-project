@@ -131,7 +131,6 @@
 									<a href="noticeDelete.do">삭제</a>
 								</button>
 							</td>
-
 						</tr>
 					</c:forEach>
 				</table>

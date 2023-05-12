@@ -6,7 +6,9 @@ import shin.notice.domain.NoticeVO;
 
 
 public interface NoticeService {
-
+	
+	
+	public List<NoticeVO> noticeList();
 	public List<NoticeVO> noticeList(int page);
 	public boolean addNotice(NoticeVO vo);
 	public boolean modifyNotice(NoticeVO vo);

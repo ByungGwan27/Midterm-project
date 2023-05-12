@@ -12,24 +12,25 @@ a {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;}
-	
-	
-*, ::before, ::after {
-    box-sizing: inherit;
+	vertical-align: baseline;
 }
-<style>
+
 *, ::before, ::after {
-    box-sizing: inherit;
+	box-sizing: inherit;
+}
+
+<
+style>*, ::before, ::after {
+	box-sizing: inherit;
 }
 
 body {
-    text-size-adjust: none;
-}	
+	text-size-adjust: none;
+}
 
 header.major {
-    text-align: center;
-    margin: 0px 0px 4rem;
+	text-align: center;
+	margin: 0px 0px 4rem;
 }
 </style>
 

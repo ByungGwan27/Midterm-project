@@ -30,13 +30,6 @@
 <link href="cssNoticeAddForm/assets/assets/css/style.css"
 	rel="stylesheet">
 
-<!-- =======================================================
-  * Template Name: MyResume
-  * Updated: Mar 10 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 
@@ -65,45 +58,42 @@
 </header>
 <!-- End Header -->
 
-
 <section class="py-5">
-	<div class="container px-5 my-5">
-		<div class="row gx-5">
-			<section class="py-5">
-				<div class="container px-4 px-lg-5 my-5">
-					<h3>공지사항 상세페이지</h3>
-					<div class="row gx-4 gx-lg-5 align-items-center">
+	<div class="container px-4 px-lg-5 my-5">
+		<h3>공지사항 상세페이지</h3>
+		<div class="row gx-4 gx-lg-5 align-items-center">
 
-						<table class="table">
+			<table class="table">
 
-							<tr>
-								<th>제목</th><th>작성자</th>
-								<td>${noticeInfo.noticeContent }</td><td>관리자</td>
-							</tr>
-						
-							<tr>
-								<th>조회수</th><th>작성일</th>
-								<td>${noticeInfo.noticeViews}</td><td>${noticeInfo.writeDate }</td>
-							</tr>
+				<tr>
+					<th>제목</th>
+					<td>${noticeInfo.noticeTitle }</td>
+					<th>작성자</th>
+					<td>${noticeInfo.memberId }</td>
+				</tr>
 
-							<tr>
-								<th>작성내용</th>
-								<td>${noticeInfo.noticeContent }</td>
-							</tr>
+				<tr>
+					<th>조회수</th>
+					<td>${noticeInfo.noticeViews}</td>
+					<th>작성일</th>
+					<td>${noticeInfo.writeDate }</td>
+				</tr>
 
-							<tr>
-								<td colspan="4" align="center"><input type="submit"
-									value="수정"> <input type="reset" value="취소"></td>
-							</tr>
-						</table>
+				<tr>
+					<th>작성내용</th>
+					<td>${noticeInfo.noticeContent }</td>
+				</tr>
 
-					</div>
-				</div>
-			</section>
+				<tr>
+					<td colspan="4" align="center"><input type="submit" value="수정">
+						<input type="reset" value="취소"></td>
+				</tr>
+			</table>
 
 		</div>
 	</div>
 </section>
+
 
 <c:set var="no" value="0"></c:set>
 <section class="py-5">
@@ -126,43 +116,32 @@
 							<td><c:out value="${no=no+1 }"></c:out></td>
 							<!-- <td><a href="getNotice.do?page=${pageInfo.pageNum}&nid=${notice.noticeId }">${notice.noticeId }</a></td> -->
 							<td><a
-								href="noticeDetail.do?page=${pageInfo.pageNum}&noticeId=${noticeList.noticeId }">${noticeList.noticeId }</a></td>
+								href="noticeDetail.do?page=${pageInfo.pageNum}&noticeId=${noticeList.noticeId }">${noticeList.noticeId
+									}</a></td>
 							<td>${noticeList.memberId }</td>
 							<td>${noticeList.writeDate }</td>
 							<td>${noticeList.noticeViews }</td>
-							<td colspan="4" align="center">
-							<input type="submit" value="수정">
-							<input type="reset" value="삭제"></td>
+							<td colspan="4" align="center"><input type="submit"
+								value="수정"> <input type="reset" value="삭제"></td>
 
 						</tr>
 					</c:forEach>
 				</table>
 			</form>
-<div>
-  <ul class="pagination">
-    <li class="page-item disabled">
-      <a class="page-link" href="#">&laquo;</a>
-    </li>
-    <li class="page-item active">
-      <a class="page-link" href="#">1</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">2</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">3</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">4</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">5</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">&raquo;</a>
-    </li>
-  </ul>
-</div>
+			<div>
+				<ul class="pagination">
+					<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
+					</li>
+					<li class="page-item active"><a class="page-link" href="#">1</a>
+					</li>
+					<li class="page-item"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item"><a class="page-link" href="#">4</a></li>
+					<li class="page-item"><a class="page-link" href="#">5</a></li>
+					<li class="page-item"><a class="page-link" href="#">&raquo;</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 

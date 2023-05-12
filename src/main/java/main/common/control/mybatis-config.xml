@@ -24,7 +24,7 @@
 		<typeAlias alias="notice" type="shin.notice.domain.NoticeVO" />
 		<typeAlias alias="post" type="shin.post.domain.PostVO" />
 		<typeAlias alias="comment" type="shin.post.domain.PostCommentVO" />
-		
+		<typeAlias alias="adminpaylist" type="shin.admin.domain.AdminPayListVO" />
 		
 		<!-- gwan/myPage -->
 		<typeAlias alias="mp" type="gwan.mypage.domain.MyPageVO" />
@@ -49,7 +49,8 @@
 		
 		<!-- 230504 jayk add -->
 		<mapper resource="jayk/hotelinfo/mapper/HotelInfoMapper.xml"/>
-	
+		
+		<!-- shin -->
 		<mapper resource="shin/notice/mapper/NoticeMapper.xml" />
 		<mapper resource="shin/post/mapper/PostMapper.xml" />
 		
@@ -61,6 +62,8 @@
 	
 		<!-- shin/postComment  -->
 		<mapper resource="shin/post/mapper/PostCommentMapper.xml"/>
+		<mapper resource="shin/admin/mapper/AdminPayListMapper.xml"/>
+		
 		
 	</mappers>
 </configuration>
