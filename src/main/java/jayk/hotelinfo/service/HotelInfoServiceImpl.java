@@ -102,13 +102,11 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 
 	@Override
 	public List<HotelInfoVO> navListLoca() {
-		// TODO Auto-generated method stub
 		return mapper.navListLoca();
 	}
 
 	@Override
 	public List<HotelInfoVO> navListThema() {
-		// TODO Auto-generated method stub
 		return mapper.navListThema();
 	}
 

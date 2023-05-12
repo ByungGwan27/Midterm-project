@@ -29,6 +29,8 @@ public class HotelListControl implements Control {
 			hotelList = service.hotelListLoca(hotelLocation1);
 		}else if(hotelThema != null) {
 			hotelList = service.hotelListThema(hotelThema);
+		}else {
+			hotelList = service.hotelList();
 		}
 		req.setAttribute("hotelList", hotelList);
 		req.setAttribute("navListLoca", navListLoca);

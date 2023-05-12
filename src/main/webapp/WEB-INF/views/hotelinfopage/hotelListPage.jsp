@@ -92,10 +92,10 @@
 				<a href="#pageSubmenu3" data-toggle="collapse"
 					aria-expanded="false" class="dropdown-toggle">테마(숙소종류)</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu3">
-					<c:forEach var="navListThema" items="${navListThema}">
+<%-- 					<c:forEach var="navListThema" items="${navListThema}">
 							<li id="loca"><a href="hotelListPage.do?hotelThema=${navListThema.hotelThema}"> <span
 									class="fa fa-chevron-right mr-2"></span>${navListThema.hotelThema}</a></li>
-							</c:forEach>
+							</c:forEach> --%>
 					</ul>
 					</li>
 				<li><a href="#pageSubmenu4" data-toggle="collapse"
