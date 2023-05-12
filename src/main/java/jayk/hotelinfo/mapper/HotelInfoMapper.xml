@@ -7,7 +7,7 @@
 		 select distinct hotel_location1 from hotel
 	</select>
 	<select id="navListThema">
-	select distinct hotel_thema from hotel
+			select distinct hotel_thema from hotel where hotel_thema is not null
 	</select>
 	
 	<select id="hotelList">
@@ -70,7 +70,7 @@
 		full outer JOIN
 		review r ON h.hotel_id =
 		r.hotel_id
-        where hotel_thema = #{hotelThema}
+        where hotel_thema = #{hotelThema} 
 		GROUP BY h.hotel_id, h.hotel_name,
 		h.hotel_thema,
 		h.hotel_location1,
