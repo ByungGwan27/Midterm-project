@@ -62,7 +62,7 @@
 							aria-expanded="false" class="dropdown-toggle">서울특별시</a> -->
 						<!-- <ul class="collapse list-unstyled" id="pageSubmenu6"> -->
 						<c:forEach var="navListLoca" items="${navListLoca}">
-							<li id="loca" onclick="selectLoca()"><a href="hotelListPage.do?hotelLocation1=${navListLoca.hotelLocation1}"> <span
+							<li><a href="hotelListPage.do?hotelLocation1=${navListLoca.hotelLocation1}"> <span
 									class="fa fa-chevron-right mr-2"></span>${navListLoca.hotelLocation1}</a></li>
 							</c:forEach>
 					</ul>
@@ -92,10 +92,10 @@
 				<a href="#pageSubmenu3" data-toggle="collapse"
 					aria-expanded="false" class="dropdown-toggle">테마(숙소종류)</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu3">
-<%-- 					<c:forEach var="navListThema" items="${navListThema}">
-							<li id="loca"><a href="hotelListPage.do?hotelThema=${navListThema.hotelThema}"> <span
-									class="fa fa-chevron-right mr-2"></span>${navListThema.hotelThema}</a></li>
-							</c:forEach> --%>
+				<c:forEach var="navListThema" items="${navListThema}">
+							<li><a href="hotelListPage.do?hotelThema=${navListThema.hotelThema}">
+							<span class="fa fa-chevron-right mr-2"></span>${navListThema.hotelThema}</a></li>
+							</c:forEach>
 					</ul>
 					</li>
 				<li><a href="#pageSubmenu4" data-toggle="collapse"
@@ -115,7 +115,13 @@
                     </form>
                   </div></li> -->
 						<li><span class="fa fa-chevron-right mr-2"></span><input
-							type="checkbox">편의시설1</li>
+							type="checkbox">싱글룸</li>
+							<li><span class="fa fa-chevron-right mr-2"></span><input
+							type="checkbox">트윈룸</li>
+							<li><span class="fa fa-chevron-right mr-2"></span><input
+							type="checkbox">더블룸</li>
+							<li><span class="fa fa-chevron-right mr-2"></span><input
+							type="checkbox">트리플룸</li>
 						<li><span class="fa fa-chevron-right mr-2"></span><input
 							type="checkbox">주차장</li>
 						<li><span class="fa fa-chevron-right mr-2"></span><input
