@@ -11,13 +11,46 @@ import main.common.control.DataSource;
 public class HotelInfoServiceImpl implements HotelInfoService {
 	SqlSession session = DataSource.getInstance().openSession(true);
 	HotelInfoMapper mapper = session.getMapper(HotelInfoMapper.class);
+	
+	//navList
+	@Override
+	public List<HotelInfoVO> navListLoca() {
+		return mapper.navListLoca();
+	}
 
+	@Override
+	public List<HotelInfoVO> navListThema() {
+		return mapper.navListThema();
+	}
+	
+	//hotelList
 	@Override
 	public List<HotelInfoVO> hotelList() {
 		//mapper.hotelListLoca(hotelLocation1);
 		return mapper.hotelList();
 	}
+	
+	@Override
+	public List<HotelInfoVO> hotelListLoca(String hotelLocation1) {
+		return mapper.hotelListLoca(hotelLocation1);
+	}
 
+	@Override
+	public List<HotelInfoVO> hotelListThema(String hotelThema) {
+		return mapper.hotelListThema(hotelThema);
+	}
+
+	@Override
+	public List<HotelInfoVO> hotelListNum(int roomMax, int roomMin) {
+		return mapper.hotelListNum(roomMax, roomMin);
+	}
+
+	@Override
+	public List<HotelInfoVO> hotelListPrice(int roomPrice) {
+		return mapper.hotelListPrice(roomPrice);
+	}
+
+	//hotelInfo
 	@Override
 	public HotelInfoVO getHotelInfo(int hotelId, String hotelLocation1) {
 		return mapper.selectHotel(hotelId, hotelLocation1);
@@ -37,35 +70,39 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 	public List<HotelInfoVO> similarList(int hotelId, String hotelLocation1) {
 		return mapper.similarList(hotelId, hotelLocation1);
 	}
-
+	
+	//adminHotelList
 	@Override
 	public List<HotelInfoVO> adminHotelList() {
 		return mapper.adminHotelList();
 	}
 
+	//adminHotelLinfo
 	@Override
 	public HotelInfoVO getAdminHotel(int hotelId) {
 		return mapper.selectAdminHotel(hotelId);
 	}
+	
+	@Override
+	public HotelInfoVO getAdminHotelRoom(int hotelId, int roomId) {
+		return mapper.selectAdminHotelRoom(hotelId, roomId);
+	}
 
+	//adminHotelInfoModify
 	@Override
 	public boolean modifyAdminHotel(HotelInfoVO vo) {
 		return mapper.updateAdminHotel(vo) == 1;
 	}
-
-	@Override
-	public boolean addAdminHotel(HotelInfoVO vo) {
-		return mapper.insertAdminHotel(vo) == 1;
-	}
-
+	
 	@Override
 	public boolean modifyAdminHotelRoom(HotelInfoVO vo) {
 		return mapper.updateAdminHotelRoom(vo) == 1;
 	}
-
+	
+	//adminHotelInfoAdd
 	@Override
-	public HotelInfoVO getAdminHotelRoom(int hotelId, int roomId) {
-		return mapper.selectAdminHotelRoom(hotelId, roomId);
+	public boolean addAdminHotel(HotelInfoVO vo) {
+		return mapper.insertAdminHotel(vo) == 1;
 	}
 
 	@Override
@@ -90,25 +127,10 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 		return false;
 	}
 
-	@Override
-	public List<HotelInfoVO> hotelListLoca(String hotelLocation1) {
-		return mapper.hotelListLoca(hotelLocation1);
-	}
+
 
 	@Override
-	public List<HotelInfoVO> hotelListThema(String hotelThema) {
-		return mapper.hotelListThema(hotelThema);
+	public int totalCount() {
+		return mapper.getCount();
 	}
-
-	@Override
-	public List<HotelInfoVO> navListLoca() {
-		return mapper.navListLoca();
-	}
-
-	@Override
-	public List<HotelInfoVO> navListThema() {
-		return mapper.navListThema();
-	}
-
-
 }

@@ -82,7 +82,8 @@
 								<form action="#" class="subscribe-form">
 									<div class="form-group d-flex">
 										<!-- <div class="icon"><span class="icon-paper-plane"></span></div> -->
-										<input type="text" placeholder="가격입력">
+										<input id="inputPrice" type="text" placeholder="가격입력">
+										<button id="price" type="button" onclick=hotelListPrice()>서치</button>
 									</div>
 								</form>
 							</div></li>
@@ -134,14 +135,22 @@
 							type="checkbox">수영장</li>
 					</ul></li>
 				<li><a href="#pageSubmenu5" data-toggle="collapse"
-					aria-expanded="false" class="dropdown-toggle">최대인원</a>
+					aria-expanded="false" class="dropdown-toggle">인원</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu5">
 						<li>
 							<div class="mb-5">
 								<form action="#" class="subscribe-form">
 									<div class="form-group d-flex">
 										<!-- <div class="icon"><span class="icon-paper-plane"></span></div> -->
-										<input type="text" placeholder="인원입력">
+										<input id="maxNum" type="text" placeholder="최대인원"> 
+										</div>
+										<div class="form-group d-flex">
+										~
+										</div>
+										<div class="form-group d-flex">
+										<!-- <div class="icon"><span class="icon-paper-plane"></span></div> -->
+										<input id="minNum" type="text" placeholder="최소인원">
+										<button id="num" type="button" onclick=hotelListNum()>서치</button>
 									</div>
 								</form>
 							</div>
@@ -191,7 +200,7 @@
 						<td rowspan="4">
 							<div style="margin: 10px; width: 205px;">
 								<img src="cssMainpage/images/${hotelList.hotelImage}"
-									alt="hotelImage" width="200">
+									alt="hotelImage" width="200"> 
 							</div>
 						</td>
 						<td>
@@ -235,35 +244,44 @@
 		<!-- 리스트끝 -->
 
 		<!-- 페이징 20*10 -->
-		<div class="center">
+<%-- 		 <div class="center">
 			<div class="pagination">
 				<c:if test="${pageInfo.prev}">
-					<a href="noticeList.do?page=${pageInfo.startPage-1}">Previous</a>
+					<a href="hotelListPage.do?page=${pageInfo.startPage-1}">Previous</a>
 				</c:if>
 				<c:forEach var="i" begin="${pageInfo.startPage}"
 					end="${pageInfo.endPage}">
 					<a class="${i==pageInfo.pageNum ? 'active' : ''}"
-						href="noticeList.do?page=${i}">${i}</a>
+						href="hotelListPage.do?page=${i}">${i}</a>
 				</c:forEach>
 				<c:if test="${pageInfo.next}">
-					<a href="noticeList.do?page=${pageInfo.endPage+1}">Next</a>
+					<a href="hotelListPage.do?page=${pageInfo.endPage+1}">Next</a>
 				</c:if>
 			</div>
-		</div>
+		</div> 
 	</div>
 </div>
 
+ --%>
 
+<script>
+var hotelListPrice = function(){
+	var selectElement = document.getElementById("inputPrice");
+	var roomPrice = selectElement.value;
+	var url = "hotelListPage.do?roomPrice="+roomPrice;
+	window.location.href = url;
+}
 
-<!-- <script>
-	var getHotelListLoca = function() {
-		var selectLoca = document.getElementById("loca").innerText
-		console.log(selectLoca);
-		var url = "hotelListPage.do?hotelLocaion1=" + selectLoca;
+	var hotelListNum = function(){
+		var selectEle = document.getElementById("maxNum");
+		var roomMax = selectEle.value;
+		var selectEle2 = document.getElementById("minNum");
+		var roomMin = selectEle2.value;
+		var url = "hotelListPage.do?roomMax="+roomMax+"&roomMin="+roomMin;
 		window.location.href = url;
 	}
-	var locaElement = document.getElementById("loca");
-	locaElement.onclick = getHotelListLoca;
+/* var NumElement = document.getElementById("num");
+	NumElement.onclick = hotelListNum;  */
 </script>
 
- -->
+ 
