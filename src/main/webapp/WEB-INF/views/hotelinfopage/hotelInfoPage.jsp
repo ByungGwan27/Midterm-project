@@ -146,7 +146,7 @@
 									<span>최대인원 ${roomList.roomMax}</span><br> <span>시설정보
 										${roomList.roomExpain}</span><br> <span>가격
 										${roomList.roomPrice}</span><br>
-									<button>예약</button>
+									<button onclick="location.href='payPageForm.do?roomId=${roomList.roomId}&memberId=${id}'">예약</button>
 								</div>
 							</div>
 						</div>
