@@ -40,9 +40,13 @@ import gwan.mypage.control.MyPageWishListControl;
 import gwan.mypage.control.MypageHomeControl;
 import jayk.hotelinfo.control.AdminAddHotelControl;
 import jayk.hotelinfo.control.AdminAddHotelFormControl;
+import jayk.hotelinfo.control.AdminAddRoomControl;
+import jayk.hotelinfo.control.AdminAddRoomFormControl;
 import jayk.hotelinfo.control.AdminGetHotelControl;
+import jayk.hotelinfo.control.AdminGetRoomControl;
 import jayk.hotelinfo.control.AdminHotelListControl;
 import jayk.hotelinfo.control.AdminModifyHotelInfoControl;
+import jayk.hotelinfo.control.AdminModifyRoomInfoControl;
 import jayk.hotelinfo.control.GetHotelControl;
 import jayk.hotelinfo.control.HotelListControl;
 import main.common.control.Control;
@@ -157,10 +161,19 @@ public class FrontController extends HttpServlet{
 		//관리자숙소추가페이지 
 		map.put("/adminAddHotelForm.do", new AdminAddHotelFormControl());
 		map.put("/adminAddHotelPage.do", new AdminAddHotelControl());
-		//관리자숙소상세페이지
+		//관리자숙소객실추가페이지
+		map.put("/admimAddRoomForm.do", new AdminAddRoomFormControl());
+		map.put("/adminAddRoomPage.do", new AdminAddRoomControl());
+		//관리자숙소확인페이지
 		map.put("/adminHotelInfoPage.do", new AdminGetHotelControl());
 		//관리자숙소정보수정페이지
 		map.put("/adminHotelInfoModifyPage.do", new AdminModifyHotelInfoControl());
+		//관리자숙소객실확인페이지
+		map.put("/adminRoomInfoPage.do", new AdminGetRoomControl());
+		//관리자숙소정보수정페이지
+		map.put("/adminRoomInfoModifyPage.do", new AdminModifyRoomInfoControl());
+		
+	
 		
 		// 신지은
 		

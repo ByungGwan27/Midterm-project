@@ -133,8 +133,9 @@
 			<c:forEach var="roomList" items="${roomList}">
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
 					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img
-							src="cssMainpage/images/hero-slider-1.jpg" alt="Image"
+						<a href="#" class="d-block mb-3">
+						<img
+							src="images/${roomList.image}" alt="Image"
 							class="img-fluid"></a>
 						<div class="d-flex align-items-center">
 							<div id="roomList">

@@ -8,12 +8,13 @@ import jayk.hotelinfo.domain.HotelInfoVO;
 import jayk.hotelinfo.mapper.HotelInfoMapper;
 import main.common.control.DataSource;
 
-public class HotelInfoServiceImpl implements HotelInfoService{
+public class HotelInfoServiceImpl implements HotelInfoService {
 	SqlSession session = DataSource.getInstance().openSession(true);
 	HotelInfoMapper mapper = session.getMapper(HotelInfoMapper.class);
-	
+
 	@Override
 	public List<HotelInfoVO> hotelList() {
+		//mapper.hotelListLoca(hotelLocation1);
 		return mapper.hotelList();
 	}
 
@@ -58,9 +59,56 @@ public class HotelInfoServiceImpl implements HotelInfoService{
 	}
 
 	@Override
-	public List<HotelInfoVO> similarList(int hotelId) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean modifyAdminHotelRoom(HotelInfoVO vo) {
+		return mapper.updateAdminHotelRoom(vo) == 1;
 	}
+
+	@Override
+	public HotelInfoVO getAdminHotelRoom(int hotelId, int roomId) {
+		return mapper.selectAdminHotelRoom(hotelId, roomId);
+	}
+
+	@Override
+	public boolean addAdminRoom(HotelInfoVO vo) {
+		int cnt = 0, cnt1 = 0, cnt2 = 0;
+		cnt = mapper.insertAdminRoom(vo);
+		cnt1 = mapper.insertAdminRoomImage(vo);
+		cnt2 = mapper.insertAdminRoomDetail(vo);
+		if (cnt > 0 && cnt1 > 0 && cnt2 > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean addAdminRoomImage(HotelInfoVO vo) {
+		return false;
+	}
+
+	@Override
+	public boolean addAdminRoomDetail(HotelInfoVO vo) {
+		return false;
+	}
+
+	@Override
+	public List<HotelInfoVO> hotelListLoca(String hotelLocation1) {
+		return mapper.hotelListLoca(hotelLocation1);
+	}
+
+	@Override
+	public List<HotelInfoVO> hotelListThema(String hotelThema) {
+		return mapper.hotelListThema(hotelThema);
+	}
+
+	@Override
+	public List<HotelInfoVO> navListLoca() {
+		return mapper.navListLoca();
+	}
+
+	@Override
+	public List<HotelInfoVO> navListThema() {
+		return mapper.navListThema();
+	}
+
 
 }
