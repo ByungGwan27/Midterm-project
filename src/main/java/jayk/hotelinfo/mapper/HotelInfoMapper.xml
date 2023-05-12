@@ -3,13 +3,28 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jayk.hotelinfo.mapper.HotelInfoMapper">
+
 	<select id="navListLoca">
-		 select distinct hotel_location1 from hotel
+		select distinct hotel_location1 from hotel
 	</select>
 	<select id="navListThema">
-			select distinct hotel_thema from hotel where hotel_thema is not null
+		select distinct hotel_thema from hotel where hotel_thema is not null
 	</select>
-	
+
+	<select id="hotelListPage" resultType="notice">
+		<![CDATA[
+		select b.*
+		from(select rownum rn, a.*
+		from (select * from hotel) a
+		where rownum <=#{page} * 20) b
+		where b.rn > (#{page}-1) * 10
+		]]>
+	</select>
+
+	<select id="getCount" resultType="int">
+		select count(*) from hotel
+	</select>
+
 	<select id="hotelList">
 		SELECT h.hotel_id as hotelId, h.hotel_name,
 		h.hotel_thema,
@@ -31,30 +46,34 @@
 		h.hotel_location2, h.hotel_point,
 		h.hotel_image
 	</select>
-	
+
 	<select id="hotelListLoca">
-				SELECT h.hotel_id as hotelId, h.hotel_name,
+		SELECT h.hotel_id as hotelId, h.hotel_name,
 		h.hotel_thema,
-		h.hotel_location1, h.hotel_location2, h.hotel_image,
+		h.hotel_location1,
+		h.hotel_location2, h.hotel_image,
 		MIN(i.room_price) AS room_price,
 		NVL(COUNT(r.review_point), 0) AS
 		rcount,
-		NVL(ROUND(AVG(r.review_point), 1), 0) AS avgpoint,
-		NVL((ROUND(AVG(r.review_point), 1)*2 *10),0) as avgstar
+		NVL(ROUND(AVG(r.review_point),
+		1), 0) AS avgpoint,
+		NVL((ROUND(AVG(r.review_point), 1)*2 *10),0) as
+		avgstar
 		FROM hotel h
 		full outer JOIN room_info i ON
-		h.hotel_id = i.hotel_id
+		h.hotel_id =
+		i.hotel_id
 		full outer JOIN
 		review r ON h.hotel_id =
 		r.hotel_id
-        where hotel_location1 = #{hotelLocation1}
+		where hotel_location1 = #{hotelLocation1}
 		GROUP BY h.hotel_id, h.hotel_name,
 		h.hotel_thema,
 		h.hotel_location1,
 		h.hotel_location2, h.hotel_point,
 		h.hotel_image
 	</select>
-	
+
 	<select id="hotelListThema">
 		SELECT h.hotel_id as hotelId, h.hotel_name,
 		h.hotel_thema,
@@ -70,12 +89,72 @@
 		full outer JOIN
 		review r ON h.hotel_id =
 		r.hotel_id
-        where hotel_thema = #{hotelThema} 
+		where hotel_thema = #{hotelThema}
 		GROUP BY h.hotel_id, h.hotel_name,
 		h.hotel_thema,
 		h.hotel_location1,
 		h.hotel_location2, h.hotel_point,
 		h.hotel_image
+	</select>
+
+	<select id="hotelListNum">
+		SELECT h.hotel_id as hotelId, h.hotel_name,
+		h.hotel_thema,
+		h.hotel_location1,
+		h.hotel_location2, h.hotel_image,
+		i.room_max, i.room_min,
+		MIN(i.room_price) AS room_price,
+		NVL(COUNT(r.review_point), 0) AS
+		rcount,
+		NVL(ROUND(AVG(r.review_point),
+		1), 0) AS avgpoint,
+		NVL((ROUND(AVG(r.review_point), 1)*2 *10),0) as
+		avgstar
+		FROM hotel h
+		full outer JOIN room_info i ON
+		h.hotel_id =
+		i.hotel_id
+		full outer JOIN
+		review r ON h.hotel_id =
+		r.hotel_id
+		where i.room_max between #{roomMax}-2 and #{roomMax}+2 and i.room_min
+		between #{roomMin}-1 and #{roomMin}+2
+		GROUP BY h.hotel_id,
+		h.hotel_name,
+		h.hotel_thema,
+		h.hotel_location1,
+		h.hotel_location2,
+		h.hotel_point,
+		h.hotel_image, i.room_max, i.room_min
+	</select>
+
+	<select id="hotelListPrice">
+		SELECT h.hotel_id as hotelId, h.hotel_name,
+		h.hotel_thema,
+		h.hotel_location1,
+		h.hotel_location2, h.hotel_image,
+		i.room_max, i.room_min,
+		MIN(i.room_price) AS room_price,
+		NVL(COUNT(r.review_point), 0) AS
+		rcount,
+		NVL(ROUND(AVG(r.review_point),
+		1), 0) AS avgpoint,
+		NVL((ROUND(AVG(r.review_point), 1)*2 *10),0) as
+		avgstar
+		FROM hotel h
+		full outer JOIN room_info i ON
+		h.hotel_id =
+		i.hotel_id
+		full outer JOIN
+		review r ON h.hotel_id =
+		r.hotel_id
+		where i.room_price between #{roomPrice}-30000 and #{roomPrice}+50000
+		GROUP
+		BY h.hotel_id, h.hotel_name,
+		h.hotel_thema,
+		h.hotel_location1,
+		h.hotel_location2, h.hotel_point,
+		h.hotel_image, i.room_max, i.room_min
 	</select>
 
 	<select id="selectHotel" parameterType="Map">
@@ -144,8 +223,10 @@
 	<select id="selectAdminHotelRoom">
 		SELECT *
 		from room_info i
-		full outer join room_image m on i.room_id = m.room_id
-		where i.hotel_id=#{hotelId} and i.room_id=#{roomId}
+		full outer join room_image m
+		on i.room_id = m.room_id
+		where i.hotel_id=#{hotelId} and
+		i.room_id=#{roomId}
 	</select>
 
 	<update id="updateAdminHotel">
@@ -155,12 +236,12 @@
 	</update>
 
 	<update id="updateAdminHotelRoom">
-			update room_info
-			set room_name=#{roomName}, room_expain=#{roomExpain},
-			room_grade=#{roomGrade}, room_price=#{roomPrice},
-			room_max=#{roomMax},	
-			room_min=#{roomMin}, add_price=#{addPrice}
-			where hotel_id=#{hotelId} and room_id=#{roomId}
+		update room_info
+		set room_name=#{roomName}, room_expain=#{roomExpain},
+		room_grade=#{roomGrade}, room_price=#{roomPrice},
+		room_max=#{roomMax},
+		room_min=#{roomMin}, add_price=#{addPrice}
+		where hotel_id=#{hotelId} and room_id=#{roomId}
 	</update>
 
 
@@ -168,21 +249,29 @@
 		insert into hotel (hotel_id, hotel_name,
 		hotel_location1, hotel_location2, hotel_image,location_detail)
 		values(#{hotelId}, #{hotelName}, #{hotelLocation1},
-		#{hotelLocation2}, #{hotelImage}, #{locationDetail})
+		#{hotelLocation2},
+		#{hotelImage}, #{locationDetail})
 	</insert>
-	
+
 	<insert id="insertAdminRoom" parameterType="hi">
-		insert into room_info (hotel_id, room_id, room_name, room_price, room_max, room_min, add_price)
-		values (#{hotelId}, #{roomId}, #{roomName}, #{roomPrice},#{roomMax},#{roomMin}, #{addPrice})
+		insert into room_info
+		(hotel_id, room_id, room_name, room_price, room_max, room_min,
+		add_price)
+		values (#{hotelId}, #{roomId}, #{roomName},
+		#{roomPrice},#{roomMax},#{roomMin}, #{addPrice})
 	</insert>
-	
-	<insert id = "insertAdminRoomImage" parameterType="hi">
-		insert into room_image values (#{imageId}, #{roomId}, #{image}, #{hotelId})
+
+	<insert id="insertAdminRoomImage" parameterType="hi">
+		insert into
+		room_image values (#{imageId}, #{roomId}, #{image}, #{hotelId})
 	</insert>
-	
+
 	<insert id="insertAdminRoomDetail" parameterType="hi">
-		insert into room_detail values(#{roomId}, #{parking}, #{wifi}, #{pet}, #{pool}, #{hotelId}, #{singleRoom}, #{twinRoom}, #{doubleRoom}, #{tripleRoom}, #{breakfast})
+		insert into
+		room_detail values(#{roomId}, #{parking}, #{wifi}, #{pet}, #{pool},
+		#{hotelId}, #{singleRoom}, #{twinRoom}, #{doubleRoom}, #{tripleRoom},
+		#{breakfast})
 	</insert>
-	
-	
+
+
 </mapper>

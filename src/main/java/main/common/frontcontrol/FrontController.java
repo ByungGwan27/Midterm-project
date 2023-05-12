@@ -73,6 +73,7 @@ import main.common.wook.admin.control.allMemberListControl;
 import main.common.wook.admin.control.memberChartDataControl;
 import main.common.wook.admin.control.payChartDataControl;
 import main.common.wook.admin.control.payCountChartDataControl;
+import main.common.wook.pay.control.mainHotelInfoControl;
 import main.common.wook.pay.control.payPageFormcontrol;
 import main.common.wook.pay.control.successPayControl;
 import shin.admin.control.AdminPayListControl;
@@ -159,6 +160,8 @@ public class FrontController extends HttpServlet{
 		//결제 완료 시 테이블에 데이터 입력
 		map.put("/successPay.do", new successPayControl());
 		
+		//메인페이지에서 숙소 페이지 검색이동
+		 map.put("/mainHotelInfo.do", new mainHotelInfoControl());
 		
 		// 김자영
 		//숙소리스트
