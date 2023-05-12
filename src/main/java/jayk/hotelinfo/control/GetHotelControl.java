@@ -22,12 +22,12 @@ public class GetHotelControl implements Control {
 		HotelInfoService service = new HotelInfoServiceImpl();
 		HotelInfoVO hotelInfo = service.getHotelInfo(Integer.parseInt(hotelId), hotelLocation1);
 		req.setAttribute("hotelInfo", hotelInfo);
-		System.out.println(hotelInfo);
+		//System.out.println(hotelInfo);
 		
 		//상세객실리스트
 		List<HotelInfoVO> roomList = service.roomList(Integer.parseInt(hotelId));
 		req.setAttribute("roomList", roomList);
-		//System.out.println(roomList);
+		//System.out.println("roomList : " + roomList);
 		
 		//리뷰리스트
 		List<HotelInfoVO> reviewList = service.reviewList(Integer.parseInt(hotelId));

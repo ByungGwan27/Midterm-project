@@ -18,16 +18,19 @@ public class AdminGetHotelControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String hotelId = req.getParameter("hotelId");
 		HotelInfoService service = new HotelInfoServiceImpl();
-	
-			HotelInfoVO adminHotelInfo = service.getAdminHotel(Integer.parseInt(hotelId));
-			System.out.println(adminHotelInfo);
-			req.setAttribute("adminHotelInfo", adminHotelInfo);
-			
-			List<HotelInfoVO> adminRoomList = service.roomList(Integer.parseInt(hotelId));
-			req.setAttribute("adminRoomList", adminRoomList);
 
-			
-			return "adminpage/adminGetHotelInfo.tiles";
+		// 숙소개별정보
+		HotelInfoVO adminHotelInfo = service.getAdminHotel(Integer.parseInt(hotelId));
+		req.setAttribute("adminHotelInfo", adminHotelInfo);
+		// System.out.println(adminHotelInfo);
+
+		// 상세객실리스트
+		List<HotelInfoVO> adminRoomList = service.roomList(Integer.parseInt(hotelId));
+		req.setAttribute("adminRoomList", adminRoomList);
+		//System.out.println("adminRoomList : " + adminRoomList);
+		
+
+		return "adminpage/adminGetHotelInfo.tiles";
 	}
 
 }

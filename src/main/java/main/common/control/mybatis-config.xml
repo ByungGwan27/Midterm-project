@@ -30,6 +30,9 @@
 		<typeAlias alias="mp" type="gwan.mypage.domain.MyPageVO" />
 		<typeAlias alias="lp" type="gwan.loginpage.domain.LoginPageVO" />
 		
+		<!-- jayk/HotelInfo -->
+		<typeAlias alias="hi" type="jayk.hotelinfo.domain.HotelInfoVO" />
+		
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
