@@ -25,10 +25,12 @@ import gwan.mypage.ajax.control.MyPageWishAjaxControl;
 import gwan.mypage.ajax.control.MyPageWishAjaxDeleteControl;
 import gwan.mypage.control.AdminMessagePageControl;
 import gwan.mypage.control.MyPageCouponControl;
+import gwan.mypage.control.MyPageHomeDelWillVisitControl;
 import gwan.mypage.control.MyPageHomeWillVisitControl;
 import gwan.mypage.control.MyPageMessageControl;
 import gwan.mypage.control.MyPageQnaControl;
 import gwan.mypage.control.MyPageQnaQControl;
+import gwan.mypage.control.MyPageQnaQCreateCkeditorControl;
 import gwan.mypage.control.MyPageQnaQCreateControl;
 import gwan.mypage.control.MyPageUserInfoChangeControl;
 import gwan.mypage.control.MyPageUserInfoChangeInputControl;
@@ -185,6 +187,7 @@ public class FrontController extends HttpServlet{
 		map.put("/myPageHome.do", new MypageHomeControl());
 		//마이페이지 - Json 처리
 		map.put("/myPageHomeWillVisit.do", new MyPageHomeWillVisitControl());
+		map.put("/myPageHomeDelWillVisit.do", new MyPageHomeDelWillVisitControl());
 		
 		//마이페이지(위시리스트)
 		map.put("/myPageWishList.do", new MyPageWishListControl());
@@ -194,6 +197,7 @@ public class FrontController extends HttpServlet{
 		
 		//마이페이지(쿠폰)
 		map.put("/myPageCoupon.do", new MyPageCouponControl());
+		
 		//마이페이지(메세지)
 		map.put("/myPageMessage.do", new MyPageMessageControl());
 		
@@ -209,6 +213,7 @@ public class FrontController extends HttpServlet{
 		//Q&A(질문 작성)
 		map.put("/myPageQnaQ.do", new MyPageQnaQControl());
 		map.put("/myPageQnaQCreate.do", new MyPageQnaQCreateControl());
+		map.put("/myPageQnaQCreateCkeditor.do", new MyPageQnaQCreateCkeditorControl());
 		
 		// 로그인 페이지 관련
 		//로그인페이지(이동)

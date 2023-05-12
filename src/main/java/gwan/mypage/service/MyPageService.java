@@ -7,7 +7,10 @@ import gwan.mypage.domain.MyPageVO;
 
 public interface MyPageService {
 	
-	public List<MyPageVO> willVisit(String memberId);
+	public List<MyPageVO> willVisit(String memberId, int page);
+	public boolean deleteWillVisit(int reservationId);
+	public int readWillvisitPageCount(String memberId);
+	
 	public List<MyPageVO> visiting(String memberId);
 	public List<MyPageVO> visited(String memberId);
 	
@@ -26,6 +29,14 @@ public interface MyPageService {
 	public boolean updateMemberInfo(LoginPageVO vo);
 	
 	//Q&A
+	// 자주묻는 질문
+	public List<MyPageVO> readQnaBest();
+	// 자신 qna 가져오기
+	public List<MyPageVO> readQnaSelf(String memberId);
 	// Q&A작성
 	public boolean createQnaQ(MyPageVO vo);
+	
+	//메세지
+	// 프로필 조회
+	public List<MyPageVO> readProfile(MyPageVO vo);
 }

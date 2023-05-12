@@ -7,36 +7,57 @@
 	<!-- 예약내역 -->
 	<!-- 방문 예정 -->
 	<select id="willVisit" resultType="mp">
-		SELECT h.hotel_name, h.hotel_location1, h.hotel_location2, r.checkin_date, r.checkout_date, h.hotel_phone, i.room_name
-		FROM reservation r JOIN hotel h
-		ON (h.hotel_id = r.hotel_id)
-		JOIN room_info i
-		ON (r.room_id = i.room_id)
-		WHERE r.member_id = 'nari123'
-		    AND TO_CHAR(SYSDATE) <![CDATA[<]]> TO_CHAR(r.checkout_date)
-		    AND TO_CHAR(SYSDATE) <![CDATA[<]]> TO_CHAR(r.checkin_date)
+	<![CDATA[
+		SELECT b.hotel_name, b.location_detail, b.checkin_date, b.checkout_date, b.hotel_phone, b.room_name, b.reservation_id
+		FROM (SELECT rownum rn, a.*
+		      FROM (SELECT *
+		            FROM reservation r JOIN hotel h
+		            ON (h.hotel_id = r.hotel_id)
+		            JOIN room_info i
+		            ON (r.room_id = i.room_id)
+		            WHERE r.member_id = #{memberId}
+		            AND TO_CHAR(SYSDATE) < TO_CHAR(r.checkout_date)
+		            AND TO_CHAR(SYSDATE) < TO_CHAR(r.checkin_date)
+		            ORDER BY 1 DESC) a
+		       WHERE rownum <= #{page} * 5) b
+		WHERE b.rn > (#{page} - 1) * 5
+		ORDER BY checkin_date
+	]]>
+	</select>
+	
+	<!-- 방문 예정 예약 취소 -->
+	<delete id="deleteWillVisit" parameterType="int">
+		DELETE FROM reservation WHERE reservation_id = #{reservationId}
+	</delete>
+	
+	<!-- 방문 예정 건수 조회 -->
+	<select id="readWillvisitPageCount" resultType="int">
+		SELECT count(*) FROM reservation
+		WHERE member_id = #{memberId}
+		AND TO_CHAR(SYSDATE) <![CDATA[<]]> TO_CHAR(checkout_date)
+		AND TO_CHAR(SYSDATE) <![CDATA[<]]> TO_CHAR(checkin_date)
 	</select>
 	
 	<!-- 방문 중 -->
 	<select id="visiting" resultType="mp">
-		SELECT h.hotel_name, h.hotel_location1, h.hotel_location2, r.checkin_date, r.checkout_date, h.hotel_phone, i.room_name
+		SELECT h.hotel_name, h.location_detail, r.checkin_date, r.checkout_date, h.hotel_phone, i.room_name
 		FROM reservation r JOIN hotel h
 		ON (h.hotel_id = r.hotel_id)
 		JOIN room_info i
 		ON (r.room_id = i.room_id)
-		WHERE r.member_id = 'nari123'
+		WHERE r.member_id = #{memberId}
 		    AND TO_CHAR(SYSDATE) <![CDATA[<=]]> TO_CHAR(r.checkout_date-1)
 		    AND TO_CHAR(SYSDATE) <![CDATA[>=]]> TO_CHAR(r.checkin_date)
 	</select>
 
 	<!-- 방문 완료 -->
 	<select id="visited" resultType="mp">
-		SELECT h.hotel_name, h.hotel_location1, h.hotel_location2, r.checkin_date, r.checkout_date, h.hotel_phone, i.room_name
+		SELECT h.hotel_name, h.location_detail, r.checkin_date, r.checkout_date, h.hotel_phone, i.room_name
 		FROM reservation r JOIN hotel h
 		ON (h.hotel_id = r.hotel_id)
 		JOIN room_info i
 		ON (r.room_id = i.room_id)
-		WHERE r.member_id = 'nari123'
+		WHERE r.member_id = #{memberId}
 		    AND TO_CHAR(SYSDATE) <![CDATA[>]]> TO_CHAR(r.checkout_date)
 	</select>
 	
@@ -105,10 +126,42 @@
 	</update>
 	
 	<!-- Q&A -->
+	<!-- 자주묻는 질문 -->
+	<select id="readQnaBest" resultType="mp">
+	SELECT qna_title, qna_content, answer_content, qna_type, answer_check
+	FROM qna WHERE answer_check = '답변완료'
+	AND qna_type = (SELECT qna_type
+    	            FROM (
+                        SELECT qna_type, COUNT(*) AS type_count,
+                        RANK() OVER (ORDER BY COUNT(*) DESC) AS rank
+                        FROM qna
+                        GROUP BY qna_type) subquery
+                        WHERE rank = 1)
+	</select>
+	<!-- 자기 질문 -->
+	<select id="readQnaSelf" resultType="mp">
+		SELECT qna_title, qna_content, answer_content, qna_type, qna_date, answer_date, answer_check
+		FROM qna 
+		WHERE member_id = #{memberId}
+		ORDER BY qna_id DESC
+	</select>
+	
 	<insert id="createQnaQ" parameterType="mp">
 		INSERT INTO qna(qna_id, member_id, qna_title, qna_content, qna_type)
 		VALUES ((SELECT NVL(MAX(qna_id), 0) + 1 FROM qna), #{memberId}, #{qnaTitle}, #{qnaContent}, #{qnaType})
 	</insert>
+	
+	<!-- 프로필 조회 -->
+	<select id="readProfile" resultType="mp">
+		SELECT u.member_nickname, u.member_profile, m.message_id, m.message_content, m.message_img, m.message_date, m.message_check, m.message_delete
+		FROM (
+		  SELECT * FROM message
+		  WHERE member_id = #{memberId}
+		  ORDER BY message_id DESC
+		) m
+		JOIN member u ON (u.member_id = m.member_id)
+		WHERE ROWNUM = 1
+	</select>
 	
 	
 </mapper>

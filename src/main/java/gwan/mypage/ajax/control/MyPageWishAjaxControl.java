@@ -23,18 +23,15 @@ public class MyPageWishAjaxControl implements Control {
 		String id = (String) session.getAttribute("id");
 		// 가져온 값 쿼리문에 넣음
 		MyPageService service = new MyPageServiceImpl();
-		System.out.println(req.getParameter("page"));
+		//System.out.println(req.getParameter("page"));
 		//페이징 작업
 		String pageStr = req.getParameter("page");
-		System.out.println("s"+pageStr);
 		pageStr = pageStr == null ? "1" : pageStr;
 		int page = Integer.parseInt(pageStr);
 		
 		//리스트 출력
 		
-		System.out.println("a페이지"+page);
 		List<MyPageVO> list = service.readWishList(id, page);
-		System.out.println("a리스트"+list);
 		
 		String json="[";
 		for (int i=0; i<list.size();i++) {
