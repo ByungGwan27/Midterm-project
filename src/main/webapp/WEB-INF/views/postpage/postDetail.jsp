@@ -4,7 +4,7 @@
 
 <!DOCTYPE html>
 
-<c:forEach var="post" items="${postList}">
+<c:forEach var="postList" items="${postList}" begin="1" end="1">
 <section class="py-5">
 <div class="container px-5 my-5">
 	<div class="row gx-5">
@@ -13,20 +13,19 @@
 				<img class="img-fluid rounded-circle"
 					src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
 				<div class="ms-3">
-					<div class="fw-bold">${post.memberName}</div>
+					<div class="fw-bold">${postList.memberName}</div>
 			<div class="text-muted">News, Business</div>
 		</div>
 	</div>
 </div>
 			<div class="col-lg-9">
 				<!-- Post content-->
-<article>
 	<!-- Post header-->
 <header class="mb-4">
 	<!-- Post title-->
-	<h1 class="fw-bolder mb-1">${post.postTitle}</h1>
+	<h1 class="fw-bolder mb-1">${postList.postTitle}</h1>
 	<!-- Post meta content-->
-	<div class="text-muted fst-italic mb-2">${post.writeDate}</div>
+	<div class="text-muted fst-italic mb-2">${postList.writeDate}</div>
 
 </header>
 <!-- Preview image figure-->
@@ -36,10 +35,9 @@
 </figure>
 <!-- Post content-->
 <section class="mb-5">
-	<p class="fs-5 mb-4">${post.postContent}</p>
+	<p class="fs-5 mb-4">${postList.postContent}</p>
 
 	</section>
-</article>
 <!-- Comments section-->
 
 <!-- 댓글정보. -->

@@ -29,13 +29,12 @@ public class PostListControl implements Control {
 		
 		PostService service = new PostServiceImpl();
 		//int total = service.totalCount();
-		List<PostVO> list = service.postList(); 
-	
+		//인플루언서
+		List<PostVO> postmember = service.postmember();
+		//포스트 게시물 리스트
+		List<PostVO> postmain = service.postmain();
+		System.out.println("test"+ postmain);
 		
-		AdminService service2 = new AdminServiceImpl();
-		List<MemberVO> memberList = service2.allMemberInfo();
-		
-		req.setAttribute("allMemberInfo", memberList);
 		//System.out.println(page);
 		//PageDTO dto = new PageDTO(page, total);
 		
@@ -46,10 +45,9 @@ public class PostListControl implements Control {
 		//req.setAttribute("post", post);
 
 		//req.setAttribute("pageInfo", dto);
-		req.setAttribute("memberList", memberList);
-		req.setAttribute("list", list);
-		System.out.println(list);
-		System.out.println(memberList);
+		req.setAttribute("postmember", postmember);
+		req.setAttribute("postmain", postmain);
+	
 		
 		return "postpage/postList.tiles";
 	}

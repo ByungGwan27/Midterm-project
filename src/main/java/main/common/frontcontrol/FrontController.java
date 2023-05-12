@@ -75,6 +75,7 @@ import shin.notice.control.NoticeListControl;
 import shin.notice.control.NoticeModifyControl;
 import shin.post.control.PostDetailControl;
 import shin.post.control.PostListControl;
+import shin.post.control.PostMemberDetailControl;
 
 public class FrontController extends HttpServlet{
 	private Map<String, Control> map;
@@ -166,6 +167,8 @@ public class FrontController extends HttpServlet{
 		map.put("/postList.do", new PostListControl());
 		//여행 포스트 상세페이지
 		map.put("/postDetail.do", new PostDetailControl());
+		//인플루언서 선택 시 상세페이지
+		map.put("/postMemberDetail.do", new PostMemberDetailControl());
 		//공지사항 추가 페이지
 		map.put("/addNotice.do", new AddNoticeControl());
 		//공지사항 작성페이지

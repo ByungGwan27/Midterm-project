@@ -85,7 +85,7 @@
 				</tr>
 
 				<tr>
-					<td colspan="4" align="center"><input type="submit" value="수정">
+					<td colspan="4" align="center"><a href="noticeModify.do"><input type="submit" value="수정"></a>
 						<input type="reset" value="취소"></td>
 				</tr>
 			</table>
@@ -116,7 +116,7 @@
 							<td><c:out value="${no=no+1 }"></c:out></td>
 							<!-- <td><a href="getNotice.do?page=${pageInfo.pageNum}&nid=${notice.noticeId }">${notice.noticeId }</a></td> -->
 							<td><a
-								href="noticeDetail.do?page=${pageInfo.pageNum}&noticeId=${noticeList.noticeId }">${noticeList.noticeId
+								href="noticeDetail.do?page=${pageInfo.pageNum}&noticeId=${noticeList.noticeTitle }">${noticeList.noticeTitle
 									}</a></td>
 							<td>${noticeList.memberId }</td>
 							<td>${noticeList.writeDate }</td>

@@ -3,205 +3,213 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <style>
-  * {
-    box-sizing: border-box
-  }
+* {
+	box-sizing: border-box
+}
 
-  /* Slideshow container */
-  .slideshow-container {
-    max-width: 1000px;
-    position: relative;
-    margin: auto;
-  }
+/* Slideshow container */
+.slideshow-container {
+	max-width: 1000px;
+	position: relative;
+	margin: auto;
+}
 
-  /* video container */
-  .call-to-action .container {
-    border-radius: 20px;
-    overflow: hidden;
-  }
+/* video container */
+.call-to-action .container {
+	border-radius: 20px;
+	overflow: hidden;
+}
 
+/* Hide the images by default */
+.mySlides {
+	display: none;
+}
 
-  /* Hide the images by default */
-  .mySlides {
-    display: none;
-  }
+/* Next & previous buttons */
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	margin-top: -22px;
+	padding: 16px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+}
 
-  /* Next & previous buttons */
-  .prev,
-  .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-  }
+/* Position the "next button" to the right */
+.next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
 
-  /* Position the "next button" to the right */
-  .next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-  }
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+	background-color: rgba(0, 0, 0, 0.8);
+}
 
-  /* On hover, add a black background color with a little bit see-through */
-  .prev:hover,
-  .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
+/* Caption text */
+.text {
+	color: #f2f2f2;
+	font-size: 15px;
+	padding: 8px 12px;
+	position: absolute;
+	bottom: 8px;
+	width: 100%;
+	text-align: center;
+}
 
-  /* Caption text */
-  .text {
-    color: #f2f2f2;
-    font-size: 15px;
-    padding: 8px 12px;
-    position: absolute;
-    bottom: 8px;
-    width: 100%;
-    text-align: center;
-  }
+/* Number text (1/3 etc) */
+.numbertext {
+	color: #f2f2f2;
+	font-size: 12px;
+	padding: 8px 12px;
+	position: absolute;
+	top: 0;
+}
 
-  /* Number text (1/3 etc) */
-  .numbertext {
-    color: #f2f2f2;
-    font-size: 12px;
-    padding: 8px 12px;
-    position: absolute;
-    top: 0;
-  }
+/* The dots/bullets/indicators */
+.dot {
+	cursor: pointer;
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
 
-  /* The dots/bullets/indicators */
-  .dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-  }
+.active, .dot:hover {
+	background-color: #717171;
+}
 
-  .active,
-  .dot:hover {
-    background-color: #717171;
-  }
+/* Fading animation */
+.fade {
+	animation-name: fade;
+	animation-duration: 1.5s;
+}
 
-  /* Fading animation */
-  .fade {
-    animation-name: fade;
-    animation-duration: 1.5s;
-  }
+@keyframes
+fade {from { opacity:.4
+	
+}
 
-  @keyframes fade {
-    from {
-      opacity: .4
-    }
+to {
+	opacity: 1
+}
 
-    to {
-      opacity: 1
-    }
-
-  }
-  
-  .outer {
-  text-align: center;
+}
+.outer {
+	text-align: center;
 }
 
 .inner {
-  display: inline-block;
+	display: inline-block;
 }
-  
-  
 </style>
 
 <!DOCTYPE html>
 
 <header class="py-5">
-  <div class="container px-5">
-    <div class="row justify-content-center">
-      <div class="col-lg-8 col-xxl-6">
-        <div class="text-center my-5">
-          <h1 class="fw-bolder mb-3">여행 포스트 페이지입니다.</h1>
-          <p class="lead fw-normal text-muted mb-4">놀러가고 싶죠? 저두요</p>
-          <a class="btn btn-primary btn-lg" href="#scroll-target">Read
-            our story</a>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="container px-5">
+		<div class="row justify-content-center">
+			<div class="col-lg-8 col-xxl-6">
+				<div class="text-center my-5">
+					<h1 class="fw-bolder mb-3">여행 포스트 페이지입니다.</h1>
+					<p class="lead fw-normal text-muted mb-4">놀러가고 싶죠? 저두요</p>
+					<a class="btn btn-primary btn-lg" href="#scroll-target">Read
+						our story</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </header>
 
 <!--여행 포스터 영상-->
 
 <!-- ======= Call To Action Section ======= -->
 <section id="call-to-action" class="call-to-action">
-  <div class="container text-center" data-aos="zoom-out">
-    <video id="vid" width="1258" height="900" autoplay="autoplay" loop="loop" muted="muted" controls>
-      <source src="cssPostList/video/-70796 (1).mp4" type="video/mp4">
-    </video>
-  </div>
-  <script>
-    document.getElementById('vid').play();
-  </script>
-</section><!-- End Call To Action Section -->
+	<div class="container text-center" data-aos="zoom-out">
+		<video id="vid" width="1258" height="900" autoplay="autoplay"
+			loop="loop" muted="muted" controls>
+			<source src="cssPostList/video/-70796 (1).mp4" type="video/mp4">
+		</video>
+	</div>
+	<script>
+		document.getElementById('vid').play();
+	</script>
+</section>
+<!-- End Call To Action Section -->
 
 <!-- 파워 블로거 슬라이드 -->
 
-<link href="cssPostList/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link href="cssPostList/assets/img/apple-touch-icon.png"
+	rel="apple-touch-icon">
 
 <!-- Vendor CSS Files -->
 <link href="cssPostList/assets2/vendor/aos/aos.css" rel="stylesheet">
-<link href="cssPostList/assets2/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-<link href="cssPostList/assets2/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-<link href="cssPostList/assets2/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="cssPostList/assets2/vendor/boxicons/css/boxicons.min.css"
+	rel="stylesheet">
+<link href="cssPostList/assets2/vendor/glightbox/css/glightbox.min.css"
+	rel="stylesheet">
+<link href="cssPostList/assets2/vendor/swiper/swiper-bundle.min.css"
+	rel="stylesheet">
 
 <!-- Template Main CSS File -->
 <link href="cssPostList/assets2/css/style.css" rel="stylesheet">
-<link href="cssPostList/assets2/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-<link href="cssPostList/assets2/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="cssPostList/assets2/vendor/glightbox/css/glightbox.min.css"
+	rel="stylesheet">
+<link href="cssPostList/assets2/vendor/swiper/swiper-bundle.min.css"
+	rel="stylesheet">
 
 
-<c:forEach var="post" items="${list}">
 
-       <div class="container px-5 my-5">
-      <div class="text-center">
-        <h2 class="fw-bolder"></h2>
-        <p class="lead fw-normal text-muted mb-5">✨✨여행 파워 블로거✨✨</p>
-      </div>
-      </div>
-      
-      
-  <section id="testimonials" class="testimonials section-bg">
-    <div class="container" data-aos="fade-up">
+<div class="container px-5 my-5">
+	<div class="text-center">
+		<h2 class="fw-bolder"></h2>
+		<p class="lead fw-normal text-muted mb-5">✨✨여행 파워 블로거✨✨</p>
+	</div>
+</div>
 
 
-      <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+<section id="testimonials" class="testimonials section-bg">
+	<div class="container" data-aos="fade-up">
 
-        <div class="swiper-wrapper">
 
-          <div class="swiper-slide"><a class="glightbox" href="postDetail.do?memberId=${post.memberId}"></a>
-            <div class="testimonial-item">
-              <img src="cssPostList/images/${post.postImages}" class="testimonial-img" alt="">
-              <h3>Saul Goodman</h3>
+		<div class="testimonials-slider swiper" data-aos="fade-up"
+			data-aos-delay="100">
 
-              <h4>Ceo &amp; Founder</h4>
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium
-                quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
+			<div class="swiper-wrapper">
 
-            </div>
-          </div><!-- End testimonial item -->
+				<c:forEach var="postmain" items="${postmain}" begin="1" end="4">
+					<div class="swiper-slide">
+						<a class="glightbox"
+							href="postDetail.do?postId=${postmain.postId}"></a>
+						<div class="testimonial-item">
+							<a href="postDetail.do?postId=${postmain.postId }">${postmain.postImages}</a>
+							<img src="cssPostList/images/${postmain.postImages}"
+								class="testimonial-img" alt="">
+							<h3>Saul Goodman</h3>
 
-          <div class="swiper-slide">
+							<h4>Ceo &amp; Founder</h4>
+							<p>
+								<i class="bx bxs-quote-alt-left quote-icon-left"></i> Proin
+								iaculis purus consequat sem cure digni ssim donec porttitora
+								entum suscipit rhoncus. Accusantium quam, ultricies eget id,
+								aliquam eget nibh et. Maecen aliquam, risus at semper. <i
+									class="bx bxs-quote-alt-right quote-icon-right"></i>
+							</p>
+
+						</div>
+					</div>
+					<!-- End testimonial item -->
+				</c:forEach>
+				<!-- <div class="swiper-slide">
             <div class="testimonial-item">
               <img src="cssPostList/assets2/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
               <h3>Sara Wilsson</h3>
@@ -213,7 +221,7 @@
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </p>
             </div>
-          </div><!-- End testimonial item -->
+          </div>End testimonial item
 
           <div class="swiper-slide">
             <div class="testimonial-item">
@@ -227,7 +235,7 @@
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </p>
             </div>
-          </div><!-- End testimonial item -->
+          </div>End testimonial item
 
           <div class="swiper-slide">
             <div class="testimonial-item">
@@ -241,7 +249,7 @@
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </p>
             </div>
-          </div><!-- End testimonial item -->
+          </div>End testimonial item
 
           <div class="swiper-slide">
             <div class="testimonial-item">
@@ -255,54 +263,57 @@
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </p>
             </div>
-          </div><!-- End testimonial item -->
+          </div>End testimonial item -->
 
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
 
-    </div>
+	</div>
 
-  </section><!-- End Testimonials Section -->
+</section>
+<!-- End Testimonials Section -->
 
-</c:forEach>
-  <!-- 첫번째 포스트-->
+<!-- 첫번째 포스트-->
 
 
-<c:forEach var="post" items="${list}">
-  <section class="py-5 bg-light" id="scroll-target">
-    <div class="container px-5 my-5">
-      <div class="row gx-5 align-items-center">
-        <div class="col-lg-6">
-          <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded mb-5 mb-lg-0"
-              src="cssPostList/images/${post.postImages}" alt="..." /></a>
-        </div>
-        <div class="col-lg-6">
-          <h2 class="fw-bolder">${post.postTitle}</h2>
-          <p class="lead fw-normal text-muted mb-0">${post.memberId}</p>
-          <p class="lead fw-normal text-muted mb-0">${post.postContent}</p>
 
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- 두번째 포스트 -->
-  <section class="py-5">
-    <div class="container px-5 my-5">
-      <div class="row gx-5 align-items-center">
-        <div class="col-lg-6 order-first order-lg-last">
-          <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded mb-5 mb-lg-0"
-              src="cssPostList/images/${post.postImages}" alt="..." /></a>
-        </div>
-        <div class="col-lg-6">
-          <h2 class="fw-bolder">${post.postTitle}</h2>
-          <p class="lead fw-normal text-muted mb-0">${post.memberId}</p>
-          <p class="lead fw-normal text-muted mb-0">${post.postContent}</p>
+<c:forEach var="postmain" items="${postmain}">
+	<section class="py-5 bg-light" id="scroll-target">
+		<div class="container px-5 my-5">
+			<div class="row gx-5 align-items-center">
+				<div class="col-lg-6">
+					<a href="postDetail.do?postId=${postmain.postId}"><img
+						class="img-fluid rounded mb-5 mb-lg-0"
+						src="cssPostList/images/${postmain.postImages}" alt="..." /></a>
+				</div>
+				<div class="col-lg-6">
+					<h2 class="fw-bolder">${postmain.postTitle}</h2>
+					<p class="lead fw-normal text-muted mb-0">${postmain.postId}</p>
+					<p class="lead fw-normal text-muted mb-0">${postmain.postContent}</p>
 
-        </div>
-      </div>
-    </div>
-  </section>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- 두번째 포스트 -->
+	<section class="py-5">
+		<div class="container px-5 my-5">
+			<div class="row gx-5 align-items-center">
+				<div class="col-lg-6 order-first order-lg-last">
+					<a href="postDetail.do?postId=${postmain.postId}"><img
+						class="img-fluid rounded mb-5 mb-lg-0"
+						src="cssPostList/images/${postmain.postImages}" alt="..." /></a>
+				</div>
+				<div class="col-lg-6">
+					<h2 class="fw-bolder">${postmain.postTitle}</h2>
+					<p class="lead fw-normal text-muted mb-0">${postmain.postId}</p>
+					<p class="lead fw-normal text-muted mb-0">${postmain.postContent}</p>
+
+				</div>
+			</div>
+		</div>
+	</section>
 </c:forEach>
 
 <!--  
@@ -325,89 +336,95 @@
 <!-- 파워 블로거 -->
 
 
-<c:forEach var="memberList" items="${memberList}">
-  <section class="py-5 bg-light">
-    <div class="container px-5 my-5">
-      <div class="text-center">
-        <h2 class="fw-bolder"></h2>
-        <p class="lead fw-normal text-muted mb-5">✨✨여행 파워 블로거✨✨</p>
-      </div>
+<section class="py-5 bg-light">
+	<div class="container px-5 my-5">
+		<div class="text-center">
+			<h2 class="fw-bolder"></h2>
+			<p class="lead fw-normal text-muted mb-5">✨✨여행 파워 블로거✨✨</p>
+		</div>
 
-      <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
-        <div class="col mb-5 mb-5 mb-xl-0">
+		<div
+			class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
+			<c:forEach var="pm" items="${postmember}" begin="1" end="4">
+				<div class="col mb-5 mb-5 mb-xl-0">
+					<div class="text-center">
+							<a href="">
+							<img class="img-fluid rounded-circle mb-4 px-4"
+								src="${pm.memberProfile }" alt="..." />
+						 </a>
+						<h5 class="fw-bolder">${pm.memberNickName}</h5>
+						<div class="fst-italic text-muted">Founder &amp; CEO</div>
+					</div>
+				</div>
+			</c:forEach>
+			<!-- <div class="col mb-5 mb-5 mb-xl-0">
           <div class="text-center">
-            <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded-circle mb-4 px-4"
-                src="${memberList.memberProfile }" alt="..." />
-              <h5 class="fw-bolder">${memberList.memberName}</h5>
-            </a>
-            <div class="fst-italic text-muted">Founder &amp; CEO</div>
-          </div>
-        </div>
-       
-        <div class="col mb-5 mb-5 mb-xl-0">
-          <div class="text-center">
-            <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded-circle mb-4 px-4"
+            <a href="postDetail.do?postId={postmember.postId}"><img class="img-fluid rounded-circle mb-4 px-4"
                 src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
-              <h5 class="fw-bolder">${post.memberName}</h5>
+              <h5 class="fw-bolder">{postmember.memberNickName}</h5>
             </a>
             <div class="fst-italic text-muted">CFO</div>
           </div>
-        </div>
-        <div class="col mb-5 mb-5 mb-sm-0">
+        </div> -->
+			<!-- <div class="col mb-5 mb-5 mb-sm-0">
           <div class="text-center">
-            <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded-circle mb-4 px-4"
+            <a href="postDetail.do?postId={postmember.postId}"><img class="img-fluid rounded-circle mb-4 px-4"
                 src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
-              <h5 class="fw-bolder">Toribio Nerthus</h5>
+              <h5 class="fw-bolder">{postmember.memberNickName}</h5>
             </a>
             <div class="fst-italic text-muted">Operations Manager</div>
           </div>
-        </div>
-        <div class="col mb-5">
+        </div> -->
+			<!-- <div class="col mb-5">
           <div class="text-center">
-            <a href="postDetail.do?memberId=${post.memberId}"><img class="img-fluid rounded-circle mb-4 px-4"
+            <a href="postDetail.do?postId={postmember.postId}"><img class="img-fluid rounded-circle mb-4 px-4"
                 src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
-              <h5 class="fw-bolder">Malvina Cilla</h5>
+              <h5 class="fw-bolder">{postmember.memberNickName}</h5>
             </a>
             <div class="fst-italic text-muted">CTO</div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
- </c:forEach>
+        </div> -->
+		</div>
+	</div>
+</section>
+
 
 <script>
-  const swiper = new Swiper('.swiper', {
-    // Optional parameters
-    direction: 'horizontal',
-    loop: true,
+	const swiper = new Swiper('.swiper', {
+		// Optional parameters
+		direction : 'horizontal',
+		loop : true,
 
-    // If we need pagination
-    pagination: {
-      el: '.swiper-pagination',
-    },
+		// If we need pagination
+		pagination : {
+			el : '.swiper-pagination',
+		},
 
-    // Navigation arrows
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
+		// Navigation arrows
+		navigation : {
+			nextEl : '.swiper-button-next',
+			prevEl : '.swiper-button-prev',
+		},
 
-    // And if we need scrollbar
-    scrollbar: {
-      el: '.swiper-scrollbar',
-    },
-  });
+		// And if we need scrollbar
+		scrollbar : {
+			el : '.swiper-scrollbar',
+		},
+	});
 </script>
 
-<script src="cssPostList/assets2/vendor/purecounter/purecounter_vanilla.js"></script>
+<script
+	src="cssPostList/assets2/vendor/purecounter/purecounter_vanilla.js"></script>
 <script src="cssPostList/assets2/vendor/aos/aos.js"></script>
-<script src="cssPostList/assets2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script
+	src="cssPostList/assets2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="cssPostList/assets2/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="cssPostList/assets2/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script
+	src="cssPostList/assets2/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 <script src="cssPostList/assets2/vendor/swiper/swiper-bundle.min.js"></script>
 <script src="cssPostList/assets2/vendor/typed.js/typed.min.js"></script>
-<script src="cssPostList/assets2/vendor/waypoints/noframework.waypoints.js"></script>
+<script
+	src="cssPostList/assets2/vendor/waypoints/noframework.waypoints.js"></script>
 <script src="cssPostList/assets2/vendor/php-email-form/validate.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
