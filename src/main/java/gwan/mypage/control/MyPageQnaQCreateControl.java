@@ -18,6 +18,7 @@ public class MyPageQnaQCreateControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//사진 추가될때마다 해당 control 실행
 		String savePath = req.getServletContext().getRealPath("images");
 		String fileName = "";
 		String fileUrl = "";
@@ -40,8 +41,6 @@ public class MyPageQnaQCreateControl implements Control {
 		json.addProperty("uploaded", 1);
 		json.addProperty("fileName", fileName);
 		json.addProperty("url", fileUrl);
-		
-		System.out.println("ck확인" + json);
 		return json + ".json";
 	}
 
