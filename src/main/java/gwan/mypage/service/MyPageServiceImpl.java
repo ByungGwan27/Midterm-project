@@ -70,8 +70,8 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public List<MyPageVO> readProfile(MyPageVO vo) {
-		return mapper.readProfile(vo);
+	public List<MyPageVO> readProfile(String memberId) {
+		return mapper.readProfile(memberId);
 	}
 
 	@Override
@@ -92,6 +92,31 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public int readvisitedPageCount(String memberId) {
 		return mapper.readvisitedPageCount(memberId);
+	}
+
+	@Override
+	public List<MyPageVO> readProfileMessage(String memberId) {
+		return mapper.readProfileMessage(memberId);
+	}
+
+	@Override
+	public List<MyPageVO> readMessage(String memberId, String memberId2) {
+		return mapper.readMessage(memberId, memberId2);
+	}
+
+	@Override
+	public List<MyPageVO> readAllMessage(String memberId, String memberId2) {
+		return mapper.readAllMessage(memberId, memberId2);
+	}
+
+	@Override
+	public boolean createMessage(MyPageVO vo) {
+		return mapper.createMessage(vo) == 1;
+	}
+
+	@Override
+	public boolean updateMessage(int messageId) {
+		return mapper.updateMessage(messageId) == 1;
 	}
 	
 	

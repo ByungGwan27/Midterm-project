@@ -11,8 +11,6 @@
 	crossorigin="anonymous"></script>
 
 
-
-
 <style>
 /*채팅창 가로길이*/
 .chat_wrap {
@@ -167,8 +165,8 @@ input[type="text"]::placeholder {
 }
 
 tbody {
-  height: 623px;
-  overflow-y: auto;
+	height: 623px;
+	overflow-y: auto;
 }
 
 .gwan-scroll-table th {
@@ -176,8 +174,8 @@ tbody {
 }
 
 .gwan-scroll-body {
-    display: block;
-  }
+	display: block;
+}
 
 .gwan-scroll-table td {
 	height: 100px;
@@ -186,12 +184,24 @@ tbody {
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
+
 #profileimage {
 	width: 50px;
 	height: 50px;
 	margin-left: 10px;
 	margin-top: 10px;
-	
+}
+
+#profileimage2 {
+	width: 150px;
+	height: 150px;
+	margin-left: 10px;
+	margin-top: 10px;
+	text-align: center;
+}
+
+.gwan-width {
+	width: 230px;
 }
 </style>
 <script>
@@ -251,36 +261,19 @@ tbody {
 					<th>전체메시지 | 안 읽은 메시지 | 별표 메시지</th>
 				</tr>
 			</thead>
-			<tbody class="gwan-scroll-body">
-				<tr>
-					<td><img class="img-profile rounded-circle" src="images/nong10.jpg" id="profileimage">1번타자</td>
-				</tr>
-				<tr>
-					<td>2번타자</td>
-				</tr>
-				<tr>
-					<td>3번타자</td>
-				</tr>
-				<tr>
-					<td>4번타자</td>
-				</tr>
-				<tr>
-					<td>5번타자</td>
-				</tr>
-				<tr>
-					<td>6번타자</td>
-				</tr>
-				<tr>
-					<td>7번타자</td>
-				</tr>
+			<tbody class="gwan-scroll-body" id="profile">
+				<!-- <tr>
+					<td><img class="img-profile rounded-circle" src="images/nong10.jpg" id="profileimage">닉네임<br>1번타자</td>
+				</tr> -->
 			</tbody>
 		</table>
 	</div>
 
 	<div class="chat_wrap gwan-chat gwan-flex-item-center">
+
 		<div class="inner">
 
-			<div class="item">
+			<!-- <div class="item">
 				<div class="box">
 					<p class="msg">안녕하세요</p>
 					<span class="time">오전 10:05</span>
@@ -292,16 +285,18 @@ tbody {
 					<p class="msg">안녕하세요</p>
 					<span class="time">오전 10:05</span>
 				</div>
-			</div>
+			</div> -->
 
 		</div>
 
 		<input type="text" class="mymsg" placeholder="내용 입력">
 		<button>파일전송</button>
-		<!-- <input type="text" class="yourmsg" placeholder="내용 입력"> -->
+		<input type="text" class="yourmsg" placeholder="내용 입력">
+
 	</div>
 
-	<div class="gwan-right-container gwan-flex-item-right">
+	<div class="gwan-right-container gwan-flex-item-right"
+		id="gwan-right-profile">
 		<div>
 			<p>사용자 이미지</p>
 		</div>
@@ -313,9 +308,170 @@ tbody {
 </div>
 
 <script>
-	fetch()
-	.then(resolve => resolve.json())
-	.then(result => {
+	document.addEventListener('DOMContentLoaded', function () {
+		console.log(1);
+		
+		viewprofile ();
+	
+	})
+	
+	//프로필 조회
+	function viewprofile () {
+		fetch('myPagereadProfile.do')
+		.then(resolve => resolve.json())
+		.then(result => {
+			console.log(2);
+			
+			for (let i in result) {
+				let tr = makeprofile ({
+					memberNickname: result[i]['memberNickname'],
+					memberProfile: result[i]['memberProfile'],
+					memberId: result[i]['memberId']
+				});
+			}
+			
+		})
+	}
+	
+	//프로필 생성
+	function makeprofile (list = {}) {
+		let tr = document.createElement('tr');
+
+		let td = document.createElement('td');
+		td.classList.add('gwan-width');
+		
+		let image = document.createElement('img');
+		image.className = 'img-profile rounded-circle';
+		image.src = list.memberProfile;
+		image.id = 'profileimage';
+		
+		let nickname = document.createTextNode(list.memberNickname);
+
+		td.appendChild(image);
+		td.appendChild(document.createTextNode(' '));
+		td.appendChild(nickname);
+
+		tr.appendChild(td);
+		
+		//프로필 더블클릭시 세부조회 + 우측프로필
+		tr.addEventListener('dblclick', function() {
+		    console.log('더블클릭 이벤트 발생');
+		    
+		    let memberId = list.memberId;
+		    console.log('memberId:', memberId);
+		    
+		    viewprofileMessage ();
+		    
+		    viewrightprofile (memberId)
+		    
+		});
+		
+		
+		let tbody = document.getElementById('profile');
+
+		tbody.appendChild(tr);
+	}
+	
+	//프로필 세부 메세지
+	function viewprofileMessage () {
+		 fetch('myPagereadProfileMessage.do')
+	    	.then(resolve => resolve.json())
+	    	.then(result => {
+	    		profile.innerHTML = "";
+	    		console.log(2);
+	    		console.log(result);
+
+	    		for (let i in result) {
+					
+					let tr = makeprofileMessage ({
+						memberNickname: result[i]['memberNickname'],
+						memberProfile: result[i]['memberProfile'],
+						memberId: result[i]['memberId']
+					});
+				}
+	    		
+	    	});
+	}
+	
+	
+	//프로필 세부 생성
+	function makeprofileMessage (list2 = {}) {
+		let tr = document.createElement('tr');
+
+		let td = document.createElement('td');
+		td.classList.add('gwan-width');
+		
+		let image = document.createElement('img');
+		image.className = 'img-profile rounded-circle';
+		image.src = list2.memberProfile;
+		image.id = 'profileimage';
+		
+		let nickname = document.createTextNode(list2.memberNickname);
+		let messageContent = document.createTextNode(list2.messageContent);
+
+		td.appendChild(image);
+		td.appendChild(document.createTextNode(' '));
+		td.appendChild(nickname);
+		td.appendChild(document.createElement('br'));
+		td.appendChild(messageContent);
+
+		tr.appendChild(td);
+		
+		let tbody = document.getElementById('profile');
+
+		tbody.appendChild(tr);
+		
+	}
+	
+	//우측 프로필 조회
+	function viewrightprofile (memberId){
+		fetch('myPagereadProfile.do')
+    	.then(resolve => resolve.json())
+    	.then(result => {
+    		let grp = document.getElementById('gwan-right-profile');
+    		grp.innerHTML = "";
+   	      	console.log(5);
+   	      	console.log(result);
+
+    		for (let i in result) {
+    			if (result[i]['memberId'] === memberId) {
+					let rdiv = makerightprofile ({
+						memberNickname: result[i]['memberNickname'],
+						memberProfile: result[i]['memberProfile'],
+						messageId: result[i]['messageId'],
+						messageContent: result[i]['messageContent'],
+						messageImg: result[i]['messageImg'],
+						messageDate: result[i]['messageDate'],
+						messageCheck: result[i]['messageCheck'],
+						messageDelete: result[i]['messageDelete']
+					});
+				}	
+    		}
+    	});
+	}
+	
+	
+	function makerightprofile(list3 = {}) {
+		
+		console.log(6);
+		  let div = document.createElement('div');
+		  
+		  let image = document.createElement('img');
+		  image.className = 'img-profile rounded-circle';
+		  image.src = list3.memberProfile;
+		  image.id = 'profileimage2';
+
+		  let nickname = document.createTextNode(list3.memberNickname);
+
+		  div.appendChild(image);
+		  div.appendChild(document.createElement('br'));
+		  div.appendChild(document.createElement('hr'));
+		  div.appendChild(nickname);
+
+		  let grp = document.getElementById('gwan-right-profile');
+		  grp.appendChild(div);
+		}
+	
 
 
 </script>

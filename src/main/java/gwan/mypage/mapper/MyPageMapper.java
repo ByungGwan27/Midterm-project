@@ -45,7 +45,17 @@ public interface MyPageMapper {
 	
 	//메세지
 	// 프로필 조회
-	public List<MyPageVO> readProfile(MyPageVO vo);
+	public List<MyPageVO> readProfile(String memberId);
+	public List<MyPageVO> readProfileMessage(String memberId);
+	public List<MyPageVO> readMessage(String memberId, String memberId2);
+	public List<MyPageVO> readAllMessage(String memberId, String memberId2);
+	public int createMessage(MyPageVO vo);
+	public int updateMessage(int messageId);
+	
+	
+	
+	
+	
 	
 	
 }

@@ -100,7 +100,7 @@
 	<select id="readWishList" resultType="mp">
 	
 		<![CDATA[
-		SELECT b.hotel_name, b.hotel_location1, b.hotel_location2, b.hotel_thema, b.room_price, b.wishlist_id
+		SELECT b.hotel_name, b.hotel_location1, b.hotel_location2, b.hotel_thema, b.room_price, b.wishlist_id, b.hotel_image
 		FROM (SELECT rownum rn, a.*
 			FROM (SELECT *
 		    	  FROM hotel h JOIN (SELECT hotel_id, room_price
@@ -184,17 +184,58 @@
 		VALUES ((SELECT NVL(MAX(qna_id), 0) + 1 FROM qna), #{memberId}, #{qnaTitle}, #{qnaContent}, #{qnaType})
 	</insert>
 	
-	<!-- 프로필 조회 -->
+	<!-- 메세지함 -->
+	<!-- 전체 유저 조회(프로필), 본인제외-->
 	<select id="readProfile" resultType="mp">
-		SELECT u.member_nickname, u.member_profile, m.message_id, m.message_content, m.message_img, m.message_date, m.message_check, m.message_delete
-		FROM (
-		  SELECT * FROM message
-		  WHERE member_id = #{memberId}
-		  ORDER BY message_id DESC
-		) m
-		JOIN member u ON (u.member_id = m.member_id)
-		WHERE ROWNUM = 1
+		SELECT member_nickname, member_profile, member_id FROM member WHERE member_id != #{memberId}
+		ORDER BY member_nickname
 	</select>
 	
+	<!-- 프로필 세부 조회, 메세지 교환한 사람들만 -->
+	<select id="readProfileMessage" resultType="mp">
+		SELECT u.member_nickname, u.member_profile, m.message_id,
+			CASE
+	           WHEN LENGTH(m.message_content) > 10 THEN SUBSTR(m.message_content, 1, 10) || '...'
+	           ELSE m.message_content
+	        END AS message_content, m.message_img, m.message_date, m.message_check, m.message_delete
+		FROM(
+		        SELECT member_id, MAX(message_id) AS mi
+		        FROM message
+		        WHERE message_delete = 1
+		        GROUP BY member_id
+		        HAVING member_id != #{memberId}) c
+		JOIN member u ON c.member_id = u.member_id
+		JOIN message m ON c.mi = m.message_id
+		ORDER BY message_id DESC
+	</select>
 	
+	<!-- 메세지내역, 특정인, 삭제 제외-->
+	<select id="readMessage" resultType="mp">
+		SELECT *
+		FROM message
+		WHERE (member_id=#{memberId} AND member_id2=#{memberId2})
+		    OR (member_id=#{memberId2} AND member_id2=#{memberId})
+	    AND message_delete=1
+		ORDER BY message_id DESC;
+	</select>
+	
+	<!-- 메세지내역, 특정인, 삭제 포함-->
+	<select id="readAllMessage" resultType="mp">
+		SELECT *
+		FROM message
+		WHERE (member_id=#{memberId} AND member_id2=#{memberId2})
+		    OR (member_id=#{memberId2} AND member_id2=#{memberId})
+		ORDER BY message_id DESC;
+	</select>
+	
+	<!-- 메세지 생성 -->
+	<insert id="createMessage" parameterType="mp">
+		INSERT INTO message (message_id, member_id, member_id2, message_content, message_time, message_time2, message_apm)
+		VALUES(message_seq.nextval, #{memberId}, #{memberId2}, #{messageContent}, #{messageTime}, #{messageTime2}, #{message_apm})
+	</insert>
+	
+	<!-- 메세지 삭제(업데이트) -->
+	<update id="updateMessage" parameterType="mp">
+		UPDATE message SET message_delete=2 WHERE message_id=#{messageId}
+	</update>
 </mapper>

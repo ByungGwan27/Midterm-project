@@ -63,7 +63,7 @@
 
 <script>
 
-	let showWish = ['hotelName', 'hotelLocation1', 'hotelLocation2', 'HotelThema', 'WishlistId', 'RoomPrice'];
+	let showWish = ['hotelName', 'hotelLocation1', 'hotelLocation2', 'HotelThema', 'WishlistId', 'HotelImage', 'RoomPrice'];
 	let xhtp = new XMLHttpRequest();
 	xhtp.open('get', 'myPageWishListAjax.do?page=${pageInfo.pageNum }');
 	xhtp.send();
@@ -85,7 +85,8 @@
 		    hotelLocation2: wdata[i][showWish[2]],
 		    HotelThema: wdata[i][showWish[3]],
 		  	WishlistId: wdata[i][showWish[4]],
-		    RoomPrice: wdata[i][showWish[5]]
+		  	HotelImage: wdata[i][showWish[5]],
+		    RoomPrice: wdata[i][showWish[6]]
 		  }, i+1);
 		
 		// 1씩 증가하는 함수 쓰기전
@@ -154,7 +155,7 @@
 
 		let img = document.createElement('img');
 		img.classList.add('img-fluid', 'rounded', 'mb-4', 'mb-lg-0');
-		img.src = 'https://dummyimage.com/500x200/dee2e6/6c757d.jpg';
+		img.src = wwlist.HotelImage;
 		img.alt = '...';
 
 		checkboxDiv.appendChild(checkbox);

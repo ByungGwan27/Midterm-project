@@ -27,7 +27,6 @@ import gwan.mypage.control.AdminMessagePageControl;
 import gwan.mypage.control.MyPageCouponControl;
 import gwan.mypage.control.MyPageHomeDelWillVisitControl;
 import gwan.mypage.control.MyPageHomeWillVisitControl;
-import gwan.mypage.control.MyPageMessageControl;
 import gwan.mypage.control.MyPageQnaControl;
 import gwan.mypage.control.MyPageQnaQControl;
 import gwan.mypage.control.MyPageQnaQCreateCkeditorControl;
@@ -38,6 +37,13 @@ import gwan.mypage.control.MyPageUserInfoPwControl;
 import gwan.mypage.control.MyPageUserInfoPwInputControl;
 import gwan.mypage.control.MyPageWishListControl;
 import gwan.mypage.control.MypageHomeControl;
+import gwan.mypage.message.control.MyPageMessageControl;
+import gwan.mypage.message.control.MyPagecreateMessageControl;
+import gwan.mypage.message.control.MyPagereadAllMessageControl;
+import gwan.mypage.message.control.MyPagereadMessageControl;
+import gwan.mypage.message.control.MyPagereadProfileControl;
+import gwan.mypage.message.control.MyPagereadProfileMessageControl;
+import gwan.mypage.message.control.MyPageupdateMessageControl;
 import jayk.hotelinfo.control.AdminAddHotelControl;
 import jayk.hotelinfo.control.AdminAddHotelFormControl;
 import jayk.hotelinfo.control.AdminAddRoomControl;
@@ -227,7 +233,21 @@ public class FrontController extends HttpServlet{
 		map.put("/myPageCoupon.do", new MyPageCouponControl());
 		
 		//마이페이지(메세지)
+		//메세지함 이동
 		map.put("/myPageMessage.do", new MyPageMessageControl());
+		//프로필 조회
+		map.put("/myPagereadProfile.do", new MyPagereadProfileControl());
+		//프로필 상세 조회
+		map.put("/myPagereadProfileMessage.do", new MyPagereadProfileMessageControl());
+		//프로필 메세지함
+		map.put("/myPagereadMessage.do", new MyPagereadMessageControl());
+		//프로필 메세지함(전체 읽기)
+		map.put("/myPagereadAllMessage.do", new MyPagereadAllMessageControl());
+		//메세지 쓰기
+		map.put("/myPagecreateMessage.do", new MyPagecreateMessageControl());
+		//메세지 업데이트(삭제)
+		map.put("/myPageupdateMessage.do", new MyPageupdateMessageControl());
+		
 		
 		//마이페이지(회원정보수정) - pw확인
 		map.put("/myPageUserInfoPw.do", new MyPageUserInfoPwControl());
@@ -278,11 +298,11 @@ public class FrontController extends HttpServlet{
 		String uri = req.getRequestURI();
 		String context = req.getContextPath();
 		String path = uri.substring(context.length());
-		System.out.println("도메인 주소 : " + path);
+		System.out.println("path : " + path);
 		
 		Control control = map.get(path);
 		String viewPage = control.execute(req, resp);
-		System.out.println("jsp 위치 : " + viewPage);
+		System.out.println("viewPage : " + viewPage);
 
 		if (viewPage.endsWith(".do")) {
 			resp.sendRedirect(viewPage);

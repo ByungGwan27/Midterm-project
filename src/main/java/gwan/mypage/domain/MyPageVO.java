@@ -60,6 +60,7 @@ public class MyPageVO {
 	
 	//메세지함
 	private int messageId;
+	private String memberId2;
 	private String messageContent;
 	private String messageImg;
 	private String messageDate;
