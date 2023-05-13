@@ -150,22 +150,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
-
-				<label class="control control--checkbox"> <span
-					class="caption">기본 정보</span> <input type="checkbox"
-					checked="checked" />
-					<div class="control__indicator"></div>
-				</label>
-				<p>&nbsp&nbsp&nbsp&nbsp&nbsp</p>
-
-				<label class="control control--checkbox"> <span
-					class="caption">추가 정보</span> <input type="checkbox"
-					checked="checked" />
-					<div class="control__indicator"></div>
-				</label>
-
-			</div>
+			
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
@@ -220,14 +205,22 @@
 				let usePoint = document.getElementById('usePoint');
 				let canUsePoint = document.getElementById('canUsePoint');
 				usePoint.addEventListener('blur',function(){
-				if(${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent>=0){
+					if(${payMemberInfo.memberPoint }-usePoint.value>=0 ){
 
-					canUsePoint.value = ${payMemberInfo.memberPoint }-usePoint.value
-					salePrice.value = ${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent
-				}else{
-					alert('사용할 수 없는 값입니다')
-					usePoint.value = 0;
-				}
+						if(${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent>=0){
+		
+							canUsePoint.value = ${payMemberInfo.memberPoint }-usePoint.value
+							salePrice.value = ${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent
+						}else{
+							alert('사용할 수 없는 값입니다')
+							usePoint.value = 0;
+						}
+
+					}else {
+						alert('초과된 마일리지입니다')
+						usePoint.value = 0;
+						
+					}
 
 				
 				})
@@ -338,8 +331,8 @@
 			paymentWidget.requestPayment({
 				orderId : "gD5iaJ9epuqS8vUAcisv8", // 주문 ID(직접 만들어주세요)
 				orderName : "주문", // 주문명
-				successUrl : "http://localhost:8081/successPay.do?memberId="+memberIdData+"&hotelId="+hotelIdData+"&roomId="+roomIdData+"&finalPrice="+finalPriceData+"&resPeople="+resPeopleData+"&resDate"+resDateData+
-				"&checkinName"+checkinNameData+"&checkinPhone="+checkinPhoneData+"&couponId="+couponIdData+"&roomPrice="+roomPriceData+"&canUsePoint="+canUsePointData,
+				successUrl : "http://localhost:8081/successPay.do?memberId="+memberIdData+"&hotelId="+hotelIdData+"&roomId="+roomIdData+"&finalPrice="+finalPriceData+"&resPeople="+resPeopleData+"&resDate="+resDateData+
+				"&checkinName="+checkinNameData+"&checkinPhone="+checkinPhoneData+"&couponId="+couponIdData+"&roomPrice="+roomPriceData+"&canUsePoint="+canUsePointData,
 
 				failUrl : "http://localhost:8081/payPageForm.do", // 결제에 실패하면 이동하는 페이지(직접 만들어주세요)
 				customerEmail : "customer123@gmail.com",
