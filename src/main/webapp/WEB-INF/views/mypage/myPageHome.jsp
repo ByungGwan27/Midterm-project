@@ -26,8 +26,8 @@
 				onclick='selectAll(this)' /> <label for="selectAll" class="px-4">전체
 				선택</label>
 		</div>
-		<div>
-			<button class="btn btn-primary" id="chooseDelete">선택취소</button>
+		<div style="width: 200px;">
+			<button class="btn btn-primary" id="chooseDelete">선택 예약 취소</button>
 		</div>
 	</div>
 	

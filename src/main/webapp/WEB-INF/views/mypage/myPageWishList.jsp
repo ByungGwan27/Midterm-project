@@ -31,7 +31,7 @@
 				class="gwan-button-size gwan-button-type" id="selectAll" onclick='selectAll(this)' /> <label
 				for="selectAll" class="px-4">전체 선택</label>
 		</div>
-		<div>
+		<div style="width: 200px;">
 			<button class="btn btn-primary" id = "chooseDelete">선택삭제
 			</button>
 		</div>

@@ -278,11 +278,11 @@ public class FrontController extends HttpServlet{
 		String uri = req.getRequestURI();
 		String context = req.getContextPath();
 		String path = uri.substring(context.length());
-		System.out.println(path);
+		System.out.println("도메인 주소 : " + path);
 		
 		Control control = map.get(path);
 		String viewPage = control.execute(req, resp);
-		System.out.println(viewPage);
+		System.out.println("jsp 위치 : " + viewPage);
 
 		if (viewPage.endsWith(".do")) {
 			resp.sendRedirect(viewPage);

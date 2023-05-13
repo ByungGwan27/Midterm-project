@@ -83,6 +83,16 @@ public class MyPageServiceImpl implements MyPageService {
 	public int readWillvisitPageCount(String memberId) {
 		return mapper.readWillvisitPageCount(memberId);
 	}
+
+	@Override
+	public int readvisitingPageCount(String memberId) {
+		return mapper.readvisitingPageCount(memberId);
+	}
+
+	@Override
+	public int readvisitedPageCount(String memberId) {
+		return mapper.readvisitedPageCount(memberId);
+	}
 	
 	
 }

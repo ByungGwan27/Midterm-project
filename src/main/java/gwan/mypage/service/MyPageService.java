@@ -7,12 +7,16 @@ import gwan.mypage.domain.MyPageVO;
 
 public interface MyPageService {
 	
+	//마이페이지홈
 	public List<MyPageVO> willVisit(String memberId, int page);
 	public boolean deleteWillVisit(int reservationId);
 	public int readWillvisitPageCount(String memberId);
 	
 	public List<MyPageVO> visiting(String memberId);
+	public int readvisitingPageCount(String memberId);
+	
 	public List<MyPageVO> visited(String memberId);
+	public int readvisitedPageCount(String memberId);
 	
 	//위시리스트 
 	// 특정 회원 조회

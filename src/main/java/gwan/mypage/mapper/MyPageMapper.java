@@ -10,12 +10,16 @@ import gwan.mypage.domain.MyPageVO;
 public interface MyPageMapper {
 	
 	// 메인페이지
+	//방문예정
 	public List<MyPageVO> willVisit(@Param("memberId") String memberId, @Param("page") int page);
 	public int deleteWillVisit(int reservationId);
 	public int readWillvisitPageCount(String memberId);
-	
+	//방문중
 	public List<MyPageVO> visiting(String memberId);
+	public int readvisitingPageCount(String memberId);
+	//방문완료
 	public List<MyPageVO> visited(String memberId);
+	public int readvisitedPageCount(String memberId);
 	
 	// 위시리스트
 	// 특정 회원 조회

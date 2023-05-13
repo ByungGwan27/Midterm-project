@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <title>Traveller - QnA</title>
-
+	
 <style>
 @media (min-width:1200px) {
 
@@ -18,6 +18,11 @@
 
 .byunggwan-card {
 	margin-left: 200px;
+}
+
+/* 아코디언 색 변경 */
+.accordion{
+  --bs-accordion-btn-bg: #f4feff;
 }
 </style>
 
