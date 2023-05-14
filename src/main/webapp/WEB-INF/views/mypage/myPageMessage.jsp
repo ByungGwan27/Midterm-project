@@ -258,7 +258,9 @@ tbody {
 		<table class="gwan-scroll-table">
 			<thead>
 				<tr>
-					<th>전체메시지 | 안 읽은 메시지 | 별표 메시지</th>
+					<!-- <th>전체메시지 | 안 읽은 메시지 | 별표 메시지</th> -->
+					<th><button type="button" id="profileButton">프로필</button><br><br>
+					<button type="button" id="profileMessageButton">프로필세부</button></th>
 				</tr>
 			</thead>
 			<tbody class="gwan-scroll-body" id="profile">
@@ -269,9 +271,10 @@ tbody {
 		</table>
 	</div>
 
-	<div class="chat_wrap gwan-chat gwan-flex-item-center">
+	<div class="chat_wrap gwan-chat gwan-flex-item-center" id="firstpage">
 
 		<div class="inner">
+			<!-- 본문 -->
 
 			<!-- <div class="item">
 				<div class="box">
@@ -289,38 +292,47 @@ tbody {
 
 		</div>
 
-		<input type="text" class="mymsg" placeholder="내용 입력">
-		<button>파일전송</button>
-		<input type="text" class="yourmsg" placeholder="내용 입력">
+		<input type="text" class="mymsg" placeholder="내용 입력" class="textinput">
+		<button class="textinput">파일전송</button>
+		<input type="text" class="yourmsg" placeholder="내용 입력" class="textinput">
 
 	</div>
 
 	<div class="gwan-right-container gwan-flex-item-right"
-		id="gwan-right-profile">
-		<div>
-			<p>사용자 이미지</p>
-		</div>
-		<div>
-			<p>텍스트 상자</p>
-		</div>
+		id="gwanRightProfile">
+		<!-- 우측 프로필 -->
 	</div>
 
 </div>
 
 <script>
+	const gwanRightProfile = document.getElementById('gwanRightProfile');
+
+	
+	//첫화면
 	document.addEventListener('DOMContentLoaded', function () {
 		console.log(1);
 		
 		viewprofile ();
 	
-	})
+	});
 	
-	//프로필 조회
+	// 버튼 클릭시 프로필 조회
+	const profileButton = document.getElementById('profileButton');
+	profileButton.addEventListener('click', viewprofile);
+	
+	// 1.프로필 조회
 	function viewprofile () {
 		fetch('myPagereadProfile.do')
 		.then(resolve => resolve.json())
 		.then(result => {
 			console.log(2);
+			// 프로필 지우기
+			profile.innerHTML = "";
+			//텍스트, 입력상자 지우기
+			firstpage.innerHTML = "";
+			//우측 프로필 지우기
+			gwanRightProfile.innerHTML = "";
 			
 			for (let i in result) {
 				let tr = makeprofile ({
@@ -348,6 +360,7 @@ tbody {
 		let nickname = document.createTextNode(list.memberNickname);
 
 		td.appendChild(image);
+		//간격 띄우기
 		td.appendChild(document.createTextNode(' '));
 		td.appendChild(nickname);
 
@@ -362,7 +375,9 @@ tbody {
 		    
 		    viewprofileMessage ();
 		    
-		    viewrightprofile (memberId)
+		    viewrightprofile (memberId);
+		    
+		    viewchatlist(memberId);
 		    
 		});
 		
@@ -372,12 +387,19 @@ tbody {
 		tbody.appendChild(tr);
 	}
 	
+	// 버튼클릭시 프로필 세부 메세지 조회
+	const pmb = document.getElementById('profileMessageButton');
+	pmb.addEventListener('click', viewprofileMessage);
+	
 	//프로필 세부 메세지
 	function viewprofileMessage () {
 		 fetch('myPagereadProfileMessage.do')
 	    	.then(resolve => resolve.json())
 	    	.then(result => {
+	    		//프로필 지우기
 	    		profile.innerHTML = "";
+	    		//우측 지우기
+	    		//gwanRightProfile.innerHTML = "";
 	    		console.log(2);
 	    		console.log(result);
 
@@ -392,6 +414,37 @@ tbody {
 	    		
 	    	});
 	}
+	
+	//채팅창 생성
+	function viewchatlist (memberId) {
+		// chat_wrap 요소 선택
+		const chatWrap = document.getElementById('firstpage');
+
+		// inner 요소 생성 및 chat_wrap에 추가
+		const innerDiv = document.createElement('div');
+		innerDiv.classList.add('inner');
+		chatWrap.appendChild(innerDiv);
+
+		// mymsg 입력 필드 생성
+		const myMsgInput = document.createElement('input');
+		myMsgInput.type = 'text';
+		myMsgInput.classList.add('mymsg');
+		myMsgInput.placeholder = '내용 입력';
+		chatWrap.appendChild(myMsgInput);
+
+		// 파일전송 버튼 생성
+		const sendButton = document.createElement('button');
+		sendButton.textContent = '파일전송';
+		chatWrap.appendChild(sendButton);
+
+		// yourmsg 입력 필드 생성
+		const yourMsgInput = document.createElement('input');
+		yourMsgInput.type = 'text';
+		yourMsgInput.classList.add('yourmsg');
+		yourMsgInput.placeholder = '내용 입력';
+		yourMsgInput.id = 'textinput';
+		chatWrap.appendChild(yourMsgInput);
+	};
 	
 	
 	//프로필 세부 생성
@@ -417,6 +470,19 @@ tbody {
 
 		tr.appendChild(td);
 		
+		//프로필세부 더블클릭시 채팅창 오픈 + 우측프로필조회
+		tr.addEventListener('dblclick', function() {
+		    console.log('더블클릭 이벤트2 발생');
+		    
+		    let memberId = list2.memberId;
+		    console.log('memberId:', memberId);
+		    
+		    viewrightprofile (memberId);
+		    
+		    viewchatlist(memberId);
+		    
+		});
+		
 		let tbody = document.getElementById('profile');
 
 		tbody.appendChild(tr);
@@ -428,10 +494,10 @@ tbody {
 		fetch('myPagereadProfile.do')
     	.then(resolve => resolve.json())
     	.then(result => {
-    		let grp = document.getElementById('gwan-right-profile');
-    		grp.innerHTML = "";
+    		//gwanRightProfile.innerHTML = "";
    	      	console.log(5);
-   	      	console.log(result);
+   	      	console.log('고객 목록' + result);
+   	      	console.log('선택 고객' + memberId);
 
     		for (let i in result) {
     			if (result[i]['memberId'] === memberId) {
@@ -453,7 +519,7 @@ tbody {
 	
 	function makerightprofile(list3 = {}) {
 		
-		console.log(6);
+		console.log('우측을 만들자');
 		  let div = document.createElement('div');
 		  
 		  let image = document.createElement('img');
@@ -465,10 +531,14 @@ tbody {
 
 		  div.appendChild(image);
 		  div.appendChild(document.createElement('br'));
-		  div.appendChild(document.createElement('hr'));
-		  div.appendChild(nickname);
+		  let hr = document.createElement('hr');
+		  div.appendChild(hr);
+		  
+		  let nicknameDiv = document.createElement('div');
+		  nicknameDiv.appendChild(nickname);
+		  div.appendChild(nicknameDiv);
 
-		  let grp = document.getElementById('gwan-right-profile');
+		  let grp = document.getElementById('gwanRightProfile');
 		  grp.appendChild(div);
 		}
 	

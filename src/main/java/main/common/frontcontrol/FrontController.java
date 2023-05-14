@@ -239,9 +239,9 @@ public class FrontController extends HttpServlet{
 		map.put("/myPagereadProfile.do", new MyPagereadProfileControl());
 		//프로필 상세 조회
 		map.put("/myPagereadProfileMessage.do", new MyPagereadProfileMessageControl());
-		//프로필 메세지함
+		//메세지내역
 		map.put("/myPagereadMessage.do", new MyPagereadMessageControl());
-		//프로필 메세지함(전체 읽기)
+		//메세지내역(전체 읽기)
 		map.put("/myPagereadAllMessage.do", new MyPagereadAllMessageControl());
 		//메세지 쓰기
 		map.put("/myPagecreateMessage.do", new MyPagecreateMessageControl());
