@@ -277,14 +277,14 @@ tbody {
 		<!-- <div class="inner">
 			본문
 
-			<div class="item">
+			<div class="item yourmsg on">
 				<div class="box">
 					<p class="msg">안녕하세요</p>
 					<span class="time">오전 10:05</span>
 				</div>
 			</div>
 
-			<div class="item mymsg">
+			<div class="item mymsg on">
 				<div class="box">
 					<p class="msg">안녕하세요</p>
 					<span class="time">오전 10:05</span>
@@ -471,6 +471,8 @@ tbody {
 			console.log('우측 프로필 지우기');
 			gwanRightProfile.innerHTML = "";
 			
+			
+			
 			let memberId = list2.memberId;
 		    
 		    viewrightprofile (memberId);
@@ -618,32 +620,34 @@ tbody {
 			}
 	
 	//기존 채팅방 내용
-	function readChatmessage (oldmessage = {}) {
-		console.log('기존 채팅 내역');
-		let itemDiv = document.createElement('div');
-        itemDiv.classList.add('item');
-
-        let boxDiv = document.createElement('div');
-        boxDiv.classList.add('box');
-
-        let msgP = document.createElement('p');
-        msgP.classList.add('msg');
-        msgP.textContent = oldmessage.messageContent;
-
-        let timeSpan = document.createElement('span');
-        timeSpan.classList.add('time');
-        timeSpan.textContent = oldmessage.messageDate + ' ';
-        timeSpan.textContent += oldmessage.messageTime + ' ';
-        timeSpan.textContent += oldmessage.messageTime2 + ' ';
-        timeSpan.textContent += oldmessage.messageApm;
-
-        boxDiv.appendChild(msgP);
-        boxDiv.appendChild(timeSpan);
-        itemDiv.appendChild(boxDiv);
-
-        innerDiv.appendChild(itemDiv);
-        
-        return itemDiv;
+	function readChatmessage(oldmessage = {}) {
+	    console.log('기존 채팅 내역');
+	    
+	    let itemDiv = document.createElement('div');
+	    itemDiv.classList.add('item');
+	    itemDiv.classList.add(oldmessage.isMyMessage ? 'mymsg' : 'yourmsg', 'on');
+	
+	    let boxDiv = document.createElement('div');
+	    boxDiv.classList.add('box');
+	
+	    let msgP = document.createElement('p');
+	    msgP.classList.add('msg');
+	    msgP.textContent = oldmessage.messageContent;
+	
+	    let timeSpan = document.createElement('span');
+	    timeSpan.classList.add('time');
+	    timeSpan.textContent = oldmessage.messageDate + ' ';
+	    timeSpan.textContent += oldmessage.messageTime + ' ';
+	    timeSpan.textContent += oldmessage.messageTime2 + ' ';
+	    timeSpan.textContent += oldmessage.messageApm;
+	
+	    boxDiv.appendChild(msgP);
+	    boxDiv.appendChild(timeSpan);
+	    itemDiv.appendChild(boxDiv);
+	
+	    innerDiv.appendChild(itemDiv);
+	
+	    return itemDiv;
 	}
 	
 	
