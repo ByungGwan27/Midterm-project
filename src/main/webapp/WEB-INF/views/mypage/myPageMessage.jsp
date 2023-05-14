@@ -312,6 +312,7 @@ tbody {
 	//채팅창 생성 때 사용한 채팅창 선택
 	const chatWrap = document.getElementById('firstpage');
 	const innerDiv = document.createElement('div');
+	let boxDiv = document.createElement('div');
 	
 	//첫화면
 	document.addEventListener('DOMContentLoaded', function () {
@@ -470,14 +471,15 @@ tbody {
 			firstpage.innerHTML = "";
 			console.log('우측 프로필 지우기');
 			gwanRightProfile.innerHTML = "";
-			
-			
+			console.log('4.텍스트, 입력상자 지우기');
+			innerDiv.innerHTML = "";
 			
 			let memberId = list2.memberId;
 		    
 		    viewrightprofile (memberId);
 		    
 		    viewchatlist(memberId);
+			
 		    
 		});
 		
@@ -584,21 +586,25 @@ tbody {
 	        }
 	    });
 	    
+	    
 	    messageRead(memberId);
 	}
 	
 	//5.채팅창 읽어오기
 	function messageRead (memberId2) {
 				console.log('테스트 : '+memberId2);
-		
+				
 		fetch("myPagereadMessage.do?memberId2=" + encodeURIComponent(memberId2))
 			.then(resolve => resolve.json())
 			.then(result => {
 				console.log('7.채팅창 읽어오기');
 				console.log('채팅내용 삭제');
+				console.log(result);
+				console.log(memberId2);
+				boxDiv.innerHTML = "";
+				
 				
 				for (let i in result) {
-	    			if (result[i]['memberId2'] === memberId2) {
 						let rdiv = readChatmessage ({
 							messageId: result[i]['messageId'],
 							memberId: result[i]['memberId'],
@@ -611,42 +617,43 @@ tbody {
 							messageTime: result[i]['messageTime'],
 							messageTime2: result[i]['messageTime2'],
 							messageApm: result[i]['messageApm']
-						});
+						}, memberId2);
 						innerDiv.appendChild(rdiv);
-					}	
 	    		}
 				
 			});
 			}
 	
 	//기존 채팅방 내용
-	function readChatmessage(oldmessage = {}) {
-	    console.log('기존 채팅 내역');
-	    
+	function readChatmessage(oldmessage = {}, memberId2) {
+		console.log('8.기존 채팅 내역 불러오기');
+	    console.log(oldmessage.memberId2);
+	    console.log(memberId2);
+
 	    let itemDiv = document.createElement('div');
 	    itemDiv.classList.add('item');
-	    itemDiv.classList.add(oldmessage.isMyMessage ? 'mymsg' : 'yourmsg', 'on');
-	
+	    itemDiv.classList.add(oldmessage.memberId2 === memberId2 ? 'mymsg' : 'yourmsg', 'on');
+
 	    let boxDiv = document.createElement('div');
 	    boxDiv.classList.add('box');
-	
+
 	    let msgP = document.createElement('p');
 	    msgP.classList.add('msg');
 	    msgP.textContent = oldmessage.messageContent;
-	
+
 	    let timeSpan = document.createElement('span');
 	    timeSpan.classList.add('time');
 	    timeSpan.textContent = oldmessage.messageDate + ' ';
 	    timeSpan.textContent += oldmessage.messageTime + ' ';
 	    timeSpan.textContent += oldmessage.messageTime2 + ' ';
 	    timeSpan.textContent += oldmessage.messageApm;
-	
+
 	    boxDiv.appendChild(msgP);
 	    boxDiv.appendChild(timeSpan);
 	    itemDiv.appendChild(boxDiv);
-	
+
 	    innerDiv.appendChild(itemDiv);
-	
+
 	    return itemDiv;
 	}
 	
