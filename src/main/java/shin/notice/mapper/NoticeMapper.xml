@@ -27,7 +27,7 @@
 		#{noticeContent}, sysDate )
 	</insert>
 	
-	<update id="updateNotice" parameterType="notice">
+	<update id="updateNotice">
 		update notice
 		set
 		notice_title=#{noticeTitle},
@@ -36,7 +36,7 @@
 		notice_id = #{noticeId}
 	</update>
 	
-	<delete id="deleteNotice">
+	<delete id="noticeDelete">
 		delete from notice
 		where notice_id=#{noticeId}
 	</delete>

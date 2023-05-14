@@ -119,10 +119,10 @@
 							<td><c:out value="${no=no+1 }"></c:out></td>
 							<!-- <td><a href="getNotice.do?page=${pageInfo.pageNum}&nid=${notice.noticeId }">${notice.noticeId }</a></td> -->
 							<td><a
-								href="noticeDetail.do?page=${pageInfo.pageNum }&noticeId=${notice.noticeId}">${notice.noticeTitle }</a></td>
+								href="noticeDetail.do?noticeId=${notice.noticeId}">${notice.noticeTitle }</a></td>
 							<td>${notice.memberId }</td>
 							<td>${notice.writeDate }</td>
-							<td>${notice.noticeViews }</td>
+							<td>${notice.noticeViews }</td>	
 							<td colspan="2" align="center">
 								<button type="submit">
 									<a href="noticeModify.do">저장(수정)</a>

@@ -2,8 +2,36 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-
 <!DOCTYPE html>
+
+<style>
+a {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+*, ::before, ::after {
+	box-sizing: inherit;
+}
+
+<
+style>*, ::before, ::after {
+	box-sizing: inherit;
+}
+
+body {
+	text-size-adjust: none;
+}
+
+header.major {
+	text-align: center;
+	margin: 0px 0px 4rem;
+}
+</style>
 
 <head>
 
@@ -30,6 +58,8 @@
 <link href="cssNoticeAddForm/assets/assets/css/style.css"
 	rel="stylesheet">
 
+
+
 </head>
 
 
@@ -54,77 +84,4 @@
 		</ul>
 	</nav>
 	<!-- .nav-menu -->
-
-</header>
-<!-- End Header -->
-
-<section class="py-5">
-	<div class="container px-4 px-lg-5 my-5">
-		<h3>공지사항 상세페이지</h3>
-		<div class="row gx-4 gx-lg-5 align-items-center">
-		
-			<table class="table">
-
-				<tr>
-					<th>제목</th>
-					<td>${noticeInfo.noticeTitle }</td>
-					<th>작성자</th>
-					<td>${noticeInfo.memberId }</td>
-				</tr>
-
-				<tr>
-					<th>조회수</th>
-					<td>${noticeInfo.noticeViews}</td>
-					<th>작성일</th>
-					<td>${noticeInfo.writeDate }</td>
-				</tr>
-
-				<tr>
-					<th>작성내용</th>
-					<td>${noticeInfo.noticeContent }</td>
-				</tr>
-
-				<tr>
-					<td colspan="4" align="center">
-					<a href="noticeModify.do?noticeId=${noticeInfo.noticeId}"><input type="button" value="수정"></a>
-						<input type="reset" value="취소"></td>
-				</tr>
-			</table>
-
-		</div>
-	</div>
-</section>
-<!--<div class="center">
-	<div class="pagination">
-		<c:if test="${pageInfo.prev }">
-			<a href="noticeList.do?page=${pageInfo.startPage-1 }">Previous</a>
-		</c:if>
-		<c:forEach var="i" begin="${pageInfo.startPage }"
-			end="${pageInfo.endPage }">
-			<a class="${i == pageInfo.pageNum ? 'active' : '' }"
-				href="noticeList.do?page=${i }">${i } </a>
-		</c:forEach>
-		<c:if test="${pageInfo.next }">
-			<a href="noticeList.do?page=${pageInfo.endPage+1 }">Next</a>
-		</c:if>
-	</div>
-</div>
-
-  -->
-
-<!--  
-<script>
-	document.addEventListener('DOMContentLoaded', function() {
-
-		let res1 = document.querySelectorAll("table tbody tr");
-		console.log(res1)
-		res1.forEach(function(res1) {
-			res1.addEventListener("dblclick", function() {
-				location.href = 'noticeDetail.do?id='
-						+ this.children[1].innerText;
-			})
-
-		})
-	})
-</script>
--->
+	</header>

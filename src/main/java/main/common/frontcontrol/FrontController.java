@@ -78,7 +78,9 @@ import main.common.wook.pay.control.payPageFormcontrol;
 import main.common.wook.pay.control.successPayControl;
 import shin.admin.control.AdminPayListControl;
 import shin.notice.control.AddNoticeControl;
+import shin.notice.control.ModifyPageControl;
 import shin.notice.control.NoticeAddFormControl;
+import shin.notice.control.NoticeDeleteControl;
 import shin.notice.control.NoticeDetailControl;
 import shin.notice.control.NoticeListControl;
 import shin.notice.control.NoticeModifyControl;
@@ -200,8 +202,12 @@ public class FrontController extends HttpServlet{
 		map.put("/noticeAddForm.do", new NoticeAddFormControl());
 		//공지사항 상세페이지(단건조회)
 		map.put("/noticeDetail.do", new NoticeDetailControl());
-		//공지사항 수정페이지
+		//공지사항 수정페이지 (이동)
 		map.put("/noticeModify.do", new NoticeModifyControl());
+		//공지 사항 수정작업 실행 
+		map.put("/modifyPage.do", new ModifyPageControl());
+		//공지사항 삭제
+		map.put("/noticeDelete.do", new NoticeDeleteControl());
 		//공지사항 리스트
 		map.put("/noticeList.do", new NoticeListControl());
 		//관리자 결제정보창
