@@ -7,6 +7,7 @@
 	<select id="navListLoca">
 		select distinct hotel_location1 from hotel
 	</select>
+	
 	<select id="navListThema">
 		select distinct hotel_thema from hotel where
 		hotel_thema is not null
@@ -184,10 +185,30 @@
 		h.hotel_location1,
 		h.hotel_location2, h.hotel_point, h.hotel_image, h.location_detail
 	</select>
+	
+
 
 	<select id="roomList">
 		select * from room_info where hotel_id = #{hotelId}
 		order by room_id
+	</select>
+	
+	<select id="roomDetailList">
+        SELECT 
+    CASE WHEN d.parking = 1 THEN 1 END AS parking,
+    CASE WHEN d.wifi = 1 THEN 1 END AS wifi,
+    CASE WHEN d.pet = 1 THEN 1 END AS pet,
+    CASE WHEN d.pool = 1 THEN 1 END AS pool,
+    CASE WHEN d.single_room = 1 THEN 1 END AS singleRoom,
+    CASE WHEN d.double_room = 1 THEN 1 END AS doubleRoom,
+    CASE WHEN d.triple_room = 1 THEN 1 END AS tripleRoom,
+    CASE WHEN d.breakfast = 1 THEN 1 END AS breakfast
+FROM 
+    room_detail d
+FULL OUTER JOIN 
+    hotel h ON d.hotel_id = h.hotel_id
+WHERE 
+    h.hotel_id = #{hotelId}
 	</select>
 
 	<select id="reviewList">

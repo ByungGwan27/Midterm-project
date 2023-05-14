@@ -24,6 +24,7 @@ public interface HotelInfoMapper {
 	//hotelInfoPage
 	public HotelInfoVO selectHotel(@Param("hotelId")int hotelId, @Param("hotelLocation1")String hotelLocation1); 
 	public List<HotelInfoVO> roomList(int hotelId);
+	public List<HotelInfoVO> roomDetailList(int hotelId);
 	public List<HotelInfoVO> reviewList(int hotelId);
 	public List<HotelInfoVO> similarList(@Param("hotelId")int hotelId, @Param("hotelLocation1")String hotelLocation1);
 	public List<HotelInfoVO> adminHotelList();

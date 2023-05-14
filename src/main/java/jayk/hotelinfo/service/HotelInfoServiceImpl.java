@@ -146,4 +146,9 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 	public boolean modifyAdiminHotelRoomDetail(HotelInfoVO vo) {
 		return false;
 	}
+
+	@Override
+	public List<HotelInfoVO> roomDetailList(int hotelId) {
+		return mapper.roomDetailList(hotelId);
+	}
 }

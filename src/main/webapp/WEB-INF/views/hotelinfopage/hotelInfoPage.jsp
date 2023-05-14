@@ -93,9 +93,9 @@
 						</tr>
 						<tr>
 							<td colspan="2">별점 : ${hotelInfo.avgpoint}
-							<div class="rate">
-								<span style="width: ${hotelInfo.avgstar}%;"></span>
-							</div>
+								<div class="rate">
+									<span style="width: ${hotelInfo.avgstar}%;"></span>
+								</div>
 							</td>
 						</tr>
 						<tr>
@@ -133,10 +133,8 @@
 			<c:forEach var="roomList" items="${roomList}">
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
 					<div class="media-1">
-						<a href="#" class="d-block mb-3">
-						<img
-							src="images/${roomList.image}" alt="Image"
-							class="img-fluid"></a>
+						<a href="#" class="d-block mb-3"> <img
+							src="images/${roomList.image}" alt="Image" class="img-fluid"></a>
 						<div class="d-flex align-items-center">
 							<div id="roomList">
 								<h3>
@@ -146,7 +144,8 @@
 									<span>최대인원 ${roomList.roomMax}</span><br> <span>시설정보
 										${roomList.roomExpain}</span><br> <span>가격
 										${roomList.roomPrice}</span><br>
-									<button onclick="location.href='payPageForm.do?roomId=${roomList.roomId}&memberId=${id}'">예약</button>
+									<button
+										onclick="location.href='payPageForm.do?roomId=${roomList.roomId}&memberId=${id}'">예약</button>
 								</div>
 							</div>
 						</div>
@@ -166,13 +165,31 @@
 			<div class="col-lg-10">
 				<h2 class="section-title text-center mb-3">시설정보</h2>
 			</div>
-			<ul class="list-unstyled two-col clearfix">
-				<li>주차장</li>
-				<li>wifi</li>
-				<li>애완동물동반가능</li>
-				<li>조식제공</li>
-				<li>수영장</li>
-			</ul>
+				<ul class="list-unstyled one-col text-center">
+					<c:forEach var="roomDetailList" items="${roomDetailList}">
+						<c:if test="${roomDetailList.parking eq 1 && !previousParking}">
+							<li class="d-inline-block">주차장</li>
+							<c:set var="previousParking" value="true" />
+						</c:if>
+						<c:if test="${roomDetailList.wifi eq 1 && !previousWifi}">
+							<li class="d-inline-block">WIFI</li>
+							<c:set var="previousWifi" value="true" />
+						</c:if>
+						<c:if test="${roomDetailList.pet eq 1 && !previousPet}">
+							<li class="d-inline-block">애완동물동반가능</li>
+							<c:set var="previousPet" value="true" />
+						</c:if>
+						<c:if test="${roomDetailList.pool eq 1 && !previousPool}">
+							<li class="d-inline-block">수영장</li>
+							<c:set var="previousPool" value="true" />
+						</c:if>
+						<c:if
+							test="${roomDetailList.breakfast eq 1 && !previousBreakfast}">
+							<li class="d-inline-block">조식제공</li>
+							<c:set var="previousBreakfast" value="true" />
+						</c:if>
+					</c:forEach>
+				</ul>
 		</div>
 	</div>
 </div>
@@ -185,14 +202,11 @@
 			<div class="col-lg-10">
 				<h2 class="section-title text-center mb-3">유의사항</h2>
 			</div>
-			<ul class="list-unstyled two-col clearfix">
-				<li>유의사항1</li>
-				<li>유의사항2</li>
-				<li>유의사항3</li>
-				<li>유의사항4</li>
-				<li>유의사항5</li>
-				<li>유의사항6</li>
-				<li>유의사항7</li>
+			<ul class="list-unstyled one-col clearfix">
+				<li class="d-inline-block">신분증 지참 필수</li>
+				<li class="d-inline-block">미성년자 출입 불가</li>
+				<li class="d-inline-block">투숙객 외 입실 불가</li>
+				<li class="d-inline-block">전 객실 금연</li>
 			</ul>
 		</div>
 	</div>
@@ -206,7 +220,7 @@
 			<div class="col-lg-10">
 				<h2 class="section-title text-center mb-3">환불안내</h2>
 			</div>
-			<ul class="list-unstyled two-col clearfix">
+			<ul class="list-unstyled one-col clearfix">
 				<li>환불안내</li>
 				<li>환불안내</li>
 				<li>환불안내</li>
@@ -227,7 +241,7 @@
 			<div class="col-lg-10">
 				<h2 class="section-title text-center mb-3">정책</h2>
 			</div>
-			<ul class="list-unstyled two-col clearfix">
+			<ul class="list-unstyled one-col clearfix">
 				<li>정책</li>
 				<li>정책</li>
 				<li>정책</li>

@@ -20,6 +20,7 @@ public interface HotelInfoService {
 	//hotelInfo
 	public HotelInfoVO getHotelInfo(int hotelId, String hotelLocation1);
 	public List<HotelInfoVO> roomList(int hotelId);
+	public List<HotelInfoVO> roomDetailList(int hotelId);
 	public List<HotelInfoVO> reviewList(int hotelId);
 	public List<HotelInfoVO> similarList(int hotelId, String hotelLocation1);
 	
