@@ -33,6 +33,7 @@ public interface HotelInfoService {
 	//hotelInfoModify
 	public boolean modifyAdminHotel(HotelInfoVO vo);
 	public boolean modifyAdminHotelRoom(HotelInfoVO vo);
+	public boolean modifyAdiminHotelRoomDetail(HotelInfoVO vo);
 	
 	//hotelAdd
 	public boolean addAdminHotel(HotelInfoVO vo);

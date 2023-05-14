@@ -52,16 +52,31 @@
 				<td><input type="text" name="addPrice"
 					value="${adminRoomInfo.addPrice}" ></td>
 			</tr>
+				<tr>
+				<th>시설정보</th>
+				<td><span class="fa fa-chevron-right mr-2"> 
+					<input type="radio" name="roomType" value="singleRoom" <c:if test="${adminRoomInfo.singleRoom eq 1}">checked</c:if>>싱글룸</span> 
+					<span class="fa fa-chevron-right mr-2"> 
+					<input type="radio"	name="roomType" value="twinRoom" <c:if test="${adminRoomInfo.twinRoom eq 1}">checked</c:if>>트윈룸</span> 
+					<span class="fa fa-chevron-right mr-2"> 
+					<input type="radio"	name="roomType" value="doubleRoom" <c:if test="${adminRoomInfo.doubleRoom eq 1}">checked</c:if>>더블룸	</span> 
+					<span class="fa fa-chevron-right mr-2"> 
+					<input type="radio"	name="roomType" value="tripleRoom" <c:if test="${adminRoomInfo.tripleRoom eq 1}">checked</c:if>>트리플룸</span>
+				</td>
+			</tr>
 			<tr>
 				<th>시설정보</th>
-				<td><span class="fa fa-chevron-right mr-2"><input
-						type="checkbox">주차장</span> <span class="fa fa-chevron-right mr-2"><input
-						type="checkbox">wifi</span> <span
-					class="fa fa-chevron-right mr-2"><input type="checkbox">애완동물동반가능여부</span>
-					<span class="fa fa-chevron-right mr-2"> <input
-						type="checkbox">조식
-				</span> <span class="fa fa-chevron-right mr-2"><input
-						type="checkbox">수영장</span></td>
+				<td><span class="fa fa-chevron-right mr-2"  > <input
+						type="checkbox" name="parking" value="2" <c:if test="${adminRoomInfo.parking eq 1}">checked</c:if>>주차장
+				</span> <span class="fa fa-chevron-right mr-2"> <input
+						type="checkbox" name="wifi" value="2"  <c:if test="${adminRoomInfo.wifi eq 1}">checked</c:if>>wifi
+				</span> <span class="fa fa-chevron-right mr-2"> <input
+						type="checkbox" name="pet" value="2"  <c:if test="${adminRoomInfo.pet eq 1}">checked</c:if>>애완동물동반가능여부
+				</span> <span class="fa fa-chevron-right mr-2"> <input
+						type="checkbox" name="breakfast" value="2"  <c:if test="${adminRoomInfo.breakfast eq 1}">checked</c:if>>조식
+				</span> <span class="fa fa-chevron-right mr-2"> <input
+						type="checkbox" name="pool" value="2" <c:if test="${adminRoomInfo.pool eq 1}">checked</c:if>>수영장
+				</span></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">

@@ -31,6 +31,7 @@ public interface HotelInfoMapper {
 	public HotelInfoVO selectAdminHotelRoom(@Param("hotelId")int hotelId, @Param("roomId")int roomId);
 	public int updateAdminHotel(HotelInfoVO vo);
 	public int updateAdminHotelRoom(HotelInfoVO vo);
+	public int updateAdminHotelRoomDetail(HotelInfoVO vo);
 	public int insertAdminHotel(HotelInfoVO vo);
 	public int insertAdminRoom(HotelInfoVO vo);
 	public int insertAdminRoomImage(HotelInfoVO vo);

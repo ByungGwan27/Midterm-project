@@ -43,23 +43,23 @@ public class AdminAddRoomControl implements Control {
 		String image = multi.getFilesystemName("image");
 		
 		String parking = multi.getParameter("parking");
-		parking = (parking == null) ? "2" : parking;
+		parking = (parking == null) ? "2" : "1";
 		String wifi = multi.getParameter("wifi");
-		wifi = (wifi == null) ? "2" : wifi;
+		wifi = (wifi == null) ? "2" : "1";
 		String pet = multi.getParameter("pet");
-		pet = (pet == null) ? "2" : pet;
+		pet = (pet == null) ? "2" : "1";
 		String pool = multi.getParameter("pool");
-		pool = (pool == null) ? "2" : pool;
-		String singleRoom = multi.getParameter("singleRoom");
-		singleRoom = (singleRoom == null) ? "2" : singleRoom;
-		String twinRoom = multi.getParameter("twinRoom");
-		twinRoom = (twinRoom == null) ? "2" : twinRoom;
-		String doubleRoom = multi.getParameter("doubleRoom");
-		doubleRoom = (doubleRoom == null) ? "2" : doubleRoom;
-		String tripleRoom = multi.getParameter("tripleRoom");
-		tripleRoom = (tripleRoom == null) ? "2" : tripleRoom;
+		pool = (pool == null) ? "2" : "1";
+		String singleRoom = multi.getParameter("roomType");
+		singleRoom = (singleRoom != null && singleRoom.equals("singleRoom")) ? "1" : "2";
+		String twinRoom = multi.getParameter("roomType");
+		twinRoom = (twinRoom != null && twinRoom.equals("twinRoom")) ? "1" : "2";
+		String doubleRoom = multi.getParameter("roomType");
+		doubleRoom = (doubleRoom != null && doubleRoom.equals("doubleRoom")) ? "1" : "2";
+		String tripleRoom = multi.getParameter("roomType");
+		tripleRoom = (tripleRoom != null && tripleRoom.equals("tripleRoom")) ? "1" : "2";
 		String breakfast = multi.getParameter("breakfast");
-		breakfast = (breakfast == null) ? "2" : breakfast;
+		breakfast = (breakfast == null) ? "2" : "1";
 		
 	
 		HotelInfoVO addRoom = new HotelInfoVO();

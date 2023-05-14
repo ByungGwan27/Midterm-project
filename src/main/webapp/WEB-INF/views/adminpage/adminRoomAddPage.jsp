@@ -46,13 +46,13 @@
 				<th>시설정보</th>
 				<td>
 					<span class="fa fa-chevron-right mr-2">
-					<input type="radio" name="singleRoom" value="2">싱글룸</span>
+					<input type="radio" name="roomType" value="singleRoom">싱글룸</span>
 					<span class="fa fa-chevron-right mr-2">
-					<input type="radio" name="twinRoom" value="2">트윈룸</span>
+					<input type="radio" name="roomType" value="twinRoom">트윈룸</span>
 					<span class="fa fa-chevron-right mr-2">
-					<input type="radio" name="doubleRoom" value="1" checked>더블룸</span>
+					<input type="radio" name="roomType" value="doubleRoom"checked>더블룸</span>
 					<span class="fa fa-chevron-right mr-2">
-					<input type="radio" name="tripleRoom" value="2">트리플룸</span>
+					<input type="radio" name="roomType" value="tripleRoom">트리플룸</span>
 					</td>
 					</tr>
 					<tr>

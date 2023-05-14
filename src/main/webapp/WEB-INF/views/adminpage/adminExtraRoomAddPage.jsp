@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 
 <main id="main" class="main">
-	<h3>addroompage</h3>
-	<h5>숙소객실추가</h5>
+	<h3>addextraroompage</h3>
+	<h5>extra숙소객실추가</h5>
 	<form action="adminAddExtraRoomPage.do" method="POST" enctype="multipart/form-data">
 		<table class='table'>
 			<tr>
@@ -46,13 +46,13 @@
 				<th>시설정보</th>
 				<td>
 					<span class="fa fa-chevron-right mr-2">
-					<input type="radio" name="singleRoom" value="2">싱글룸</span>
+					<input type="radio" name="roomType" value="singleRoom">싱글룸</span>
 					<span class="fa fa-chevron-right mr-2">
-					<input type="radio" name="twinRoom" value="2">트윈룸</span>
+					<input type="radio" name="roomType" value="twinRoom">트윈룸</span>
 					<span class="fa fa-chevron-right mr-2">
-					<input type="radio" name="doubleRoom" value="1" checked>더블룸</span>
+					<input type="radio" name="roomType" value="doubleRoom"checked>더블룸</span>
 					<span class="fa fa-chevron-right mr-2">
-					<input type="radio" name="tripleRoom" value="2">트리플룸</span>
+					<input type="radio" name="roomType" value="tripleRoom">트리플룸</span>
 					</td>
 					</tr>
 					<tr>
@@ -79,7 +79,6 @@
 		</table>
 	</form>
 </main>
-
 
 <!-- 폐기 이거 안 됨 <h5>숙소상세정보기입 * 상기객실개수받아표시</h5>
 	<input type="text" id="roomCount" placeholder="객실개수">
