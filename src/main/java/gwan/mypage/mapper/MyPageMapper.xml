@@ -213,10 +213,10 @@
 	<select id="readMessage" resultType="mp">
 		SELECT *
 		FROM message
-		WHERE (member_id=#{memberId} AND member_id2=#{memberId2})
-		    OR (member_id=#{memberId2} AND member_id2=#{memberId})
+		WHERE ((member_id=#{memberId} AND member_id2=#{memberId2})
+		    OR (member_id=#{memberId2} AND member_id2=#{memberId}))
 	    AND message_delete=1
-		ORDER BY message_id DESC;
+		ORDER BY message_id DESC
 	</select>
 	
 	<!-- 메세지내역, 특정인, 삭제 포함-->
@@ -225,7 +225,7 @@
 		FROM message
 		WHERE (member_id=#{memberId} AND member_id2=#{memberId2})
 		    OR (member_id=#{memberId2} AND member_id2=#{memberId})
-		ORDER BY message_id DESC;
+		ORDER BY message_id DESC
 	</select>
 	
 	<!-- 메세지 생성 -->

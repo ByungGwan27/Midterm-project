@@ -274,10 +274,10 @@ tbody {
 
 	<div class="chat_wrap gwan-chat gwan-flex-item-center" id="firstpage">
 
-		<div class="inner">
-			<!-- 본문 -->
+		<!-- <div class="inner">
+			본문
 
-			<!-- <div class="item">
+			<div class="item">
 				<div class="box">
 					<p class="msg">안녕하세요</p>
 					<span class="time">오전 10:05</span>
@@ -289,14 +289,14 @@ tbody {
 					<p class="msg">안녕하세요</p>
 					<span class="time">오전 10:05</span>
 				</div>
-			</div> -->
+			</div>
 
 		</div>
 
 		<input type="text" class="mymsg" placeholder="내용 입력" class="textinput">
 		<button class="textinput">파일전송</button>
 		<input type="text" class="yourmsg" placeholder="내용 입력"
-			class="textinput">
+			class="textinput"> -->
 
 	</div>
 
@@ -309,7 +309,9 @@ tbody {
 
 <script>
 	const gwanRightProfile = document.getElementById('gwanRightProfile');
-
+	//채팅창 생성 때 사용한 채팅창 선택
+	const chatWrap = document.getElementById('firstpage');
+	const innerDiv = document.createElement('div');
 	
 	//첫화면
 	document.addEventListener('DOMContentLoaded', function () {
@@ -384,10 +386,13 @@ tbody {
 		    console.log('memberId:', memberId);
 		    
 		    viewprofileMessage ();
+		    console.log('알1');
 		    
 		    viewrightprofile (memberId);
+		    console.log('알2');
 		    
 		    viewchatlist(memberId);
+		    console.log('알3');
 		    
 		});
 		
@@ -396,6 +401,7 @@ tbody {
 
 		tbody.appendChild(tr);
 	}
+	
 	
 	// 버튼클릭시 프로필 세부 메세지 조회
 	const pmb = document.getElementById('profileMessageButton');
@@ -479,7 +485,7 @@ tbody {
 		
 	}
 	
-	//우측 프로필 조회
+	//3.우측 프로필 조회
 	function viewrightprofile (memberId){
 		fetch('myPagereadProfile.do')
     	.then(resolve => resolve.json())
@@ -525,83 +531,169 @@ tbody {
 		  grp.appendChild(div);
 		}
 	
-
 	
-	//채팅창 생성
+	//4.채팅창 생성
 	function viewchatlist(memberId) {
-		console.log('채팅창 생성');
+	    console.log('채팅창 생성');
+	    console.log('여긴가' + memberId);
+	    
+		//전역변수 2개 선언(2, 3)
+	    
+	    innerDiv.classList.add('inner');
+	    chatWrap.appendChild(innerDiv);
 
-		let chatdiv = document.getElementsByClassName('chat_wrap')[0];
+	    const myMsgInput = document.createElement('input');
+	    myMsgInput.type = 'text';
+	    myMsgInput.classList.add('mymsg');
+	    myMsgInput.placeholder = '내용 입력';
+	    myMsgInput.id = 'textinput';
+	    chatWrap.appendChild(myMsgInput);
 
-		let innerDiv = document.createElement('div');
-		innerDiv.classList.add('inner');
-		chatdiv.appendChild(innerDiv);
+	    const addButton = document.createElement('button');
+	    addButton.textContent = '입력';
+	    addButton.classList.add('textinput');
+	    addButton.addEventListener('click', function() {
+	        const input = document.getElementById('textinput');
+	        const content = input.value.trim();
 
-		let mMI = document.createElement('input');
-		mMI.type = 'text';
-		mMI.classList.add('mymsg', 'textinput');
-		mMI.placeholder = '내용 입력';
-		chatdiv.appendChild(mMI);
+	        if (content !== '') {
+	            createChatItem(content, true);
+	            input.value = '';
+	        }
+	    });
+	    
+	    chatWrap.appendChild(addButton);
 
-		let fileUploadButton = document.createElement('button');
-		fileUploadButton.classList.add('textinput');
-		fileUploadButton.textContent = '파일전송';
-		chatdiv.appendChild(fileUploadButton);
+	    const sendButton = document.createElement('button');
+	    sendButton.textContent = '파일전송';
+	    sendButton.id = 'fileUploadButton';
+	    chatWrap.appendChild(sendButton);
+	    
+	    // 엔터 키 이벤트 처리
+	    myMsgInput.addEventListener('keydown', function(event) {
+	        if (event.key === 'Enter') {
+	            const input = document.getElementById('textinput');
+	            const content = input.value.trim();
 
-		/* let yMI = document.createElement('input');
-		yMI.type = 'text';
-		yMI.classList.add('yourmsg', 'textinput');
-		yMI.placeholder = '내용 입력';
-		chatWrapDiv.appendChild(yMI); */
-	  
+	            if (content !== '') {
+	                createChatItem(content, true);
+	                input.value = '';
+	            }
+	        }
+	    });
+	    
+	    messageRead(memberId);
+	}
 	
-		// 입력 버튼 클릭 이벤트 처리
-		let addButton = document.createElement('button');
-		addButton.textContent = '입력';
-		addButton.classList.add('textinput');
-		addButton.addEventListener('click', createChatItem);
-		chatdiv.appendChild(addButton);
+	//5.채팅창 읽어오기
+	function messageRead (memberId2) {
+				console.log('테스트 : '+memberId2);
+		
+		fetch("myPagereadMessage.do?memberId2=" + encodeURIComponent(memberId2))
+			.then(resolve => resolve.json())
+			.then(result => {
+				console.log('7.채팅창 읽어오기');
+				console.log('채팅내용 삭제');
+				
+				for (let i in result) {
+	    			if (result[i]['memberId2'] === memberId2) {
+						let rdiv = readChatmessage ({
+							messageId: result[i]['messageId'],
+							memberId: result[i]['memberId'],
+							memberId2: result[i]['memberId2'],
+							messageContent: result[i]['messageContent'],
+							messageImg: result[i]['messageImg'],
+							messageDate: result[i]['messageDate'],
+							messageCheck: result[i]['messageCheck'],
+							messageDelete: result[i]['messageDelete'],
+							messageTime: result[i]['messageTime'],
+							messageTime2: result[i]['messageTime2'],
+							messageApm: result[i]['messageApm']
+						});
+						innerDiv.appendChild(rdiv);
+					}	
+	    		}
+				
+			});
+			}
+	
+	//기존 채팅방 내용
+	function readChatmessage (oldmessage = {}) {
+		console.log('기존 채팅 내역');
+		let itemDiv = document.createElement('div');
+        itemDiv.classList.add('item');
 
-		// 키 눌림 이벤트 처리
-		  mMI.addEventListener('keypress', function(event) {
-	    	if (event.key === 'Enter' && this.value.length > 0) {
-		      createChatItem();
-		    }
-		  });
+        let boxDiv = document.createElement('div');
+        boxDiv.classList.add('box');
 
-		// 채팅 아이템 생성 함수
-		function createChatItem() {
-		  const inputValue = mMI.value;
-		  if (inputValue.trim() === '') return;
+        let msgP = document.createElement('p');
+        msgP.classList.add('msg');
+        msgP.textContent = oldmessage.messageContent;
 
-		  const newItem = document.createElement('div');
-		  newItem.classList.add('item');
+        let timeSpan = document.createElement('span');
+        timeSpan.classList.add('time');
+        timeSpan.textContent = oldmessage.messageDate + ' ';
+        timeSpan.textContent += oldmessage.messageTime + ' ';
+        timeSpan.textContent += oldmessage.messageTime2 + ' ';
+        timeSpan.textContent += oldmessage.messageApm;
 
-		  const newBox = document.createElement('div');
-		  newBox.classList.add('box');
+        boxDiv.appendChild(msgP);
+        boxDiv.appendChild(timeSpan);
+        itemDiv.appendChild(boxDiv);
 
-		  const newMsg = document.createElement('p');
-		  newMsg.classList.add('msg');
-		  newMsg.textContent = inputValue;
+        innerDiv.appendChild(itemDiv);
+        
+        return itemDiv;
+	}
+	
+	
+	function createChatItem(content, isMyMsg) {
+		const innerDiv = document.querySelector('.inner');
 
-		  const newTime = document.createElement('span');
-		  newTime.classList.add('time');
-		  newTime.textContent = getCurrentTime();
+	    const itemDiv = document.createElement('div');
+	    itemDiv.classList.add('item');
+	    if (isMyMsg) {
+	        itemDiv.classList.add('mymsg');
+	    }
 
-		  newBox.appendChild(newMsg);
-		  newBox.appendChild(newTime);
-		  newItem.appendChild(newBox);
-		  document.querySelector('.inner').appendChild(newItem);
+	    const boxDiv = document.createElement('div');
+	    boxDiv.classList.add('box');
 
-		  mMI.value = '';
-		  mMI.focus();
-		}
+	    const msgParagraph = document.createElement('p');
+	    msgParagraph.classList.add('msg');
+	    msgParagraph.textContent = content;
 
-		// 현재 시간 반환 함수
-		function getCurrentTime() {
-		    const currentTime = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
-		    return currentTime;
-		  }
-		}
+	    const timeSpan = document.createElement('span');
+	    timeSpan.classList.add('time');
+	    timeSpan.textContent = currentTime();
+
+	    boxDiv.appendChild(msgParagraph);
+	    boxDiv.appendChild(timeSpan);
+	    itemDiv.appendChild(boxDiv);
+
+	    innerDiv.appendChild(itemDiv);
+
+	    // 스크롤 맨 아래로 이동
+	    innerDiv.scrollTop = innerDiv.scrollHeight;
+	}
+
+	function currentTime() {
+	    const date = new Date();
+	    let hh = date.getHours();
+	    let mm = date.getMinutes();
+	    const apm = hh >= 12 ? '오후' : '오전';
+
+	    hh %= 12;
+	    hh = hh || 12; // 0시일 경우 12시로 표시
+
+	    mm = mm < 10 ? '0' + mm : mm; // 10 미만의 분은 0을 추가하여 표시
+
+	    return apm + ' ' + hh + ':' + mm;
+	}
+
+
+	
+
+	/* viewchatlist('memberId'); */
 	
 </script>
