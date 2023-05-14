@@ -17,9 +17,11 @@ public class NoticeModifyControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+
 		//공지사항ID 
-		String noticeId = req.getParameter("noticeId");
+		int noticeId = Integer.parseInt(req.getParameter("noticeId"));
 		System.out.println("noticeId : "+noticeId);
+		req.setAttribute("nid", noticeId);
 		
 		//
 		

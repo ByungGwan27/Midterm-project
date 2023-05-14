@@ -104,16 +104,11 @@ header.major {
 			<div class="row gx-4 gx-lg-5 align-items-center">
 
 				<form action="modifyPage.do" method="post">
+						<input type="hidden" name="noticeId" value="${nid }" >	
 					<table class="table">
 						<tr>
-							<th>작성자</th>
-							<td><input type="text" name="noticeId"
-								></td>
-						</tr>
-
-						<tr>
 							<th>제목</th>
-							<td><input type="text" name="noticeTitle"
+							<td><input type="text" name="noticeTitle"  value="${nid }"
 								></td>
 						</tr>
 						<tr>

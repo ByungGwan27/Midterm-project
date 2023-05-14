@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.common.control.Control;
 import shin.notice.domain.NoticeVO;
+import shin.notice.service.NoticeService;
+import shin.notice.service.NoticeServiceImpl;
 
 public class NoticeDeleteControl implements Control {
 
@@ -18,6 +20,8 @@ public class NoticeDeleteControl implements Control {
 		NoticeVO vo = new NoticeVO();
 		vo.setNoticeId(Integer.parseInt(noticeId));
 		
+		NoticeService service = new NoticeServiceImpl();
+		Notice vo = service.
 		
 		
 		return "noticepage/noticeDelete.tiles";
