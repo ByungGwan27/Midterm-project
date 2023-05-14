@@ -98,16 +98,19 @@
 								</div>
 							</td>
 						</tr>
-						<tr>
-							<td colspan="2">후기1</td>
-						</tr>
-						<tr>
-							<td colspan="2">후기2</td>
-						</tr>
-						<tr>
-							<td>left달력</td>
-							<td>right달력</td>
-						</tr>
+						<c:if test="${empty roomList}">
+							<tr>
+								<td><p>객실 정보가 없습니다.</p></td>
+							</tr>
+
+						</c:if>
+						<c:forEach var="bestReview" items="${bestReview}">
+							<tr>
+								<td colspan="2">${bestReview.reviewPoint}
+									${bestReview.reviewContent}</td>
+							</tr>
+						</c:forEach>
+
 					</table>
 				</div>
 			</div>
@@ -165,31 +168,30 @@
 			<div class="col-lg-10">
 				<h2 class="section-title text-center mb-3">시설정보</h2>
 			</div>
-				<ul class="list-unstyled one-col text-center">
-					<c:forEach var="roomDetailList" items="${roomDetailList}">
-						<c:if test="${roomDetailList.parking eq 1 && !previousParking}">
-							<li class="d-inline-block">주차장</li>
-							<c:set var="previousParking" value="true" />
-						</c:if>
-						<c:if test="${roomDetailList.wifi eq 1 && !previousWifi}">
-							<li class="d-inline-block">WIFI</li>
-							<c:set var="previousWifi" value="true" />
-						</c:if>
-						<c:if test="${roomDetailList.pet eq 1 && !previousPet}">
-							<li class="d-inline-block">애완동물동반가능</li>
-							<c:set var="previousPet" value="true" />
-						</c:if>
-						<c:if test="${roomDetailList.pool eq 1 && !previousPool}">
-							<li class="d-inline-block">수영장</li>
-							<c:set var="previousPool" value="true" />
-						</c:if>
-						<c:if
-							test="${roomDetailList.breakfast eq 1 && !previousBreakfast}">
-							<li class="d-inline-block">조식제공</li>
-							<c:set var="previousBreakfast" value="true" />
-						</c:if>
-					</c:forEach>
-				</ul>
+			<ul class="list-unstyled one-col text-center">
+				<c:forEach var="roomDetailList" items="${roomDetailList}">
+					<c:if test="${roomDetailList.parking eq 1 && !previousParking}">
+						<li class="d-inline-block">주차장</li>
+						<c:set var="previousParking" value="true" />
+					</c:if>
+					<c:if test="${roomDetailList.wifi eq 1 && !previousWifi}">
+						<li class="d-inline-block">WIFI</li>
+						<c:set var="previousWifi" value="true" />
+					</c:if>
+					<c:if test="${roomDetailList.pet eq 1 && !previousPet}">
+						<li class="d-inline-block">애완동물동반가능</li>
+						<c:set var="previousPet" value="true" />
+					</c:if>
+					<c:if test="${roomDetailList.pool eq 1 && !previousPool}">
+						<li class="d-inline-block">수영장</li>
+						<c:set var="previousPool" value="true" />
+					</c:if>
+					<c:if test="${roomDetailList.breakfast eq 1 && !previousBreakfast}">
+						<li class="d-inline-block">조식제공</li>
+						<c:set var="previousBreakfast" value="true" />
+					</c:if>
+				</c:forEach>
+			</ul>
 		</div>
 	</div>
 </div>

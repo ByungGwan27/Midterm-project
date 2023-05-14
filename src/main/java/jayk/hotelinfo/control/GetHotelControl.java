@@ -24,6 +24,10 @@ public class GetHotelControl implements Control {
 		req.setAttribute("hotelInfo", hotelInfo);
 		//System.out.println(hotelInfo);
 		
+		//베스트리뷰리스트
+		List<HotelInfoVO> bestReview = service.bestReview(Integer.parseInt(hotelId));
+		req.setAttribute("bestReview", bestReview);
+		
 		//상세객실리스트
 		List<HotelInfoVO> roomList = service.roomList(Integer.parseInt(hotelId));
 		req.setAttribute("roomList", roomList);

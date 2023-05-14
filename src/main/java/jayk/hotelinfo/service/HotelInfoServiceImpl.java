@@ -151,4 +151,9 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 	public List<HotelInfoVO> roomDetailList(int hotelId) {
 		return mapper.roomDetailList(hotelId);
 	}
+
+	@Override
+	public List<HotelInfoVO> bestReview(int hotelId) {
+		return mapper.bestReview(hotelId);
+	}
 }

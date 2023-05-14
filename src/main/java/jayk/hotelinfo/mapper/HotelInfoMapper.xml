@@ -186,6 +186,16 @@
 		h.hotel_location2, h.hotel_point, h.hotel_image, h.location_detail
 	</select>
 	
+	<select id="bestReview">
+	<![CDATA[
+		SELECT * FROM (
+  SELECT review_point, review_content 
+  FROM review 
+  WHERE hotel_id = #{hotelId}
+  ORDER BY review_point DESC
+) WHERE ROWNUM <= 2
+	]]>
+	</select>
 
 
 	<select id="roomList">
@@ -286,7 +296,7 @@ WHERE
 	<insert id="insertAdminHotel">
 		insert into hotel (hotel_id, hotel_name,
 		hotel_location1, hotel_location2, hotel_image,location_detail)
-		values(#{hotelId}, #{hotelName}, #{hotelLocation1},
+		values((SELECT NVL(MAX(hotel_id)+1,0) FROM hotel), #{hotelName}, #{hotelLocation1},
 		#{hotelLocation2},
 		#{hotelImage}, #{locationDetail})
 	</insert>
@@ -295,13 +305,13 @@ WHERE
 		insert into room_info
 		(hotel_id, room_id, room_name, room_price, room_max, room_min,
 		add_price)
-		values (#{hotelId}, #{roomId}, #{roomName},
+		values (#{hotelId}, (SELECT NVL(MAX(room_id)+1,0) FROM room_info), #{roomName},
 		#{roomPrice},#{roomMax},#{roomMin}, #{addPrice})
 	</insert>
 
 	<insert id="insertAdminRoomImage" parameterType="hi">
 		insert into
-		room_image values (#{imageId}, #{roomId}, #{image}, #{hotelId})
+		room_image values ((SELECT NVL(MAX(image_id)+1,0) FROM room_image), #{roomId}, #{image}, #{hotelId})
 	</insert>
 
 	<insert id="insertAdminRoomDetail" parameterType="hi">

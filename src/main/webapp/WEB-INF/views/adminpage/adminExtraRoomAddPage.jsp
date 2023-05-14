@@ -6,10 +6,10 @@
 	<h5>extra숙소객실추가</h5>
 	<form action="adminAddExtraRoomPage.do" method="POST" enctype="multipart/form-data">
 		<table class='table'>
-			<tr>
+<!-- 			<tr>
 				<th>이미지Id</th>
 				<td><input type="text" name="imageId"></td>
-			</tr>
+			</tr> -->
 			<tr>
 				<th>객실이미지</th>
 				<td><input type="file" name="image"></td>
@@ -18,10 +18,10 @@
 				<th>hotelId</th>
 				<td><input type="text" name="hotelId" value="${extraRoom.hotelId}" readonly></td>
 			</tr>
-			<tr>
+	<!-- 		<tr>
 				<th>객실ID</th>
 				<td><input type="text" name="roomId"></td>
-			</tr>
+			</tr> -->
 			<tr>
 				<th>객실명</th>
 				<td><input type="text" name="roomName"></td>
