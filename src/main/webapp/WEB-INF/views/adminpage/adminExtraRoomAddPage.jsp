@@ -4,7 +4,7 @@
 <main id="main" class="main">
 	<h3>addroompage</h3>
 	<h5>숙소객실추가</h5>
-	<form action="adminAddRoomPage.do" method="POST" enctype="multipart/form-data">
+	<form action="adminAddExtraRoomPage.do" method="POST" enctype="multipart/form-data">
 		<table class='table'>
 			<tr>
 				<th>이미지Id</th>
@@ -16,7 +16,7 @@
 			</tr>
 			<tr>
 				<th>hotelId</th>
-				<td><input type="text" name="hotelId" value="${adminAddRoom.hotelId}" readonly></td>
+				<td><input type="text" name="hotelId" value="${extraRoom.hotelId}" readonly></td>
 			</tr>
 			<tr>
 				<th>객실ID</th>

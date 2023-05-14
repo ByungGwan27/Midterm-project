@@ -26,7 +26,7 @@ public interface HotelInfoService {
 	//adminHotelList
 	public List<HotelInfoVO> adminHotelList();
 	
-	//hotelLinfo
+	//adminHotelInfo
 	public HotelInfoVO getAdminHotel(int hotelId);
 	public HotelInfoVO getAdminHotelRoom(int hotelId, int roomId);
 	

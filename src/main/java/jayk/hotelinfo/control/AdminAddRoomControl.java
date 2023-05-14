@@ -32,7 +32,7 @@ public class AdminAddRoomControl implements Control {
 			 System.out.println("file : " + file);
 		 }
 	
-		String hotelId = multi.getParameter("hotelId");
+		String hotelId = req.getSession().getAttribute("generatedHotelId").toString();
 		String roomId = multi.getParameter("roomId");
 		String roomName = multi.getParameter("roomName");
 		String roomPrice = multi.getParameter("roomPrice");
