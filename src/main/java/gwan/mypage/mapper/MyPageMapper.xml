@@ -193,7 +193,7 @@
 	
 	<!-- 프로필 세부 조회, 메세지 교환한 사람들만 -->
 	<select id="readProfileMessage" resultType="mp">
-		SELECT u.member_nickname, u.member_profile, m.message_id,
+		SELECT u.member_nickname, u.member_profile, m.message_id, u.member_id,
 			CASE
 	           WHEN LENGTH(m.message_content) > 10 THEN SUBSTR(m.message_content, 1, 10) || '...'
 	           ELSE m.message_content

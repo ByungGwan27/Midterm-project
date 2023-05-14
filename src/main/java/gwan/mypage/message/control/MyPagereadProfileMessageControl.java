@@ -27,6 +27,7 @@ public class MyPagereadProfileMessageControl implements Control {
 			json += "{\"memberNickname\":\""+list.get(i).getMemberNickname()+"\",";
 			json += "\"memberProfile\":\""+list.get(i).getMemberProfile()+"\",";
 			json += "\"messageId\":\""+list.get(i).getMessageId()+"\",";
+			json += "\"memberId\":\""+list.get(i).getMemberId()+"\",";
 			json += "\"messageContent\":\""+list.get(i).getMessageContent()+"\",";
 			json += "\"messageImg\":\""+list.get(i).getMessageImg()+"\",";
 			json += "\"messageDate\":\""+list.get(i).getMessageDate()+"\",";
