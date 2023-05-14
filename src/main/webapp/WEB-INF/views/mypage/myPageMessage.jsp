@@ -204,50 +204,6 @@ tbody {
 	width: 230px;
 }
 </style>
-<script>
-	$(function() {
-		$("input[type='text']").keypress(
-				function(e) {
-					if (e.keyCode == 13 && $(this).val().length) {
-						var _val = $(this).val();
-						var _class = $(this).attr("class");
-						$(this).val('');
-						var _tar = $(".chat_wrap .inner")
-								.append(
-										'<div class="item ' + _class + '"><div class="box"><p class="msg">'
-												+ _val
-												+ '</p><span class="time">'
-												+ currentTime()
-												+ '</span></div></div>');
-
-						var lastItem = $(".chat_wrap .inner")
-								.find(".item:last");
-						setTimeout(function() {
-							lastItem.addClass("on");
-						}, 10);
-
-						var position = lastItem.position().top
-								+ $(".chat_wrap .inner").scrollTop();
-						console.log(position);
-
-						$(".chat_wrap .inner").stop().animate({
-							scrollTop : position
-						}, 500);
-					}
-				});
-
-	});
-
-	var currentTime = function() {
-		var date = new Date();
-		var hh = date.getHours();
-		var mm = date.getMinutes();
-		var apm = hh > 12 ? "오후" : "오전";
-		var th = hh > 12 ? hh - 12 : hh;
-		var ct = apm + " " + th + ":" + mm + "";
-		return ct;
-	}
-</script>
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">메세지함</h1>
@@ -349,6 +305,7 @@ tbody {
 			}
 			
 		})
+		.catch(error => console.error(error));
 	}
 	
 	//프로필 생성
@@ -382,6 +339,8 @@ tbody {
 			firstpage.innerHTML = "";
 			console.log('우측 프로필 지우기');
 			gwanRightProfile.innerHTML = "";
+			console.log('채팅창 지우기');
+			innerDiv.innerHTML = "";
 			
 		    let memberId = list.memberId;
 		    console.log('memberId:', memberId);
@@ -434,7 +393,8 @@ tbody {
 					});
 				}
 	    		
-	    	});
+	    	})
+		 .catch(error => console.error(error));
 	}
 	
 	
@@ -471,7 +431,7 @@ tbody {
 			firstpage.innerHTML = "";
 			console.log('우측 프로필 지우기');
 			gwanRightProfile.innerHTML = "";
-			console.log('4.텍스트, 입력상자 지우기');
+			console.log('채팅창');
 			innerDiv.innerHTML = "";
 			
 			let memberId = list2.memberId;
@@ -505,7 +465,8 @@ tbody {
 					});
 				}	
     		}
-    	});
+    	})
+		.catch(error => console.error(error));
 	}
 	
 	
@@ -539,7 +500,6 @@ tbody {
 	//4.채팅창 생성
 	function viewchatlist(memberId) {
 	    console.log('채팅창 생성');
-	    console.log('여긴가' + memberId);
 	    
 		//전역변수 2개 선언(2, 3)
 	    
@@ -561,7 +521,9 @@ tbody {
 	        const content = input.value.trim();
 
 	        if (content !== '') {
-	            createChatItem(content, true);
+	        	createMessage(content, true);
+	            //채팅생성
+	            createMessage (content, memberId);
 	            input.value = '';
 	        }
 	    });
@@ -569,7 +531,7 @@ tbody {
 	    chatWrap.appendChild(addButton);
 
 	    const sendButton = document.createElement('button');
-	    sendButton.textContent = '파일전송';
+	    //sendButton.textContent = '파일전송';
 	    sendButton.id = 'fileUploadButton';
 	    chatWrap.appendChild(sendButton);
 	    
@@ -580,7 +542,8 @@ tbody {
 	            const content = input.value.trim();
 
 	            if (content !== '') {
-	                createChatItem(content, true);
+	            	createMessage(content, true);
+	                createMessage (content, memberId);
 	                input.value = '';
 	            }
 	        }
@@ -592,15 +555,12 @@ tbody {
 	
 	//5.채팅창 읽어오기
 	function messageRead (memberId2) {
-				console.log('테스트 : '+memberId2);
 				
 		fetch("myPagereadMessage.do?memberId2=" + encodeURIComponent(memberId2))
 			.then(resolve => resolve.json())
 			.then(result => {
 				console.log('7.채팅창 읽어오기');
 				console.log('채팅내용 삭제');
-				console.log(result);
-				console.log(memberId2);
 				boxDiv.innerHTML = "";
 				
 				
@@ -621,14 +581,13 @@ tbody {
 						innerDiv.appendChild(rdiv);
 	    		}
 				
-			});
-			}
+			})
+		.catch(error => console.error(error));
+		}
 	
 	//기존 채팅방 내용
 	function readChatmessage(oldmessage = {}, memberId2) {
 		console.log('8.기존 채팅 내역 불러오기');
-	    console.log(oldmessage.memberId2);
-	    console.log(memberId2);
 
 	    let itemDiv = document.createElement('div');
 	    itemDiv.classList.add('item');
@@ -657,8 +616,56 @@ tbody {
 	    return itemDiv;
 	}
 	
+	//메세지 생성
+	function createMessage (content, memberId2) {
+		
+		console.log('메세지를 만들어보자');
+		console.log(memberId2);
+		console.log(content);
+		
+		//const currentTime = getCurrentTime();
+		const currentTimeObj = currentTime();
+		let th = currentTimeObj.th;
+		let mm = currentTimeObj.mm;
+		let apm = currentTimeObj.apm;
+		console.log(th);
+		console.log(apm);
+		console.log(mm);
+/* 		const data = {
+		  memberId2: memberId2,
+		  content: content,
+		  apm: currentTimeObj.apm,
+		  th: currentTimeObj.th,
+		  mm: currentTimeObj.mm
+		}; 
+ */		
+
+		fetch("myPagecreateMessage.do?memberId2=" + encodeURIComponent(memberId2) + '&content=' + encodeURIComponent(content)
+				 + '&th=' + encodeURIComponent(th) + '&mm=' + encodeURIComponent(mm) + '&apm=' + encodeURIComponent(apm))
+		/* fetch("myPagecreateMessage.do", {
+			method: 'POST',
+		    headers: {
+		      'Content-Type': 'application/json'
+		    },
+		    body: JSON.stringify(data)
+	    }) */
+			.then(resolve => resolve.json())
+			.then(result => {
+				
+				 if (result.retCode === 'Success') {
+			        console.log('성공!');
+			      } else if (result.retCode === 'Fail') {
+			        console.log('실패!');
+			      }
+				 viewprofileMessage ();
+				 innerDiv.innerHTML = "";
+				 messageRead(memberId2);
+		    })
+		    .catch(error => console.error(error));
+	}
 	
-	function createChatItem(content, isMyMsg) {
+	
+	/* function createChatItem(content, isMyMsg) {
 		const innerDiv = document.querySelector('.inner');
 
 	    const itemDiv = document.createElement('div');
@@ -686,25 +693,23 @@ tbody {
 
 	    // 스크롤 맨 아래로 이동
 	    innerDiv.scrollTop = innerDiv.scrollHeight;
-	}
+	} */
 
 	function currentTime() {
-	    const date = new Date();
-	    let hh = date.getHours();
-	    let mm = date.getMinutes();
-	    const apm = hh >= 12 ? '오후' : '오전';
-
-	    hh %= 12;
-	    hh = hh || 12; // 0시일 경우 12시로 표시
-
-	    mm = mm < 10 ? '0' + mm : mm; // 10 미만의 분은 0을 추가하여 표시
-
-	    return apm + ' ' + hh + ':' + mm;
+		var date = new Date();
+		var hh = date.getHours();
+		var mm = date.getMinutes();
+		var apm = hh > 12 ? "오후" : "오전";
+		var th = hh > 12 ? hh - 12 : hh;
+		return {
+		    apm: apm,
+		    th: th,
+		    mm: mm
+		  };
 	}
-
+	
 
 	
 
-	/* viewchatlist('memberId'); */
 	
 </script>

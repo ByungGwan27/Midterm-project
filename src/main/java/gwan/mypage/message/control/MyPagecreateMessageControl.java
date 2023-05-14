@@ -23,11 +23,18 @@ public class MyPagecreateMessageControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		String id = (String) session.getAttribute("id");
-		String id2 = req.getParameter("memberid2");
-		String mC = req.getParameter("");
-		int mT = Integer.parseInt(req.getParameter(""));
-		int mT2 = Integer.parseInt(req.getParameter(""));
-		String apm = req.getParameter("");
+		System.out.println("메세지를 생성하자");
+		System.out.println(id);
+		String id2 = req.getParameter("memberId2");
+		System.out.println(id2);
+		String mC = req.getParameter("content");
+		System.out.println(mC);
+		int mT = Integer.parseInt(req.getParameter("th"));
+		System.out.println(mT);
+		int mT2 = Integer.parseInt(req.getParameter("mm"));
+		System.out.println(mT2);
+		String apm = req.getParameter("apm");
+		System.out.println(apm);
 		
 		MyPageVO vo = new MyPageVO();
 		MyPageService service = new MyPageServiceImpl();

@@ -231,7 +231,7 @@
 	<!-- 메세지 생성 -->
 	<insert id="createMessage" parameterType="mp">
 		INSERT INTO message (message_id, member_id, member_id2, message_content, message_time, message_time2, message_apm)
-		VALUES(message_seq.nextval, #{memberId}, #{memberId2}, #{messageContent}, #{messageTime}, #{messageTime2}, #{message_apm})
+		VALUES(message_seq.nextval, #{memberId}, #{memberId2}, #{messageContent}, #{messageTime}, #{messageTime2}, #{messageApm})
 	</insert>
 	
 	<!-- 메세지 삭제(업데이트) -->
