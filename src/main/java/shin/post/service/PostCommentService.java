@@ -8,9 +8,11 @@ public interface PostCommentService {
 	
 	public List<PostCommentVO> postCommentList();
 	public List<PostCommentVO> getCommenties(int postId);
-	public boolean addComment(PostCommentVO vo);
-	public boolean removeComment(int commentId);
-	public boolean modifyComment(PostCommentVO vo);
+	public boolean insertPostComment(PostCommentVO vo);
+	public boolean deletePostComment(int commentId);
+	public boolean updatePostComment(PostCommentVO vo);
 	public PostCommentVO getComment(int commentId);
+	
+
 	
 }

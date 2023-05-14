@@ -27,18 +27,17 @@ public class PostDetailControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		AdminService service2 = new AdminServiceImpl();
-		List<MemberVO> memberList = service2.allMemberInfo();
-		
-		PostCommentService service = new PostCommentServiceImpl();
-		List<PostCommentVO> commentList = service.postCommentList();
-		
-		int postId = Integer.parseInt(req.getParameter("postId"));
-		
-		PostService service3 = new PostServiceImpl();
-		List<PostVO> postList = service3.postList(postId);
-		
-		
+		/*
+		 * AdminService service2 = new AdminServiceImpl(); List<MemberVO> memberList =
+		 * service2.allMemberInfo();
+		 * 
+		 * PostCommentService service = new PostCommentServiceImpl();
+		 * List<PostCommentVO> commentList = service.postCommentList();
+		 * 
+		 * int postId = Integer.parseInt(req.getParameter("postId"));
+		 * 
+		 * PostService service3 = new PostServiceImpl(); List<PostVO> postList =
+		 * service3.postList(postId);
 		
 		req.setAttribute("allMemberInfo", memberList);
 		req.setAttribute("postCommentList", commentList);
@@ -48,7 +47,27 @@ public class PostDetailControl implements Control {
 		System.out.println(commentList);
 		System.out.println(postList);
 		
+		PostService service = new PostServiceImpl();
+		List<PostVO> postmemberdetail = service.postmemberdetail();
+		req.setAttribute("postmemberdetail", postmemberdetail);
+		
+		List<PostVO> postmember = service.postmember();
+		//포스트 게시물 리스트
+		List<PostVO> postmain = service.postmain();
+		System.out.println("test"+ postmain);
+		
+		req.setAttribute("postmember", postmember);
+		req.setAttribute("postmain", postmain);
+			
 		return "postpage/postDetail.tiles";
 	}
-
+	 */
+		
+		int postId = Integer.parseInt(req.getParameter("postId"));
+	    PostService service = new PostServiceImpl();
+	    List<PostVO> postDetail = service.getPostDetail(postId);
+	    req.setAttribute("postDetail", postDetail);
+	    return "postpage/postDetail.tiles";
+	}
+		
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import main.common.control.DataSource;
-
+import oracle.jdbc.proxy.annotation.Post;
 import shin.post.domain.PostVO;
 import shin.post.mapper.PostMapper;
 
@@ -52,6 +52,27 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public List<PostVO> postmemberdetail() {
 		return mapper.postmemberdetail();
+	}
+
+
+	@Override
+	public List<PostVO> postdetail() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public Post getPostById(String postId) {
+	    return mapper.getPostById(postId);
+	}
+
+
+	@Override
+	public List<PostVO> getPostDetail(int postId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
