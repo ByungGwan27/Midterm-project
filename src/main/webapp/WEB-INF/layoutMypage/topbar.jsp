@@ -36,12 +36,12 @@
 			</div></li>
 
 		<!-- Nav Item - 알림 -->
-		<li class="nav-item dropdown no-arrow mx-1"><a
+		<!-- <li class="nav-item dropdown no-arrow mx-1"><a
 			class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
 			role="button" data-toggle="dropdown" aria-haspopup="true"
-			aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> <!-- Counter - Alerts -->
+			aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> Counter - Alerts
 				<span class="badge badge-danger badge-counter">알림갯수+</span>
-		</a> <!-- Dropdown - Alerts -->
+		</a> Dropdown - Alerts
 			<div
 				class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
 				aria-labelledby="alertsDropdown">
@@ -80,7 +80,7 @@
 					</div>
 				</a> <a class="dropdown-item text-center small text-gray-500" href="#">Show
 					All Alerts</a>
-			</div></li>
+			</div></li> -->
 
 		<!-- Nav Item - Messages -->
 		<li class="nav-item dropdown no-arrow mx-1"><a
@@ -157,17 +157,17 @@
 			<div
 				class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 				aria-labelledby="userDropdown">
-				<a class="dropdown-item" href="#"> <i
+				<!-- <a class="dropdown-item" href="#"> <i
 					class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
 				</a> <a class="dropdown-item" href="#"> <i
 					class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
 				</a> <a class="dropdown-item" href="#"> <i
 					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity
 					Log
-				</a>
+				</a> -->
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="#" data-toggle="modal"
-					data-target="#logoutModal"> <i
+					data-target="#logoutModal" onclick='logOut()' id='gwanLogout'> <i
 					class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 					Logout
 				</a>
@@ -176,3 +176,13 @@
 	</ul>
 
 </nav>
+
+<script>
+function logOut() {
+		let btnL = document.getElementById('gwanLogout');
+			if (confirm("정말 로그아웃 하시겠습니까?")) {
+				alert("로그아웃되었습니다");
+				location.href = 'logout.do';
+			}
+	}
+</script>
