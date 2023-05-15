@@ -10,10 +10,10 @@
 				<th>메인이미지</th>
 				<td><input type="file" name="hotelImage"></td>
 			</tr>
-					<tr>
+				<!-- 	<tr>
 				<th>hotelId</th>
 				<td><input type="text" name="hotelId"></td>
-			</tr>
+			</tr> -->
 				<tr>
 				<th>상호명</th>
 				<td><input type="text" name="hotelName"></td>

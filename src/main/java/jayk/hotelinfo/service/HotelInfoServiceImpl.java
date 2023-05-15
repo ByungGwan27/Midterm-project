@@ -74,6 +74,7 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 	//adminHotelList
 	@Override
 	public List<HotelInfoVO> adminHotelList() {
+		//return mapper.hotelListPage(page);
 		return mapper.adminHotelList();
 	}
 
@@ -96,7 +97,14 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 	
 	@Override
 	public boolean modifyAdminHotelRoom(HotelInfoVO vo) {
-		return mapper.updateAdminHotelRoom(vo) == 1;
+		int cnt = 0, cnt1 = 0;
+		cnt = mapper.updateAdminHotelRoom(vo);
+		cnt1 = mapper.updateAdminHotelRoomDetail(vo);
+		if (cnt > 0 && cnt1 > 0) {
+			return true;
+		}
+		return false;
+		
 	}
 	
 	//adminHotelInfoAdd
@@ -132,5 +140,20 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 	@Override
 	public int totalCount() {
 		return mapper.getCount();
+	}
+
+	@Override
+	public boolean modifyAdiminHotelRoomDetail(HotelInfoVO vo) {
+		return false;
+	}
+
+	@Override
+	public List<HotelInfoVO> roomDetailList(int hotelId) {
+		return mapper.roomDetailList(hotelId);
+	}
+
+	@Override
+	public List<HotelInfoVO> bestReview(int hotelId) {
+		return mapper.bestReview(hotelId);
 	}
 }

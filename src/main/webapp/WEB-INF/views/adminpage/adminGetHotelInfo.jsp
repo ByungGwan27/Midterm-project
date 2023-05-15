@@ -47,6 +47,12 @@
 					<tr>
 						<td>객실정보없음</td>
 					</tr>
+					<tr>
+						<td><a
+							href="admimAddExtraRoomForm.do?hotelId=${adminHotelInfo.hotelId}">
+								<button type="button">객실추가</button>
+						</a></td>
+					</tr>
 				</c:when>
 				<c:otherwise>
 					<tr>
@@ -60,7 +66,10 @@
 					</tr>
 					<tr>
 						<td colspan="2" align="center">
-							<button type="button" onclick="getRoomInfo()">객실정보확인</button>
+							<button type="button" onclick="getRoomInfo()">객실정보확인</button> <a
+							href="admimAddExtraRoomForm.do?hotelId=${adminHotelInfo.hotelId}">
+								<button type="button">객실추가</button>
+						</a>
 						</td>
 					</tr>
 					<script>

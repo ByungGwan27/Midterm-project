@@ -31,20 +31,15 @@ public class HotelListControl implements Control {
 		String roomMax = req.getParameter("roomMax");
 		String roomMin = req.getParameter("roomMin");
 		String roomPrice = req.getParameter("roomPrice");
-		System.out.println(hotelThema);
+		//System.out.println(hotelThema);
 		
 		HotelInfoService service = new HotelInfoServiceImpl();
-		int total = service.totalCount();
+		//int total = service.totalCount();
 		List<HotelInfoVO> hotelList = service.hotelList();
 		List<HotelInfoVO> navListLoca = service.navListLoca();
 		List<HotelInfoVO> navListThema = service.navListThema();
 		
-		//PageDTO dto = new PageDTO(page, total);
-		//req.setAttribute("pageInfo", dto);
-		System.out.println("1번"+hotelList);
-		System.out.println("1번"+navListLoca);
-		System.out.println("1번"+navListThema);
-		
+	
 		if (hotelLocation1 != null) {
 			hotelList = service.hotelListLoca(hotelLocation1);
 		} else if (hotelThema != null) {
@@ -62,8 +57,8 @@ public class HotelListControl implements Control {
 		req.setAttribute("navListLoca", navListLoca);
 		req.setAttribute("navListThema", navListThema);
 		System.out.println(hotelList);
-		System.out.println(navListLoca);
-		System.out.println(navListThema);
+		//System.out.println(navListLoca);
+		//System.out.println(navListThema);
 		
 		return "hotelinfopage/hotelListPage.tiles";
 
