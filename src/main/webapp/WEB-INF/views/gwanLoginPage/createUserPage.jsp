@@ -134,6 +134,7 @@
 					
 					//정규식
 					let reg = /^[0-9]+$/g; //숫자만 입력
+					let reg2 = /^[0-9]+$/; //숫자만 입력
 					//비밀번호 영문자+숫자+특수조합(8~25자리 입력)
 					let pwdCheck = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
 					//비밀번호 영문자+숫자+특수조합(8~25자리 입력)
@@ -211,7 +212,7 @@
 						return false;
 					};
 					
-					if (!reg.test(phone.value)) {
+					if (!reg2.test(phone.value)) {
 						alert("전화번호는 숫자만 입력할 수 있습니다.");
 						phone.focus();
 						return false;
