@@ -21,20 +21,28 @@ import gwan.loginpage.control.loginPageControl;
 import gwan.loginpage.control.logoutControl;
 import gwan.mail.smtp.passwordMail;
 import gwan.mail.smtp.passwordResetControl;
+import gwan.mypage.ajax.control.MyPageVisitPagingControl;
+import gwan.mypage.ajax.control.MyPageVisitedPagingControl;
 import gwan.mypage.ajax.control.MyPageWishAjaxControl;
 import gwan.mypage.ajax.control.MyPageWishAjaxDeleteControl;
 import gwan.mypage.control.AdminMessagePageControl;
+import gwan.mypage.control.MyPageCommentControl;
 import gwan.mypage.control.MyPageCouponControl;
+import gwan.mypage.control.MyPageCreateCommentControl;
+import gwan.mypage.control.MyPageCreateReportControl;
 import gwan.mypage.control.MyPageHomeDelWillVisitControl;
 import gwan.mypage.control.MyPageHomeWillVisitControl;
 import gwan.mypage.control.MyPageQnaControl;
 import gwan.mypage.control.MyPageQnaQControl;
 import gwan.mypage.control.MyPageQnaQCreateCkeditorControl;
 import gwan.mypage.control.MyPageQnaQCreateControl;
+import gwan.mypage.control.MyPageReportControl;
 import gwan.mypage.control.MyPageUserInfoChangeControl;
 import gwan.mypage.control.MyPageUserInfoChangeInputControl;
 import gwan.mypage.control.MyPageUserInfoPwControl;
 import gwan.mypage.control.MyPageUserInfoPwInputControl;
+import gwan.mypage.control.MyPageVisitControl;
+import gwan.mypage.control.MyPageVisitedControl;
 import gwan.mypage.control.MyPageWishListControl;
 import gwan.mypage.control.MypageHomeControl;
 import jayk.hotelinfo.control.AdminAddExtraRoomControl;
@@ -230,11 +238,29 @@ public class FrontController extends HttpServlet{
 		
 		// 강병관
 		//마이페이지
-		//마이페이지 홈(예약내역 이동)
+		//마이페이지 홈(방문전)
 		map.put("/myPageHome.do", new MypageHomeControl());
 		//마이페이지 - Json 처리
 		map.put("/myPageHomeWillVisit.do", new MyPageHomeWillVisitControl());
 		map.put("/myPageHomeDelWillVisit.do", new MyPageHomeDelWillVisitControl());
+		
+		//마이페이지 홈(방문중)
+		map.put("/myPageVisit.do", new MyPageVisitControl());
+		//마이페이지 - Json 처리
+		map.put("/myPageVisitPaging.do", new MyPageVisitPagingControl());
+		
+		//마이페이지 홈(방문완료)
+		map.put("/myPageVisited.do", new MyPageVisitedControl());
+		//마이페이지 - Json 처리
+		map.put("/myPageVisitedPaging.do", new MyPageVisitedPagingControl());
+		
+		//후기 작성
+		map.put("/myPageComment.do", new MyPageCommentControl());
+		map.put("/myPageCreateComment.do", new MyPageCreateCommentControl());
+		//신고 작성
+		map.put("/myPageReport.do", new MyPageReportControl());
+		map.put("/myPageCreateReport.do", new MyPageCreateReportControl());
+		
 		
 		//마이페이지(위시리스트)
 		map.put("/myPageWishList.do", new MyPageWishListControl());

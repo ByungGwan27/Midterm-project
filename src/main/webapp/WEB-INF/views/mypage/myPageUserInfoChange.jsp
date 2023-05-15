@@ -39,7 +39,16 @@
 			<tr>
 				<th>관심테마</th>
 				<!-- <td><textarea rows="3" cols="20" name="nickname"></textarea></td> -->
-				<td><input type="text" name="thema" placeholder='${thema }'></td>
+				<td>
+					<select name="thema" class="form-control custom-select" style="width: 200px;">
+					<option value="호텔">호텔</option>
+					<option value="모텔">모텔</option>
+					<option value="펜션">펜션</option>
+					<option value="게스트하우스">게스트하우스</option>
+					<option value="기타">기타</option>
+					</select>
+				</td>
+				<td><p>현재 테마 :</p><input type="text" placeholder='${thema }' readonly></td>
 			</tr>
 			<tr>
 				<th>비밀번호</th>

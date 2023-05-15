@@ -7,31 +7,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import gwan.mypage.domain.MyPageVO;
 import gwan.mypage.service.MyPageService;
 import gwan.mypage.service.MyPageServiceImpl;
 import main.common.control.Control;
-import main.common.control.PageDTO;
 
-public class MypageHomeControl implements Control {
+public class MyPageCreateReportControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		HttpSession session = req.getSession();
 		String id = (String) session.getAttribute("id");
+		int hotelId = Integer.parseInt(req.getParameter("reporthid"));
+		String type = req.getParameter("thema");
+		String message = req.getParameter("message");
 		
-		//페이징 작업
-		String pageStr = req.getParameter("page");
-		pageStr = pageStr == null ? "1" : pageStr;
-		int page = Integer.parseInt(pageStr);
+		MyPageVO vo = new MyPageVO();
+		vo.setMemberId(id);
+		vo.setHotelId(hotelId);
+		vo.setDecCategory(type);
+		vo.setDecContent(message);
 		
 		MyPageService service = new MyPageServiceImpl();
-		int total = service.readWillvisitPageCount(id);
+		service.createDec(vo);
 		
-		PageDTO dto = new PageDTO(page, total);
-		req.setAttribute("pageInfo", dto);
-		
-		return "mypage/myPageHome.tiles";
+		return "myPageVisited.do";
 	}
 
 }

@@ -12,10 +12,10 @@ public interface MyPageService {
 	public boolean deleteWillVisit(int reservationId);
 	public int readWillvisitPageCount(String memberId);
 	
-	public List<MyPageVO> visiting(String memberId);
+	public List<MyPageVO> visiting(String memberId, int page);
 	public int readvisitingPageCount(String memberId);
 	
-	public List<MyPageVO> visited(String memberId);
+	public List<MyPageVO> visited(String memberId, int page);
 	public int readvisitedPageCount(String memberId);
 	
 	//위시리스트 
@@ -49,4 +49,9 @@ public interface MyPageService {
 	public List<MyPageVO> readAllMessage(String memberId, String memberId2);
 	public boolean createMessage(MyPageVO vo);
 	public boolean updateMessage(int messageId);
+	
+	//신고
+	public boolean createDec(MyPageVO vo);
+	//후기
+	public boolean createComment(MyPageVO vo);
 }
