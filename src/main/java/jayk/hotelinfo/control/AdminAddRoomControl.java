@@ -33,13 +33,13 @@ public class AdminAddRoomControl implements Control {
 		 }
 	
 		String hotelId = req.getSession().getAttribute("generatedHotelId").toString();
-		//String roomId = multi.getParameter("roomId");
+		String roomId = multi.getParameter("roomId");
 		String roomName = multi.getParameter("roomName");
 		String roomPrice = multi.getParameter("roomPrice");
 		String roomMax = multi.getParameter("roomMax");
 		String roomMin = multi.getParameter("roomMin");
 		String addPrice = multi.getParameter("addPrice");
-		//String imageId = multi.getParameter("imageId");
+		String imageId = multi.getParameter("imageId");
 		String image = multi.getFilesystemName("image");
 		
 		String parking = multi.getParameter("parking");
@@ -64,13 +64,13 @@ public class AdminAddRoomControl implements Control {
 	
 		HotelInfoVO addRoom = new HotelInfoVO();
 		addRoom.setHotelId(Integer.parseInt(hotelId));
-		//addRoom.setRoomId(Integer.parseInt(roomId));
+		addRoom.setRoomId(Integer.parseInt(roomId));
 		addRoom.setRoomName(roomName);
 		addRoom.setRoomPrice(Integer.parseInt(roomPrice));
 		addRoom.setRoomMax(Integer.parseInt(roomMax));
 		addRoom.setRoomMin(Integer.parseInt(roomMin));
 		addRoom.setAddPrice(Integer.parseInt(addPrice));
-		//addRoom.setImageId(Integer.parseInt(imageId));
+		addRoom.setImageId(Integer.parseInt(imageId));
 		addRoom.setImage(image);
 		addRoom.setParking(Integer.parseInt(parking));
 		addRoom.setWifi(Integer.parseInt(wifi));

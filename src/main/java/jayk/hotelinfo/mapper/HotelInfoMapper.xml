@@ -296,7 +296,7 @@ WHERE
 	<insert id="insertAdminHotel">
 		insert into hotel (hotel_id, hotel_name,
 		hotel_location1, hotel_location2, hotel_image,location_detail)
-		values((SELECT NVL(MAX(hotel_id)+1,0) FROM hotel), #{hotelName}, #{hotelLocation1},
+		values(#{hotelId}, #{hotelName}, #{hotelLocation1},
 		#{hotelLocation2},
 		#{hotelImage}, #{locationDetail})
 	</insert>
@@ -305,13 +305,13 @@ WHERE
 		insert into room_info
 		(hotel_id, room_id, room_name, room_price, room_max, room_min,
 		add_price)
-		values (#{hotelId}, (SELECT NVL(MAX(room_id)+1,0) FROM room_info), #{roomName},
+		values (#{hotelId}, #{roomId}, #{roomName},
 		#{roomPrice},#{roomMax},#{roomMin}, #{addPrice})
 	</insert>
 
 	<insert id="insertAdminRoomImage" parameterType="hi">
 		insert into
-		room_image values ((SELECT NVL(MAX(image_id)+1,0) FROM room_image), #{roomId}, #{image}, #{hotelId})
+		room_image values (#{imageId}, #{roomId}, #{image}, #{hotelId})
 	</insert>
 
 	<insert id="insertAdminRoomDetail" parameterType="hi">

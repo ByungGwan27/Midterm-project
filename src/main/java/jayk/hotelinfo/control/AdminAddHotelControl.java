@@ -32,6 +32,7 @@ public class AdminAddHotelControl implements Control {
 			 System.out.println("file : " + file);
 		 }
 		
+		String hotelId = multi.getParameter("hotelId");
 		String hotelName = multi.getParameter("hotelName");
 		String hotelLocation1 = multi.getParameter("hotelLocation1");
 		String hotelLocation2 = multi.getParameter("hotelLocation2");
@@ -39,7 +40,7 @@ public class AdminAddHotelControl implements Control {
 		String locationDetail = multi.getParameter("locationDetail");
 		
 		HotelInfoVO addHotel = new HotelInfoVO();
-		//addHotel.setHotelId(Integer.parseInt(hotelId));
+		addHotel.setHotelId(Integer.parseInt(hotelId));
 		addHotel.setHotelName(hotelName);
 		addHotel.setHotelLocation1(hotelLocation1);
 		addHotel.setHotelLocation2(hotelLocation2);
