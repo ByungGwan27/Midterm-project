@@ -26,7 +26,7 @@
 								class="rounded-circle">
 						</c:if>
 						<c:if test="${memberInfo.memberProfile != null}">
-							<img src="${memberInfo.memberProfile }" alt="Profile"
+							<img src="images/${memberInfo.memberProfile }" alt="Profile"
 								class="rounded-circle">
 						</c:if>
 						<h2>${memberInfo.memberName}</h2>
@@ -256,11 +256,17 @@
 										</div>
 									</div>
 									<div class="row mb-3">
-										<label for="Facebook" class="col-md-4 col-lg-3 col-form-label">회원
-											등급</label>
+										<label for="Country" class="col-md-4 col-lg-3 col-form-label">관심테마</label>
 										<div class="col-md-8 col-lg-9">
-											<input name="memberGrade" type="text" class="form-control"
-												id="" value="${memberInfo.memberGrade}">
+											<select name="memberGrade" type="text" class="form-control"
+												id="memberThema " value="${memberInfo.memberGrade}">
+													<option value="${memberInfo.memberGrade}" selected>현재 : ${memberInfo.memberGrade}</option>
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4(인플루언서)</option>
+													<option value="5">5(관리자)</option>
+											</select>
 										</div>
 									</div>
 

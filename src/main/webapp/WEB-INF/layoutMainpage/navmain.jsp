@@ -22,7 +22,7 @@
 										<select name="location" class="form-control custom-select">
 											<option value="서울특별시">서울특별시</option>
 											<option value="부산광역시">부산광역시</option>
-											<option value="대구">대구광역시</option>
+											<option value="대구광역시">대구광역시</option>
 											<option value="인천광역시">인천광역시</option>
 											<option value="광주광역시">광주광역시</option>
 											<option value="대전광역시">대전광역시</option>

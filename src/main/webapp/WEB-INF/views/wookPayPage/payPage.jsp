@@ -112,7 +112,8 @@
 			/ ${payInfo.hotelLocation2}</li>
 		<li>방이름&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp&nbsp${payInfo.roomName}</li>
 		<li>방등급&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp&nbsp${payInfo.roomGrade}</li>
-		<li>1박당 가격&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp&nbsp${payInfo.roomPrice} 원</li>
+		<li>1박당
+			가격&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp&nbsp${payInfo.roomPrice} 원</li>
 	</ul>
 
 </div>
@@ -197,6 +198,7 @@
 					// })
 			 	 let today = new Date();
 				let resDate1 = document.getElementById('resDate');
+				let minus = 1;
 					
 				resDate1.addEventListener('click', function(){
 					document.getElementsByClassName('applyBtn btn btn-sm btn-primary')[0].addEventListener('blur',function(){
@@ -220,9 +222,10 @@
 						// }
 						
 						
-						let minus = (date2 - date1)/(1000*60*60*24)
+						minus = (date2 - date1)/(1000*60*60*24)
 								
 						document.getElementById('defualtPrice').value = ${payInfo.roomPrice }*(minus) 
+						document.getElementById('salePrice').value = ${payInfo.roomPrice }*(minus) 
 					})
 
 					
@@ -268,17 +271,22 @@
 						usePoint.value = 0;
 						canUsePoint.value = ${payMemberInfo.memberPoint }
 					}
+					if (usePoint.value<0){
+						alert('사용할 수 없는 숫자입니다')
+						usePoint.value = 0;
+						canUsePoint.value = ${payMemberInfo.memberPoint }
+					}
 					
-					if(${payInfo.roomPrice }-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent<0 && usePoint.value > 0){
+					if((${payInfo.roomPrice }*(minus))-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent<0 && usePoint.value > 0){
 						alert('결제금액이 0원입니다 마일리지를 사용할 수 없습니다')
 						usePoint.value = 0;
 						canUsePoint.value = ${payMemberInfo.memberPoint }
 					}
 					
-					if(${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent>=0){
+					if((${payInfo.roomPrice }*(minus))-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent>=0){
 						
 						canUsePoint.value = ${payMemberInfo.memberPoint }-usePoint.value
-						salePrice.value = ${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent
+						salePrice.value = (${payInfo.roomPrice }*(minus))-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent
 					}else{
 						salePrice.value = 0;
 						canUsePoint.value = ${payMemberInfo.memberPoint }-usePoint.value
@@ -287,16 +295,33 @@
 				})
 
 				selectCoupon.addEventListener('blur',function(){
-
-					console.log(selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent)
-
-					if(${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent >= 0){
-						salePrice.value = ${payInfo.roomPrice }-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent-usePoint.value
-					}else{
+					
+					if((${payInfo.roomPrice }*(minus))-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent < 0){
 						alert('할인금액이 결제금액 초과입니다')
 						salePrice.value = 0
 						
+						if(usePoint.value > 0){
+							usePoint.value = 0;
+							canUsePoint.value = ${payMemberInfo.memberPoint }
+						}
+					} else {
+						if(usePoint.value == 0){
+							salePrice.value = (${payInfo.roomPrice }*(minus))-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent					
+						}else {
+							salePrice.value = (${payInfo.roomPrice }*(minus))-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent-usePoint.value
+						}
 					}
+
+					
+
+					/* if(${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent >= 0){
+						salePrice.value = ${payInfo.roomPrice }-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent-usePoint.value
+					}else{
+						
+						alert('할인금액이 결제금액 초과입니다')
+						salePrice.value = 0
+						
+					} */
 				})
 
 			</script>
@@ -336,7 +361,7 @@
 		// ------  결제위젯 렌더링 ------ 
 		// 결제위젯이 렌더링될 DOM 요소를 지정하는 CSS 선택자 및 결제 금액을 넣어주세요. 
 		// https://docs.tosspayments.com/reference/widget-sdk#renderpaymentmethods선택자-결제-금액
-		paymentWidget.renderPaymentMethods("#payment-method", 15000)
+		paymentWidget.renderPaymentMethods("#payment-method", salePrice.value)
 
 		// ------  이용약관 렌더링 ------
 		// 이용약관이 렌더링될 DOM 요소를 지정하는 CSS 선택자를 넣어주세요.

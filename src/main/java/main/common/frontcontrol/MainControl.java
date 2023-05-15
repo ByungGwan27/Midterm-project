@@ -29,8 +29,8 @@ public class MainControl implements Control {
 		int resCount = vo.getReservationCount();
 		req.setAttribute("reservationCount", resCount);
 		//숙소수조회
-		vo = service.reservationCount();
-		int hotCount = vo.getReservationCount();
+		vo = service.hotelCount();
+		int hotCount = vo.getHotelCount();
 		req.setAttribute("hotelCount", hotCount);
 		//리뷰수조회
 		vo = service.reviewCount();

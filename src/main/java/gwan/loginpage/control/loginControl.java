@@ -64,7 +64,7 @@ public class loginControl implements Control {
 			String prevUrl = (String) session.getAttribute("prevUrl");
 			System.out.println(prevUrl);
 			// 첫 페이지에서 바로 로그인 화면 넘어가면 주소를 아래로 잡기 때문에 해당 구문 추가
-			if (prevUrl.equals("http://localhost:8081/")) {
+			if (prevUrl.equals("http://localhost:8081/") || prevUrl.equals("http://localhost:8081/MyProject/")) {
 				//첫 페이지에 req로 값 넘겨준게 있어서 tiles로 돌아가면 req값이 사라져 null 오류가 뜨기 때문에 .do로 첫페이지 접속
 				return "mainPage.do";
 			} else {

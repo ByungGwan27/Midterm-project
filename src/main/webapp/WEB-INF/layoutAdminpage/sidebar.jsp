@@ -48,12 +48,12 @@
         </a>
       </li>
       
-        <li class="nav-item">
+       <!--  <li class="nav-item">
         <a class="nav-link collapsed" href="adminPayList.do">
           <i class="bi bi-cash-coin"></i>
           <span>결제정보</span>
         </a>
-      </li>
+      </li> -->
       
         <li class="nav-item">
         <a class="nav-link collapsed" href="adminReservationList.do">
