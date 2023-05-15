@@ -16,15 +16,16 @@ public class NoticeDeleteControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String noticeId = req.getParameter("noticeId");
+		String noticeId = req.getParameter("nid2");
+		System.out.println("test" + noticeId);
 		NoticeVO vo = new NoticeVO();
+		
 		vo.setNoticeId(Integer.parseInt(noticeId));
-		
 		NoticeService service = new NoticeServiceImpl();
-		Notice vo = service.
-		
-		
-		return "noticepage/noticeDelete.tiles";
+		service.noticeDelete(Integer.parseInt(noticeId));
+		System.out.println("test" + noticeId);
+	
+		return "noticeList.do";
 	}
-
+		
 }

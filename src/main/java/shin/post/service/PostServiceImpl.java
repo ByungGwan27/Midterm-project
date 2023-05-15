@@ -56,9 +56,9 @@ public class PostServiceImpl implements PostService {
 
 
 	@Override
-	public List<PostVO> postdetail() {
+	public List<PostVO> postdetail(int postId) {
 		// TODO Auto-generated method stub
-		return null;
+		return mapper.postdetail(postId);
 	}
 
 

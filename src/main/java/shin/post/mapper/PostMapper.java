@@ -11,6 +11,7 @@ public interface PostMapper {
 	public List<PostVO> postList(int postId);
 	public List<PostVO> postmember();
 	public List<PostVO> postmain();
+	public List<PostVO> postdetail(int postId);
 	public List<PostVO> postmemberdetail();
 	//포스트 페이징 기능
 	public List<PostVO> postWithPage(int page); 

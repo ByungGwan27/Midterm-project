@@ -9,24 +9,26 @@
 		<h3>여행 포스트 상세 페이지</h3>
 		<div class="row gx-4 gx-lg-5 align-items-center">
 
-			
+			<c:forEach items="${postdetail }" var="d" >
 				<table class="table">
 					<tr>
-						<td>${postmain.postTitle }</td>
-						<tr>
-						<td>${postmain.memberNickName }</td>
-						</tr>
+						<td>${d.postTitle }</td>
 					<tr>
-						<td><img src="cssPostList/images/${postmain.postImages }"
+						<td>${d.memberNickName }</td>
+					</tr>
+					<tr>
+						<td><img src="cssPostList/images/${d.postImages }"
 							class="testimonial-img" alt=""></td>
-
 					</tr>
 
 					<tr>
-						<td colspan="3">${postmain.postContent }</td>
+						<td colspan="3">${d.postContent }</td>
 					</tr>
 				</table>
-
+			</c:forEach>
 		</div>
 	</div>
 </section>
+
+
+

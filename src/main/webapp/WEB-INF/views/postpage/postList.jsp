@@ -188,11 +188,10 @@ to {
 
 				<c:forEach var="postmain" items="${postmain}" begin="1" end="4">
 					<div class="swiper-slide">
-						<a class="glightbox"
-							href="postDetail.do?postId=${postmain.postId}"></a>
+					
 						<div class="testimonial-item">
-							<a href="postDetail.do?postId=${postmain.postId }">${postmain.postImages}</a>
-							<img src="cssPostList/images/${postmain.postImages}"
+							<a href="postDetail.do?postId=${postmain.postId }">${postmain.memberProfile}</a>
+							<img src="cssPostList/images/profile/${postmain.memberProfile }"
 								class="testimonial-img" alt="">
 							<h3>Saul Goodman</h3>
 
@@ -277,8 +276,7 @@ to {
 <!-- 첫번째 포스트-->
 
 
-
-<c:forEach var="postmain" items="${postmain}">
+<c:forEach var="postmain" items="${postmain}" begin="0" >
 	<section class="py-5 bg-light" id="scroll-target">
 		<div class="container px-5 my-5">
 			<div class="row gx-5 align-items-center">
@@ -345,7 +343,7 @@ to {
 
 		<div
 			class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
-			<c:forEach var="pm" items="${postmember}" begin="1" end="4">
+			<c:forEach var="pm" items="${postmain}" begin="1" end="4">
 				<div class="col mb-5 mb-5 mb-xl-0">
 					<div class="text-center">
 							<a href="">
