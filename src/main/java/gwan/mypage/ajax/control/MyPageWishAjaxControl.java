@@ -40,6 +40,7 @@ public class MyPageWishAjaxControl implements Control {
 			json += "\"hotelLocation2\":\"" + list.get(i).getHotelLocation2() + "\",";
 			json += "\"HotelThema\":\"" + list.get(i).getHotelThema() + "\",";
 			json += "\"WishlistId\":\"" + list.get(i).getWishlistId() + "\",";
+			json += "\"HotelImage\":\"" + list.get(i).getHotelImage() + "\",";
 			json += "\"RoomPrice\":\"" + list.get(i).getRoomPrice() + "\"}";
 			
 			if (i + 1 != list.size()) {

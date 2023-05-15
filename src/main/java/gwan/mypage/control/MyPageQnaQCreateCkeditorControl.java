@@ -19,8 +19,9 @@ public class MyPageQnaQCreateCkeditorControl implements Control {
 		MyPageVO vo = new MyPageVO();
 		MyPageService service = new MyPageServiceImpl();
 		
+		//ck에디터 입력값 가져오기
 		String title = req.getParameter("title");
-		String qnaType = req.getParameter("title");
+		String qnaType = req.getParameter("select");
 		String content = req.getParameter("pdesc");
 		
 		HttpSession session = req.getSession();
@@ -30,7 +31,6 @@ public class MyPageQnaQCreateCkeditorControl implements Control {
 		vo.setQnaTitle(title);
 		vo.setQnaType(qnaType);
 		vo.setQnaContent(content);
-		
 		if (service.createQnaQ(vo)) {
 			return "myPageQna.do";
 		} else {

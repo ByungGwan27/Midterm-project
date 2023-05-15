@@ -185,7 +185,11 @@
 					group.childNodes[1].childNodes[1].childNodes[1].setAttribute('data-bs-target', '#faqsOne-' + i);
 					group.childNodes[1].childNodes[3].setAttribute('id', 'faqsOne-' + i)
 					group.childNodes[1].childNodes[1].childNodes[1].childNodes[1].innerText = data.qnaTitle
-					group.childNodes[1].childNodes[3].childNodes[1].childNodes[1].innerText = data.qnaContent
+					
+					// 5.13 강병관 admin qna 페이지에서 태그 적용 안되는것 고침
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[1].innerHTML = data.qnaContent
+					//group.childNodes[1].childNodes[3].childNodes[1].childNodes[1].innerText = data.qnaContent
+					
 					group.childNodes[1].childNodes[3].childNodes[1].childNodes[6].innerText = '작성자 : ' + data.memberId +
 						' | 작성날짜 : ' + data.qnaDate
 					group.childNodes[1].childNodes[3].childNodes[1].childNodes[10].childNodes[1].childNodes[5].childNodes[1].childNodes[1].setAttribute('value',data.qnaId)
@@ -219,7 +223,11 @@
 					group.childNodes[1].childNodes[3].setAttribute('id', 'faqsTwo-' + j)
 					
 					group.childNodes[1].childNodes[1].childNodes[1].childNodes[1].innerText = data.qnaTitle
-					group.childNodes[1].childNodes[3].childNodes[1].childNodes[1].innerText = data.qnaContent
+					
+					// 5.13 강병관 admin qna 페이지에서 태그 적용 안되는것 고침
+					group.childNodes[1].childNodes[3].childNodes[1].childNodes[1].innerHTML = data.qnaContent
+					//group.childNodes[1].childNodes[3].childNodes[1].childNodes[1].innerText = data.qnaContent
+					
 					group.childNodes[1].childNodes[3].childNodes[1].childNodes[5].innerText = '작성자 : ' + data.memberId +
 					' | 작성날짜 : ' + data.qnaDate
 					group.childNodes[1].childNodes[3].childNodes[1].childNodes[9].childNodes[1].childNodes[1].innerText = "답변작성일 : "+ data.answerDate;

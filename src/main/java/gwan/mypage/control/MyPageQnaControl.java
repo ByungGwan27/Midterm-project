@@ -21,9 +21,7 @@ public class MyPageQnaControl implements Control {
 		String id = (String) session.getAttribute("id");
 		MyPageService service = new MyPageServiceImpl();
 		List<MyPageVO> bestList = service.readQnaBest();
-		System.out.println("b찾기"+bestList);
 		List<MyPageVO> selfList = service.readQnaSelf(id);
-		System.out.println("s찾기"+selfList);
 		
 		req.setAttribute("bestQna", bestList);
 		req.setAttribute("selfQna", selfList);

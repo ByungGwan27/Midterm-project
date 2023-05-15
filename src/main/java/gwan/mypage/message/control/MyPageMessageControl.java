@@ -1,4 +1,4 @@
-package gwan.mypage.control;
+package gwan.mypage.message.control;
 
 import java.io.IOException;
 import java.util.List;
