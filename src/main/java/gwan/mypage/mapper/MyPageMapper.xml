@@ -202,6 +202,8 @@
 		        SELECT member_id, MAX(message_id) AS mi
 		        FROM message
 		        WHERE message_delete = 1
+		        AND ((member_id=#{memberId} AND member_id2 IN (SELECT member_id FROM member))
+                OR (member_id IN (SELECT member_id FROM member) AND member_id2=#{memberId}))
 		        GROUP BY member_id
 		        HAVING member_id != #{memberId}) c
 		JOIN member u ON c.member_id = u.member_id

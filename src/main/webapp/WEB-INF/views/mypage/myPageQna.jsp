@@ -354,7 +354,7 @@
 						</div>
 					</div>
 
-					<div class="card border-0 mt-xl-5">
+				<!-- 	<div class="card border-0 mt-xl-5">
 						<div class="card-body p-4 py-lg-5 byunggwan-card">
 							<div class="d-flex align-items-center justify-content-center">
 								<div class="text-center">
@@ -365,7 +365,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 
 			</div>
