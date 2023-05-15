@@ -25,7 +25,7 @@
 <div class="untree_co-section">
 	<div class="container">
 		<div class="row" style="justify-content: center;">
-			<img src="cssMainpage/images/${hotelInfo.hotelImage}" alt="test"
+			<img src="images/${hotelInfo.hotelImage}" alt="test"
 				width="800">
 			<div style="margin: 10px;">
 				<div id="hotelinfo">
@@ -323,7 +323,7 @@
 						<a
 							href="hotelInfoPage.do?hotelLocation1=${similarList.hotelLocation1}&hotelId=${similarList.hotelId}"
 							class="d-block mb-3"> <img
-							src="cssMainpage/images/${similarList.hotelImage}"
+							src="images/${similarList.hotelImage}"
 							alt="hotelImage" class="img-fluid"></a>
 						<div class="d-flex align-items-center">
 							<div>

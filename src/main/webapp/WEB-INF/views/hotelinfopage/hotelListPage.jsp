@@ -163,7 +163,7 @@
 					<tr>
 						<td rowspan="4">
 							<div style="margin: 10px; width: 205px;">
-								<img src="cssMainpage/images/${hotelList.hotelImage}"
+								<img src="images/${hotelList.hotelImage}"
 									alt="hotelImage" width="200">
 							</div>
 						</td>
