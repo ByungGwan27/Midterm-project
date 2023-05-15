@@ -43,7 +43,7 @@
 	<!-- 방문 중 -->
 	<select id="visiting" resultType="mp">
 	<![CDATA[
-		SELECT b.hotel_name, b.location_detail, b.checkin_date, b.checkout_date, b.hotel_phone, b.room_name, b.reservation_id
+		SELECT b.hotel_name, b.location_detail, b.checkin_date, b.checkout_date, b.hotel_phone, b.room_name, b.reservation_id, b.hotel_location1, b.hotel_id
 		FROM (SELECT rownum rn, a.*
 		      FROM (SELECT *
 		            FROM reservation r JOIN hotel h
@@ -71,7 +71,7 @@
 	<!-- 방문 완료 -->
 	<select id="visited" resultType="mp">
 	<![CDATA[
-		SELECT b.hotel_name, b.location_detail, b.checkin_date, b.checkout_date, b.hotel_phone, b.room_name, b.reservation_id
+		SELECT b.hotel_name, b.location_detail, b.checkin_date, b.checkout_date, b.hotel_phone, b.room_name, b.reservation_id, b.hotel_id
 		FROM (SELECT rownum rn, a.*
 		      FROM (SELECT *
 		            FROM reservation r JOIN hotel h
@@ -240,4 +240,16 @@
 	<update id="updateMessage" parameterType="mp">
 		UPDATE message SET message_delete=2 WHERE message_id=#{messageId}
 	</update>
+	
+	<!-- 신고 -->
+	<insert id="createDec">
+		INSERT INTO declaration(dec_id, member_id, hotel_id, dec_category, dec_content)
+		VALUES((SELECT NVL(MAX(dec_id), 0) + 1 FROM declaration), #{memberId}, #{hotelId}, #{decCategory}, #{decContent})
+	</insert>
+	
+	<!-- 후기작성 -->
+	<insert id="createComment">
+		INSERT INTO review(review_id, member_id, hotel_id, review_point, review_content, res_past, checkin_date, master_view)
+		VALUES((SELECT NVL(MAX(review_id), 0) + 1 FROM review), #{memberId}, #{hotelId}, #{reviewPoint}, #{reviewContent}, 0, SYSDATE, 1)
+	</insert>
 </mapper>

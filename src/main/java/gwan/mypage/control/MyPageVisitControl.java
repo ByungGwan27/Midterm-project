@@ -12,7 +12,7 @@ import gwan.mypage.service.MyPageServiceImpl;
 import main.common.control.Control;
 import main.common.control.PageDTO;
 
-public class MypageHomeControl implements Control {
+public class MyPageVisitControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,12 +26,12 @@ public class MypageHomeControl implements Control {
 		int page = Integer.parseInt(pageStr);
 		
 		MyPageService service = new MyPageServiceImpl();
-		int total = service.readWillvisitPageCount(id);
+		int total = service.readvisitingPageCount(id);
 		
 		PageDTO dto = new PageDTO(page, total);
 		req.setAttribute("pageInfo", dto);
 		
-		return "mypage/myPageHome.tiles";
+		return "mypage/myPageHomevisting.tiles";
 	}
 
 }

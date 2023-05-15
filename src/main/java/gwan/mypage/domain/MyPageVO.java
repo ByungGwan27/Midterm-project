@@ -71,5 +71,13 @@ public class MyPageVO {
 	private int messageTime2;
 	private String messageApm;
 	
+	//신고
+	private String decCategory;
+	private String decContent;
+	
+	//후기
+	private int reviewPoint;
+	private String reviewContent;
+	
 	
 }

@@ -25,13 +25,13 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public List<MyPageVO> visiting(String memberId) {
-		return mapper.visiting(memberId);
+	public List<MyPageVO> visiting(String memberId, int page) {
+		return mapper.visiting(memberId, page);
 	}
 
 	@Override
-	public List<MyPageVO> visited(String memberId) {
-		return mapper.visited(memberId);
+	public List<MyPageVO> visited(String memberId, int page) {
+		return mapper.visited(memberId, page);
 	}
 
 	@Override
@@ -117,6 +117,16 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public boolean updateMessage(int messageId) {
 		return mapper.updateMessage(messageId) == 1;
+	}
+
+	@Override
+	public boolean createDec(MyPageVO vo) {
+		return mapper.createDec(vo) == 1;
+	}
+
+	@Override
+	public boolean createComment(MyPageVO vo) {
+		return mapper.createComment(vo) == 1;
 	}
 	
 	
