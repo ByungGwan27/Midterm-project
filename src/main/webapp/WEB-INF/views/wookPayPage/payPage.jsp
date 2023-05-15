@@ -228,10 +228,14 @@
 					
 				})
 				
-				/* let people = document.getElementById('people');
-				people.addEventListener('click', function(){
-					
-				}) */
+				let people = document.getElementById('people');
+				people.addEventListener('blur', function(){
+
+					if(${payInfo.roomMin}>people.value || people.value>${payInfo.roomMax}){
+						alert('허용 인원이 아닙니다')
+						people.value = ${payInfo.roomMin};
+					}
+				})
 		
 			
 				let salePrice = document.getElementById('salePrice');
