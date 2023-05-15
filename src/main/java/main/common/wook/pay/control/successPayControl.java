@@ -50,8 +50,8 @@ public class successPayControl implements Control {
 		String inDate = resDate.substring(0, 10);
 		String outDate = resDate.substring(13, 23);
 		// 입력 될 날짜
-		String checkin = inDate.substring(8, 10) + inDate.substring(2, 6) + inDate.substring(0, 2);
-		String checkout = outDate.substring(8, 10) + outDate.substring(2, 6) + outDate.substring(0, 2);
+		String checkin = inDate.substring(8, 10)+"/"  + inDate.substring(0, 2) + inDate.substring(2, 5);
+		String checkout = outDate.substring(8, 10)+"/"  + outDate.substring(0, 2) + outDate.substring(2, 5);
 		
 		paySuccessVO success = new paySuccessVO();
 		success.setMemberId(memberId);

@@ -343,10 +343,10 @@
 			paymentWidget.requestPayment({
 				orderId : "gD5iaJ9epuqS8vUAcisv8", // 주문 ID(직접 만들어주세요)
 				orderName : "주문", // 주문명
-				successUrl : "http://localhost:8081/successPay.do?memberId="+memberIdData+"&hotelId="+hotelIdData+"&roomId="+roomIdData+"&finalPrice="+finalPriceData+"&resPeople="+resPeopleData+"&resDate="+resDateData+
+				successUrl : "http://localhost:8081/MyProject/successPay.do?memberId="+memberIdData+"&hotelId="+hotelIdData+"&roomId="+roomIdData+"&finalPrice="+finalPriceData+"&resPeople="+resPeopleData+"&resDate="+resDateData+
 				"&checkinName="+checkinNameData+"&checkinPhone="+checkinPhoneData+"&couponId="+couponIdData+"&roomPrice="+roomPriceData+"&canUsePoint="+canUsePointData,
 
-				failUrl : "http://localhost:8081/payPageForm.do", // 결제에 실패하면 이동하는 페이지(직접 만들어주세요)
+				failUrl : "http://localhost:8081/MyProject/payPageForm.do", // 결제에 실패하면 이동하는 페이지(직접 만들어주세요)
 				customerEmail : "customer123@gmail.com",
 				customerName : "${payMemberInfo.memberName}"
 			})
