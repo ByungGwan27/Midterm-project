@@ -59,4 +59,9 @@ public class PayPageServiceImpl implements PayPageService{
 		return mapper.usePointUpdate(success);
 	}
 
+	@Override
+	public int resCheck(paySuccessVO success) {
+		return mapper.resCheck(success);
+	}
+
 }

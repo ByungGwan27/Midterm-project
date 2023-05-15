@@ -51,4 +51,9 @@ values (NVL((SELECT MAX(pay_id) FROM pay), 1) + 1,#{memberId},#{roomId},#{coupon
 		set member_point = #{canUsePoint}
 		where member_id=#{memberId}
 	</update>
+	
+	<!-- 예약 상태 확인 -->
+	<select id="resCheck" parameterType="success">
+	select count(*) from reservation where room_id = #{roomId} and checkin_date between #{checkinDate} and #{checkoutDate}
+	</select>
 </mapper>
