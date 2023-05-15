@@ -57,6 +57,10 @@ import jayk.hotelinfo.control.AdminModifyHotelInfoControl;
 import jayk.hotelinfo.control.AdminModifyRoomInfoControl;
 import jayk.hotelinfo.control.GetHotelControl;
 import jayk.hotelinfo.control.HotelListControl;
+import jayk.hotelinfo.control.HotelListReadControl;
+import jayk.hotelinfo.control.hotelIdReadControl;
+import jayk.hotelinfo.control.imageIdReadControl;
+import jayk.hotelinfo.control.roomIdReadControl;
 import main.common.control.Control;
 import main.common.wook.admin.control.AdminDecCancleControl;
 import main.common.wook.admin.control.AdminModifyMemberControl;
@@ -176,6 +180,7 @@ public class FrontController extends HttpServlet{
 		// 김자영
 		//숙소리스트
 		map.put("/hotelListPage.do", new HotelListControl());
+		map.put("/hotelListRead.do", new HotelListReadControl());
 		//인포페이지
 		map.put("/hotelInfoPage.do", new GetHotelControl());
 		//관리자숙소리스트페이지 
@@ -183,6 +188,14 @@ public class FrontController extends HttpServlet{
 		//관리자숙소추가페이지 
 		map.put("/adminAddHotelForm.do", new AdminAddHotelFormControl());
 		map.put("/adminAddHotelPage.do", new AdminAddHotelControl());
+		
+		//hotelId중복
+		map.put("/hotelIdRead.do", new hotelIdReadControl());
+		//roomId중복
+		map.put("/roomIdRead.do", new roomIdReadControl());
+		//imageId중복
+		map.put("/imageIdRead.do", new imageIdReadControl());
+		
 		//관리자숙소객실추가페이지
 		map.put("/admimAddRoomForm.do", new AdminAddRoomFormControl());
 		map.put("/adminAddRoomPage.do", new AdminAddRoomControl());

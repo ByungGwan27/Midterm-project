@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import jayk.hotelinfo.domain.ConditionDTO;
 import jayk.hotelinfo.domain.HotelInfoVO;
 import jayk.hotelinfo.mapper.HotelInfoMapper;
 import main.common.control.DataSource;
@@ -25,9 +26,9 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 	
 	//hotelList
 	@Override
-	public List<HotelInfoVO> hotelList() {
+	public List<HotelInfoVO> hotelList(ConditionDTO condto) {
 		//mapper.hotelListLoca(hotelLocation1);
-		return mapper.hotelList();
+		return mapper.hotelListPage(condto);
 	}
 	
 	@Override
@@ -73,9 +74,9 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 	
 	//adminHotelList
 	@Override
-	public List<HotelInfoVO> adminHotelList() {
-		//return mapper.hotelListPage(page);
-		return mapper.adminHotelList();
+	public List<HotelInfoVO> adminHotelList(int page) {
+		return null;//mapper.hotelListPage(page);
+		//return mapper.adminHotelList();
 	}
 
 	//adminHotelLinfo
@@ -155,5 +156,31 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 	@Override
 	public List<HotelInfoVO> bestReview(int hotelId) {
 		return mapper.bestReview(hotelId);
+	}
+
+	@Override
+	public List<HotelInfoVO> readHotelId() {
+		return mapper.readHotelId();
+	}
+
+	@Override
+	public List<HotelInfoVO> readRoomId() {
+		return mapper.readRoomId();
+	}
+
+	@Override
+	public List<HotelInfoVO> readImageId() {
+		return mapper.readImageId();
+	}
+
+	@Override
+	public List<HotelInfoVO> readHotelList() {
+		return mapper.readHotelList();
+	}
+
+	@Override
+	public List<HotelInfoVO> filteredList(String hotelLocation1, String hotelThema, int roomPrice, int roomMax,
+			int roomMin) {
+		return mapper.filteredList(hotelLocation1, hotelThema, roomPrice, roomMax, roomMin);
 	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import jayk.hotelinfo.domain.ConditionDTO;
 import jayk.hotelinfo.domain.HotelInfoVO;
 
 public interface HotelInfoMapper {
@@ -18,7 +19,7 @@ public interface HotelInfoMapper {
 	public List<HotelInfoVO> hotelListPrice(int roomPrice);
 	
 	//pagination
-	public List<HotelInfoVO> hotelListPage(int page);
+	public List<HotelInfoVO> hotelListPage(ConditionDTO condto);
 	public int getCount();
 	
 	//hotelInfoPage
@@ -38,5 +39,14 @@ public interface HotelInfoMapper {
 	public int insertAdminRoom(HotelInfoVO vo);
 	public int insertAdminRoomImage(HotelInfoVO vo);
 	public int insertAdminRoomDetail(HotelInfoVO vo);
+	
+	public List<HotelInfoVO> readHotelId();
+	public List<HotelInfoVO> readRoomId();
+	public List<HotelInfoVO> readImageId();
+	
+	public List<HotelInfoVO> readHotelList();
+	
+	public List<HotelInfoVO> filteredList
+	(@Param("hotelLocation1")String hotelLocation1, @Param("hotelThema")String hotelThema, @Param("roomPrice") int roomPrice, @Param("roomMax") int roomMax, @Param("roomMin")int roomMin);
 	
 }

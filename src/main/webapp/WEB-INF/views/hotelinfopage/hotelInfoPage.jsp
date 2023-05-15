@@ -109,6 +109,12 @@
 									${bestReview.reviewContent}</td>
 							</tr>
 						</c:forEach>
+						<tr>
+							<td>
+								<button>위시리스트추가</button>
+								<button>신고</button>
+							</td>
+						</tr>
 					</table>
 				</div>
 			</div>
