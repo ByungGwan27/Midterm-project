@@ -6,22 +6,22 @@
 	<h5>숙소객실추가</h5>
 	<form action="adminAddRoomPage.do" method="POST" enctype="multipart/form-data">
 		<table class='table'>
-			<tr>
+	<!-- 		<tr>
 				<th>이미지Id</th>
 				<td><input type="text" name="imageId"></td>
-			</tr>
+			</tr> -->
 			<tr>
 				<th>객실이미지</th>
 				<td><input type="file" name="image"></td>
 			</tr>
 			<tr>
 				<th>hotelId</th>
-				<td><input type="text" name="hotelId"></td>
+				<td><input type="text" name="hotelId" value="${adminAddRoom.hotelId}" readonly></td>
 			</tr>
-			<tr>
+<!-- 			<tr>
 				<th>객실ID</th>
 				<td><input type="text" name="roomId"></td>
-			</tr>
+			</tr> -->
 			<tr>
 				<th>객실명</th>
 				<td><input type="text" name="roomName"></td>
@@ -46,13 +46,13 @@
 				<th>시설정보</th>
 				<td>
 					<span class="fa fa-chevron-right mr-2">
-					<input type="checkbox" name="singleRoom" value="2">싱글룸</span>
+					<input type="radio" name="roomType" value="singleRoom">싱글룸</span>
 					<span class="fa fa-chevron-right mr-2">
-					<input type="checkbox" name="twinRoom" value="2">트윈룸</span>
+					<input type="radio" name="roomType" value="twinRoom">트윈룸</span>
 					<span class="fa fa-chevron-right mr-2">
-					<input type="checkbox" name="doubleRoom" value="1" checked>더블룸</span>
+					<input type="radio" name="roomType" value="doubleRoom"checked>더블룸</span>
 					<span class="fa fa-chevron-right mr-2">
-					<input type="checkbox" name="tripleRoom" value="2">트리플룸</span>
+					<input type="radio" name="roomType" value="tripleRoom">트리플룸</span>
 					</td>
 					</tr>
 					<tr>

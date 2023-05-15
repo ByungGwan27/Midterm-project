@@ -10,12 +10,16 @@ import gwan.mypage.domain.MyPageVO;
 public interface MyPageMapper {
 	
 	// 메인페이지
+	//방문예정
 	public List<MyPageVO> willVisit(@Param("memberId") String memberId, @Param("page") int page);
 	public int deleteWillVisit(int reservationId);
 	public int readWillvisitPageCount(String memberId);
-	
-	public List<MyPageVO> visiting(String memberId);
-	public List<MyPageVO> visited(String memberId);
+	//방문중
+	public List<MyPageVO> visiting(@Param("memberId") String memberId, @Param("page") int page);
+	public int readvisitingPageCount(String memberId);
+	//방문완료
+	public List<MyPageVO> visited(@Param("memberId") String memberId, @Param("page") int page);
+	public int readvisitedPageCount(String memberId);
 	
 	// 위시리스트
 	// 특정 회원 조회
@@ -41,7 +45,21 @@ public interface MyPageMapper {
 	
 	//메세지
 	// 프로필 조회
-	public List<MyPageVO> readProfile(MyPageVO vo);
+	public List<MyPageVO> readProfile(String memberId);
+	public List<MyPageVO> readProfileMessage(String memberId);
+	public List<MyPageVO> readMessage(@Param("memberId") String memberId, @Param("memberId2") String memberId2);
+	public List<MyPageVO> readAllMessage(String memberId, String memberId2);
+	public int createMessage(MyPageVO vo);
+	public int updateMessage(int messageId);
+	
+	//신고
+	public int createDec(MyPageVO vo);
+	
+	//후기
+	public int createComment(MyPageVO vo);
+	
+	
+	
 	
 	
 }

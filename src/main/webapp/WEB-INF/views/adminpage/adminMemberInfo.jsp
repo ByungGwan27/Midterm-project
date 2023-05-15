@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <main id="main" class="main">
 
 	<div class="pagetitle">
@@ -21,9 +21,14 @@
 				<div class="card">
 					<div
 						class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-
-						<img src="assets/img/profile-img.jpg" alt="Profile"
-							class="rounded-circle">
+						<c:if test="${memberInfo.memberProfile == null}">
+							<img src="assets/img/관리자.png" alt="Profile"
+								class="rounded-circle">
+						</c:if>
+						<c:if test="${memberInfo.memberProfile != null}">
+							<img src="images/${memberInfo.memberProfile }" alt="Profile"
+								class="rounded-circle">
+						</c:if>
 						<h2>${memberInfo.memberName}</h2>
 						<!-- <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -112,20 +117,30 @@
 
 								<!-- Profile Edit Form -->
 								<form action="adminModifyMember.do">
-									<div class="row mb-3">
+									<%-- <div class="row mb-3">
 										<label for="profileImage"
 											class="col-md-4 col-lg-3 col-form-label">프로필 사진</label>
 										<div class="col-md-8 col-lg-9">
-											<img src="assets/img/profile-img.jpg" alt="Profile">
+											<c:if test="${memberInfo.memberProfile == null}">
+												<img src="assets/img/관리자.png" alt="Profile"
+													class="rounded-circle">
+											</c:if>
+											<c:if test="${memberInfo.memberProfile != null}">
+												<img src="${memberInfo.memberProfile }" alt="Profile"
+													class="rounded-circle">
+											</c:if>
 											<div class="pt-2">
 												<a href="#" class="btn btn-primary btn-sm"
 													title="Upload new profile image"><i
-													class="bi bi-upload"></i></a> <a href="#"
+													class="bi bi-upload"></i></a>
+													<c:if test="${memberInfo.memberProfile != null}">
+													 <a href="#"
 													class="btn btn-danger btn-sm"
 													title="Remove my profile image"><i class="bi bi-trash"></i></a>
+													</c:if>
 											</div>
 										</div>
-									</div>
+									</div> --%>
 
 									<div class="row mb-3">
 										<label for="fullName" class="col-md-4 col-lg-3 col-form-label">회원
@@ -182,11 +197,11 @@
 											<select name="memberStatus" type="text" class="form-control"
 												id="memberStatus ">
 												<option value="${memberInfo.memberStatus}" selected>${memberInfo.memberStatus}</option>
-												<c:if test="${memberInfo.memberStatus == '탈퇴회원'}" >
-												<option value="활동중">활동중</option>
+												<c:if test="${memberInfo.memberStatus == '탈퇴회원'}">
+													<option value="활동중">활동중</option>
 												</c:if>
 												<c:if test="${memberInfo.memberStatus == '활동중'}">
-												<option value="탈퇴회원">탈퇴회원</option>
+													<option value="탈퇴회원">탈퇴회원</option>
 												</c:if>
 											</select>
 										</div>
@@ -209,10 +224,17 @@
 									</div>
 
 									<div class="row mb-3">
-										<label for="Email" class="col-md-4 col-lg-3 col-form-label">관심테마</label>
+										<label for="Country" class="col-md-4 col-lg-3 col-form-label">관심테마</label>
 										<div class="col-md-8 col-lg-9">
-											<input name="memberThema" type="text" class="form-control"
-												id="memberThema" value="${memberInfo.memberThema}">
+											<select name="memberThema" type="text" class="form-control"
+												id="memberThema " value="${memberInfo.memberThema}">
+													<option value="${memberInfo.memberThema}" selected>현재 : ${memberInfo.memberThema}</option>
+													<option value="호텔">호텔</option>
+													<option value="모텔">모텔</option>
+													<option value="펜션">펜션</option>
+													<option value="게스트하우스">게스트하우스</option>
+													<option value="기타">기타</option>
+											</select>
 										</div>
 									</div>
 
@@ -234,11 +256,17 @@
 										</div>
 									</div>
 									<div class="row mb-3">
-										<label for="Facebook" class="col-md-4 col-lg-3 col-form-label">회원
-											등급</label>
+										<label for="Country" class="col-md-4 col-lg-3 col-form-label">관심테마</label>
 										<div class="col-md-8 col-lg-9">
-											<input name="memberGrade" type="text" class="form-control"
-												id="" value="${memberInfo.memberGrade}">
+											<select name="memberGrade" type="text" class="form-control"
+												id="memberThema " value="${memberInfo.memberGrade}">
+													<option value="${memberInfo.memberGrade}" selected>현재 : ${memberInfo.memberGrade}</option>
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4(인플루언서)</option>
+													<option value="5">5(관리자)</option>
+											</select>
 										</div>
 									</div>
 

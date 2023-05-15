@@ -7,8 +7,10 @@
 	<select id="navListLoca">
 		select distinct hotel_location1 from hotel
 	</select>
+	
 	<select id="navListThema">
-		select distinct hotel_thema from hotel where hotel_thema is not null
+		select distinct hotel_thema from hotel where
+		hotel_thema is not null
 	</select>
 
 	<select id="hotelListPage" resultType="notice">
@@ -66,7 +68,8 @@
 		full outer JOIN
 		review r ON h.hotel_id =
 		r.hotel_id
-		where hotel_location1 = #{hotelLocation1}
+		where hotel_location1 =
+		#{hotelLocation1}
 		GROUP BY h.hotel_id, h.hotel_name,
 		h.hotel_thema,
 		h.hotel_location1,
@@ -117,7 +120,8 @@
 		full outer JOIN
 		review r ON h.hotel_id =
 		r.hotel_id
-		where i.room_max between #{roomMax}-2 and #{roomMax}+2 and i.room_min
+		where
+		i.room_max between #{roomMax}-2 and #{roomMax}+2 and i.room_min
 		between #{roomMin}-1 and #{roomMin}+2
 		GROUP BY h.hotel_id,
 		h.hotel_name,
@@ -148,9 +152,11 @@
 		full outer JOIN
 		review r ON h.hotel_id =
 		r.hotel_id
-		where i.room_price between #{roomPrice}-30000 and #{roomPrice}+50000
+		where
+		i.room_price between #{roomPrice}-30000 and #{roomPrice}+50000
 		GROUP
-		BY h.hotel_id, h.hotel_name,
+		BY
+		h.hotel_id, h.hotel_name,
 		h.hotel_thema,
 		h.hotel_location1,
 		h.hotel_location2, h.hotel_point,
@@ -179,10 +185,40 @@
 		h.hotel_location1,
 		h.hotel_location2, h.hotel_point, h.hotel_image, h.location_detail
 	</select>
+	
+	<select id="bestReview">
+	<![CDATA[
+		SELECT * FROM (
+  SELECT review_point, review_content 
+  FROM review 
+  WHERE hotel_id = #{hotelId}
+  ORDER BY review_point DESC
+) WHERE ROWNUM <= 2
+	]]>
+	</select>
+
 
 	<select id="roomList">
 		select * from room_info where hotel_id = #{hotelId}
 		order by room_id
+	</select>
+	
+	<select id="roomDetailList">
+        SELECT 
+    CASE WHEN d.parking = 1 THEN 1 END AS parking,
+    CASE WHEN d.wifi = 1 THEN 1 END AS wifi,
+    CASE WHEN d.pet = 1 THEN 1 END AS pet,
+    CASE WHEN d.pool = 1 THEN 1 END AS pool,
+    CASE WHEN d.single_room = 1 THEN 1 END AS singleRoom,
+    CASE WHEN d.double_room = 1 THEN 1 END AS doubleRoom,
+    CASE WHEN d.triple_room = 1 THEN 1 END AS tripleRoom,
+    CASE WHEN d.breakfast = 1 THEN 1 END AS breakfast
+FROM 
+    room_detail d
+FULL OUTER JOIN 
+    hotel h ON d.hotel_id = h.hotel_id
+WHERE 
+    h.hotel_id = #{hotelId}
 	</select>
 
 	<select id="reviewList">
@@ -225,6 +261,8 @@
 		from room_info i
 		full outer join room_image m
 		on i.room_id = m.room_id
+		full outer join room_detail d
+		on m.room_id = d.room_id
 		where i.hotel_id=#{hotelId} and
 		i.room_id=#{roomId}
 	</select>
@@ -237,11 +275,21 @@
 
 	<update id="updateAdminHotelRoom">
 		update room_info
-		set room_name=#{roomName}, room_expain=#{roomExpain},
-		room_grade=#{roomGrade}, room_price=#{roomPrice},
+		set room_name=#{roomName},
+		room_expain=#{roomExpain},
+		room_grade=#{roomGrade},
+		room_price=#{roomPrice},
 		room_max=#{roomMax},
-		room_min=#{roomMin}, add_price=#{addPrice}
+		room_min=#{roomMin},
+		add_price=#{addPrice}
 		where hotel_id=#{hotelId} and room_id=#{roomId}
+	</update>
+
+	<update id="updateAdminHotelRoomDetail">
+		update room_detail
+		set parking = #{parking}, wifi=#{wifi}, pet=#{pet}, pool=#{pool}, breakfast=#{breakfast}, 
+		single_room=#{singleRoom}, twin_room=#{twinRoom}, double_room=#{doubleRoom}, triple_room=#{tripleRoom}
+		where room_id=#{roomId} and hotel_id=#{hotelId}
 	</update>
 
 

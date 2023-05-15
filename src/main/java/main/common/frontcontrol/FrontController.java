@@ -21,23 +21,39 @@ import gwan.loginpage.control.loginPageControl;
 import gwan.loginpage.control.logoutControl;
 import gwan.mail.smtp.passwordMail;
 import gwan.mail.smtp.passwordResetControl;
+import gwan.mypage.ajax.control.MyPageVisitPagingControl;
+import gwan.mypage.ajax.control.MyPageVisitedPagingControl;
 import gwan.mypage.ajax.control.MyPageWishAjaxControl;
 import gwan.mypage.ajax.control.MyPageWishAjaxDeleteControl;
 import gwan.mypage.control.AdminMessagePageControl;
+import gwan.mypage.control.MyPageCommentControl;
 import gwan.mypage.control.MyPageCouponControl;
+import gwan.mypage.control.MyPageCreateCommentControl;
+import gwan.mypage.control.MyPageCreateReportControl;
 import gwan.mypage.control.MyPageHomeDelWillVisitControl;
 import gwan.mypage.control.MyPageHomeWillVisitControl;
-import gwan.mypage.control.MyPageMessageControl;
 import gwan.mypage.control.MyPageQnaControl;
 import gwan.mypage.control.MyPageQnaQControl;
 import gwan.mypage.control.MyPageQnaQCreateCkeditorControl;
 import gwan.mypage.control.MyPageQnaQCreateControl;
+import gwan.mypage.control.MyPageReportControl;
 import gwan.mypage.control.MyPageUserInfoChangeControl;
 import gwan.mypage.control.MyPageUserInfoChangeInputControl;
 import gwan.mypage.control.MyPageUserInfoPwControl;
 import gwan.mypage.control.MyPageUserInfoPwInputControl;
+import gwan.mypage.control.MyPageVisitControl;
+import gwan.mypage.control.MyPageVisitedControl;
 import gwan.mypage.control.MyPageWishListControl;
 import gwan.mypage.control.MypageHomeControl;
+import jayk.hotelinfo.control.AdminAddExtraRoomControl;
+import jayk.hotelinfo.control.AdminAddExtraRoomFormControl;
+import gwan.mypage.message.control.MyPageMessageControl;
+import gwan.mypage.message.control.MyPagecreateMessageControl;
+import gwan.mypage.message.control.MyPagereadAllMessageControl;
+import gwan.mypage.message.control.MyPagereadMessageControl;
+import gwan.mypage.message.control.MyPagereadProfileControl;
+import gwan.mypage.message.control.MyPagereadProfileMessageControl;
+import gwan.mypage.message.control.MyPageupdateMessageControl;
 import jayk.hotelinfo.control.AdminAddHotelControl;
 import jayk.hotelinfo.control.AdminAddHotelFormControl;
 import jayk.hotelinfo.control.AdminAddRoomControl;
@@ -75,6 +91,7 @@ import main.common.wook.admin.control.payChartDataControl;
 import main.common.wook.admin.control.payCountChartDataControl;
 import main.common.wook.pay.control.mainHotelInfoControl;
 import main.common.wook.pay.control.payPageFormcontrol;
+import main.common.wook.pay.control.resCheckcontrol;
 import main.common.wook.pay.control.successPayControl;
 import shin.admin.control.AdminPayListControl;
 import shin.notice.control.AddNoticeControl;
@@ -159,8 +176,11 @@ public class FrontController extends HttpServlet{
 		
 		//결제창 페이지
 		map.put("/payPageForm.do", new payPageFormcontrol());
+		//결제 전 예약 중복 확인
+		map.put("/resCheck.do", new resCheckcontrol());
 		//결제 완료 시 테이블에 데이터 입력
 		map.put("/successPay.do", new successPayControl());
+		
 		
 		//메인페이지에서 숙소 페이지 검색이동
 		 map.put("/mainHotelInfo.do", new mainHotelInfoControl());
@@ -186,8 +206,9 @@ public class FrontController extends HttpServlet{
 		map.put("/adminRoomInfoPage.do", new AdminGetRoomControl());
 		//관리자숙소정보수정페이지
 		map.put("/adminRoomInfoModifyPage.do", new AdminModifyRoomInfoControl());
-		
-	
+		//관리자숙소객실추가페이지2(이미 있는 숙소에 객실추가)
+		map.put("/admimAddExtraRoomForm.do", new AdminAddExtraRoomFormControl());
+		map.put("/adminAddExtraRoomPage.do", new AdminAddExtraRoomControl());
 		
 		// 신지은
 		//여행 포스트 리스트
@@ -217,11 +238,29 @@ public class FrontController extends HttpServlet{
 		
 		// 강병관
 		//마이페이지
-		//마이페이지 홈(예약내역 이동)
+		//마이페이지 홈(방문전)
 		map.put("/myPageHome.do", new MypageHomeControl());
 		//마이페이지 - Json 처리
 		map.put("/myPageHomeWillVisit.do", new MyPageHomeWillVisitControl());
 		map.put("/myPageHomeDelWillVisit.do", new MyPageHomeDelWillVisitControl());
+		
+		//마이페이지 홈(방문중)
+		map.put("/myPageVisit.do", new MyPageVisitControl());
+		//마이페이지 - Json 처리
+		map.put("/myPageVisitPaging.do", new MyPageVisitPagingControl());
+		
+		//마이페이지 홈(방문완료)
+		map.put("/myPageVisited.do", new MyPageVisitedControl());
+		//마이페이지 - Json 처리
+		map.put("/myPageVisitedPaging.do", new MyPageVisitedPagingControl());
+		
+		//후기 작성
+		map.put("/myPageComment.do", new MyPageCommentControl());
+		map.put("/myPageCreateComment.do", new MyPageCreateCommentControl());
+		//신고 작성
+		map.put("/myPageReport.do", new MyPageReportControl());
+		map.put("/myPageCreateReport.do", new MyPageCreateReportControl());
+		
 		
 		//마이페이지(위시리스트)
 		map.put("/myPageWishList.do", new MyPageWishListControl());
@@ -233,7 +272,21 @@ public class FrontController extends HttpServlet{
 		map.put("/myPageCoupon.do", new MyPageCouponControl());
 		
 		//마이페이지(메세지)
+		//메세지함 이동
 		map.put("/myPageMessage.do", new MyPageMessageControl());
+		//프로필 조회
+		map.put("/myPagereadProfile.do", new MyPagereadProfileControl());
+		//프로필 상세 조회
+		map.put("/myPagereadProfileMessage.do", new MyPagereadProfileMessageControl());
+		//메세지내역
+		map.put("/myPagereadMessage.do", new MyPagereadMessageControl());
+		//메세지내역(전체 읽기)
+		map.put("/myPagereadAllMessage.do", new MyPagereadAllMessageControl());
+		//메세지 쓰기
+		map.put("/myPagecreateMessage.do", new MyPagecreateMessageControl());
+		//메세지 업데이트(삭제)
+		map.put("/myPageupdateMessage.do", new MyPageupdateMessageControl());
+		
 		
 		//마이페이지(회원정보수정) - pw확인
 		map.put("/myPageUserInfoPw.do", new MyPageUserInfoPwControl());
@@ -284,11 +337,11 @@ public class FrontController extends HttpServlet{
 		String uri = req.getRequestURI();
 		String context = req.getContextPath();
 		String path = uri.substring(context.length());
-		System.out.println(path);
+		System.out.println("path : " + path);
 		
 		Control control = map.get(path);
 		String viewPage = control.execute(req, resp);
-		System.out.println(viewPage);
+		System.out.println("viewPage : " + viewPage);
 
 		if (viewPage.endsWith(".do")) {
 			resp.sendRedirect(viewPage);

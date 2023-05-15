@@ -25,12 +25,14 @@
 	]]>
 	</select>
 	
-	<!-- 방문 예정 예약 취소 -->
+	<!-- 방문 취소 -->
 	<delete id="deleteWillVisit" parameterType="int">
 		DELETE FROM reservation WHERE reservation_id = #{reservationId}
 	</delete>
 	
-	<!-- 방문 예정 건수 조회 -->
+	<!-- 결제취소 -->
+	
+	<!-- 방문 예정 건수 조회(페이징) -->
 	<select id="readWillvisitPageCount" resultType="int">
 		SELECT count(*) FROM reservation
 		WHERE member_id = #{memberId}
@@ -40,25 +42,56 @@
 	
 	<!-- 방문 중 -->
 	<select id="visiting" resultType="mp">
-		SELECT h.hotel_name, h.location_detail, r.checkin_date, r.checkout_date, h.hotel_phone, i.room_name
-		FROM reservation r JOIN hotel h
-		ON (h.hotel_id = r.hotel_id)
-		JOIN room_info i
-		ON (r.room_id = i.room_id)
-		WHERE r.member_id = #{memberId}
-		    AND TO_CHAR(SYSDATE) <![CDATA[<=]]> TO_CHAR(r.checkout_date-1)
-		    AND TO_CHAR(SYSDATE) <![CDATA[>=]]> TO_CHAR(r.checkin_date)
+	<![CDATA[
+		SELECT b.hotel_name, b.location_detail, b.checkin_date, b.checkout_date, b.hotel_phone, b.room_name, b.reservation_id, b.hotel_location1, b.hotel_id
+		FROM (SELECT rownum rn, a.*
+		      FROM (SELECT *
+		            FROM reservation r JOIN hotel h
+		            ON (h.hotel_id = r.hotel_id)
+		            JOIN room_info i
+		            ON (r.room_id = i.room_id)
+		            WHERE r.member_id = #{memberId}
+				    AND TO_CHAR(SYSDATE) <= TO_CHAR(r.checkout_date-1)
+				    AND TO_CHAR(SYSDATE) >= TO_CHAR(r.checkin_date)
+		            ORDER BY 1 DESC) a
+		       WHERE rownum <= #{page} * 5) b
+		WHERE b.rn > (#{page} - 1) * 5
+		ORDER BY checkin_date
+	]]>
+	</select>
+	
+	<!-- 방문 중 건수 조회(페이징) -->
+	<select id="readvisitingPageCount" resultType="int">
+		SELECT count(*) FROM reservation
+		WHERE member_id = #{memberId}
+		AND TO_CHAR(SYSDATE) <![CDATA[<=]]> TO_CHAR(checkout_date)
+		AND TO_CHAR(SYSDATE) <![CDATA[>=]]> TO_CHAR(checkin_date)
 	</select>
 
 	<!-- 방문 완료 -->
 	<select id="visited" resultType="mp">
-		SELECT h.hotel_name, h.location_detail, r.checkin_date, r.checkout_date, h.hotel_phone, i.room_name
-		FROM reservation r JOIN hotel h
-		ON (h.hotel_id = r.hotel_id)
-		JOIN room_info i
-		ON (r.room_id = i.room_id)
-		WHERE r.member_id = #{memberId}
-		    AND TO_CHAR(SYSDATE) <![CDATA[>]]> TO_CHAR(r.checkout_date)
+	<![CDATA[
+		SELECT b.hotel_name, b.location_detail, b.checkin_date, b.checkout_date, b.hotel_phone, b.room_name, b.reservation_id, b.hotel_id
+		FROM (SELECT rownum rn, a.*
+		      FROM (SELECT *
+		            FROM reservation r JOIN hotel h
+		            ON (h.hotel_id = r.hotel_id)
+		            JOIN room_info i
+		            ON (r.room_id = i.room_id)
+		            WHERE r.member_id = #{memberId}
+		            AND TO_CHAR(SYSDATE) > TO_CHAR(r.checkout_date)
+		            ORDER BY 1 DESC) a
+		       WHERE rownum <= #{page} * 5) b
+		WHERE b.rn > (#{page} - 1) * 5
+		ORDER BY checkin_date
+	]]>
+	</select>
+	
+	<!-- 방문 중 건수 조회(페이징) -->
+	<select id="readvisitedPageCount" resultType="int">
+		SELECT count(*) FROM reservation
+		WHERE member_id = #{memberId}
+		AND TO_CHAR(SYSDATE) <![CDATA[>]]> TO_CHAR(checkout_date)
 	</select>
 	
 	
@@ -67,7 +100,7 @@
 	<select id="readWishList" resultType="mp">
 	
 		<![CDATA[
-		SELECT b.hotel_name, b.hotel_location1, b.hotel_location2, b.hotel_thema, b.room_price, b.wishlist_id
+		SELECT b.hotel_name, b.hotel_location1, b.hotel_location2, b.hotel_thema, b.room_price, b.wishlist_id, b.hotel_image
 		FROM (SELECT rownum rn, a.*
 			FROM (SELECT *
 		    	  FROM hotel h JOIN (SELECT hotel_id, room_price
@@ -151,17 +184,72 @@
 		VALUES ((SELECT NVL(MAX(qna_id), 0) + 1 FROM qna), #{memberId}, #{qnaTitle}, #{qnaContent}, #{qnaType})
 	</insert>
 	
-	<!-- 프로필 조회 -->
+	<!-- 메세지함 -->
+	<!-- 전체 유저 조회(프로필), 본인제외-->
 	<select id="readProfile" resultType="mp">
-		SELECT u.member_nickname, u.member_profile, m.message_id, m.message_content, m.message_img, m.message_date, m.message_check, m.message_delete
-		FROM (
-		  SELECT * FROM message
-		  WHERE member_id = #{memberId}
-		  ORDER BY message_id DESC
-		) m
-		JOIN member u ON (u.member_id = m.member_id)
-		WHERE ROWNUM = 1
+		SELECT member_nickname, member_profile, member_id FROM member WHERE member_id != #{memberId}
+		ORDER BY member_nickname
 	</select>
 	
+	<!-- 프로필 세부 조회, 메세지 교환한 사람들만 -->
+	<select id="readProfileMessage" resultType="mp">
+		SELECT u.member_nickname, u.member_profile, m.message_id, u.member_id,
+			CASE
+	           WHEN LENGTH(m.message_content) > 10 THEN SUBSTR(m.message_content, 1, 10) || '...'
+	           ELSE m.message_content
+	        END AS message_content, m.message_img, m.message_date, m.message_check, m.message_delete
+		FROM(
+		        SELECT member_id, MAX(message_id) AS mi
+		        FROM message
+		        WHERE message_delete = 1
+		        AND ((member_id=#{memberId} AND member_id2 IN (SELECT member_id FROM member))
+                OR (member_id IN (SELECT member_id FROM member) AND member_id2=#{memberId}))
+		        GROUP BY member_id
+		        HAVING member_id != #{memberId}) c
+		JOIN member u ON c.member_id = u.member_id
+		JOIN message m ON c.mi = m.message_id
+		ORDER BY message_id DESC
+	</select>
 	
+	<!-- 메세지내역, 특정인, 삭제 제외-->
+	<select id="readMessage" resultType="mp">
+		SELECT *
+		FROM message
+		WHERE ((member_id=#{memberId} AND member_id2=#{memberId2})
+		    OR (member_id=#{memberId2} AND member_id2=#{memberId}))
+	    AND message_delete=1
+		ORDER BY message_id
+	</select>
+	
+	<!-- 메세지내역, 특정인, 삭제 포함-->
+	<select id="readAllMessage" resultType="mp">
+		SELECT *
+		FROM message
+		WHERE (member_id=#{memberId} AND member_id2=#{memberId2})
+		    OR (member_id=#{memberId2} AND member_id2=#{memberId})
+		ORDER BY message_id
+	</select>
+	
+	<!-- 메세지 생성 -->
+	<insert id="createMessage" parameterType="mp">
+		INSERT INTO message (message_id, member_id, member_id2, message_content, message_time, message_time2, message_apm)
+		VALUES(message_seq.nextval, #{memberId}, #{memberId2}, #{messageContent}, #{messageTime}, #{messageTime2}, #{messageApm})
+	</insert>
+	
+	<!-- 메세지 삭제(업데이트) -->
+	<update id="updateMessage" parameterType="mp">
+		UPDATE message SET message_delete=2 WHERE message_id=#{messageId}
+	</update>
+	
+	<!-- 신고 -->
+	<insert id="createDec">
+		INSERT INTO declaration(dec_id, member_id, hotel_id, dec_category, dec_content)
+		VALUES((SELECT NVL(MAX(dec_id), 0) + 1 FROM declaration), #{memberId}, #{hotelId}, #{decCategory}, #{decContent})
+	</insert>
+	
+	<!-- 후기작성 -->
+	<insert id="createComment">
+		INSERT INTO review(review_id, member_id, hotel_id, review_point, review_content, res_past, checkin_date, master_view)
+		VALUES((SELECT NVL(MAX(review_id), 0) + 1 FROM review), #{memberId}, #{hotelId}, #{reviewPoint}, #{reviewContent}, 0, SYSDATE, 1)
+	</insert>
 </mapper>

@@ -7,15 +7,15 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">예약내역</h1>
 <p class="mb-4">
-	<a class="btn btn-primary" href="#!">미방문</a> 
-	<a class="btn btn-primary" href="#!">방문중</a>
-	<a class="btn btn-primary" href="#!">방문</a>
+	<a class="btn btn-primary" href="myPageHome.do">미방문</a> 
+	<a class="btn btn-primary" href="myPageVisit.do">방문중</a>
+	<a class="btn btn-primary" href="myPageVisited.do">방문</a>
 </p>
 
 <!-- 본문  -->
 <div class="card shadow mb-4" id = "ajaxwillvisit">
 	<div class="card-header py-3">
-		<h6 class="m-0 font-weight-bold text-primary">${nickname }님의 미방문 예약내역입니다! 즐거운 여행 되세요!| ~~ 님의 방문하신곳입니다.</h6>
+		<h6 class="m-0 font-weight-bold text-primary">${nickname }님의 미방문 예약내역입니다! 즐거운 여행 되세요!</h6>
 	</div>
 
 	<!-- 전체 선택 라벨 -->
@@ -26,8 +26,8 @@
 				onclick='selectAll(this)' /> <label for="selectAll" class="px-4">전체
 				선택</label>
 		</div>
-		<div>
-			<button class="btn btn-primary" id="chooseDelete">선택취소</button>
+		<div style="width: 200px;">
+			<button class="btn btn-primary" id="chooseDelete">선택 예약 취소</button>
 		</div>
 	</div>
 	
@@ -42,16 +42,16 @@
 <div class="center">
 	<div class="pagination">
 		<c:if test="${pageInfo.prev }">
-			<a href="myPageWishList.do?page=${pageInfo.startPage-1 }"
+			<a href="myPageHome.do?page=${pageInfo.startPage-1 }"
 				class="btn btn-primary" id="pagecenter">Previous</a>
 		</c:if>
 		<c:forEach var="i" begin="${pageInfo.startPage }"
 			end="${pageInfo.endPage }">
 			<a class="${i == pageInfo.pageNum ? 'active' : '' } btn btn-primary"
-				id="pagecenter" href="myPageWishList.do?page=${i }">${i }</a>
+				id="pagecenter" href="myPageHome.do?page=${i }">${i }</a>
 		</c:forEach>
 		<c:if test="${pageInfo.next }">
-			<a href="myPageWishList.do?page=${pageInfo.endPage+1 }"
+			<a href="myPageHome.do?page=${pageInfo.endPage+1 }"
 				class="btn btn-primary" id="pagecenter">Next</a>
 		</c:if>
 	</div>

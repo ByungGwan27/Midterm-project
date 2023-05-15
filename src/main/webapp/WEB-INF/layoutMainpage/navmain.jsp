@@ -22,7 +22,7 @@
 										<select name="location" class="form-control custom-select">
 											<option value="서울특별시">서울특별시</option>
 											<option value="부산광역시">부산광역시</option>
-											<option value="대구">대구광역시</option>
+											<option value="대구광역시">대구광역시</option>
 											<option value="인천광역시">인천광역시</option>
 											<option value="광주광역시">광주광역시</option>
 											<option value="대전광역시">대전광역시</option>
@@ -43,14 +43,14 @@
 										<input type="text" class="form-control" name="daterange">
 									</div>
 									<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-3">
-										<input type="text" class="form-control" name="people" placeholder="인원수">
+										<input type="text" class="form-control" name="people" value="2">
 									</div>
 
 								</div>
 								<div class="row align-items-center">
 									<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
 										<input type="submit" class="btn btn-primary btn-block"
-											value="검색">
+											value="검색" >
 									</div>
 
 								</div>
@@ -76,3 +76,4 @@
 		</div>
 	</div>
 </div>
+

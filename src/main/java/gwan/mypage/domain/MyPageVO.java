@@ -60,6 +60,7 @@ public class MyPageVO {
 	
 	//메세지함
 	private int messageId;
+	private String memberId2;
 	private String messageContent;
 	private String messageImg;
 	private String messageDate;
@@ -69,6 +70,14 @@ public class MyPageVO {
 	private int messageTime;
 	private int messageTime2;
 	private String messageApm;
+	
+	//신고
+	private String decCategory;
+	private String decContent;
+	
+	//후기
+	private int reviewPoint;
+	private String reviewContent;
 	
 	
 }

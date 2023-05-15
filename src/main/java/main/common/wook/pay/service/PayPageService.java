@@ -15,6 +15,6 @@ public interface PayPageService {
 	public int getResId();
 	public int putPayTable(paySuccessVO success);
 	public int usePointUpdate (paySuccessVO success);
-	
+	public int resCheck(paySuccessVO success);
 	
 }

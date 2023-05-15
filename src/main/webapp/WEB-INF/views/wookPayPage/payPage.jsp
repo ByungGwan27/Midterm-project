@@ -88,11 +88,12 @@
 								<div class="row mb-2">
 
 									<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-5">
-										<input type="text" class="form-control" name="daterange" id="resDate" required>
+										<input type="text" class="form-control" name="daterange"
+											id="resDate" required>
 									</div>
 									<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-3">
 										<input type="text" class="form-control" name="people"
-											placeholder="인원수" id ="people" required>
+											placeholder="인원수" id="people" required>
 									</div>
 
 								</div>
@@ -110,8 +111,9 @@
 		<li>지역&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp&nbsp${payInfo.hotelLocation1}
 			/ ${payInfo.hotelLocation2}</li>
 		<li>방이름&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp&nbsp${payInfo.roomName}</li>
-		<li>숙소정보</li>
-		<li>숙소정보</li>
+		<li>방등급&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp&nbsp${payInfo.roomGrade}</li>
+		<li>1박당
+			가격&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp&nbsp${payInfo.roomPrice} 원</li>
 	</ul>
 
 </div>
@@ -128,7 +130,8 @@
 				id="selectCoupon" class="custom-select">
 				<option value="사용안함">사용안함</option>
 				<c:forEach var="coupon" items="${couponInfo}">
-					<option value="${coupon.couponId }">${coupon.couponName }(할인가격 : ${coupon.salePri })</option>
+					<option value="${coupon.couponId }">${coupon.couponName }(할인가격
+						: ${coupon.salePri })</option>
 					<p>${coupon.salePri }</p>
 				</c:forEach>
 			</select>
@@ -150,7 +153,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
@@ -158,8 +161,8 @@
 							type="text" class="form-control" id="checkInName"
 							value="${payMemberInfo.memberName }">
 					</div>
-					<small id="emailHelp" class="form-text text-muted">예약자와
-						달라도 가능합니다</small>
+					<small id="emailHelp" class="form-text text-muted">예약자와 달라도
+						가능합니다</small>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
@@ -174,7 +177,7 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label class="text-black" for="fname">기본 가격</label> <input
-							type="text" class="form-control" id="fname"
+							type="text" class="form-control" id="defualtPrice"
 							value='${payInfo.roomPrice }' readonly>
 					</div>
 				</div>
@@ -188,15 +191,53 @@
 			</div>
 			<!-- 스크립트 -->
 			<script>
-				let resDate = document.getElementById('resDate');
-				resDate.addEventListener('blur', function(){
+					// document.addEventListener('DOMContentLoaded',function(){
+					// 	document.getElementsByClassName('applyBtn btn btn-sm btn-primary').addEventListener('click',function(){
+					// 		console.log('되나요')
+					// 	})
+					// })
+			 	 let today = new Date();
+				let resDate1 = document.getElementById('resDate');
+				let minus = 1;
+					
+				resDate1.addEventListener('click', function(){
+					document.getElementsByClassName('applyBtn btn btn-sm btn-primary')[0].addEventListener('blur',function(){
+
+						let date0 = document.getElementById('resDate').value;
+						//날짜 변환
+						let inDate = date0.substring(0, 10);
+						let outDate = date0.substring(13, 23);
+						// 입력 될 날짜
+						let checkin = "20"+inDate.substring(8, 10)+"-"  + inDate.substring(0, 2) +"-"+ inDate.substring(3, 5);
+						let checkout = "20"+outDate.substring(8, 10)+"-"  + outDate.substring(0, 2) +"-"+ outDate.substring(3, 5);
+						
+						let date1 = new Date(checkin)
+						
+						let date2 = new Date(checkout)
+						
+						
+						// if((date1)<today-86400000){
+						// 	alert('이미 지난 날짜입니다')
+						// 	date0 = today
+						// }
+						
+						
+						minus = (date2 - date1)/(1000*60*60*24)
+								
+						document.getElementById('defualtPrice').value = ${payInfo.roomPrice }*(minus) 
+						document.getElementById('salePrice').value = ${payInfo.roomPrice }*(minus) 
+					})
+
 					
 				})
-
+				
 				let people = document.getElementById('people');
 				people.addEventListener('blur', function(){
-					console.log(people.value)
-					console.log(resDate.value)
+
+					if(${payInfo.roomMin}>people.value || people.value>${payInfo.roomMax}){
+						alert('허용 인원이 아닙니다')
+						people.value = ${payInfo.roomMin};
+					}
 				})
 		
 			
@@ -205,36 +246,82 @@
 				let usePoint = document.getElementById('usePoint');
 				let canUsePoint = document.getElementById('canUsePoint');
 				usePoint.addEventListener('blur',function(){
-					if(${payMemberInfo.memberPoint }-usePoint.value>=0 ){
+					
+				/* 	if(${payMemberInfo.memberPoint }-usePoint.value>=0 ){
 
 						if(${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent>=0){
 		
 							canUsePoint.value = ${payMemberInfo.memberPoint }-usePoint.value
 							salePrice.value = ${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent
 						}else{
-							alert('사용할 수 없는 값입니다')
-							usePoint.value = 0;
+							salePrice.value = 0;
+							canUsePoint.value = ${payMemberInfo.memberPoint }-usePoint.value
 						}
 
 					}else {
 						alert('초과된 마일리지입니다')
 						usePoint.value = 0;
+						canUsePoint.value = ${payMemberInfo.memberPoint }
 						
-					}
+					} */
 
-				
+					
+					if(${payMemberInfo.memberPoint }-usePoint.value<0 ){
+						alert('초과된 마일리지입니다')
+						usePoint.value = 0;
+						canUsePoint.value = ${payMemberInfo.memberPoint }
+					}
+					if (usePoint.value<0){
+						alert('사용할 수 없는 숫자입니다')
+						usePoint.value = 0;
+						canUsePoint.value = ${payMemberInfo.memberPoint }
+					}
+					
+					if((${payInfo.roomPrice }*(minus))-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent<0 && usePoint.value > 0){
+						alert('결제금액이 0원입니다 마일리지를 사용할 수 없습니다')
+						usePoint.value = 0;
+						canUsePoint.value = ${payMemberInfo.memberPoint }
+					}
+					
+					if((${payInfo.roomPrice }*(minus))-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent>=0){
+						
+						canUsePoint.value = ${payMemberInfo.memberPoint }-usePoint.value
+						salePrice.value = (${payInfo.roomPrice }*(minus))-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent
+					}else{
+						salePrice.value = 0;
+						canUsePoint.value = ${payMemberInfo.memberPoint }-usePoint.value
+					}
+					
 				})
 
 				selectCoupon.addEventListener('blur',function(){
-
-					console.log(selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent)
-
-					if(${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent >= 0){
-						salePrice.value = ${payInfo.roomPrice }-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent-usePoint.value
-					}else{
+					
+					if((${payInfo.roomPrice }*(minus))-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent < 0){
 						alert('할인금액이 결제금액 초과입니다')
 						salePrice.value = 0
+						
+						if(usePoint.value > 0){
+							usePoint.value = 0;
+							canUsePoint.value = ${payMemberInfo.memberPoint }
+						}
+					} else {
+						if(usePoint.value == 0){
+							salePrice.value = (${payInfo.roomPrice }*(minus))-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent					
+						}else {
+							salePrice.value = (${payInfo.roomPrice }*(minus))-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent-usePoint.value
+						}
 					}
+
+					
+
+					/* if(${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent >= 0){
+						salePrice.value = ${payInfo.roomPrice }-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent-usePoint.value
+					}else{
+						
+						alert('할인금액이 결제금액 초과입니다')
+						salePrice.value = 0
+						
+					} */
 				})
 
 			</script>
@@ -274,7 +361,7 @@
 		// ------  결제위젯 렌더링 ------ 
 		// 결제위젯이 렌더링될 DOM 요소를 지정하는 CSS 선택자 및 결제 금액을 넣어주세요. 
 		// https://docs.tosspayments.com/reference/widget-sdk#renderpaymentmethods선택자-결제-금액
-		paymentWidget.renderPaymentMethods("#payment-method", 15000)
+		paymentWidget.renderPaymentMethods("#payment-method", salePrice.value)
 
 		// ------  이용약관 렌더링 ------
 		// 이용약관이 렌더링될 DOM 요소를 지정하는 CSS 선택자를 넣어주세요.
@@ -284,7 +371,96 @@
 		// ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
 		// 더 많은 결제 정보 파라미터는 결제위젯 SDK에서 확인하세요.
 		// https://docs.tosspayments.com/reference/widget-sdk#requestpayment결제-정보
-		button.addEventListener("click", function() {
+		button.addEventListener("click", function(event) {
+			console.log(document.getElementById('people').value)
+			if(document.getElementById('people').value == ""){
+				alert('인원수를 입력해주세요')
+				 return;
+			}
+			
+
+			let date0 = document.getElementById('resDate').value;
+			//날짜 변환
+			let inDate = date0.substring(0, 10);
+			let outDate = date0.substring(13, 23);
+			// 입력 될 날짜
+			let checkin = "20"+inDate.substring(8, 10)+"-"  + inDate.substring(0, 2) +"-"+ inDate.substring(3, 5);
+			let checkout = "20"+outDate.substring(8, 10)+"-"  + outDate.substring(0, 2) +"-"+ outDate.substring(3, 5);
+			let date1 = new Date(checkin)
+			let date2 = new Date(checkout)
+			let date3 = new Date(checkin)
+			date3.setDate(date3.getDate()+1)
+			//newDate.setDate(newDate.getDate() + 35);
+			
+			
+			if(date3<today){
+				alert('이미 지난 날짜는 예약이 불가합니다')
+				return;
+			}
+			
+			if((date2-date1)/(1000*60*60*24)<1){
+				alert('1박 이상만 예약이 가능합니다')
+				return;
+			}
+			
+			
+			fetch("resCheck.do?roomId="+${payInfo.roomId}+"&date="+document.getElementById('resDate').value)
+			.then(resolve => resolve.json())
+			.then(result => {
+				console.log(result)
+				
+			if(result>0){
+					alert('예약이 이미 있는 날짜입니다')
+					event.preventDefault();
+				}else {
+					let salePrice = document.getElementById('salePrice');
+					let resPeopleSelect = document.getElementById('people');
+					let resDate = document.getElementById('resDate');
+					let checkinName = document.getElementById('checkInName');
+					let checkinPhone = document.getElementById('checkinPhone');
+					let selectCoupon = document.getElementById('selectCoupon');
+					let canUsePoint = document.getElementById('canUsePoint');
+					
+					let memberIdData = '${payMemberInfo.memberId}';
+					let hotelIdData = ${payInfo.hotelId};
+					let roomIdData = ${payInfo.roomId}
+					let finalPriceData = salePrice.value;
+					let resPeopleData = resPeopleSelect.value;
+					let resDateData = resDate.value;
+					let checkinNameData = checkinName.value;
+					let checkinPhoneData = checkinPhone.value;
+					let canUsePointData = canUsePoint.value;
+
+					let couponIdData = selectCoupon.options[selectCoupon.selectedIndex].value;
+					let roomPriceData = ${payInfo.roomPrice} 
+
+					/* PAY_ID	NUMBER 시퀀스
+					MEMBER_ID	VARCHAR2(30 BYTE)  //
+					ROOM_ID	NUMBER //
+					COUPON_ID	NUMBER o
+					RESERVE_ID	NUMBER select
+					ROOM_PRICE	NUMBER o 
+					PAY_WAY	VARCHAR2(30 BYTE) 쿼리에서 처리
+					PAY_DATE	DATE sysdate
+					PAY_STATUS	VARCHAR2(30 BYTE) 결제완료 */ 
+					
+					paymentWidget.requestPayment({
+						orderId : "gD5iaJ9epuqS8vUAcisv8", // 주문 ID(직접 만들어주세요)
+						orderName : "주문", // 주문명
+						successUrl : "http://localhost:8081/MyProject/successPay.do?memberId="+memberIdData+"&hotelId="+hotelIdData+"&roomId="+roomIdData+"&finalPrice="+finalPriceData+"&resPeople="+resPeopleData+"&resDate="+resDateData+
+						"&checkinName="+checkinNameData+"&checkinPhone="+checkinPhoneData+"&couponId="+couponIdData+"&roomPrice="+roomPriceData+"&canUsePoint="+canUsePointData,
+
+						failUrl : "http://localhost:8081/MyProject/payPageForm.do", // 결제에 실패하면 이동하는 페이지(직접 만들어주세요)
+						customerEmail : "customer123@gmail.com",
+						customerName : "${payMemberInfo.memberName}"
+					})
+					
+				}
+			})
+			
+			
+			
+			
 			/* RESERVATION_ID	NUMBER 시퀀스
 			MEMBER_ID	VARCHAR2(30 BYTE) o
 			HOTEL_ID	NUMBER o
@@ -297,47 +473,7 @@
 			CHECKIN_PHONE	VARCHAR2(50 BYTE) o
 			RES_STATUS	VARCHAR2(50 BYTE) x
 			COMPLETE_DATE	DATE */
-			let salePrice = document.getElementById('salePrice');
-			let resPeopleSelect = document.getElementById('people');
-			let resDate = document.getElementById('resDate');
-			let checkinName = document.getElementById('checkInName');
-			let checkinPhone = document.getElementById('checkinPhone');
-			let selectCoupon = document.getElementById('selectCoupon');
-			let canUsePoint = document.getElementById('canUsePoint');
 			
-			let memberIdData = '${payMemberInfo.memberId}';
-			let hotelIdData = ${payInfo.hotelId};
-			let roomIdData = ${payInfo.roomId}
-			let finalPriceData = salePrice.value;
-			let resPeopleData = resPeopleSelect.value;
-			let resDateData = resDate.value;
-			let checkinNameData = checkinName.value;
-			let checkinPhoneData = checkinPhone.value;
-			let canUsePointData = canUsePoint.value;
-
-			let couponIdData = selectCoupon.options[selectCoupon.selectedIndex].value;
-			let roomPriceData = ${payInfo.roomPrice} 
-
-			/* PAY_ID	NUMBER 시퀀스
-			MEMBER_ID	VARCHAR2(30 BYTE)  //
-			ROOM_ID	NUMBER //
-			COUPON_ID	NUMBER o
-			RESERVE_ID	NUMBER select
-			ROOM_PRICE	NUMBER o 
-			PAY_WAY	VARCHAR2(30 BYTE) 쿼리에서 처리
-			PAY_DATE	DATE sysdate
-			PAY_STATUS	VARCHAR2(30 BYTE) 결제완료 */ 
-			
-			paymentWidget.requestPayment({
-				orderId : "gD5iaJ9epuqS8vUAcisv8", // 주문 ID(직접 만들어주세요)
-				orderName : "주문", // 주문명
-				successUrl : "http://localhost:8081/successPay.do?memberId="+memberIdData+"&hotelId="+hotelIdData+"&roomId="+roomIdData+"&finalPrice="+finalPriceData+"&resPeople="+resPeopleData+"&resDate="+resDateData+
-				"&checkinName="+checkinNameData+"&checkinPhone="+checkinPhoneData+"&couponId="+couponIdData+"&roomPrice="+roomPriceData+"&canUsePoint="+canUsePointData,
-
-				failUrl : "http://localhost:8081/payPageForm.do", // 결제에 실패하면 이동하는 페이지(직접 만들어주세요)
-				customerEmail : "customer123@gmail.com",
-				customerName : "${payMemberInfo.memberName}"
-			})
 		})
 	</script>
 

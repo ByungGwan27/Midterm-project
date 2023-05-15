@@ -26,7 +26,7 @@ public class MypageHomeControl implements Control {
 		int page = Integer.parseInt(pageStr);
 		
 		MyPageService service = new MyPageServiceImpl();
-		int total = service.readWishPageCount(id);
+		int total = service.readWillvisitPageCount(id);
 		
 		PageDTO dto = new PageDTO(page, total);
 		req.setAttribute("pageInfo", dto);

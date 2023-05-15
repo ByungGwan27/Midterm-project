@@ -19,20 +19,23 @@ public interface HotelInfoService {
 	
 	//hotelInfo
 	public HotelInfoVO getHotelInfo(int hotelId, String hotelLocation1);
+	public List<HotelInfoVO> bestReview(int hotelId);
 	public List<HotelInfoVO> roomList(int hotelId);
+	public List<HotelInfoVO> roomDetailList(int hotelId);
 	public List<HotelInfoVO> reviewList(int hotelId);
 	public List<HotelInfoVO> similarList(int hotelId, String hotelLocation1);
 	
 	//adminHotelList
 	public List<HotelInfoVO> adminHotelList();
 	
-	//hotelLinfo
+	//adminHotelInfo
 	public HotelInfoVO getAdminHotel(int hotelId);
 	public HotelInfoVO getAdminHotelRoom(int hotelId, int roomId);
 	
 	//hotelInfoModify
 	public boolean modifyAdminHotel(HotelInfoVO vo);
 	public boolean modifyAdminHotelRoom(HotelInfoVO vo);
+	public boolean modifyAdiminHotelRoomDetail(HotelInfoVO vo);
 	
 	//hotelAdd
 	public boolean addAdminHotel(HotelInfoVO vo);
