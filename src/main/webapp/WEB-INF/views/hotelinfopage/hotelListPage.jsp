@@ -149,17 +149,17 @@
 
 	<!-- list -->
 	<div style="justify-content: center;">
-		<p align="right">
+<!-- 		<p align="right">
 			<a href="#">높은가격순</a> / <a href="#">낮은가격순</a> / <a href="#">이름순</a> /
 			<a href="#">인기순</a>
-		</p>
+		</p> -->
 		<hr>
 		<c:if test="${empty hotelList}">
 			<p>호텔 정보가 없습니다.</p>
 		</c:if>
 		<c:forEach var="hotelList" items="${hotelList}">
 			<div style="width: 800px">
-				<table border="1" id="listHotel">
+				<table  id="listHotel">
 					<tr>
 						<td rowspan="4">
 							<div style="margin: 10px; width: 205px;">
