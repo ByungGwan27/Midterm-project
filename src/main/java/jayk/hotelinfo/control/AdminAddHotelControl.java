@@ -38,6 +38,7 @@ public class AdminAddHotelControl implements Control {
 		String hotelLocation2 = multi.getParameter("hotelLocation2");
 		String hotelImage = multi.getFilesystemName("hotelImage");
 		String locationDetail = multi.getParameter("locationDetail");
+		String hotelThema = multi.getParameter("hotelThema");
 		
 		HotelInfoVO addHotel = new HotelInfoVO();
 		addHotel.setHotelId(Integer.parseInt(hotelId));
@@ -46,6 +47,7 @@ public class AdminAddHotelControl implements Control {
 		addHotel.setHotelLocation2(hotelLocation2);
 		addHotel.setHotelImage(hotelImage);
 		addHotel.setLocationDetail(locationDetail);
+		addHotel.setHotelThema(hotelThema);
 		
 		HotelInfoService service = new HotelInfoServiceImpl();
 				
@@ -53,7 +55,7 @@ public class AdminAddHotelControl implements Control {
 			System.out.println("성공");
 			int generatedHotelId = addHotel.getHotelId();
 		    req.getSession().setAttribute("generatedHotelId", generatedHotelId);
-			return "admimAddRoomForm.do";
+			return "admimAddRoomForm.do?hotelId=" + generatedHotelId;
 		}else {
 			return "adminAddHotelPage.do";
 		}
