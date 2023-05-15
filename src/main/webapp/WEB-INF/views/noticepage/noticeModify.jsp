@@ -108,12 +108,12 @@ header.major {
 					<table class="table">
 						<tr>
 							<th>글번호</th>
-							<td><input type="text" name="noticeId"  value="${nid }"
+							<td><input type="text" name="noticeId"  value="${nid }" readonly
 								></td>
 						</tr>
 						<tr>
 							<th>제목</th>
-							<td><input type="text" name="noticeTitle"
+							<td><input type="text" name="noticeTitle" value="${noticeTitle }"
 								></td>
 						</tr>
 						<tr>

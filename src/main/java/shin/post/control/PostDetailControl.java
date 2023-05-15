@@ -62,12 +62,40 @@ public class PostDetailControl implements Control {
 		return "postpage/postDetail.tiles";
 	}
 	 */
+		PostService service = new PostServiceImpl();
+		List<PostVO> postmemberdetail = service.postmemberdetail();
+		req.setAttribute("postmemberdetail", postmemberdetail);
+		System.out.println("postmemberdetail" + postmemberdetail);
+
+	
+		List<PostVO> postmember = service.postmember();
+		//포스트 게시물 리스트
+		List<PostVO> postmain = service.postmain();
+		System.out.println("postmain"+ postmain);
 		
-		int postId = Integer.parseInt(req.getParameter("postId"));
-	    PostService service = new PostServiceImpl();
-	    List<PostVO> postDetail = service.getPostDetail(postId);
-	    req.setAttribute("postDetail", postDetail);
+		req.setAttribute("postmember", postmember);
+		req.setAttribute("postmain", postmain);
+		
+
+//		int postId = Integer.parseInt(req.getParameter("postId"));
+//		
+//		String postContent = req.getParameter("postContent");
+//		String postTitle = req.getParameter("postTitle");
+//		String postImages = req.getParameter("postImages");
+//		String memberNickName = req.getParameter("memberNickName");
+		
+		//PostVO postdetail = service.postdetail();
+//		getPost.setPostContent(postContent);
+//		getPost.setPostTitle(postTitle);
+//		getPost.setPostImages(postImages);
+//		getPost.setMemberNickName(memberNickName);
+	    //System.out.println("postContent" + postContent);
+	    
+	    
+//	    req.setAttribute("postdetail", postdetail);
+//	    System.out.println("test :" + postdetail);
+	    
 	    return "postpage/postDetail.tiles";
-	}
+	}	
 		
 }

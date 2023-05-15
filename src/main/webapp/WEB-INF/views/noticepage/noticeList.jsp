@@ -124,13 +124,9 @@
 							<td>${notice.writeDate }</td>
 							<td>${notice.noticeViews }</td>	
 							<td colspan="2" align="center">
-								<button type="submit">
-									<a href="noticeModify.do">저장(수정)</a>
-								</button>
-								<button type="button">
-									<a href="noticeDelete.do">삭제</a>
-								</button>
-							</td>
+									<a href="noticeModify.do?noticeId=${notice.noticeId}"><input type="button" value="수정"></a>
+								<input type="reset" value="취소"></td>
+							
 						</tr>
 					</c:forEach>
 				</table>

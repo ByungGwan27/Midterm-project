@@ -21,18 +21,18 @@ public class PostMemberDetailControl implements Control {
 		PostService service = new PostServiceImpl();
 		List<PostVO> postmemberdetail = service.postmemberdetail();
 		req.setAttribute("postmemberdetail", postmemberdetail);
-		System.out.println("test" + postmemberdetail);
+		System.out.println("postmemberdetail" + postmemberdetail);
 
 	
 		List<PostVO> postmember = service.postmember();
 		//포스트 게시물 리스트
 		List<PostVO> postmain = service.postmain();
-		System.out.println("test"+ postmain);
+		System.out.println("postmain"+ postmain);
 		
 		req.setAttribute("postmember", postmember);
 		req.setAttribute("postmain", postmain);
 		
-		return null;
+		return "postpage/postMemberDetail.tiles";
 	}
 
 }
