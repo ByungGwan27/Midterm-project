@@ -117,7 +117,7 @@
 
 								<!-- Profile Edit Form -->
 								<form action="adminModifyMember.do">
-									<div class="row mb-3">
+									<%-- <div class="row mb-3">
 										<label for="profileImage"
 											class="col-md-4 col-lg-3 col-form-label">프로필 사진</label>
 										<div class="col-md-8 col-lg-9">
@@ -132,12 +132,15 @@
 											<div class="pt-2">
 												<a href="#" class="btn btn-primary btn-sm"
 													title="Upload new profile image"><i
-													class="bi bi-upload"></i></a> <a href="#"
+													class="bi bi-upload"></i></a>
+													<c:if test="${memberInfo.memberProfile != null}">
+													 <a href="#"
 													class="btn btn-danger btn-sm"
 													title="Remove my profile image"><i class="bi bi-trash"></i></a>
+													</c:if>
 											</div>
 										</div>
-									</div>
+									</div> --%>
 
 									<div class="row mb-3">
 										<label for="fullName" class="col-md-4 col-lg-3 col-form-label">회원
@@ -221,10 +224,17 @@
 									</div>
 
 									<div class="row mb-3">
-										<label for="Email" class="col-md-4 col-lg-3 col-form-label">관심테마</label>
+										<label for="Country" class="col-md-4 col-lg-3 col-form-label">관심테마</label>
 										<div class="col-md-8 col-lg-9">
-											<input name="memberThema" type="text" class="form-control"
-												id="memberThema" value="${memberInfo.memberThema}">
+											<select name="memberThema" type="text" class="form-control"
+												id="memberThema " value="${memberInfo.memberThema}">
+													<option value="${memberInfo.memberThema}" selected>현재 : ${memberInfo.memberThema}</option>
+													<option value="호텔">호텔</option>
+													<option value="모텔">모텔</option>
+													<option value="펜션">펜션</option>
+													<option value="게스트하우스">게스트하우스</option>
+													<option value="기타">기타</option>
+											</select>
 										</div>
 									</div>
 

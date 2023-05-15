@@ -1,6 +1,9 @@
 package main.common.wook.pay.control;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +39,6 @@ public class resCheckcontrol implements Control {
 		PayPageService service = new PayPageServiceImpl();
 		int result = service.resCheck(vo);
 		
-		System.out.println(result);
 		
 		Gson gson = new GsonBuilder().create();
 		String json = gson.toJson(result);

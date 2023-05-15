@@ -88,11 +88,12 @@
 								<div class="row mb-2">
 
 									<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-5">
-										<input type="text" class="form-control" name="daterange" id="resDate" required>
+										<input type="text" class="form-control" name="daterange"
+											id="resDate" required>
 									</div>
 									<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-3">
 										<input type="text" class="form-control" name="people"
-											placeholder="인원수" id ="people" required>
+											placeholder="인원수" id="people" required>
 									</div>
 
 								</div>
@@ -110,8 +111,8 @@
 		<li>지역&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp&nbsp${payInfo.hotelLocation1}
 			/ ${payInfo.hotelLocation2}</li>
 		<li>방이름&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp&nbsp${payInfo.roomName}</li>
-		<li>숙소정보</li>
-		<li>숙소정보</li>
+		<li>방등급&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp&nbsp${payInfo.roomGrade}</li>
+		<li>1박당 가격&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp&nbsp${payInfo.roomPrice} 원</li>
 	</ul>
 
 </div>
@@ -128,7 +129,8 @@
 				id="selectCoupon" class="custom-select">
 				<option value="사용안함">사용안함</option>
 				<c:forEach var="coupon" items="${couponInfo}">
-					<option value="${coupon.couponId }">${coupon.couponName }(할인가격 : ${coupon.salePri })</option>
+					<option value="${coupon.couponId }">${coupon.couponName }(할인가격
+						: ${coupon.salePri })</option>
 					<p>${coupon.salePri }</p>
 				</c:forEach>
 			</select>
@@ -150,7 +152,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
@@ -158,8 +160,8 @@
 							type="text" class="form-control" id="checkInName"
 							value="${payMemberInfo.memberName }">
 					</div>
-					<small id="emailHelp" class="form-text text-muted">예약자와
-						달라도 가능합니다</small>
+					<small id="emailHelp" class="form-text text-muted">예약자와 달라도
+						가능합니다</small>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
@@ -174,7 +176,7 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label class="text-black" for="fname">기본 가격</label> <input
-							type="text" class="form-control" id="fname"
+							type="text" class="form-control" id="defualtPrice"
 							value='${payInfo.roomPrice }' readonly>
 					</div>
 				</div>
@@ -188,16 +190,48 @@
 			</div>
 			<!-- 스크립트 -->
 			<script>
-				let resDate = document.getElementById('resDate');
-				resDate.addEventListener('blur', function(){
+					// document.addEventListener('DOMContentLoaded',function(){
+					// 	document.getElementsByClassName('applyBtn btn btn-sm btn-primary').addEventListener('click',function(){
+					// 		console.log('되나요')
+					// 	})
+					// })
+			 	 let today = new Date();
+				let resDate1 = document.getElementById('resDate');
+					
+				resDate1.addEventListener('click', function(){
+					document.getElementsByClassName('applyBtn btn btn-sm btn-primary')[0].addEventListener('blur',function(){
+
+						let date0 = document.getElementById('resDate').value;
+						//날짜 변환
+						let inDate = date0.substring(0, 10);
+						let outDate = date0.substring(13, 23);
+						// 입력 될 날짜
+						let checkin = "20"+inDate.substring(8, 10)+"-"  + inDate.substring(0, 2) +"-"+ inDate.substring(3, 5);
+						let checkout = "20"+outDate.substring(8, 10)+"-"  + outDate.substring(0, 2) +"-"+ outDate.substring(3, 5);
+						
+						let date1 = new Date(checkin)
+						
+						let date2 = new Date(checkout)
+						
+						
+						// if((date1)<today-86400000){
+						// 	alert('이미 지난 날짜입니다')
+						// 	date0 = today
+						// }
+						
+						
+						let minus = (date2 - date1)/(1000*60*60*24)
+								
+						document.getElementById('defualtPrice').value = ${payInfo.roomPrice }*(minus) 
+					})
+
 					
 				})
-
-				let people = document.getElementById('people');
-				people.addEventListener('blur', function(){
-					console.log(people.value)
-					console.log(resDate.value)
-				})
+				
+				/* let people = document.getElementById('people');
+				people.addEventListener('click', function(){
+					
+				}) */
 		
 			
 				let salePrice = document.getElementById('salePrice');
@@ -205,7 +239,8 @@
 				let usePoint = document.getElementById('usePoint');
 				let canUsePoint = document.getElementById('canUsePoint');
 				usePoint.addEventListener('blur',function(){
-					if(${payMemberInfo.memberPoint }-usePoint.value>=0 ){
+					
+				/* 	if(${payMemberInfo.memberPoint }-usePoint.value>=0 ){
 
 						if(${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent>=0){
 		
@@ -221,9 +256,30 @@
 						usePoint.value = 0;
 						canUsePoint.value = ${payMemberInfo.memberPoint }
 						
-					}
+					} */
 
-				
+					
+					if(${payMemberInfo.memberPoint }-usePoint.value<0 ){
+						alert('초과된 마일리지입니다')
+						usePoint.value = 0;
+						canUsePoint.value = ${payMemberInfo.memberPoint }
+					}
+					
+					if(${payInfo.roomPrice }-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent<0 && usePoint.value > 0){
+						alert('결제금액이 0원입니다 마일리지를 사용할 수 없습니다')
+						usePoint.value = 0;
+						canUsePoint.value = ${payMemberInfo.memberPoint }
+					}
+					
+					if(${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent>=0){
+						
+						canUsePoint.value = ${payMemberInfo.memberPoint }-usePoint.value
+						salePrice.value = ${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent
+					}else{
+						salePrice.value = 0;
+						canUsePoint.value = ${payMemberInfo.memberPoint }-usePoint.value
+					}
+					
 				})
 
 				selectCoupon.addEventListener('blur',function(){
@@ -293,6 +349,30 @@
 				 return;
 			}
 			
+
+			let date0 = document.getElementById('resDate').value;
+			//날짜 변환
+			let inDate = date0.substring(0, 10);
+			let outDate = date0.substring(13, 23);
+			// 입력 될 날짜
+			let checkin = "20"+inDate.substring(8, 10)+"-"  + inDate.substring(0, 2) +"-"+ inDate.substring(3, 5);
+			let checkout = "20"+outDate.substring(8, 10)+"-"  + outDate.substring(0, 2) +"-"+ outDate.substring(3, 5);
+			let date1 = new Date(checkin)
+			let date2 = new Date(checkout)
+			let date3 = new Date(checkin)
+			date3.setDate(date3.getDate()+1)
+			//newDate.setDate(newDate.getDate() + 35);
+			
+			
+			if(date3<today){
+				alert('이미 지난 날짜는 예약이 불가합니다')
+				return;
+			}
+			
+			if((date2-date1)/(1000*60*60*24)<1){
+				alert('1박 이상만 예약이 가능합니다')
+				return;
+			}
 			
 			
 			fetch("resCheck.do?roomId="+${payInfo.roomId}+"&date="+document.getElementById('resDate').value)
