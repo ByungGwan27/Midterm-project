@@ -18,8 +18,8 @@
 		select b.*
 		from(select rownum rn, a.*
 		from (select * from hotel) a
-		where rownum <=#{page} * 20) b
-		where b.rn > (#{page}-1) * 20
+		where rownum <=#{page} * 10) b
+		where b.rn > (#{page}-1) * 10
 		]]>
 	</select>
 

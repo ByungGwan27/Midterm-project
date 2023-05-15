@@ -86,52 +86,46 @@
 
 <script>
 
-	
 function checkImageId(){
-	//let roomId = document.getElementById("imageId").value;
-
-	fetch("imageIdRead.do")
-	.then(response => response.json())
-	.then(result => {
-		let imageId = document.getElementById("imageId");
-		for(let i in result){
-			let checkId = Object.keys(result[i])[0];
-			if(imageId.value == checkId){
-				alert("중복된 imageId");
-				 document.getElementById("imageId").focus();
-			   document.getElementById("imageId").value = '';
-				return;
-			}else{
-				alert("사용가능");
-				document.getElementById('checkId2').setAttribute("disabled","disabled");
-				return;
-			}
-		}
-	})
+    fetch("imageIdRead.do")
+    .then(response => response.json())
+    .then(result => {
+        //console.log(result); 
+        
+        let imageId = document.getElementById("imageId").value;
+        for(let i = 0; i < result.length; i++){
+            let checkId = result[i].imageId;
+            if(imageId == checkId){
+                alert("중복된 imageId");
+                document.getElementById("imageId").focus();
+                document.getElementById("imageId").value = '';
+                return;
+            }
+        }
+        alert("사용가능");
+        document.getElementById('checkId2').setAttribute("disabled", "disabled");
+    });
 }
+
 function checkRoomId(){
-	//let roomId = document.getElementById("roomId").value;
-	
-	fetch("roomIdRead.do")
-	.then(response => response.json())
-	.then(result => {
-		let roomId = document.getElementById("roomId");
-		for(let i in result){
-			let checkId = Object.keys(result[i])[0];
-			if(roomId.value == checkId){
-				alert("중복된 roomId");
-				 document.getElementById("roomId").focus();
-			   document.getElementById("roomId").value = '';
-				return;
-			}else{
-				alert("사용가능");
-				document.getElementById('checkId3').setAttribute("disabled","disabled");
-				return;
-			}
-		}
-		
-	})
+    fetch("roomIdRead.do")
+    .then(response => response.json())
+    .then(result => {
+        //console.log(result); 
+        
+        let roomId = document.getElementById("roomId").value;
+        for(let i = 0; i < result.length; i++){
+            let checkId = result[i].roomId;
+            if(roomId == checkId){
+                alert("중복된 roomId");
+                document.getElementById("roomId").focus();
+                document.getElementById("roomId").value = '';
+                return;
+            }
+        }
+        alert("사용가능");
+        document.getElementById('checkId3').setAttribute("disabled", "disabled");
+    });
 }
-
 </script>
 

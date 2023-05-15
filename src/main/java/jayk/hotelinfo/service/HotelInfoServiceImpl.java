@@ -75,7 +75,7 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 	//adminHotelList
 	@Override
 	public List<HotelInfoVO> adminHotelList(int page) {
-		return null;//mapper.hotelListPage(page);
+		return mapper.hotelListPage(page);
 		//return mapper.adminHotelList();
 	}
 

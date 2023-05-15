@@ -147,8 +147,7 @@
 									<a href="#">${roomList.roomName} ${roomList.roomGrade}</a>
 								</h3>
 								<div class="price ml-auto">
-									<span>최대인원 ${roomList.roomMax}</span><br> <span>시설정보
-										${roomList.roomExpain}</span><br> <span>가격
+									<span>최대인원 ${roomList.roomMax}</span><br> <span>가격
 										${roomList.roomPrice}</span><br>
 									<button
 										onclick="location.href='payPageForm.do?roomId=${roomList.roomId}&memberId=${id}'">예약</button>

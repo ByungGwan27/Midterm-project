@@ -56,26 +56,24 @@
 </main>
 
 <script>
-				function checkHotelId(){
-					//let hotelId = document.getElementById("hotelId").value;
-
-					fetch("hotelIdRead.do")
-					.then(response => response.json())
-					.then(result => {
-						let hotelId = document.getElementById("hotelId");
-						for(let i in result){
-							let checkId = Object.keys(result[i])[0];
-							if(hotelId.value == checkId){
-								alert("중복된 HotelId");
-								   document.getElementById("hotelId").focus();
-							     document.getElementById("hotelId").value = '';
-								return;
-							}else{
-								alert("사용가능");
-								document.getElementById('checkId1').setAttribute("disabled","disabled");
-								return;
-							}
-						}
-					})
-				}
-				</script>
+function checkHotelId(){
+    fetch("hotelIdRead.do")
+    .then(response => response.json())
+    .then(result => {
+        //console.log(result); 
+        
+        let hotelId = document.getElementById("hotelId").value;
+        for(let i = 0; i < result.length; i++){
+            let checkId = result[i].hotelId;
+            if(hotelId == checkId){
+                alert("중복된 HotelId");
+                document.getElementById("hotelId").focus();
+                document.getElementById("hotelId").value = '';
+                return;
+            }
+        }
+        alert("사용가능");
+        document.getElementById('checkId1').setAttribute("disabled", "disabled");
+    });
+}
+</script>

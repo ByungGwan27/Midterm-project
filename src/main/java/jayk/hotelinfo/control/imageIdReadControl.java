@@ -21,7 +21,7 @@ public class imageIdReadControl implements Control {
 		
 		String json = "[";
 		for (int i = 0; i < list.size(); i++) {
-			json += "{\"imageId\":\"" + list.get(i).getImageId() + "\"}";
+			json += "{\"imageId\":" + list.get(i).getImageId() + "}";
 			if(i + 1 != list.size()) {
 				json += ",";
 			}

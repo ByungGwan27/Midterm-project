@@ -21,7 +21,7 @@ public class roomIdReadControl implements Control {
 		
 		String json = "[";
 		for (int i = 0; i < list.size(); i++) {
-			json += "{\"roomId\":\"" + list.get(i).getRoomId() + "\"}";
+			json += "{\"roomId\":" + list.get(i).getRoomId() + "}";
 			if(i + 1 != list.size()) {
 				json += ",";
 			}

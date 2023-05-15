@@ -21,7 +21,7 @@ public class hotelIdReadControl implements Control {
 		
 		String json = "[";
 		for(int i = 0; i< list.size(); i++) {
-			json += "{\"hotelId\":\"" + list.get(i).getHotelId() + "\"}";
+			json += "{\"hotelId\":" + list.get(i).getHotelId() + "}";
 			if(i + 1 != list.size()) {
 				json += ",";
 			}
