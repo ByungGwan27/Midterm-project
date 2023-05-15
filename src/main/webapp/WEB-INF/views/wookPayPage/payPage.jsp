@@ -212,13 +212,14 @@
 							canUsePoint.value = ${payMemberInfo.memberPoint }-usePoint.value
 							salePrice.value = ${payInfo.roomPrice }-usePoint.value-selectCoupon.options[selectCoupon.selectedIndex].nextSibling.textContent
 						}else{
-							alert('사용할 수 없는 값입니다')
-							usePoint.value = 0;
+							salePrice.value = 0;
+							canUsePoint.value = ${payMemberInfo.memberPoint }-usePoint.value
 						}
 
 					}else {
 						alert('초과된 마일리지입니다')
 						usePoint.value = 0;
+						canUsePoint.value = ${payMemberInfo.memberPoint }
 						
 					}
 
@@ -234,6 +235,7 @@
 					}else{
 						alert('할인금액이 결제금액 초과입니다')
 						salePrice.value = 0
+						
 					}
 				})
 
@@ -284,7 +286,17 @@
 		// ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
 		// 더 많은 결제 정보 파라미터는 결제위젯 SDK에서 확인하세요.
 		// https://docs.tosspayments.com/reference/widget-sdk#requestpayment결제-정보
-		button.addEventListener("click", function() {
+		button.addEventListener("click", function(event) {
+			console.log(document.getElementById('people').value)
+			if(document.getElementById('people').value == ""){
+				alert('인원수를 입력해주세요')
+				 return;
+			}
+			
+			
+			
+			
+			
 			/* RESERVATION_ID	NUMBER 시퀀스
 			MEMBER_ID	VARCHAR2(30 BYTE) o
 			HOTEL_ID	NUMBER o
@@ -331,10 +343,10 @@
 			paymentWidget.requestPayment({
 				orderId : "gD5iaJ9epuqS8vUAcisv8", // 주문 ID(직접 만들어주세요)
 				orderName : "주문", // 주문명
-				successUrl : "http://localhost:8081/successPay.do?memberId="+memberIdData+"&hotelId="+hotelIdData+"&roomId="+roomIdData+"&finalPrice="+finalPriceData+"&resPeople="+resPeopleData+"&resDate="+resDateData+
+				successUrl : "http://localhost:8081/MyProject/successPay.do?memberId="+memberIdData+"&hotelId="+hotelIdData+"&roomId="+roomIdData+"&finalPrice="+finalPriceData+"&resPeople="+resPeopleData+"&resDate="+resDateData+
 				"&checkinName="+checkinNameData+"&checkinPhone="+checkinPhoneData+"&couponId="+couponIdData+"&roomPrice="+roomPriceData+"&canUsePoint="+canUsePointData,
 
-				failUrl : "http://localhost:8081/payPageForm.do", // 결제에 실패하면 이동하는 페이지(직접 만들어주세요)
+				failUrl : "http://localhost:8081/MyProject/payPageForm.do", // 결제에 실패하면 이동하는 페이지(직접 만들어주세요)
 				customerEmail : "customer123@gmail.com",
 				customerName : "${payMemberInfo.memberName}"
 			})
