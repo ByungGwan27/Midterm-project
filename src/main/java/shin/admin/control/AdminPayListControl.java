@@ -21,8 +21,8 @@ public class AdminPayListControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		HotelInfoService service = new HotelInfoServiceImpl();
-		List<HotelInfoVO> adminHotelList = service.adminHotelList();
-		req.setAttribute("adminHotelList", adminHotelList);
+		//List<HotelInfoVO> adminHotelList = service.adminHotelList();
+		//req.setAttribute("adminHotelList", adminHotelList);
 		
 		NoticeService service2 = new NoticeServiceImpl();
 		List<NoticeVO> list = service2.noticeList(); 
