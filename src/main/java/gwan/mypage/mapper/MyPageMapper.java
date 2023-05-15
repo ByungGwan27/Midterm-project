@@ -15,10 +15,10 @@ public interface MyPageMapper {
 	public int deleteWillVisit(int reservationId);
 	public int readWillvisitPageCount(String memberId);
 	//방문중
-	public List<MyPageVO> visiting(String memberId);
+	public List<MyPageVO> visiting(@Param("memberId") String memberId, @Param("page") int page);
 	public int readvisitingPageCount(String memberId);
 	//방문완료
-	public List<MyPageVO> visited(String memberId);
+	public List<MyPageVO> visited(@Param("memberId") String memberId, @Param("page") int page);
 	public int readvisitedPageCount(String memberId);
 	
 	// 위시리스트
@@ -52,7 +52,11 @@ public interface MyPageMapper {
 	public int createMessage(MyPageVO vo);
 	public int updateMessage(int messageId);
 	
+	//신고
+	public int createDec(MyPageVO vo);
 	
+	//후기
+	public int createComment(MyPageVO vo);
 	
 	
 	

@@ -1,4 +1,4 @@
-package gwan.loginpage.control;
+package gwan.mypage.control;
 
 import java.io.IOException;
 
@@ -9,16 +9,14 @@ import javax.servlet.http.HttpSession;
 
 import main.common.control.Control;
 
-public class loginPageControl implements Control {
+public class MyPageReportControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
+		int hotelId = Integer.parseInt(req.getParameter("hotelId"));
+		req.setAttribute("reportHotelId", hotelId);
 		
-		String prevUrl = req.getHeader("Referer"); // 이전 페이지 URL 가져오기
-		session.setAttribute("prevUrl", prevUrl); //세션에 저장
-		System.out.println("첫 주소 테스트" + prevUrl);
-		return "gwanLoginPage/loginPage.tiles";
+		return "mypage/myPageReport.tiles";
 	}
 
 }

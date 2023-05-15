@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-    <!-- 강병관 작성 -->
-    
-    <link rel="stylesheet"
+<!-- 강병관 작성 -->
+
+<title>Traveller - 메세지함</title>
+
+<link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
 <script src="https://code.jquery.com/jquery-1.8.3.min.js"
 	integrity="sha256-YcbK69I5IXQftf/mYD8WY0/KmEDCv1asggHpJk1trM8="
 	crossorigin="anonymous"></script>
-
-
 
 
 <style>
@@ -166,8 +167,8 @@ input[type="text"]::placeholder {
 }
 
 tbody {
-  height: 623px;
-  overflow-y: auto;
+	height: 623px;
+	overflow-y: auto;
 }
 
 .gwan-scroll-table th {
@@ -175,8 +176,8 @@ tbody {
 }
 
 .gwan-scroll-body {
-    display: block;
-  }
+	display: block;
+}
 
 .gwan-scroll-table td {
 	height: 100px;
@@ -185,51 +186,26 @@ tbody {
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
+
+#profileimage {
+	width: 50px;
+	height: 50px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+#profileimage2 {
+	width: 150px;
+	height: 150px;
+	margin-left: 10px;
+	margin-top: 10px;
+	text-align: center;
+}
+
+.gwan-width {
+	width: 230px;
+}
 </style>
-<script>
-	$(function() {
-		$("input[type='text']").keypress(
-				function(e) {
-					if (e.keyCode == 13 && $(this).val().length) {
-						var _val = $(this).val();
-						var _class = $(this).attr("class");
-						$(this).val('');
-						var _tar = $(".chat_wrap .inner")
-								.append(
-										'<div class="item ' + _class + '"><div class="box"><p class="msg">'
-												+ _val
-												+ '</p><span class="time">'
-												+ currentTime()
-												+ '</span></div></div>');
-
-						var lastItem = $(".chat_wrap .inner")
-								.find(".item:last");
-						setTimeout(function() {
-							lastItem.addClass("on");
-						}, 10);
-
-						var position = lastItem.position().top
-								+ $(".chat_wrap .inner").scrollTop();
-						console.log(position);
-
-						$(".chat_wrap .inner").stop().animate({
-							scrollTop : position
-						}, 500);
-					}
-				});
-
-	});
-
-	var currentTime = function() {
-		var date = new Date();
-		var hh = date.getHours();
-		var mm = date.getMinutes();
-		var apm = hh > 12 ? "오후" : "오전";
-		var th = hh > 12 ? hh - 12 : hh;
-		var ct = apm + " " + th + ":" + mm + "";
-		return ct;
-	}
-</script>
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">메세지함</h1>
@@ -240,46 +216,33 @@ tbody {
 		<table class="gwan-scroll-table">
 			<thead>
 				<tr>
-					<th>전체메시지 | 안 읽은 메시지 | 별표 메시지</th>
+					<!-- <th>전체메시지 | 안 읽은 메시지 | 별표 메시지</th> -->
+					<th><button type="button" id="profileButton">프로필</button> <br>
+						<br>
+						<button type="button" id="profileMessageButton">프로필세부</button></th>
 				</tr>
 			</thead>
-			<tbody class="gwan-scroll-body">
-				<tr>
-					<td>1번타자</td>
-				</tr>
-				<tr>
-					<td>2번타자</td>
-				</tr>
-				<tr>
-					<td>3번타자</td>
-				</tr>
-				<tr>
-					<td>4번타자</td>
-				</tr>
-				<tr>
-					<td>5번타자</td>
-				</tr>
-				<tr>
-					<td>6번타자</td>
-				</tr>
-				<tr>
-					<td>7번타자</td>
-				</tr>
+			<tbody class="gwan-scroll-body" id="profile">
+				<!-- <tr>
+					<td><img class="img-profile rounded-circle" src="images/nong10.jpg" id="profileimage">닉네임<br>1번타자</td>
+				</tr> -->
 			</tbody>
 		</table>
 	</div>
 
-	<div class="chat_wrap gwan-chat gwan-flex-item-center">
-		<div class="inner">
+	<div class="chat_wrap gwan-chat gwan-flex-item-center" id="firstpage">
 
-			<div class="item">
+		<!-- <div class="inner">
+			본문
+
+			<div class="item yourmsg on">
 				<div class="box">
 					<p class="msg">안녕하세요</p>
 					<span class="time">오전 10:05</span>
 				</div>
 			</div>
 
-			<div class="item mymsg">
+			<div class="item mymsg on">
 				<div class="box">
 					<p class="msg">안녕하세요</p>
 					<span class="time">오전 10:05</span>
@@ -288,20 +251,467 @@ tbody {
 
 		</div>
 
-		<input type="text" class="mymsg" placeholder="내용 입력">
-		<button>파일전송</button>
-		<!-- <input type="text" class="yourmsg" placeholder="내용 입력"> -->
+		<input type="text" class="mymsg" placeholder="내용 입력" class="textinput">
+		<button class="textinput">파일전송</button>
+		<input type="text" class="yourmsg" placeholder="내용 입력"
+			class="textinput"> -->
+
 	</div>
 
-	<div class="gwan-right-container gwan-flex-item-right">
-		<div>
-			<p>사용자 이미지</p>
-		</div>
-		<div>
-			<p>텍스트 상자</p>
-		</div>
+	<div class="gwan-right-container gwan-flex-item-right"
+		id="gwanRightProfile">
+		<!-- 우측 프로필 -->
 	</div>
 
 </div>
-    
-    
+
+<script>
+	const gwanRightProfile = document.getElementById('gwanRightProfile');
+	//채팅창 생성 때 사용한 채팅창 선택
+	const chatWrap = document.getElementById('firstpage');
+	const innerDiv = document.createElement('div');
+	let boxDiv = document.createElement('div');
+	
+	//첫화면
+	document.addEventListener('DOMContentLoaded', function () {
+		console.log('시작화면');
+		
+		viewprofile ();
+	
+	});
+	
+	
+	// 버튼 클릭시 프로필 조회
+	const profileButton = document.getElementById('profileButton');
+	profileButton.addEventListener('click', viewprofile);
+	
+	// 1.프로필 조회
+	function viewprofile () {
+		fetch('myPagereadProfile.do')
+		.then(resolve => resolve.json())
+		.then(result => {
+			console.log('프로필 조회');
+			console.log('1.프로필 지우기');
+			profile.innerHTML = "";
+			console.log('텍스트, 입력상자 지우기');
+			firstpage.innerHTML = "";
+			console.log('우측 프로필 지우기');
+			gwanRightProfile.innerHTML = "";
+			
+			for (let i in result) {
+				let tr = makeprofile ({
+					memberNickname: result[i]['memberNickname'],
+					memberProfile: result[i]['memberProfile'],
+					memberId: result[i]['memberId']
+				});
+			}
+			
+		})
+		.catch(error => console.error(error));
+	}
+	
+	//프로필 생성
+	function makeprofile (list = {}) {
+		console.log('프로필 생성');
+		let tr = document.createElement('tr');
+
+		let td = document.createElement('td');
+		td.classList.add('gwan-width');
+		
+		let image = document.createElement('img');
+		image.className = 'img-profile rounded-circle';
+		image.src = list.memberProfile;
+		image.id = 'profileimage';
+		
+		let nickname = document.createTextNode(list.memberNickname);
+
+		td.appendChild(image);
+		//간격 띄우기
+		td.appendChild(document.createTextNode(' '));
+		td.appendChild(nickname);
+
+		tr.appendChild(td);
+		
+		//프로필 더블클릭시 세부조회 + 우측프로필
+		tr.addEventListener('dblclick', function() {
+		    console.log('프로필 더블클릭');
+		    console.log('2.프로필 지우기');
+			profile.innerHTML = "";
+			console.log('텍스트, 입력상자 지우기');
+			firstpage.innerHTML = "";
+			console.log('우측 프로필 지우기');
+			gwanRightProfile.innerHTML = "";
+			console.log('채팅창 지우기');
+			innerDiv.innerHTML = "";
+			
+		    let memberId = list.memberId;
+		    console.log('memberId:', memberId);
+		    
+		    viewprofileMessage ();
+		    console.log('알1');
+		    
+		    viewrightprofile (memberId);
+		    console.log('알2');
+		    
+		    viewchatlist(memberId);
+		    console.log('알3');
+		    
+		});
+		
+		
+		let tbody = document.getElementById('profile');
+
+		tbody.appendChild(tr);
+	}
+	
+	
+	// 버튼클릭시 프로필 세부 메세지 조회
+	const pmb = document.getElementById('profileMessageButton');
+	pmb.addEventListener('click', viewprofileMessage);
+	
+	//2.프로필 세부 메세지
+	function viewprofileMessage () {
+		 fetch('myPagereadProfileMessage.do')
+	    	.then(resolve => resolve.json())
+	    	.then(result => {
+	    		console.log('프로필 세부');
+	    		console.log('3.프로필 지우기');
+				profile.innerHTML = "";
+				
+
+	    		for (let i in result) {
+					
+					let tr = makeprofileMessage ({
+						memberNickname: result[i]['memberNickname'],
+						memberProfile: result[i]['memberProfile'],
+						messageId: result[i]['messageId'],
+						memberId: result[i]['memberId'],
+						messageContent: result[i]['messageContent'],
+						messageImg: result[i]['messageImg'],
+						messageDate: result[i]['messageDate'],
+						messageCheck: result[i]['messageCheck'],
+						messageDelete: result[i]['messageDelete']
+						
+					});
+				}
+	    		
+	    	})
+		 .catch(error => console.error(error));
+	}
+	
+	
+	
+	//프로필 세부 생성
+	function makeprofileMessage (list2 = {}) {
+		console.log('프로필 세부 생성');
+		let tr = document.createElement('tr');
+
+		let td = document.createElement('td');
+		td.classList.add('gwan-width');
+		
+		let image = document.createElement('img');
+		image.className = 'img-profile rounded-circle';
+		image.src = list2.memberProfile;
+		image.id = 'profileimage';
+		
+		let nickname = document.createTextNode('닉네임 : ' + list2.memberNickname);
+		let messageContent = document.createTextNode('마지막 대화 : ' + list2.messageContent);
+
+		td.appendChild(image);
+		td.appendChild(document.createTextNode(' '));
+		td.appendChild(nickname);
+		td.appendChild(document.createElement('br'));
+		td.appendChild(document.createElement('br'));
+		td.appendChild(messageContent);
+
+		tr.appendChild(td);
+		
+		//프로필세부 더블클릭시 채팅창 오픈 + 우측프로필조회
+		tr.addEventListener('dblclick', function() {
+		    console.log('프로필 세부 더블클릭 이벤트');
+		    console.log('4.텍스트, 입력상자 지우기');
+			firstpage.innerHTML = "";
+			console.log('우측 프로필 지우기');
+			gwanRightProfile.innerHTML = "";
+			console.log('채팅창');
+			innerDiv.innerHTML = "";
+			
+			let memberId = list2.memberId;
+		    
+		    viewrightprofile (memberId);
+		    
+		    viewchatlist(memberId);
+			
+		    
+		});
+		
+		let tbody = document.getElementById('profile');
+
+		tbody.appendChild(tr);
+		
+	}
+	
+	//3.우측 프로필 조회
+	function viewrightprofile (memberId){
+		fetch('myPagereadProfile.do')
+    	.then(resolve => resolve.json())
+    	.then(result => {
+   	      	console.log('우측 프로필 조회');
+
+    		for (let i in result) {
+    			if (result[i]['memberId'] === memberId) {
+					let rdiv = makerightprofile ({
+						memberNickname: result[i]['memberNickname'],
+						memberProfile: result[i]['memberProfile'],
+						memberId: result[i]['memberId']
+					});
+				}	
+    		}
+    	})
+		.catch(error => console.error(error));
+	}
+	
+	
+	//우측 프로필 생성
+	function makerightprofile(list3 = {}) {
+		
+		console.log('우측 프로필 생성');
+		  let div = document.createElement('div');
+		  
+		  let image = document.createElement('img');
+		  image.className = 'img-profile rounded-circle';
+		  image.src = list3.memberProfile;
+		  image.id = 'profileimage2';
+
+		  let nickname = document.createTextNode(list3.memberNickname);
+
+		  div.appendChild(image);
+		  div.appendChild(document.createElement('br'));
+		  let hr = document.createElement('hr');
+		  div.appendChild(hr);
+		  
+		  let nicknameDiv = document.createElement('div');
+		  nicknameDiv.appendChild(nickname);
+		  div.appendChild(nicknameDiv);
+
+		  let grp = document.getElementById('gwanRightProfile');
+		  grp.appendChild(div);
+		}
+	
+	
+	//4.채팅창 생성
+	function viewchatlist(memberId) {
+	    console.log('채팅창 생성');
+	    
+		//전역변수 2개 선언(2, 3)
+	    
+	    innerDiv.classList.add('inner');
+	    chatWrap.appendChild(innerDiv);
+
+	    const myMsgInput = document.createElement('input');
+	    myMsgInput.type = 'text';
+	    myMsgInput.classList.add('mymsg');
+	    myMsgInput.placeholder = '내용 입력';
+	    myMsgInput.id = 'textinput';
+	    chatWrap.appendChild(myMsgInput);
+
+	    const addButton = document.createElement('button');
+	    addButton.textContent = '입력';
+	    addButton.classList.add('textinput');
+	    addButton.addEventListener('click', function() {
+	        const input = document.getElementById('textinput');
+	        const content = input.value.trim();
+
+	        if (content !== '') {
+	        	createMessage(content, true);
+	            //채팅생성
+	            createMessage (content, memberId);
+	            input.value = '';
+	        }
+	    });
+	    
+	    chatWrap.appendChild(addButton);
+
+	    const sendButton = document.createElement('button');
+	    //sendButton.textContent = '파일전송';
+	    sendButton.id = 'fileUploadButton';
+	    chatWrap.appendChild(sendButton);
+	    
+	    // 엔터 키 이벤트 처리
+	    myMsgInput.addEventListener('keydown', function(event) {
+	        if (event.key === 'Enter') {
+	            const input = document.getElementById('textinput');
+	            const content = input.value.trim();
+
+	            if (content !== '') {
+	            	createMessage(content, true);
+	                createMessage (content, memberId);
+	                input.value = '';
+	            }
+	        }
+	    });
+	    
+	    
+	    messageRead(memberId);
+	}
+	
+	//5.채팅창 읽어오기
+	function messageRead (memberId2) {
+				
+		fetch("myPagereadMessage.do?memberId2=" + encodeURIComponent(memberId2))
+			.then(resolve => resolve.json())
+			.then(result => {
+				console.log('7.채팅창 읽어오기');
+				console.log('채팅내용 삭제');
+				boxDiv.innerHTML = "";
+				
+				
+				for (let i in result) {
+						let rdiv = readChatmessage ({
+							messageId: result[i]['messageId'],
+							memberId: result[i]['memberId'],
+							memberId2: result[i]['memberId2'],
+							messageContent: result[i]['messageContent'],
+							messageImg: result[i]['messageImg'],
+							messageDate: result[i]['messageDate'],
+							messageCheck: result[i]['messageCheck'],
+							messageDelete: result[i]['messageDelete'],
+							messageTime: result[i]['messageTime'],
+							messageTime2: result[i]['messageTime2'],
+							messageApm: result[i]['messageApm']
+						}, memberId2);
+						innerDiv.appendChild(rdiv);
+	    		}
+				
+			})
+		.catch(error => console.error(error));
+		}
+	
+	//기존 채팅방 내용
+	function readChatmessage(oldmessage = {}, memberId2) {
+		console.log('8.기존 채팅 내역 불러오기');
+
+	    let itemDiv = document.createElement('div');
+	    itemDiv.classList.add('item');
+	    itemDiv.classList.add(oldmessage.memberId2 === memberId2 ? 'mymsg' : 'yourmsg', 'on');
+
+	    let boxDiv = document.createElement('div');
+	    boxDiv.classList.add('box');
+
+	    let msgP = document.createElement('p');
+	    msgP.classList.add('msg');
+	    msgP.textContent = oldmessage.messageContent;
+
+	    let timeSpan = document.createElement('span');
+	    timeSpan.classList.add('time');
+	    timeSpan.textContent = oldmessage.messageDate + ' ';
+	    timeSpan.textContent += oldmessage.messageTime + ' ';
+	    timeSpan.textContent += oldmessage.messageTime2 + ' ';
+	    timeSpan.textContent += oldmessage.messageApm;
+
+	    boxDiv.appendChild(msgP);
+	    boxDiv.appendChild(timeSpan);
+	    itemDiv.appendChild(boxDiv);
+
+	    innerDiv.appendChild(itemDiv);
+
+	    return itemDiv;
+	}
+	
+	//메세지 생성
+	function createMessage (content, memberId2) {
+		
+		console.log('메세지를 만들어보자');
+		console.log(memberId2);
+		console.log(content);
+		
+		//const currentTime = getCurrentTime();
+		const currentTimeObj = currentTime();
+		let th = currentTimeObj.th;
+		let mm = currentTimeObj.mm;
+		let apm = currentTimeObj.apm;
+		console.log(th);
+		console.log(apm);
+		console.log(mm);
+/* 		const data = {
+		  memberId2: memberId2,
+		  content: content,
+		  apm: currentTimeObj.apm,
+		  th: currentTimeObj.th,
+		  mm: currentTimeObj.mm
+		}; 
+ */		
+
+		fetch("myPagecreateMessage.do?memberId2=" + encodeURIComponent(memberId2) + '&content=' + encodeURIComponent(content)
+				 + '&th=' + encodeURIComponent(th) + '&mm=' + encodeURIComponent(mm) + '&apm=' + encodeURIComponent(apm))
+		/* fetch("myPagecreateMessage.do", {
+			method: 'POST',
+		    headers: {
+		      'Content-Type': 'application/json'
+		    },
+		    body: JSON.stringify(data)
+	    }) */
+			.then(resolve => resolve.json())
+			.then(result => {
+				
+				 if (result.retCode === 'Success') {
+			        console.log('성공!');
+			      } else if (result.retCode === 'Fail') {
+			        console.log('실패!');
+			      }
+				 viewprofileMessage ();
+				 innerDiv.innerHTML = "";
+				 messageRead(memberId2);
+		    })
+		    .catch(error => console.error(error));
+	}
+	
+	
+	/* function createChatItem(content, isMyMsg) {
+		const innerDiv = document.querySelector('.inner');
+
+	    const itemDiv = document.createElement('div');
+	    itemDiv.classList.add('item');
+	    if (isMyMsg) {
+	        itemDiv.classList.add('mymsg');
+	    }
+
+	    const boxDiv = document.createElement('div');
+	    boxDiv.classList.add('box');
+
+	    const msgParagraph = document.createElement('p');
+	    msgParagraph.classList.add('msg');
+	    msgParagraph.textContent = content;
+
+	    const timeSpan = document.createElement('span');
+	    timeSpan.classList.add('time');
+	    timeSpan.textContent = currentTime();
+
+	    boxDiv.appendChild(msgParagraph);
+	    boxDiv.appendChild(timeSpan);
+	    itemDiv.appendChild(boxDiv);
+
+	    innerDiv.appendChild(itemDiv);
+
+	    // 스크롤 맨 아래로 이동
+	    innerDiv.scrollTop = innerDiv.scrollHeight;
+	} */
+
+	function currentTime() {
+		var date = new Date();
+		var hh = date.getHours();
+		var mm = date.getMinutes();
+		var apm = hh > 12 ? "오후" : "오전";
+		var th = hh > 12 ? hh - 12 : hh;
+		return {
+		    apm: apm,
+		    th: th,
+		    mm: mm
+		  };
+	}
+	
+
+	
+
+	
+</script>
