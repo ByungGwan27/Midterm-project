@@ -53,7 +53,7 @@ public class HotelInfoVO {
 	private double avgpoint;
 	private int avgstar;
 
-	//시설정보
+	// 시설정보
 	private int parking;
 	private int wifi;
 	private int pet;
@@ -63,5 +63,5 @@ public class HotelInfoVO {
 	private int doubleRoom;
 	private int tripleRoom;
 	private int breakfast;
-	
+
 }

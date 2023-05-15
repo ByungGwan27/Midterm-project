@@ -51,6 +51,8 @@ public class AdminAddHotelControl implements Control {
 				
 		if(service.addAdminHotel(addHotel)) {
 			System.out.println("성공");
+			int generatedHotelId = addHotel.getHotelId();
+		    req.getSession().setAttribute("generatedHotelId", generatedHotelId);
 			return "admimAddRoomForm.do";
 		}else {
 			return "adminAddHotelPage.do";
