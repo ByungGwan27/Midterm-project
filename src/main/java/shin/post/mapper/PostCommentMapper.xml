@@ -4,27 +4,51 @@
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="shin.post.mapper.PostCommentMapper">
 
-  <select id="postCommentList">
-    select * from post_comment where post_id=#{postId}
-    order by 1
-  </select>
-  
-  <insert id="insertPostComment">
+	<select id="postCommentList"> select * from post_comment where post_id=#{postId}
+		order by 1
+	</select>
+	<insert id="insertPostComment"> insert into post_comment
+		(comment_id, member_id, post_id, comment_content, write_date) values(#{commentId},
+		#{memberId}, #{postId}, #{commentContent}, sysDate)
+	</insert>
+	<delete id="deletePostComment" parameterType="int"> delete from
+		post_comment where comment_id = #{commentId}
+	</delete>
+	<update id="updatePostComment"> update post_comment set comment_content
+		= #{commentContent} where comment_id = #{commentId}
+	</update>
+	<select id="searchPostComment" parameterType="int"> select * from
+		post_comment where comment_id = #{commentId}
+	</select>
 
-    insert into post_comment (comment_id, member_id, post_id, comment_content, write_date)
-    values(#{commentId}, #{memberId}, #{postId}, #{commentContent}, sysDate)
-  </insert>
-  
-  <delete id="deletePostComment" parameterType="int">
-    delete from post_comment where comment_id = #{commentId}
-  </delete>
-  
-  <update id="updatePostComment">
-     update post_comment set comment_content = #{commentContent} where comment_id = #{commentId}
-  </update>
-  
-  <select id="searchPostComment" parameterType="int">
-    select * from post_comment where comment_id = #{commentId}
-  </select>
-  
+<!-- 	<select id="getCommentList" parameterType="int"
+		resultType="PostCommentVO">
+		SELECT *
+		FROM post_comment
+		WHERE post_id = #{postId}
+		ORDER BY
+		write_date DESC
+	</select>
+
+	<insert id="insertPostComment" parameterType="PostCommentVO">
+		INSERT INTO
+		post_comment (member_id, post_id, comment_content)
+		VALUES (#{memberId},
+		#{postId}, #{commentContent})
+	</insert>
+
+	<update id="updatePostComment" parameterType="PostCommentVO">
+		UPDATE post_comment
+		SET comment_content = #{commentContent},
+		write_date = SYSDATE
+		WHERE
+		comment_id = #{commentId}
+	</update>
+
+	<delete id="deletePostComment" parameterType="int">
+		DELETE FROM
+		post_comment
+		WHERE comment_id = #{commentId}
+	</delete>
+ -->
 </mapper>

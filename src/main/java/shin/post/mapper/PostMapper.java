@@ -2,6 +2,7 @@ package shin.post.mapper;
 
 import java.util.List;
 
+import oracle.jdbc.proxy.annotation.Post;
 import shin.post.domain.PostVO;
 
 public interface PostMapper {
@@ -17,6 +18,7 @@ public interface PostMapper {
 	public PostVO searchPost(int postId);
 	public int updateCount(int postId);
 	public int getCount();
+	public Post getPostById(String postId);
 	
 	
 	

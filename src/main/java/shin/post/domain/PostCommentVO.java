@@ -4,6 +4,7 @@ import java.util.Date;
 
 import lombok.Data;
 
+
 @Data
 public class PostCommentVO {
 	private int commentId;
@@ -11,5 +12,6 @@ public class PostCommentVO {
 	private int postId;
 	private String commentContent;
 	private Date writeDate;
+	
 
 }

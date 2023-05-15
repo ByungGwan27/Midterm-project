@@ -13,7 +13,7 @@ public interface NoticeMapper {
 	public List<NoticeVO> noticeWithPage(int page); 
 	public boolean insertNotice(NoticeVO vo);
 	public int updateNotice(NoticeVO vo);
-	public int deleteNotice(int noticeId);
+	public int noticeDelete(int noticeId);
 	
 	//단건조회
 	public NoticeVO searchNotice(int noticeId);

@@ -33,13 +33,13 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public boolean removeNotice(int noticeId) {
+	public boolean noticeDelete(int noticeId) {
 	
-		return mapper.deleteNotice(noticeId) ==1;
+		return mapper.noticeDelete(noticeId) ==1;
 	}
 
 	@Override
-	public NoticeVO getNotice(int noticeId, int page) {
+	public NoticeVO getNotice(int noticeId) {
 		
 		mapper.updateCount(noticeId);
 		return mapper.searchNotice(noticeId);

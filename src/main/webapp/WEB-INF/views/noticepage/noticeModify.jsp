@@ -102,38 +102,25 @@ header.major {
 		<div class="container px-4 px-lg-5 my-5">
 			<h3>공지사항 수정페이지</h3>
 			<div class="row gx-4 gx-lg-5 align-items-center">
-				<form action="noticeList.do" method="POST"
-					enctype="multipart/form-data">
 
+				<form action="modifyPage.do" method="post">
+						<input type="hidden" name="noticeId" value="${nid }" >	
 					<table class="table">
 						<tr>
 							<th>글번호</th>
-							<td><input type="text" name="noticeId"
-								value="${noticeInfo.noticeId }"></td>
+							<td><input type="text" name="noticeId"  value="${nid }"
+								></td>
 						</tr>
 						<tr>
 							<th>제목</th>
 							<td><input type="text" name="noticeTitle"
-								value="${noticeInfo.noticeTitle }"></td>
+								></td>
 						</tr>
 						<tr>
 							<th>내용</th>
 							<td><textarea rows="3" cols="20" name="noticeContent"></textarea></td>
 						</tr>
-						<!--  
-	<tr>
-		<th>작성자</th>
-		<td><input type="text" name="writer" value="${noticeInfo.noticeWriter }"></td>
-	</tr>
-	<tr>
-		<th>첨부파일</th>
-		<td>
-		<c:if test="${noticeInfo.attachFile != null && noticeInfo.attachFile != ''}">
-		<img width="200px" src="images/${noticeInfo.attachFile }">
-		</c:if>
-		</td>
-	</tr>
-	-->
+
 						<tr>
 							<td colspan="2" align="center">
 								<button type="submit">저장(수정)</button>
@@ -142,6 +129,7 @@ header.major {
 						</tr>
 					</table>
 				</form>
+				
 			</div>
 		</div>
 	</section>

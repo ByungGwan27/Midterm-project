@@ -31,7 +31,7 @@ public class PostCommentAddControl implements Control {
 		vo.setPostId(Integer.parseInt(postId));
 		
 		PostCommentService service = new PostCommentServiceImpl();
-		boolean result = service.addComment(vo);
+		boolean result = service.insertPostComment(vo);
 		
 		String json = "";
 		

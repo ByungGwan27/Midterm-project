@@ -24,24 +24,24 @@ public class PostCommentModifyControl implements Control {
 		PostCommentVO vo = new PostCommentVO();
 		vo.setCommentContent(req.getParameter("commentContent"));
 		vo.setPostId(Integer.parseInt(req.getParameter("postId")));
-
-		PostCommentService service = new PostCommentServiceImpl();
-		boolean result = service.modifyComment(vo);
-
+//
+//		PostCommentService service = new PostCommentServiceImpl();
+//		boolean result = service.getComment(vo);
+//
 		String json = "";
-
+//
 		Map<String, Object> map = new HashMap<>();
-		if (result) {
-			// search.
-			vo = service.getComment(vo.getCommentId());
-
-			map.put("retCode", "Success");
-			map.put("data", vo);
-
-		} else {
-			map.put("retCode", "Fail");
-		}
-
+//		if (result) {
+//			// search.
+//			vo = service.getComment(vo.getCommentId());
+//
+//			map.put("retCode", "Success");
+//			map.put("data", vo);
+//
+//		} else {
+//			map.put("retCode", "Fail");
+//		}
+//
 		Gson gson = new GsonBuilder().create(); // gson 객체.
 		json = gson.toJson(map);
 
