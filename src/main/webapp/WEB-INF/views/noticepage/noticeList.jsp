@@ -118,19 +118,17 @@
 						<tr>
 							<td><c:out value="${no=no+1 }"></c:out></td>
 							<!-- <td><a href="getNotice.do?page=${pageInfo.pageNum}&nid=${notice.noticeId }">${notice.noticeId }</a></td> -->
-							<td><a
-								href="noticeDetail.do?noticeId=${notice.noticeId}">${notice.noticeTitle }</a></td>
+							<td><a href="noticeDetail.do?noticeId=${notice.noticeId}">${notice.noticeTitle }</a></td>
 							<td>${notice.memberId }</td>
 							<td>${notice.writeDate }</td>
-							<td>${notice.noticeViews }</td>	
-							<td colspan="2" align="center">
-								<button type="submit">
-									<a href="noticeModify.do">저장(수정)</a>
-								</button>
-								<button type="button">
-									<a href="noticeDelete.do">삭제</a>
-								</button>
-							</td>
+							<td>${notice.noticeViews }</td>
+
+							<td colspan="2" align="center"><a
+								href="noticeModify.do?noticeId=${notice.noticeId}"><input
+									type="button" value="수정"></a> 
+									
+									<input type="reset" value="삭제"></td>
+
 						</tr>
 					</c:forEach>
 				</table>

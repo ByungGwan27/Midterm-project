@@ -19,12 +19,12 @@ public class NoticeModifyControl implements Control {
 		
 
 		//공지사항ID 
-		int noticeId = Integer.parseInt(req.getParameter("noticeId"));
+		String noticeId = req.getParameter("noticeId");
+		System.out.println("noticeId 모디파이 : "+noticeId);
 		String noticeTitle = req.getParameter("noticeTitle");
-		System.out.println("noticeId : "+noticeId);
+		System.out.println("noticeTitle : " + noticeTitle);
 		req.setAttribute("nid", noticeId);
 		req.setAttribute("noticeTitle", noticeTitle);
-		System.out.println("noticeTitle : " + noticeTitle);
 		
 		//
 		

@@ -14,7 +14,7 @@ public interface PostService {
 	public List<PostVO> postmember();
 	public List<PostVO> postmain();
 	public List<PostVO> postmemberdetail();
-	public List<PostVO> postdetail();
+	public List<PostVO> postdetail(int postId);
 	public List<PostVO> getPostDetail(int postId);
 	public Post getPostById(String postId);
 	

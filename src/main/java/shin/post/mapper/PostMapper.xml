@@ -14,7 +14,7 @@
 	<!-- post list 게시물 조회 -->
 	<select id="postmain" resultType="post">
 		select p.post_title, p.post_id,
-		m.member_nickname, p.post_content, p.post_images
+		m.member_nickname, p.post_content, p.post_images, m.member_profile
 		from post p join
 		member m
 		on p.member_id = m.member_id
@@ -30,7 +30,7 @@
 	</select>
 
 	<!-- post 인플루언서 조회 시 상세피이지 이동 -->
-	<select id="postmemberdetail" resultType="post">
+	<select id="postmemberdetail" resultType="post" >
 		select *
 		from post p join member m
 		on p.member_id = m.member_id
@@ -38,11 +38,25 @@
 		ORDER BY p.post_views DESC
 	</select>
 
+	<select id="postdetail" resultType="post">
+		select p.post_title, p.post_id,
+		m.member_nickname, p.post_content, p.post_images
+		from post p join
+		member m
+		on p.member_id = m.member_id
+		where p.post_id = #{postId}
+		order by post_id
+	</select>
+
 
 	<!-- 보류 -->
-	<select id="searchPost" resultType="post" parameterType="int">
-		select *
-		from post where post_id=#{postId}
+	<select id="getPost" resultType="post">
+		select p.post_title, p.post_id,
+		m.member_nickname, p.post_content, p.post_images
+		from post p join
+		member m
+		on p.member_id = m.member_id
+		order by post_id
 	</select>
 
 	<!-- 페이징 기능 -->

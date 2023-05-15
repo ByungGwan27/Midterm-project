@@ -27,47 +27,34 @@ public class PostDetailControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		/*
-		 * AdminService service2 = new AdminServiceImpl(); List<MemberVO> memberList =
-		 * service2.allMemberInfo();
-		 * 
-		 * PostCommentService service = new PostCommentServiceImpl();
-		 * List<PostCommentVO> commentList = service.postCommentList();
-		 * 
-		 * int postId = Integer.parseInt(req.getParameter("postId"));
-		 * 
-		 * PostService service3 = new PostServiceImpl(); List<PostVO> postList =
-		 * service3.postList(postId);
-		
-		req.setAttribute("allMemberInfo", memberList);
-		req.setAttribute("postCommentList", commentList);
-		req.setAttribute("postList", postList);
-	
-		System.out.println(memberList);
-		System.out.println(commentList);
-		System.out.println(postList);
-		
 		PostService service = new PostServiceImpl();
-		List<PostVO> postmemberdetail = service.postmemberdetail();
-		req.setAttribute("postmemberdetail", postmemberdetail);
-		
-		List<PostVO> postmember = service.postmember();
+
 		//포스트 게시물 리스트
-		List<PostVO> postmain = service.postmain();
-		System.out.println("test"+ postmain);
-		
-		req.setAttribute("postmember", postmember);
-		req.setAttribute("postmain", postmain);
-			
-		return "postpage/postDetail.tiles";
-	}
-	 */
-		
 		int postId = Integer.parseInt(req.getParameter("postId"));
-	    PostService service = new PostServiceImpl();
-	    List<PostVO> postDetail = service.getPostDetail(postId);
-	    req.setAttribute("postDetail", postDetail);
+		System.out.println(postId);
+		List<PostVO> postdetail = service.postdetail(postId);
+		System.out.println(postdetail);
+		req.setAttribute("postdetail", postdetail);
+		
+
+		//int postId = Integer.parseInt(req.getParameter("postId"));
+		
+//		String postContent = req.getParameter("postContent");
+//		String postTitle = req.getParameter("postTitle");
+//		String postImages = req.getParameter("postImages");
+//		String memberNickName = req.getParameter("memberNickName");
+		
+		//PostVO postdetail = service.postdetail();
+//		getPost.setPostContent(postContent);
+//		getPost.setPostTitle(postTitle);
+//		getPost.setPostImages(postImages);
+//		getPost.setMemberNickName(memberNickName);
+	    
+	    
+//	    req.setAttribute("postdetail", postdetail);
+//	    System.out.println("test :" + postdetail);
+	    
 	    return "postpage/postDetail.tiles";
-	}
+	}	
 		
 }
