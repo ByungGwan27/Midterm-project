@@ -295,6 +295,61 @@
 			
 			
 			
+			fetch("resCheck.do?roomId="+${payInfo.roomId}+"&date="+document.getElementById('resDate').value)
+			.then(resolve => resolve.json())
+			.then(result => {
+				console.log(result)
+				
+			if(result>0){
+					alert('예약이 이미 있는 날짜입니다')
+					event.preventDefault();
+				}else {
+					let salePrice = document.getElementById('salePrice');
+					let resPeopleSelect = document.getElementById('people');
+					let resDate = document.getElementById('resDate');
+					let checkinName = document.getElementById('checkInName');
+					let checkinPhone = document.getElementById('checkinPhone');
+					let selectCoupon = document.getElementById('selectCoupon');
+					let canUsePoint = document.getElementById('canUsePoint');
+					
+					let memberIdData = '${payMemberInfo.memberId}';
+					let hotelIdData = ${payInfo.hotelId};
+					let roomIdData = ${payInfo.roomId}
+					let finalPriceData = salePrice.value;
+					let resPeopleData = resPeopleSelect.value;
+					let resDateData = resDate.value;
+					let checkinNameData = checkinName.value;
+					let checkinPhoneData = checkinPhone.value;
+					let canUsePointData = canUsePoint.value;
+
+					let couponIdData = selectCoupon.options[selectCoupon.selectedIndex].value;
+					let roomPriceData = ${payInfo.roomPrice} 
+
+					/* PAY_ID	NUMBER 시퀀스
+					MEMBER_ID	VARCHAR2(30 BYTE)  //
+					ROOM_ID	NUMBER //
+					COUPON_ID	NUMBER o
+					RESERVE_ID	NUMBER select
+					ROOM_PRICE	NUMBER o 
+					PAY_WAY	VARCHAR2(30 BYTE) 쿼리에서 처리
+					PAY_DATE	DATE sysdate
+					PAY_STATUS	VARCHAR2(30 BYTE) 결제완료 */ 
+					
+					paymentWidget.requestPayment({
+						orderId : "gD5iaJ9epuqS8vUAcisv8", // 주문 ID(직접 만들어주세요)
+						orderName : "주문", // 주문명
+						successUrl : "http://localhost:8081/MyProject/successPay.do?memberId="+memberIdData+"&hotelId="+hotelIdData+"&roomId="+roomIdData+"&finalPrice="+finalPriceData+"&resPeople="+resPeopleData+"&resDate="+resDateData+
+						"&checkinName="+checkinNameData+"&checkinPhone="+checkinPhoneData+"&couponId="+couponIdData+"&roomPrice="+roomPriceData+"&canUsePoint="+canUsePointData,
+
+						failUrl : "http://localhost:8081/MyProject/payPageForm.do", // 결제에 실패하면 이동하는 페이지(직접 만들어주세요)
+						customerEmail : "customer123@gmail.com",
+						customerName : "${payMemberInfo.memberName}"
+					})
+					
+				}
+			})
+			
+			
 			
 			
 			/* RESERVATION_ID	NUMBER 시퀀스
@@ -309,47 +364,7 @@
 			CHECKIN_PHONE	VARCHAR2(50 BYTE) o
 			RES_STATUS	VARCHAR2(50 BYTE) x
 			COMPLETE_DATE	DATE */
-			let salePrice = document.getElementById('salePrice');
-			let resPeopleSelect = document.getElementById('people');
-			let resDate = document.getElementById('resDate');
-			let checkinName = document.getElementById('checkInName');
-			let checkinPhone = document.getElementById('checkinPhone');
-			let selectCoupon = document.getElementById('selectCoupon');
-			let canUsePoint = document.getElementById('canUsePoint');
 			
-			let memberIdData = '${payMemberInfo.memberId}';
-			let hotelIdData = ${payInfo.hotelId};
-			let roomIdData = ${payInfo.roomId}
-			let finalPriceData = salePrice.value;
-			let resPeopleData = resPeopleSelect.value;
-			let resDateData = resDate.value;
-			let checkinNameData = checkinName.value;
-			let checkinPhoneData = checkinPhone.value;
-			let canUsePointData = canUsePoint.value;
-
-			let couponIdData = selectCoupon.options[selectCoupon.selectedIndex].value;
-			let roomPriceData = ${payInfo.roomPrice} 
-
-			/* PAY_ID	NUMBER 시퀀스
-			MEMBER_ID	VARCHAR2(30 BYTE)  //
-			ROOM_ID	NUMBER //
-			COUPON_ID	NUMBER o
-			RESERVE_ID	NUMBER select
-			ROOM_PRICE	NUMBER o 
-			PAY_WAY	VARCHAR2(30 BYTE) 쿼리에서 처리
-			PAY_DATE	DATE sysdate
-			PAY_STATUS	VARCHAR2(30 BYTE) 결제완료 */ 
-			
-			paymentWidget.requestPayment({
-				orderId : "gD5iaJ9epuqS8vUAcisv8", // 주문 ID(직접 만들어주세요)
-				orderName : "주문", // 주문명
-				successUrl : "http://localhost:8081/MyProject/successPay.do?memberId="+memberIdData+"&hotelId="+hotelIdData+"&roomId="+roomIdData+"&finalPrice="+finalPriceData+"&resPeople="+resPeopleData+"&resDate="+resDateData+
-				"&checkinName="+checkinNameData+"&checkinPhone="+checkinPhoneData+"&couponId="+couponIdData+"&roomPrice="+roomPriceData+"&canUsePoint="+canUsePointData,
-
-				failUrl : "http://localhost:8081/MyProject/payPageForm.do", // 결제에 실패하면 이동하는 페이지(직접 만들어주세요)
-				customerEmail : "customer123@gmail.com",
-				customerName : "${payMemberInfo.memberName}"
-			})
 		})
 	</script>
 

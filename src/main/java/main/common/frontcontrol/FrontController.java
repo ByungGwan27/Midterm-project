@@ -83,6 +83,7 @@ import main.common.wook.admin.control.payChartDataControl;
 import main.common.wook.admin.control.payCountChartDataControl;
 import main.common.wook.pay.control.mainHotelInfoControl;
 import main.common.wook.pay.control.payPageFormcontrol;
+import main.common.wook.pay.control.resCheckcontrol;
 import main.common.wook.pay.control.successPayControl;
 import shin.admin.control.AdminPayListControl;
 import shin.notice.control.AddNoticeControl;
@@ -167,8 +168,11 @@ public class FrontController extends HttpServlet{
 		
 		//결제창 페이지
 		map.put("/payPageForm.do", new payPageFormcontrol());
+		//결제 전 예약 중복 확인
+		map.put("/resCheck.do", new resCheckcontrol());
 		//결제 완료 시 테이블에 데이터 입력
 		map.put("/successPay.do", new successPayControl());
+		
 		
 		//메인페이지에서 숙소 페이지 검색이동
 		 map.put("/mainHotelInfo.do", new mainHotelInfoControl());
