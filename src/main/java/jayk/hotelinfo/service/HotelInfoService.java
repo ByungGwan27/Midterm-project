@@ -11,7 +11,7 @@ public interface HotelInfoService {
 	public List<HotelInfoVO> navListThema();
 	
 	//hotelList
-	public List<HotelInfoVO> hotelList(ConditionDTO condto);
+	public List<HotelInfoVO> hotelList(int page);
 	
 	public List<HotelInfoVO> filteredList(String hotelLocation1, String hotelThema, int roomPrice, int roomMax, int roomMin);
 	

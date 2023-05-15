@@ -19,7 +19,7 @@ public interface HotelInfoMapper {
 	public List<HotelInfoVO> hotelListPrice(int roomPrice);
 	
 	//pagination
-	public List<HotelInfoVO> hotelListPage(ConditionDTO condto);
+	public List<HotelInfoVO> hotelListPage(int page);
 	public int getCount();
 	
 	//hotelInfoPage

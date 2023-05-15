@@ -13,7 +13,7 @@
 		hotel_thema is not null
 	</select>
 
-	<select id="hotelListPage3" resultType="hi">
+	<select id="hotelListPage" resultType="hi">
 		<![CDATA[
 		select b.*
 		from(select rownum rn, a.*
@@ -27,7 +27,7 @@
 		select count(*) from hotel
 	</select>
 
-	<select id="hotelList2">
+	<select id="hotelList">
 		SELECT h.hotel_id as hotelId, h.hotel_name,
 		NVL(h.hotel_thema, 'NONE'),
 		h.hotel_location1, h.hotel_location2, h.hotel_image,
@@ -49,7 +49,7 @@
 		h.hotel_image
 	</select>
 
-	<select id="hotelListPage" parameterType = "jayk.hotelinfo.domain.ConditionDTO">
+	<select id="hotelListPage3" parameterType = "jayk.hotelinfo.domain.ConditionDTO">
 		select h.hotel_id as hotelId, h.hotel_name,
 	NVL(h.hotel_thema, 'NONE'),
 		h.hotel_location1, h.hotel_location2, h.hotel_image,

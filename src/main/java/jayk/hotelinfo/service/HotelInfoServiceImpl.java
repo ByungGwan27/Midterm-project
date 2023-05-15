@@ -26,9 +26,9 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 	
 	//hotelList
 	@Override
-	public List<HotelInfoVO> hotelList(ConditionDTO condto) {
+	public List<HotelInfoVO> hotelList(int page) {
 		//mapper.hotelListLoca(hotelLocation1);
-		return mapper.hotelListPage(condto);
+		return mapper.hotelListPage(page);
 	}
 	
 	@Override
