@@ -35,6 +35,11 @@
 	<!-- list -->
 	<main id="main" class="main">
 	<div style="justify-content: center;">
+	
+	<div style="justify-content: center; margin: 10px;">
+	<a href="adminAddHotelForm.do"><button>추가</button></a>
+</div>
+<hr>
 	<c:forEach var="adminHotelList" items="${adminHotelList}">
 		<table>
 			<tr>
@@ -63,9 +68,7 @@
 	</div>
 
 <!-- 리스트끝 -->
-<div style="justify-content: center; margin: 10px;">
-	<a href="adminAddHotelForm.do"><button>추가</button></a>
-</div>
+
 
 <!-- 페이징 20*10 -->
 <div class="center">

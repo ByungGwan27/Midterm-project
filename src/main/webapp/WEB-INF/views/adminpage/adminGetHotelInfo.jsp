@@ -22,6 +22,17 @@
 				<td><input type="text" name="hotelName"
 					value="${adminHotelInfo.hotelName}" readonly></td>
 			</tr>
+				<tr>
+				<th>숙소테마</th>
+				<td><select name="hotelThema">
+						<option value="">선택</option>
+						<option value="호텔">호텔</option>
+						<option value="모텔">모텔</option>
+						<option value="펜션">펜션</option>
+						<option value="게스트하우스">게스트하우스</option>
+						<option value="기타">기타</option>
+				</select></td>
+			</tr>
 			<tr>
 				<th>위치1(시도)</th>
 				<td><input type="text" name="hotelLocation1"
@@ -31,6 +42,11 @@
 				<th>위치2(시군구)</th>
 				<td><input type="text" name="hotelLocation2"
 					value="${adminHotelInfo.hotelLocation2}" readonly></td>
+			</tr>
+				<tr>
+				<th>locationDetail</th>
+				<td><input type="text" name="locationDetail"
+					value="${adminHotelInfo.locationDetail}" readonly></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">

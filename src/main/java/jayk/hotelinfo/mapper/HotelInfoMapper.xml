@@ -7,18 +7,18 @@
 	<select id="navListLoca">
 		select distinct hotel_location1 from hotel
 	</select>
-	
+
 	<select id="navListThema">
 		select distinct hotel_thema from hotel where
 		hotel_thema is not null
 	</select>
 
-	<select id="hotelListPage" resultType="notice">
+	<select id="hotelListPage" resultType="hi">
 		<![CDATA[
 		select b.*
 		from(select rownum rn, a.*
 		from (select * from hotel) a
-		where rownum <=#{page} * 20) b
+		where rownum <=#{page} * 10) b
 		where b.rn > (#{page}-1) * 10
 		]]>
 	</select>
@@ -29,7 +29,7 @@
 
 	<select id="hotelList">
 		SELECT h.hotel_id as hotelId, h.hotel_name,
-		h.hotel_thema,
+		NVL(h.hotel_thema, 'NONE'),
 		h.hotel_location1, h.hotel_location2, h.hotel_image,
 		MIN(i.room_price) AS room_price,
 		NVL(COUNT(r.review_point), 0) AS
@@ -43,6 +43,122 @@
 		review r ON h.hotel_id =
 		r.hotel_id
 		GROUP BY h.hotel_id, h.hotel_name,
+		h.hotel_thema,
+		h.hotel_location1,
+		h.hotel_location2, h.hotel_point,
+		h.hotel_image
+	</select>
+
+	<select id="hotelListPage3" parameterType = "jayk.hotelinfo.domain.ConditionDTO">
+		select h.hotel_id as hotelId, h.hotel_name,
+	NVL(h.hotel_thema, 'NONE'),
+		h.hotel_location1, h.hotel_location2, h.hotel_image,
+		NVL(MIN(i.room_price), 0)AS room_price,
+		NVL(COUNT(r.review_point), 0) AS
+		rcount,
+		NVL(ROUND(AVG(r.review_point), 1), 0) AS avgpoint,
+		NVL((ROUND(AVG(r.review_point), 1)*2 *10),0) as avgstar
+		from FROM hotel h
+		full outer JOIN room_info i ON
+		h.hotel_id = i.hotel_id
+		full outer JOIN
+		review r ON h.hotel_id =
+		r.hotel_id
+		GROUP BY h.hotel_id, h.hotel_name,
+		h.hotel_thema,
+		h.hotel_location1,
+		h.hotel_location2, h.hotel_point,
+		h.hotel_image
+		<where>
+			   i.room_price between #{minPrice} and #{maxPrice}
+				and i.room_max = #{maxRoom} and i.room_min = #{minRoom}
+			  and h.hotel_location1 = nvl(#{location}, h.hotel_location1)
+			<if test="theme != null">
+			  and h.hotel_thema = #{theme}
+			</if>
+		</where>
+		GROUP BY h.hotel_id, h.hotel_name,
+		h.hotel_thema,
+		h.hotel_location1,
+		h.hotel_location2, h.hotel_point,
+		h.hotel_image
+		
+		
+	</select>
+	
+	<select id="TEST">
+	<![CDATA[
+		SELECT b.hotel_name, b.location_detail, b.checkin_date, b.checkout_date, b.hotel_phone, b.room_name, b.reservation_id
+		FROM (SELECT rownum rn, a.*
+		      FROM (
+		select h.hotel_id as hotelId, h.hotel_name,
+		h.hotel_thema,
+		h.hotel_location1, h.hotel_location2, h.hotel_image,
+		NVL(MIN(i.room_price), 0)AS room_price,
+		NVL(COUNT(r.review_point), 0) AS
+		rcount,
+		NVL(ROUND(AVG(r.review_point), 1), 0) AS avgpoint,
+		NVL((ROUND(AVG(r.review_point), 1)*2 *10),0) as avgstar
+		from FROM hotel h
+		full outer JOIN room_info i ON
+		h.hotel_id = i.hotel_id
+		full outer JOIN
+		review r ON h.hotel_id =
+		r.hotel_id
+		GROUP BY h.hotel_id, h.hotel_name,
+		h.hotel_thema,
+		h.hotel_location1,
+		h.hotel_location2, h.hotel_point,
+		h.hotel_image
+		where
+		<set>
+			<if test="hotelLocation1 != null and hotelLocation1 != ''">h.hotel_location1 = #{hotelLocation1},</if>
+			<if test="hotelThema != null and hotelThema != ''">h.hotel_thema = #{hotelThema},</if>
+				<if test="roomPrice != null and roomPrice != ''">i.room_price between #{roomPrice}-30000 and
+				#{roomPrice}+50000,</if>
+				<if
+				test="roomMax != null and roomMax != '' and roomMin != null and roomMin != ''">
+				i.room_max between #{roomMax}-2 and #{roomMax}+2 and i.room_min
+				between #{roomMin}-1 and #{roomMin}+2
+			</if>
+		</set>
+		GROUP BY h.hotel_id, h.hotel_name,
+		h.hotel_thema,
+		h.hotel_location1,
+		h.hotel_location2, h.hotel_point,
+		h.hotel_image
+		
+		) a
+		       WHERE rownum <= #{page} * 5) b
+		WHERE b.rn > (#{page} - 1) * 5
+		
+	]]>
+		
+	</select>
+	
+	
+	
+	<select id="readHotelList">
+		SELECT h.hotel_id as hotelId, h.hotel_name,
+		h.hotel_thema,
+		h.hotel_location1,
+		h.hotel_location2, h.hotel_image,
+		MIN(i.room_price) AS room_price,
+		NVL(COUNT(r.review_point), 0) AS
+		rcount,
+		NVL(ROUND(AVG(r.review_point),
+		1), 0) AS avgpoint,
+		NVL((ROUND(AVG(r.review_point), 1)*2 *10),0) as
+		avgstar
+		FROM hotel h
+		full outer JOIN room_info i ON
+		h.hotel_id =
+		i.hotel_id
+		full outer JOIN
+		review r ON h.hotel_id =
+		r.hotel_id
+		GROUP BY
+		h.hotel_id, h.hotel_name,
 		h.hotel_thema,
 		h.hotel_location1,
 		h.hotel_location2, h.hotel_point,
@@ -185,7 +301,7 @@
 		h.hotel_location1,
 		h.hotel_location2, h.hotel_point, h.hotel_image, h.location_detail
 	</select>
-	
+
 	<select id="bestReview">
 	<![CDATA[
 		SELECT * FROM (
@@ -202,23 +318,23 @@
 		select * from room_info where hotel_id = #{hotelId}
 		order by room_id
 	</select>
-	
+
 	<select id="roomDetailList">
-        SELECT 
-    CASE WHEN d.parking = 1 THEN 1 END AS parking,
-    CASE WHEN d.wifi = 1 THEN 1 END AS wifi,
-    CASE WHEN d.pet = 1 THEN 1 END AS pet,
-    CASE WHEN d.pool = 1 THEN 1 END AS pool,
-    CASE WHEN d.single_room = 1 THEN 1 END AS singleRoom,
-    CASE WHEN d.double_room = 1 THEN 1 END AS doubleRoom,
-    CASE WHEN d.triple_room = 1 THEN 1 END AS tripleRoom,
-    CASE WHEN d.breakfast = 1 THEN 1 END AS breakfast
-FROM 
-    room_detail d
-FULL OUTER JOIN 
-    hotel h ON d.hotel_id = h.hotel_id
-WHERE 
-    h.hotel_id = #{hotelId}
+		SELECT
+		CASE WHEN d.parking = 1 THEN 1 END AS parking,
+		CASE WHEN d.wifi = 1 THEN 1 END AS wifi,
+		CASE WHEN d.pet = 1 THEN 1 END AS pet,
+		CASE WHEN d.pool = 1 THEN 1 END AS pool,
+		CASE WHEN d.single_room = 1 THEN 1 END AS singleRoom,
+		CASE WHEN d.double_room = 1 THEN 1 END AS doubleRoom,
+		CASE WHEN d.triple_room = 1 THEN 1 END AS tripleRoom,
+		CASE WHEN d.breakfast = 1 THEN 1 END AS breakfast
+		FROM
+		room_detail d
+		FULL OUTER JOIN
+		hotel h ON d.hotel_id = h.hotel_id
+		WHERE
+		h.hotel_id = #{hotelId}
 	</select>
 
 	<select id="reviewList">
@@ -262,15 +378,18 @@ WHERE
 		full outer join room_image m
 		on i.room_id = m.room_id
 		full outer join room_detail d
-		on m.room_id = d.room_id
+		on m.room_id =
+		d.room_id
 		where i.hotel_id=#{hotelId} and
 		i.room_id=#{roomId}
 	</select>
 
 	<update id="updateAdminHotel">
 		update hotel set hotel_name=#{hotelName},
-		hotel_location1=#{hotelLocation1}, hotel_location2=#{hotelLocation2}
-		where hotel_id = #{hotelId}
+		hotel_location1=#{hotelLocation1}, hotel_location2=#{hotelLocation2},
+		location_detail=#{locationDetail}, hotel_thema=#{hotelThema}
+		where
+		hotel_id = #{hotelId}
 	</update>
 
 	<update id="updateAdminHotelRoom">
@@ -287,18 +406,21 @@ WHERE
 
 	<update id="updateAdminHotelRoomDetail">
 		update room_detail
-		set parking = #{parking}, wifi=#{wifi}, pet=#{pet}, pool=#{pool}, breakfast=#{breakfast}, 
-		single_room=#{singleRoom}, twin_room=#{twinRoom}, double_room=#{doubleRoom}, triple_room=#{tripleRoom}
-		where room_id=#{roomId} and hotel_id=#{hotelId}
+		set parking = #{parking},
+		wifi=#{wifi}, pet=#{pet}, pool=#{pool}, breakfast=#{breakfast},
+		single_room=#{singleRoom}, twin_room=#{twinRoom},
+		double_room=#{doubleRoom}, triple_room=#{tripleRoom}
+		where
+		room_id=#{roomId} and hotel_id=#{hotelId}
 	</update>
 
 
 	<insert id="insertAdminHotel">
 		insert into hotel (hotel_id, hotel_name,
-		hotel_location1, hotel_location2, hotel_image,location_detail)
+		hotel_location1, hotel_location2, hotel_image,location_detail, hotel_thema)
 		values(#{hotelId}, #{hotelName}, #{hotelLocation1},
 		#{hotelLocation2},
-		#{hotelImage}, #{locationDetail})
+		#{hotelImage}, #{locationDetail}, #{hotelThema})
 	</insert>
 
 	<insert id="insertAdminRoom" parameterType="hi">
@@ -308,6 +430,18 @@ WHERE
 		values (#{hotelId}, #{roomId}, #{roomName},
 		#{roomPrice},#{roomMax},#{roomMin}, #{addPrice})
 	</insert>
+
+	<select id="readHotelId">
+		select hotel_id from hotel
+	</select>
+
+	<select id="readRoomId">
+		select room_id from room_info
+	</select>
+
+	<select id="readImageId">
+		select image_id from room_image
+	</select>
 
 	<insert id="insertAdminRoomImage" parameterType="hi">
 		insert into

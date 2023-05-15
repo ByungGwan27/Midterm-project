@@ -6,22 +6,26 @@
 	<h5>숙소객실추가</h5>
 	<form action="adminAddRoomPage.do" method="POST" enctype="multipart/form-data">
 		<table class='table'>
-	<!-- 		<tr>
+		<tr>
 				<th>이미지Id</th>
-				<td><input type="text" name="imageId"></td>
-			</tr> -->
+				<td><input type="text" id="imageId" name="imageId">
+				<button type="button" id="checkId2" onclick="checkImageId()">중복검사</button></td>
+				
+			</tr>
 			<tr>
 				<th>객실이미지</th>
-				<td><input type="file" name="image"></td>
+				<td><input type="file" name="image">
+				</td>
 			</tr>
 			<tr>
 				<th>hotelId</th>
 				<td><input type="text" name="hotelId" value="${adminAddRoom.hotelId}" readonly></td>
 			</tr>
-<!-- 			<tr>
+			<tr>
 				<th>객실ID</th>
-				<td><input type="text" name="roomId"></td>
-			</tr> -->
+				<td><input type="text" id="roomId" name="roomId">
+				<button type="button" id="checkId3" onclick="checkRoomId()">중복검사</button></td>
+			</tr> 
 			<tr>
 				<th>객실명</th>
 				<td><input type="text" name="roomName"></td>
@@ -80,133 +84,48 @@
 	</form>
 </main>
 
+<script>
 
-<!-- 폐기 이거 안 됨 <h5>숙소상세정보기입 * 상기객실개수받아표시</h5>
-	<input type="text" id="roomCount" placeholder="객실개수">
-	<button type="button" onclick="showAddRoomForm()">확인</button>
-	<hr>
-	<script>
-		function showAddRoomForm() {
-			let roomCount = parseInt(document.getElementById('roomCount').value);
-			let form = document.querySelector('form');
-			form.innerHTML = ''; 
+function checkImageId(){
+    fetch("imageIdRead.do")
+    .then(response => response.json())
+    .then(result => {
+        //console.log(result); 
+        
+        let imageId = document.getElementById("imageId").value;
+        for(let i = 0; i < result.length; i++){
+            let checkId = result[i].imageId;
+            if(imageId == checkId){
+                alert("중복된 imageId");
+                document.getElementById("imageId").focus();
+                document.getElementById("imageId").value = '';
+                return;
+            }
+        }
+        alert("사용가능");
+        document.getElementById('checkId2').setAttribute("disabled", "disabled");
+    });
+}
 
-			for (let i = 0; i < roomCount; i++) {
-				let table = document.createElement('table');
-				table.classList.add('table');
-				
-				let tr = document.createElement('tr');
-				let th = document.createElement('th');
-				th.textContent = 'hotelId';
-				let td = document.createElement('td');
-				let input = document.createElement('input');
-				input.type = 'text';
-				input.name = 'hotelId';
-				td.appendChild(input);
-				tr.appendChild(th);
-				tr.appendChild(td);
-				table.appendChild(tr);
-
-				tr = document.createElement('tr');
-				th = document.createElement('th');
-				th.textContent = 'roomId';
-				td = document.createElement('td');
-				input = document.createElement('input');
-				input.type = 'text';
-				input.name = 'roomId';
-				td.appendChild(input);
-				tr.appendChild(th);
-				tr.appendChild(td);
-				table.appendChild(tr);
-
-				tr = document.createElement('tr');
-				th = document.createElement('th');
-				th.textContent = 'roomName';
-				td = document.createElement('td');
-				input = document.createElement('input');
-				input.type = 'text';
-				input.name = 'roomName';
-				td.appendChild(input);
-				tr.appendChild(th);
-				tr.appendChild(td);
-				table.appendChild(tr);
-
-				tr = document.createElement('tr');
-				th = document.createElement('th');
-				th.textContent = 'roomPrice';
-				td = document.createElement('td');
-				input = document.createElement('input');
-				input.type = 'text';
-				input.name = 'roomPrice';
-				td.appendChild(input);
-				tr.appendChild(th);
-				tr.appendChild(td);
-				table.appendChild(tr);
-
-				tr = document.createElement('tr');
-				th = document.createElement('th');
-				th.textContent = 'roomMax';
-				td = document.createElement('td');
-				input = document.createElement('input');
-				input.type = 'text';
-				input.name = 'roomMax';
-				td.appendChild(input);
-				tr.appendChild(th);
-				tr.appendChild(td);
-				table.appendChild(tr);
-
-				tr = document.createElement('tr');
-				th = document.createElement('th');
-				th.textContent = 'roomMin';
-				td = document.createElement('td');
-				input = document.createElement('input');
-				input.type = 'text';
-				input.name = 'roomMin';
-				td.appendChild(input);
-				tr.appendChild(th);
-				tr.appendChild(td);
-				table.appendChild(tr);
-
-				tr = document.createElement('tr');
-				th = document.createElement('th');
-				th.textContent = 'addPrice';
-				td = document.createElement('td');
-				input = document.createElement('input');
-				input.type = 'text';
-				input.name = 'addPrice';
-				td.appendChild(input);
-				tr.appendChild(th);
-				tr.appendChild(td);
-				table.appendChild(tr);
-				
-				form.appendChild(table);
-				
-			}
-			
-			let table = document.createElement('table');
-			table.classList.add('table');
-			let tr = document.createElement('tr');
-			let td = document.createElement('td');
-			let button = document.createElement('button');
-			button.type = 'submit';
-			button.innerText = '저장';
-			td.appendChild(button);
-			tr.appendChild(td);
-/* 			table.appendChild(tr);
-
-			tr = document.createElement('tr'); */
-			td = document.createElement('td');
-			button = document.createElement('button');
-			button.type = 'button';
-			button.innerText = '취소';
-			td.appendChild(button);
-			tr.appendChild(td);
-			table.appendChild(tr);
-
-			form.appendChild(table);
-
-			form.style.display = 'block';
-		}
-	</script> -->
-
+function checkRoomId(){
+    fetch("roomIdRead.do")
+    .then(response => response.json())
+    .then(result => {
+        //console.log(result); 
+        
+        let roomId = document.getElementById("roomId").value;
+        for(let i = 0; i < result.length; i++){
+            let checkId = result[i].roomId;
+            if(roomId == checkId){
+                alert("중복된 roomId");
+                document.getElementById("roomId").focus();
+                document.getElementById("roomId").value = '';
+                return;
+            }
+        }
+        alert("사용가능");
+        document.getElementById('checkId3').setAttribute("disabled", "disabled");
+    });
+}
+</script>
 
