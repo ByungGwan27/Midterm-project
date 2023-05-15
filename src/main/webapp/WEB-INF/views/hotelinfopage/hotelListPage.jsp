@@ -62,11 +62,11 @@
 							aria-expanded="false" class="dropdown-toggle">서울특별시</a> -->
 						<!-- <ul class="collapse list-unstyled" id="pageSubmenu6"> -->
 						<c:forEach var="navListLoca" items="${navListLoca}">
-							<li><a href="hotelListPage.do?hotelLocation1=${navListLoca.hotelLocation1}"> <span
-									class="fa fa-chevron-right mr-2"></span>${navListLoca.hotelLocation1}</a></li>
-							</c:forEach>
-					</ul>
-					</li>
+							<li><a
+								href="hotelListPage.do?hotelLocation1=${navListLoca.hotelLocation1}">
+									<span class="fa fa-chevron-right mr-2"></span>${navListLoca.hotelLocation1}</a></li>
+						</c:forEach>
+					</ul></li>
 				<li><a href="#pageSubmenu2" data-toggle="collapse"
 					aria-expanded="false" class="dropdown-toggle">가격</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu2">
@@ -78,7 +78,8 @@
 								</div>
 							</div>
 						</li>
-						<li><div class="mb-5">
+						<li>
+							<div class="mb-5">
 								<form action="#" class="subscribe-form">
 									<div class="form-group d-flex">
 										<!-- <div class="icon"><span class="icon-paper-plane"></span></div> -->
@@ -86,54 +87,19 @@
 										<button id="price" type="button" onclick=hotelListPrice()>서치</button>
 									</div>
 								</form>
-							</div></li>
-					</ul>
-					</li>
-				<li>
-				<a href="#pageSubmenu3" data-toggle="collapse"
+							</div>
+						</li>
+					</ul></li>
+				<li><a href="#pageSubmenu3" data-toggle="collapse"
 					aria-expanded="false" class="dropdown-toggle">테마(숙소종류)</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu3">
-				<c:forEach var="navListThema" items="${navListThema}">
-							<li><a href="hotelListPage.do?hotelThema=${navListThema.hotelThema}">
-							<span class="fa fa-chevron-right mr-2"></span>${navListThema.hotelThema}</a></li>
-							</c:forEach>
-					</ul>
-					</li>
-				<li><a href="#pageSubmenu4" data-toggle="collapse"
-					aria-expanded="false" class="dropdown-toggle">편의시설</a>
-					<ul class="collapse list-unstyled" id="pageSubmenu4">
-						<!-- <li><div class="mb-5">
-                    <form action="#" class="subscribe-form">
-                      <div class="form-group d-flex">
-                        <input type="checkbox">편의시설1<br>
-                        <input type="checkbox">편의시설2<br>
-                        <input type="checkbox">편의시설3<br>
-                        <input type="checkbox">편의시설4<br>
-                        <input type="checkbox">편의시설5
-                        <div class="icon"><span class="icon-paper-plane"></span></div>
-                        <input type="text" class="form-control" placeholder="Enter Email Address">
-                      </div>
-                    </form>
-                  </div></li> -->
-						<li><span class="fa fa-chevron-right mr-2"></span><input
-							type="checkbox">싱글룸</li>
-							<li><span class="fa fa-chevron-right mr-2"></span><input
-							type="checkbox">트윈룸</li>
-							<li><span class="fa fa-chevron-right mr-2"></span><input
-							type="checkbox">더블룸</li>
-							<li><span class="fa fa-chevron-right mr-2"></span><input
-							type="checkbox">트리플룸</li>
-						<li><span class="fa fa-chevron-right mr-2"></span><input
-							type="checkbox">주차장</li>
-						<li><span class="fa fa-chevron-right mr-2"></span><input
-							type="checkbox">wifi</li>
-						<li><span class="fa fa-chevron-right mr-2"></span><input
-							type="checkbox">애완동물동반</li>
-						<li><span class="fa fa-chevron-right mr-2"></span><input
-							type="checkbox">조식</li>
-						<li><span class="fa fa-chevron-right mr-2"></span><input
-							type="checkbox">수영장</li>
+						<c:forEach var="navListThema" items="${navListThema}">
+							<li><a
+								href="hotelListPage.do?hotelThema=${navListThema.hotelThema}">
+									<span class="fa fa-chevron-right mr-2"></span>${navListThema.hotelThema}</a></li>
+						</c:forEach>
 					</ul></li>
+
 				<li><a href="#pageSubmenu5" data-toggle="collapse"
 					aria-expanded="false" class="dropdown-toggle">인원</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu5">
@@ -142,12 +108,10 @@
 								<form action="#" class="subscribe-form">
 									<div class="form-group d-flex">
 										<!-- <div class="icon"><span class="icon-paper-plane"></span></div> -->
-										<input id="maxNum" type="text" placeholder="최대인원"> 
-										</div>
-										<div class="form-group d-flex">
-										~
-										</div>
-										<div class="form-group d-flex">
+										<input id="maxNum" type="text" placeholder="최대인원">
+									</div>
+									<div class="form-group d-flex">~</div>
+									<div class="form-group d-flex">
 										<!-- <div class="icon"><span class="icon-paper-plane"></span></div> -->
 										<input id="minNum" type="text" placeholder="최소인원">
 										<button id="num" type="button" onclick=hotelListNum()>서치</button>
@@ -185,29 +149,31 @@
 
 	<!-- list -->
 	<div style="justify-content: center;">
-		<p align="right">
+<!-- 		<p align="right">
 			<a href="#">높은가격순</a> / <a href="#">낮은가격순</a> / <a href="#">이름순</a> /
 			<a href="#">인기순</a>
-		</p>
+		</p> -->
 		<hr>
 		<c:if test="${empty hotelList}">
 			<p>호텔 정보가 없습니다.</p>
 		</c:if>
 		<c:forEach var="hotelList" items="${hotelList}">
 			<div style="width: 800px">
-				<table border="1">
+				<table  id="listHotel">
 					<tr>
 						<td rowspan="4">
 							<div style="margin: 10px; width: 205px;">
 								<img src="cssMainpage/images/${hotelList.hotelImage}"
-									alt="hotelImage" width="200"> 
+									alt="hotelImage" width="200">
 							</div>
 						</td>
 						<td>
 							<h3>${hotelList.hotelName}</h3>
 						</td>
 						<td>${hotelList.hotelThema}</td>
-						<td rowspan="4"><div style="width: 200px;"></div></td>
+						<td rowspan="4">
+							<div style="width: 200px;"></div>
+						</td>
 						<td>
 							<div>후기개수 : ${hotelList.rcount}</div>
 						</td>
@@ -226,17 +192,14 @@
 					<tr>
 						<td>${hotelList.hotelLocation1}${hotelList.hotelLocation2}</td>
 						<td></td>
-						<td><h4>${hotelList.roomPrice}</h4></td>
-						<td><button>
-								<a href="hotelInfoPage.do?hotelLocation1=${hotelList.hotelLocation1}&hotelId=${hotelList.hotelId}">예약</a>
-							</button></td>
+						<td>
+							<h4>${hotelList.roomPrice}</h4>
+						</td>
+						<td><a
+							href="hotelInfoPage.do?hotelLocation1=${hotelList.hotelLocation1}&hotelId=${hotelList.hotelId}"><button>예약</button></a>
+						</td>
 					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td>할인적용가</td>
-						<td></td>
-					</tr>
+
 				</table>
 			</div>
 			<hr>
@@ -244,7 +207,7 @@
 		<!-- 리스트끝 -->
 
 		<!-- 페이징 20*10 -->
-<%-- 		 <div class="center">
+		<div class="center">
 			<div class="pagination">
 				<c:if test="${pageInfo.prev}">
 					<a href="hotelListPage.do?page=${pageInfo.startPage-1}">Previous</a>
@@ -258,30 +221,29 @@
 					<a href="hotelListPage.do?page=${pageInfo.endPage+1}">Next</a>
 				</c:if>
 			</div>
-		</div> 
+		</div>
 	</div>
 </div>
 
- --%>
+
 
 <script>
-var hotelListPrice = function(){
-	var selectElement = document.getElementById("inputPrice");
-	var roomPrice = selectElement.value;
-	var url = "hotelListPage.do?roomPrice="+roomPrice;
-	window.location.href = url;
-}
+	
+	var hotelListPrice = function () {
+		var selectElement = document.getElementById("inputPrice");
+		var roomPrice = selectElement.value;
+		var url = "hotelListPage.do?roomPrice=" + roomPrice;
+		window.location.href = url;
+	}
 
-	var hotelListNum = function(){
+	var hotelListNum = function () {
 		var selectEle = document.getElementById("maxNum");
 		var roomMax = selectEle.value;
 		var selectEle2 = document.getElementById("minNum");
 		var roomMin = selectEle2.value;
-		var url = "hotelListPage.do?roomMax="+roomMax+"&roomMin="+roomMin;
+		var url = "hotelListPage.do?roomMax=" + roomMax + "&roomMin=" + roomMin;
 		window.location.href = url;
 	}
-/* var NumElement = document.getElementById("num");
-	NumElement.onclick = hotelListNum;  */
+	/* var NumElement = document.getElementById("num");
+		NumElement.onclick = hotelListNum;  */
 </script>
-
- 
