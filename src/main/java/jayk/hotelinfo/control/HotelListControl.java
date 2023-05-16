@@ -19,9 +19,9 @@ public class HotelListControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		String pageStr = req.getParameter("page");
-		pageStr = pageStr == null ? "1" : pageStr;
-		int page = Integer.parseInt(pageStr);
+//		String pageStr = req.getParameter("page");
+//		pageStr = pageStr == null ? "1" : pageStr;
+//		int page = Integer.parseInt(pageStr);
 
 		String hotelLocation1 = req.getParameter("hotelLocation1");
 		String hotelThema = req.getParameter("hotelThema");
@@ -38,7 +38,7 @@ public class HotelListControl implements Control {
 		List<HotelInfoVO> hotelList = null;// service.hotelList(page);
 //		List<HotelInfoVO> hotelList = 
 //		service.filteredList(hotelLocation1, hotelThema, Integer.parseInt(roomPrice), Integer.parseInt(roomMax), Integer.parseInt(roomMin));
-		PageDTO dto = new PageDTO(page, total);
+		//PageDTO dto = new PageDTO(page, total);
 //		location, theme, price=> 0 ~ 10000000000, room=>0~100
 
 //		ConditionDTO condto = new ConditionDTO();
@@ -61,7 +61,7 @@ public class HotelListControl implements Control {
 //		}
 //
 //		System.out.println(condto);
-		hotelList = service.hotelList(page);
+		hotelList = service.hotelList();
 		if(hotelLocation1 != null) {
 			hotelList = service.hotelListLoca(hotelLocation1);
 		}else if(hotelThema != null) {
@@ -73,7 +73,6 @@ public class HotelListControl implements Control {
 		}
 
 		req.setAttribute("hotelList", hotelList);
-		req.setAttribute("pageInfo", dto);
 		req.setAttribute("navListLoca", navListLoca);
 		req.setAttribute("navListThema", navListThema);
 
