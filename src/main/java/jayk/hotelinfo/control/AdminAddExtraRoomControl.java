@@ -19,7 +19,7 @@ public class AdminAddExtraRoomControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String saveDir = req.getServletContext().getRealPath("cssMainpage/images");
+		String saveDir = req.getServletContext().getRealPath("images");
 		 int maxSize = 5 * 1024 * 1024; //5mb 
 		 String encoding = "UTF-8"; 
 		 DefaultFileRenamePolicy rn = new DefaultFileRenamePolicy();
@@ -84,7 +84,7 @@ public class AdminAddExtraRoomControl implements Control {
 		HotelInfoService service = new HotelInfoServiceImpl();
 				
 		if(service.addAdminRoom(addRoom) && service.addAdminRoomImage(addRoom) && service.addAdminRoomDetail(addRoom)) {
-			//System.out.println("성공");
+	
 			return "adminHotelList.do";
 		}else {
 			
