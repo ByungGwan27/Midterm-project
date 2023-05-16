@@ -352,6 +352,8 @@
 		const clientKey = "test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq"
 		const customerKey = "a1pRlpisTn_HZ0tncCQ_B" // 내 상점의 고객을 식별하는 고유한 키
 		const button = document.getElementById("payment-button")
+		let salePrice1 = document.getElementById('salePrice');
+		let finalPriceData1 = salePrice.value;
 
 		// ------  결제위젯 초기화 ------ 
 		// 비회원 결제에는 customerKey 대신 ANONYMOUS를 사용하세요.
@@ -361,7 +363,7 @@
 		// ------  결제위젯 렌더링 ------ 
 		// 결제위젯이 렌더링될 DOM 요소를 지정하는 CSS 선택자 및 결제 금액을 넣어주세요. 
 		// https://docs.tosspayments.com/reference/widget-sdk#renderpaymentmethods선택자-결제-금액
-		paymentWidget.renderPaymentMethods("#payment-method", salePrice.value)
+		paymentWidget.renderPaymentMethods("#payment-method", finalPriceData1)
 
 		// ------  이용약관 렌더링 ------
 		// 이용약관이 렌더링될 DOM 요소를 지정하는 CSS 선택자를 넣어주세요.

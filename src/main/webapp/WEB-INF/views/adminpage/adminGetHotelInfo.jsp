@@ -10,7 +10,7 @@
 			<tr>
 				<th>메인이미지</th>
 				<td><img width="200px"
-					src="cssMainpage/images/${adminHotelInfo.hotelImage}"></td>
+					src="images/${adminHotelInfo.hotelImage}"></td>
 			</tr>
 			<tr>
 				<th>hotelId</th>

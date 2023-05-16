@@ -12,8 +12,8 @@ import main.common.control.DataSource;
 public class HotelInfoServiceImpl implements HotelInfoService {
 	SqlSession session = DataSource.getInstance().openSession(true);
 	HotelInfoMapper mapper = session.getMapper(HotelInfoMapper.class);
-	
-	//navList
+
+	// navList
 	@Override
 	public List<HotelInfoVO> navListLoca() {
 		return mapper.navListLoca();
@@ -23,14 +23,14 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 	public List<HotelInfoVO> navListThema() {
 		return mapper.navListThema();
 	}
-	
-	//hotelList
+
+	// hotelList
 	@Override
 	public List<HotelInfoVO> hotelList(int page) {
-		//mapper.hotelListLoca(hotelLocation1);
+		// mapper.hotelListLoca(hotelLocation1);
 		return mapper.hotelListPage(page);
 	}
-	
+
 	@Override
 	public List<HotelInfoVO> hotelListLoca(String hotelLocation1) {
 		return mapper.hotelListLoca(hotelLocation1);
@@ -51,7 +51,7 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 		return mapper.hotelListPrice(roomPrice);
 	}
 
-	//hotelInfo
+	// hotelInfo
 	@Override
 	public HotelInfoVO getHotelInfo(int hotelId, String hotelLocation1) {
 		return mapper.selectHotel(hotelId, hotelLocation1);
@@ -71,31 +71,31 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 	public List<HotelInfoVO> similarList(int hotelId, String hotelLocation1) {
 		return mapper.similarList(hotelId, hotelLocation1);
 	}
-	
-	//adminHotelList
+
+	// adminHotelList
 	@Override
 	public List<HotelInfoVO> adminHotelList(int page) {
 		return mapper.hotelListPage(page);
-		//return mapper.adminHotelList();
+		// return mapper.adminHotelList();
 	}
 
-	//adminHotelLinfo
+	// adminHotelLinfo
 	@Override
 	public HotelInfoVO getAdminHotel(int hotelId) {
 		return mapper.selectAdminHotel(hotelId);
 	}
-	
+
 	@Override
 	public HotelInfoVO getAdminHotelRoom(int hotelId, int roomId) {
 		return mapper.selectAdminHotelRoom(hotelId, roomId);
 	}
 
-	//adminHotelInfoModify
+	// adminHotelInfoModify
 	@Override
 	public boolean modifyAdminHotel(HotelInfoVO vo) {
 		return mapper.updateAdminHotel(vo) == 1;
 	}
-	
+
 	@Override
 	public boolean modifyAdminHotelRoom(HotelInfoVO vo) {
 		int cnt = 0, cnt1 = 0;
@@ -105,10 +105,10 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 			return true;
 		}
 		return false;
-		
+
 	}
-	
-	//adminHotelInfoAdd
+
+	// adminHotelInfoAdd
 	@Override
 	public boolean addAdminHotel(HotelInfoVO vo) {
 		return mapper.insertAdminHotel(vo) == 1;
@@ -135,8 +135,6 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 	public boolean addAdminRoomDetail(HotelInfoVO vo) {
 		return false;
 	}
-
-
 
 	@Override
 	public int totalCount() {
