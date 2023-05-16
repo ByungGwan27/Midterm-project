@@ -145,7 +145,7 @@
 							<h3><%=resName[0] %></h3>
 							<span class="location"><%=resLocation[0] %></span><br>
 							<span class="location">예약 1위</span>
-						</div> <img src="cssMainpage/images/<%=resImage[0] %>" alt="Image" class="img-fluid">
+						</div> <img src="images/<%=resImage[0] %>" alt="Image" class="img-fluid">
 					</a>
 				</div>
 
@@ -156,7 +156,7 @@
 							<h3><%=resName[1] %></h3>
 							<span class="location"><%=resLocation[1] %></span><br>
 							<span class="location">예약 2위</span>
-						</div> <img src="cssMainpage/images/<%=resImage[1] %>" alt="Image" class="img-fluid">
+						</div> <img src="images/<%=resImage[1] %>" alt="Image" class="img-fluid">
 					</a>
 				</div>
 
@@ -167,7 +167,7 @@
 							<h3><%=resName[2] %></h3>
 							<span class="location"><%=resLocation[2] %></span><br>
 							<span class="location">후기수 1위</span>
-						</div> <img src="cssMainpage/images/<%=resImage[2] %>" alt="Image" class="img-fluid">
+						</div> <img src="images/<%=resImage[2] %>" alt="Image" class="img-fluid">
 					</a>
 				</div>
 
@@ -179,7 +179,7 @@
 							<h3><%=resName[3] %></h3>
 							<span class="location"><%=resLocation[3] %></span><br>
 							<span class="location">후기수 2위</span>
-						</div> <img src="cssMainpage/images/<%=resImage[3] %>" alt="Image" class="img-fluid">
+						</div> <img src="images/<%=resImage[3] %>" alt="Image" class="img-fluid">
 					</a>
 				</div>
 
@@ -190,7 +190,7 @@
 							<h3><%=resName[4] %></h3>
 							<span class="location"><%=resLocation[4] %></span><br>
 							<span class="location">평점순 1위</span>
-						</div> <img src="cssMainpage/images/<%=resImage[4] %>" alt="Image" class="img-fluid">
+						</div> <img src="images/<%=resImage[4] %>" alt="Image" class="img-fluid">
 					</a>
 				</div>
 
@@ -201,7 +201,7 @@
 							<h3><%=resName[5] %></h3>
 							<span class="location"><%=resLocation[5] %></span><br>
 							<span class="location">평점순 2위</span>
-						</div> <img src="cssMainpage/images/<%=resImage[5] %>" alt="Image" class="img-fluid">
+						</div> <img src="images/<%=resImage[5] %>" alt="Image" class="img-fluid">
 					</a>
 				</div>
 

@@ -15,13 +15,13 @@
 
 				<div class="col-lg-7">
 					<div class="owl-single dots-absolute owl-carousel">
-						<img src="cssMainpage/images/${payInfo.hotelImage}"
+						<img src="images/${payInfo.hotelImage}"
 							alt="Free HTML Template by Untree.co"
 							class="img-fluid rounded-20">
 
 						<c:if test="${roomImages != null}">
 							<c:forEach var="image" items="${roomImages}">
-								<img src="cssMainpage/images/${image.image }"
+								<img src="images/${image.image }"
 									alt="Free HTML Template by Untree.co"
 									class="img-fluid rounded-20">
 							</c:forEach>
