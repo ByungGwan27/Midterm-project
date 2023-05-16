@@ -43,14 +43,12 @@
 		<ul>
 			<li><a href="noticeList.do" class="nav-link scrollto active"><i
 					class="bx bx-home"></i> <span>공지사항 홈</span></a></li>
-			<li><a href="noticeDetail.do" class="nav-link scrollto"><i
-					class="bx bx-server"></i> <span>공지사항 상세페이지</span></a></li>
-			<li><a href="noticeAddForm.do" class="nav-link scrollto"><i
-					class="bx bx-file-blank"></i> <span>공지사항 작성</span></a></li>
-			<li><a href="#portfolio" class="nav-link scrollto"><i
-					class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
-			<li><a href="#contact" class="nav-link scrollto"><i
-					class="bx bx-envelope"></i> <span>Contact</span></a></li>
+			
+			<c:if test="${memberList.memberGrade == 5}">
+					<li><a href="noticeAddForm.do" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>공지사항
+								작성</span></a></li>
+				</c:if>
+			
 		</ul>
 	</nav>
 	<!-- .nav-menu -->
@@ -87,7 +85,7 @@
 				<tr>
 					<td colspan="4" align="center">
 					<a href="noticeModify.do?noticeId=${noticeInfo.noticeId}"><input type="button" value="수정"></a>
-						<input type="reset" value="취소"></td>
+						<a href="noticeList.do"><input type="button" value="목록"></a></td>
 				</tr>
 			</table>
 

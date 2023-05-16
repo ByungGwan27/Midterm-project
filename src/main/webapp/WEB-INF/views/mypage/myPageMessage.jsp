@@ -318,7 +318,7 @@ tbody {
 		
 		let image = document.createElement('img');
 		image.className = 'img-profile rounded-circle';
-		image.src = list.memberProfile;
+		image.src = 'images/'+list.memberProfile;
 		image.id = 'profileimage';
 		
 		let nickname = document.createTextNode(list.memberNickname);
@@ -409,7 +409,7 @@ tbody {
 		
 		let image = document.createElement('img');
 		image.className = 'img-profile rounded-circle';
-		image.src = list2.memberProfile;
+		image.src = 'images/'+list2.memberProfile;
 		image.id = 'profileimage';
 		
 		let nickname = document.createTextNode('닉네임 : ' + list2.memberNickname);
@@ -478,7 +478,7 @@ tbody {
 		  
 		  let image = document.createElement('img');
 		  image.className = 'img-profile rounded-circle';
-		  image.src = list3.memberProfile;
+		  image.src = 'images/'+list3.memberProfile;
 		  image.id = 'profileimage2';
 
 		  let nickname = document.createTextNode(list3.memberNickname);

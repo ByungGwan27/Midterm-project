@@ -17,7 +17,7 @@ public class ModifyPageControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String noticeTitle = req.getParameter("noticeTitle");
-		String noticeId = req.getParameter("noticeId");
+		String noticeId = req.getParameter("nid2");
 		String noticeContent = req.getParameter("noticeContent");
 		
 		NoticeVO vo = new NoticeVO();

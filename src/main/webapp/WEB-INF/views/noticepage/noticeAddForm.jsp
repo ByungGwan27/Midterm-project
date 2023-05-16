@@ -44,22 +44,17 @@
 		<ul>
 			<li><a href="noticeList.do" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>공지사항 홈</span></a>
 			</li>
-			<li><a href="noticeDetail.do" class="nav-link scrollto"><i class="bx bx-server"></i> <span>공지사항 상세페이지</span></a>
-			</li>
+			
 
 			<!-- admin만 공지사항 작성 가능 -->
-			<c:choose>
-				<c:when test="${memberList.memberId == admin}">
+		
+				<c:if test="${memberList.memberGrade == 5}">
 					<li><a href="noticeAddForm.do" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>공지사항
 								작성</span></a></li>
-				</c:when>
-				<c:otherwise>
-
-				</c:otherwise>
-			</c:choose>
-			<li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a>
-			</li>
-			<li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+				</c:if>
+				
+			
+			
 		</ul>
 	</nav>
 	<!-- .nav-menu -->

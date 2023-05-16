@@ -51,7 +51,7 @@
 				</div>
 				<hr>
 
-				<c:if test="${decInfo.decStatus == '신고대기'}">
+				<c:if test="${decInfo.decStatus == '신고접수'}">
 					<div class="text-center">
 						<button type="button" class="btn btn-primary"
 							onclick="location.href='adminDecAccept.do?id=${decInfo.decId}'">신고처리</button>
@@ -59,7 +59,7 @@
 							onclick="location.href='adminDecCancle.do?id=${decInfo.decId}'">신고반려</button>
 					</div>
 				</c:if>
-				<c:if test="${decInfo.decStatus != '신고대기'}">
+				<c:if test="${decInfo.decStatus != '신고접수'}">
 					<div class="text-center">
 						<button type="button" class="btn btn-primary dis"
 							>신고처리</button>

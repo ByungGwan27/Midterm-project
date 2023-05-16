@@ -160,7 +160,7 @@
 
 		let img = document.createElement('img');
 		img.classList.add('img-fluid', 'rounded', 'mb-4', 'mb-lg-0');
-		img.src = wwlist.HotelImage;
+		img.src = 'images/'+wwlist.HotelImage;
 		img.alt = '...';
 
 		checkboxDiv.appendChild(checkbox);
