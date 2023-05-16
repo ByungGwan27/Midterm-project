@@ -37,6 +37,7 @@ public class MyPageHomeWillVisitControl implements Control {
 			json += "\"checkoutDate\":\"" + list.get(i).getCheckoutDate() + "\",";
 			json += "\"hotelPhone\":\"" + list.get(i).getHotelPhone() + "\",";
 			json += "\"reservationId\":\"" + list.get(i).getReservationId() + "\",";
+			json += "\"hotelImage\":\"" + list.get(i).getHotelImage() + "\",";
 			json += "\"roomName\":\"" + list.get(i).getRoomName() + "\"}";
 			
 			if (i + 1 != list.size()) {

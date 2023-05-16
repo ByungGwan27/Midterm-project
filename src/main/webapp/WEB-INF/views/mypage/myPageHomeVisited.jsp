@@ -49,7 +49,7 @@
 
 <script>
 	/* 수정 */
-	let showWish = ['hotelName', 'locationDetail', 'checkinDate', 'checkoutDate', 'hotelPhone', 'roomName', 'hotelId', 'reservationId'];
+	let showWish = ['hotelName', 'locationDetail', 'checkinDate', 'checkoutDate', 'hotelPhone', 'roomName', 'hotelId', 'hotelImage', 'reservationId'];
 	let xhtp = new XMLHttpRequest();
 	/* 수정 */
 	xhtp.open('get', 'myPageVisitedPaging.do?page=${pageInfo.pageNum }');
@@ -72,7 +72,8 @@
 		    hotelPhone: wdata[i][showWish[4]],
 		    roomName: wdata[i][showWish[5]],
 		    hotelId: wdata[i][showWish[6]],
-		    reservationId: wdata[i][showWish[7]]
+		    hotelImage: wdata[i][showWish[7]],
+		    reservationId: wdata[i][showWish[8]]
 		  }, i+1);
 		
 			/* 수정 */
@@ -105,8 +106,11 @@
 
 		let img = document.createElement('img');
 		img.classList.add('img-fluid', 'rounded', 'mb-4', 'mb-lg-0');
-		img.src = "https://dummyimage.com/300x200/dee2e6/6c757d.jpg";
+		img.src = "images/" + wwlist.hotelImage;
 		img.alt = '...';
+
+		img.style.width = '500px';
+		img.style.height = '300px';
 
 		checkboxDiv.appendChild(checkbox);
 		checkboxDiv.appendChild(checkboxLabel);

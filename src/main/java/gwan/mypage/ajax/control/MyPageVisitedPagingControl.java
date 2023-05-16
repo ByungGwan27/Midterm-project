@@ -37,6 +37,7 @@ public class MyPageVisitedPagingControl implements Control {
 			json += "\"hotelPhone\":\"" + list.get(i).getHotelPhone() + "\",";
 			json += "\"reservationId\":\"" + list.get(i).getReservationId() + "\",";
 			json += "\"hotelId\":\"" + list.get(i).getHotelId() + "\",";
+			json += "\"hotelImage\":\"" + list.get(i).getHotelImage() + "\",";
 			json += "\"roomName\":\"" + list.get(i).getRoomName() + "\"}";
 			
 			if (i + 1 != list.size()) {

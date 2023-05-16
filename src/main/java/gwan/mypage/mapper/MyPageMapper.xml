@@ -8,7 +8,7 @@
 	<!-- 방문 예정 -->
 	<select id="willVisit" resultType="mp">
 	<![CDATA[
-		SELECT b.hotel_name, b.location_detail, b.checkin_date, b.checkout_date, b.hotel_phone, b.room_name, b.reservation_id
+		SELECT b.hotel_name, b.location_detail, b.checkin_date, b.checkout_date, b.hotel_phone, b.room_name, b.reservation_id, b.hotel_image
 		FROM (SELECT rownum rn, a.*
 		      FROM (SELECT *
 		            FROM reservation r JOIN hotel h
@@ -43,7 +43,7 @@
 	<!-- 방문 중 -->
 	<select id="visiting" resultType="mp">
 	<![CDATA[
-		SELECT b.hotel_name, b.location_detail, b.checkin_date, b.checkout_date, b.hotel_phone, b.room_name, b.reservation_id, b.hotel_location1, b.hotel_id
+		SELECT b.hotel_name, b.location_detail, b.checkin_date, b.checkout_date, b.hotel_phone, b.room_name, b.reservation_id, b.hotel_location1, b.hotel_id, b.hotel_image
 		FROM (SELECT rownum rn, a.*
 		      FROM (SELECT *
 		            FROM reservation r JOIN hotel h
@@ -71,7 +71,7 @@
 	<!-- 방문 완료 -->
 	<select id="visited" resultType="mp">
 	<![CDATA[
-		SELECT b.hotel_name, b.location_detail, b.checkin_date, b.checkout_date, b.hotel_phone, b.room_name, b.reservation_id, b.hotel_id
+		SELECT b.hotel_name, b.location_detail, b.checkin_date, b.checkout_date, b.hotel_phone, b.room_name, b.reservation_id, b.hotel_id, b.hotel_image
 		FROM (SELECT rownum rn, a.*
 		      FROM (SELECT *
 		            FROM reservation r JOIN hotel h

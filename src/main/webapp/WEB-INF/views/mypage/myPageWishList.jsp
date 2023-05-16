@@ -162,6 +162,9 @@
 		img.classList.add('img-fluid', 'rounded', 'mb-4', 'mb-lg-0');
 		img.src = 'images/'+wwlist.HotelImage;
 		img.alt = '...';
+		
+		img.style.width = '500px';
+		img.style.height = '300px';
 
 		checkboxDiv.appendChild(checkbox);
 		checkboxDiv.appendChild(checkboxLabel);
