@@ -112,7 +112,7 @@
 						<tr>
 							<td>
 								<button>위시리스트추가</button>
-								<button>신고</button>
+								<button type="button" onclick='location.href="myPageReport.do?hotelId=${hotelInfo.hotelId}"'>신고</button>
 							</td>
 						</tr>
 					</table>

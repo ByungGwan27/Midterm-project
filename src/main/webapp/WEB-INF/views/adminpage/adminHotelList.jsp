@@ -43,7 +43,7 @@
 	<c:forEach var="adminHotelList" items="${adminHotelList}">
 		<table>
 			<tr>
-				<td rowspan="4"><img src="cssMainpage/images/${adminHotelList.hotelImage}" alt="hotelImage" width="200"></td>
+				<td rowspan="4"><img src="images/${adminHotelList.hotelImage}" alt="hotelImage" width="200"></td>
 				<td>
 					<div style="margin: 10px;">
 						<h3>${adminHotelList.hotelName}</h3>

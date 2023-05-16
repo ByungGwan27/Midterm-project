@@ -191,7 +191,7 @@ to {
 					
 						<div class="testimonial-item">
 							<a href="postDetail.do?postId=${postmain.postId }">
-							<img src="cssPostList/images/profile/${postmain.memberProfile }"
+							<img src="images/${postmain.memberProfile }"
 								class="testimonial-img" alt=""></a>
 							<h3>${postmain.memberNickName }</h3>
 

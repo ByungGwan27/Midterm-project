@@ -180,21 +180,21 @@
 		<!-- 리스트끝 -->
 
 		<!-- 페이징 20*10 -->
-		<div class="center">
+	<%-- 	<div class="center">
 			<div class="pagination">
-				<c:if test="${pageInfo.prev}">
-					<a href="hotelListPage.do?page=${pageInfo.startPage-1}">Previous</a>
+				<c:if test="{pageInfo.prev}">
+					<a href="hotelListPage.do?page={pageInfo.startPage-1}">Previous</a>
 				</c:if>
-				<c:forEach var="i" begin="${pageInfo.startPage}"
-					end="${pageInfo.endPage}">
-					<a class="${i==pageInfo.pageNum ? 'active' : ''}"
-						href="hotelListPage.do?page=${i}">${i}</a>
+				<c:forEach var="i" begin="{pageInfo.startPage}"
+					end="{pageInfo.endPage}">
+					<a class="{i==pageInfo.pageNum ? 'active' : ''}"
+						href="hotelListPage.do?page={i}">i</a>
 				</c:forEach>
-				<c:if test="${pageInfo.next}">
-					<a href="hotelListPage.do?page=${pageInfo.endPage+1}">Next</a>
+				<c:if test="{pageInfo.next}">
+					<a href="hotelListPage.do?page={pageInfo.endPage+1}">Next</a>
 				</c:if>
 			</div>
-		</div>
+		</div> --%>
 	</div>
 </div>
 
