@@ -190,9 +190,9 @@ to {
 					<div class="swiper-slide">
 					
 						<div class="testimonial-item">
-							<a href="postDetail.do?postId=${postmain.postId }">${postmain.memberProfile}</a>
+							<a href="postDetail.do?postId=${postmain.postId }">
 							<img src="cssPostList/images/profile/${postmain.memberProfile }"
-								class="testimonial-img" alt="">
+								class="testimonial-img" alt=""></a>
 							<h3>Saul Goodman</h3>
 
 							<h4>Ceo &amp; Founder</h4>
@@ -338,7 +338,7 @@ to {
 	<div class="container px-5 my-5">
 		<div class="text-center">
 			<h2 class="fw-bolder"></h2>
-			<p class="lead fw-normal text-muted mb-5">✨✨여행 파워 블로거✨✨</p>
+			<h2 class="lead fw-normal text-muted mb-5">✨✨여행 파워 블로거✨✨</h2>
 		</div>
 
 		<div
@@ -348,7 +348,7 @@ to {
 					<div class="text-center">
 							<a href="">
 							<img class="img-fluid rounded-circle mb-4 px-4"
-								src="${pm.memberProfile }" alt="..." />
+								src="images/${pm.memberProfile }" alt="..." />
 						 </a>
 						<h5 class="fw-bolder">${pm.memberNickName}</h5>
 						<div class="fst-italic text-muted">Founder &amp; CEO</div>
