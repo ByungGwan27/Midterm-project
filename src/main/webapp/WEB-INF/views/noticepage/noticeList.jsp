@@ -78,10 +78,8 @@
 		<ul>
 			<li><a href="noticeList.do" class="nav-link scrollto active"><i
 					class="bx bx-home"></i> <span>공지사항 홈</span></a></li>
-			<c:if test="${memberList.memberGrade == 5}">
 					<li><a href="noticeAddForm.do" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>공지사항
 								작성</span></a></li>
-				</c:if>
 			
 		</ul>
 	</nav>
