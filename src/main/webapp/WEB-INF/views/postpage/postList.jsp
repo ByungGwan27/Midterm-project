@@ -193,7 +193,7 @@ to {
 							<a href="postDetail.do?postId=${postmain.postId }">
 							<img src="cssPostList/images/profile/${postmain.memberProfile }"
 								class="testimonial-img" alt=""></a>
-							<h3>Saul Goodman</h3>
+							<h3>${postmain.memberNickName }</h3>
 
 							<h4>Ceo &amp; Founder</h4>
 							<p>
@@ -346,7 +346,7 @@ to {
 			<c:forEach var="pm" items="${postmain}" begin="1" end="4">
 				<div class="col mb-5 mb-5 mb-xl-0">
 					<div class="text-center">
-							<a href="">
+							<a href="postDetail.do?postId=${pm.postId }">
 							<img class="img-fluid rounded-circle mb-4 px-4"
 								src="images/${pm.memberProfile }" alt="..." />
 						 </a>
