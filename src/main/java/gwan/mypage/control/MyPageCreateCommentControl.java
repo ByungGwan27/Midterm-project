@@ -26,7 +26,6 @@ public class MyPageCreateCommentControl implements Control {
 		String content = req.getParameter("pdesc");
 		System.out.println(content);
 		
-		
 		MyPageVO vo = new MyPageVO();
 		vo.setMemberId(id);
 		vo.setHotelId(hotelId);

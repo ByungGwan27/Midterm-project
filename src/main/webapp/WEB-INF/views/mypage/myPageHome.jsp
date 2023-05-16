@@ -69,7 +69,7 @@
 	xhtp.send();
 	
 	xhtp.onload = function () {
-		console.log(xhtp.responseText);
+		//console.log(xhtp.responseText);
 		/* 수정 */
 		let ajaxwillvisit = document.querySelector('#ajaxwillvisit');
 		let wdata = JSON.parse(xhtp.response);
@@ -93,7 +93,7 @@
 		
 		//선택삭제 만들기
 		let cDel = document.getElementById("chooseDelete");
-		console.log('cDel위치'+cDel);
+		//console.log('cDel위치'+cDel);
 
 		let checkBoxArr = [];
 		cDel.addEventListener("click", function (e) {
@@ -108,8 +108,6 @@
 			/* 수정 */
 			location.href="myPageHomeDelWillVisit.do?"+checkStr.substring(0, checkStr.length-1);
 		});
-		console.log(checkBoxArr);
-		console.log(checkBoxes);
 	}
 		
 		
@@ -164,11 +162,11 @@
 		deleteButton.addEventListener('click', function (e) {
 			
 			//value(WillVistId)값 찾기
-			console.log('삭제 벨류 찾기' + deleteButton.parentElement.parentElement.children[0].children[0].value);
+			//console.log('삭제 벨류 찾기' + deleteButton.parentElement.parentElement.children[0].children[0].value);
 			let WillVistId = deleteButton.parentElement.parentElement.children[0].children[0].value;
-			console.log("삭제벨류"+WillVistId);
+			//console.log("삭제벨류"+WillVistId);
 			// 한 단위 선택
-			console.log(deleteButton.parentElement.parentElement);
+			//console.log(deleteButton.parentElement.parentElement);
 			let container = deleteButton.parentElement.parentElement;
 			
 			//Ajax 호출
@@ -181,7 +179,7 @@
 			//로딩이 끝나면
 			xhtp.onload = function () {
 				let result = JSON.parse(xhtp.response);
-				console.log(result);
+				//console.log(result);
 				if (result.retCode == 'Success') {
 					// 화면에서 지우기
 					alert('취소완료');

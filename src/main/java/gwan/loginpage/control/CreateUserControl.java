@@ -34,14 +34,13 @@ public class CreateUserControl implements Control {
 		vo.setMemberPw(pw);
 		vo.setMemberPhone(phone);
 		vo.setMemberBirth(bd);
-		System.out.println("회원가입 정보 받기 : " + vo);
+		//System.out.println("회원가입 정보 받기 : " + vo);
 		
 		if (service.createUserCreate(vo)) {
 			return "mainPage.do";
 		} else {
 			return "createUserPage.do";
 		}
-		
 	}
 
 }

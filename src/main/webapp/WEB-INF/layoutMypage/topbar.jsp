@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%
+   String sessionId = (String) session.getAttribute("id"); // 세션에서 id 값을 가져옴
+   out.println("<script>var id = '" + sessionId + "';</script>"); // JavaScript 변수에 할당
+%>
 <nav
 	class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -83,64 +88,12 @@
 			</div></li> -->
 
 		<!-- Nav Item - Messages -->
-		<li class="nav-item dropdown no-arrow mx-1"><a
-			class="nav-link dropdown-toggle" href="#" id="messagesDropdown"
-			role="button" data-toggle="dropdown" aria-haspopup="true"
-			aria-expanded="false"> <i class="fas fa-envelope fa-fw"></i> <!-- Counter - Messages -->
+		<li class="nav-item dropdown no-arrow mx-1" id="messagecount"><!-- <a
+			class="nav-link dropdown-toggle" href="myPageMessage.do?memberId={id }" id="messagesDropdown"
+			role="button"> <i class="fas fa-envelope fa-fw"></i>
 				<span class="badge badge-danger badge-counter">메세지 갯수</span>
-		</a> <!-- Dropdown - Messages -->
-			<div
-				class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-				aria-labelledby="messagesDropdown">
-				<h6 class="dropdown-header">Message Center</h6>
-				<a class="dropdown-item d-flex align-items-center" href="#">
-					<div class="dropdown-list-image mr-3">
-						<img class="rounded-circle" src="cssMypage/img/undraw_profile_1.svg"
-							alt="...">
-						<div class="status-indicator bg-success"></div>
-					</div>
-					<div class="font-weight-bold">
-						<div class="text-truncate">Hi there! I am wondering if you
-							can help me with a problem I've been having.</div>
-						<div class="small text-gray-500">Emily Fowler · 58m</div>
-					</div>
-				</a> <a class="dropdown-item d-flex align-items-center" href="#">
-					<div class="dropdown-list-image mr-3">
-						<img class="rounded-circle" src="cssMypage/img/undraw_profile_2.svg"
-							alt="...">
-						<div class="status-indicator"></div>
-					</div>
-					<div>
-						<div class="text-truncate">I have the photos that you
-							ordered last month, how would you like them sent to you?</div>
-						<div class="small text-gray-500">Jae Chun · 1d</div>
-					</div>
-				</a> <a class="dropdown-item d-flex align-items-center" href="#">
-					<div class="dropdown-list-image mr-3">
-						<img class="rounded-circle" src="cssMypage/img/undraw_profile_3.svg"
-							alt="...">
-						<div class="status-indicator bg-warning"></div>
-					</div>
-					<div>
-						<div class="text-truncate">Last month's report looks great,
-							I am very happy with the progress so far, keep up the good work!</div>
-						<div class="small text-gray-500">Morgan Alvarez · 2d</div>
-					</div>
-				</a> <a class="dropdown-item d-flex align-items-center" href="#">
-					<div class="dropdown-list-image mr-3">
-						<img class="rounded-circle"
-							src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
-						<div class="status-indicator bg-success"></div>
-					</div>
-					<div>
-						<div class="text-truncate">Am I a good boy? The reason I ask
-							is because someone told me that people say this to all dogs, even
-							if they aren't good...</div>
-						<div class="small text-gray-500">Chicken the Dog · 2w</div>
-					</div>
-				</a> <a class="dropdown-item text-center small text-gray-500" href="myPageMessage.do?memberId=${id }">Read
-					More Messages</a>
-			</div></li>
+				
+		</a> --></li>
 
 		<div class="topbar-divider d-none d-sm-block"></div>
 
@@ -178,6 +131,11 @@
 </nav>
 
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+	console.log(1);
+	messageLoad();
+
+})	
 function logOut() {
 		let btnL = document.getElementById('gwanLogout');
 			if (confirm("정말 로그아웃 하시겠습니까?")) {
@@ -185,4 +143,36 @@ function logOut() {
 				location.href = 'logout.do';
 			}
 	}
+	
+
+function messageLoad() {
+	fetch('myPageMessageCount.do')
+		.then(resolve => resolve.json())
+		.then(result => {
+			let mc = result.mc;
+			//console.log('mc'+mc);
+
+			const messageCountElement = document.getElementById("messagecount");
+
+			// 새로운 요소를 생성합니다.
+			const linkElement = document.createElement("a");
+			linkElement.classList.add("nav-link", "dropdown-toggle");
+			linkElement.href = `myPageMessage.do?memberId=${id}`;
+			linkElement.id = "messagesDropdown";
+			linkElement.role = "button";
+
+			const iconElement = document.createElement("i");
+			iconElement.classList.add("fas", "fa-envelope", "fa-fw");
+
+			const badgeElement = document.createElement("span");
+			badgeElement.classList.add("badge", "badge-danger", "badge-counter");
+			badgeElement.textContent = mc;
+
+			// 요소들을 조합하여 추가합니다.
+			linkElement.appendChild(iconElement);
+			linkElement.appendChild(badgeElement);
+			messageCountElement.appendChild(linkElement);
+			
+		})
+}
 </script>

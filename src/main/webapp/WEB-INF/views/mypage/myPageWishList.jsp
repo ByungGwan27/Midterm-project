@@ -12,6 +12,7 @@
 		justify-content: space-around;
 	}
 </style>
+
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">위시리스트</h1>
 <p class="mb-4">
@@ -73,7 +74,7 @@
 		let ajaxwish = document.querySelector('#ajaxwish');
 		//responseText와 response의 차이점이????
 		let wdata = JSON.parse(xhtp.response);
-		//console.log(wdata);
+		console.log(wdata);
 		//console.log(document.getElementsByClassName("chooseDelete"));
 		
 		
@@ -107,7 +108,7 @@
 		
 		//선택삭제 만들기
 		let cDel = document.getElementById("chooseDelete");
-		console.log(cDel);
+		//console.log(cDel);
 		//console.log(cDel.parentElement.parentElement.parentElement.children[2].children[0].children[0]);
 		//삭제하고 싶은 위치 value
 		//console.log(cDel.parentElement.parentElement.parentElement.children[2]);
@@ -117,17 +118,21 @@
 		let checkBoxArr = [];
 		cDel.addEventListener("click", function (e) {
 			checkStr = '';
-  		let checkBoxes = document.querySelectorAll(
-    		'input[type="checkbox"][name="wishcheckbox"]:checked'
-  		);
+	  		let checkBoxes = document.querySelectorAll(
+	    		'input[type="checkbox"][name="wishcheckbox"]:checked'
+	  		);
+	  		//선택한거 없으면 클릭 방지
+	  		 if (checkBoxes.length === 0) {
+	  	        e.preventDefault();
+	  	        return;
+	  	    }
 			for (let i = 0; i < checkBoxes.length; i++) {
 				checkStr += 'id='+checkBoxes[i].value+"&";
 				//id로 넘기기로했다
 			}
 			location.href="myPageWishListAjaxDelete.do?"+checkStr.substring(0, checkStr.length-1);
 		});
-		console.log(checkBoxArr);
-		console.log(checkBoxes);
+		
 	}
 		
 		
@@ -219,7 +224,7 @@
 
 		let reservationButton = document.createElement('a');
 		reservationButton.classList.add('btn', 'btn-primary');
-		reservationButton.href = '#!';
+		reservationButton.href = 'hotelInfoPage.do?hotelLocation1=' + wwlist.hotelLocation1 + '&hotelId=' + wwlist.WishlistId;
 		reservationButton.textContent = '예약';
 
 		contentDiv.appendChild(hotelName);

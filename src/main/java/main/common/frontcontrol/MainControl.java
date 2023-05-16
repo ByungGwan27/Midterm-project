@@ -42,7 +42,7 @@ public class MainControl implements Control {
 		//예약순 숙소 조회
 		int index = 0;
 		List<HotelVO> list = service.OrderResHotel();
-		System.out.println(list);
+		//System.out.println(list);
 		for(HotelVO hotel : list) {
 			int reshotelId =hotel.getHotelId();
 			String reshotelName = hotel.getHotelName();

@@ -31,7 +31,7 @@ public class MyPageHomeDelWillVisitControl implements Control {
 		// 삭제 버튼 누를시 삭제
 		String wvId = req.getParameter("wvId");
 		String json = "";
-		
+
 		if (service.deleteWillVisit(Integer.parseInt(wvId))) {
 			json = "{\"retCode\":\"Success\"}";
 		} else {

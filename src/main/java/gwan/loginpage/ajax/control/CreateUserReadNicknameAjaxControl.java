@@ -18,6 +18,7 @@ public class CreateUserReadNicknameAjaxControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		LoginPageService service = new LoginPageServiceImpl();
 		List<LoginPageVO> list = service.readNickname();
+		
 		String json = "[";
 		for (int i = 0; i < list.size(); i++) {
 			json += "{\"memberNickname\":\"" + list.get(i).getMemberNickname() + "\"}";

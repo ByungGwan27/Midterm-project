@@ -21,6 +21,7 @@ import gwan.loginpage.control.loginPageControl;
 import gwan.loginpage.control.logoutControl;
 import gwan.mail.smtp.passwordMail;
 import gwan.mail.smtp.passwordResetControl;
+import gwan.mypage.ajax.control.MyPageMessageCountControl;
 import gwan.mypage.ajax.control.MyPageVisitPagingControl;
 import gwan.mypage.ajax.control.MyPageVisitedPagingControl;
 import gwan.mypage.ajax.control.MyPageWishAjaxControl;
@@ -314,6 +315,8 @@ public class FrontController extends HttpServlet{
 		map.put("/myPageQnaQ.do", new MyPageQnaQControl());
 		map.put("/myPageQnaQCreate.do", new MyPageQnaQCreateControl());
 		map.put("/myPageQnaQCreateCkeditor.do", new MyPageQnaQCreateCkeditorControl());
+		//안읽은 메세지 갯수
+		map.put("/myPageMessageCount.do", new MyPageMessageCountControl());
 		
 		// 로그인 페이지 관련
 		//로그인페이지(이동)

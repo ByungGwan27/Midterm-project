@@ -9,7 +9,7 @@
 </p>
 
 <!-- 본문  -->
-<div class="card shadow mb-4" id = "ajaxwish">
+<div class="card shadow mb-4">
 	<div class="card-header py-3">
 		<h6 class="m-0 font-weight-bold text-primary">후기 작성</h6>
 	</div>
