@@ -50,7 +50,6 @@ public class MyPagecreateMessageControl implements Control {
 
 		String json = "";
 		
-		
 		Map<String, Object> map = new HashMap<>();
 		
 		if(result) {

@@ -252,4 +252,15 @@
 		INSERT INTO review(review_id, member_id, hotel_id, review_point, review_content, res_past, checkin_date, master_view)
 		VALUES((SELECT NVL(MAX(review_id), 0) + 1 FROM review), #{memberId}, #{hotelId}, #{reviewPoint}, #{reviewContent}, 0, SYSDATE, 1)
 	</insert>
+	
+	<!-- 안읽은 메세지 갯수 -->
+	<select id="readCountmessage">
+		SELECT COUNT(*) FROM message WHERE message_check=1 AND member_id != #{memberId}
+	</select>
+	
+	<!-- 메세지 읽기 -->
+	<update id="updateMessageCheck" parameterType="mp">
+		UPDATE message SET message_check = 2 WHERE member_id = #{memberId} AND member_id2 = #{memberId2}
+	</update>
+	
 </mapper>

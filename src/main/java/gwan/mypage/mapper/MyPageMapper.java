@@ -51,6 +51,7 @@ public interface MyPageMapper {
 	public List<MyPageVO> readAllMessage(String memberId, String memberId2);
 	public int createMessage(MyPageVO vo);
 	public int updateMessage(int messageId);
+	public int updateMessageCheck(String memberId, String memberId2);
 	
 	//신고
 	public int createDec(MyPageVO vo);
@@ -58,7 +59,9 @@ public interface MyPageMapper {
 	//후기
 	public int createComment(MyPageVO vo);
 	
-	
+	//메세지 갯수
+	public int readCountmessage(String memberId);
+	public void updateMessageCheck(MyPageVO vo);
 	
 	
 	

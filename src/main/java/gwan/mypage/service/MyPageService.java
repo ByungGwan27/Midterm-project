@@ -54,4 +54,7 @@ public interface MyPageService {
 	public boolean createDec(MyPageVO vo);
 	//후기
 	public boolean createComment(MyPageVO vo);
+	
+	//메세지 갯수
+	public int readCountmessage(String memberId);
 }

@@ -111,6 +111,7 @@ public class MyPageServiceImpl implements MyPageService {
 
 	@Override
 	public boolean createMessage(MyPageVO vo) {
+		mapper.updateMessageCheck(vo);
 		return mapper.createMessage(vo) == 1;
 	}
 
@@ -127,6 +128,11 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public boolean createComment(MyPageVO vo) {
 		return mapper.createComment(vo) == 1;
+	}
+
+	@Override
+	public int readCountmessage(String memberId) {
+		return mapper.readCountmessage(memberId);
 	}
 	
 	

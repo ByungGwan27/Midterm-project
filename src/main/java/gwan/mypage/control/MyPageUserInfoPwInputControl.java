@@ -22,6 +22,5 @@ public class MyPageUserInfoPwInputControl implements Control {
 			return "myPageUserInfoChange.do";
 		}
 		return "myPageUserInfoPw.do";
-		
 	}
 }

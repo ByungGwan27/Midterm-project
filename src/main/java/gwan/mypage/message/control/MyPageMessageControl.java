@@ -31,9 +31,6 @@ public class MyPageMessageControl implements Control {
 		
 		List<MyPageVO> list = service.readProfile(null);
 			
-		
-		
-		
 		return "mypage/myPageMessage.tiles";
 	}
 
