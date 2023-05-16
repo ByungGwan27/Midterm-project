@@ -58,9 +58,6 @@
 				<li><a href="#pageSubmenu1" data-toggle="collapse"
 					aria-expanded="false" class="dropdown-toggle">지역</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu1">
-						<!--	<li><a href="#pageSubmenu6" data-toggle="collapse"
-							aria-expanded="false" class="dropdown-toggle">서울특별시</a> -->
-						<!-- <ul class="collapse list-unstyled" id="pageSubmenu6"> -->
 						<c:forEach var="navListLoca" items="${navListLoca}">
 							<li><a
 								href="hotelListPage.do?hotelLocation1=${navListLoca.hotelLocation1}">
@@ -82,7 +79,6 @@
 							<div class="mb-5">
 								<form action="#" class="subscribe-form">
 									<div class="form-group d-flex">
-										<!-- <div class="icon"><span class="icon-paper-plane"></span></div> -->
 										<input id="inputPrice" type="text" placeholder="가격입력">
 										<button id="price" type="button" onclick=hotelListPrice()>서치</button>
 									</div>
@@ -107,12 +103,10 @@
 							<div class="mb-5">
 								<form action="#" class="subscribe-form">
 									<div class="form-group d-flex">
-										<!-- <div class="icon"><span class="icon-paper-plane"></span></div> -->
 										<input id="maxNum" type="text" placeholder="최대인원">
 									</div>
 									<div class="form-group d-flex">~</div>
 									<div class="form-group d-flex">
-										<!-- <div class="icon"><span class="icon-paper-plane"></span></div> -->
 										<input id="minNum" type="text" placeholder="최소인원">
 										<button id="num" type="button" onclick=hotelListNum()>서치</button>
 									</div>
@@ -121,28 +115,7 @@
 						</li>
 					</ul></li>
 			</ul>
-			<!-- <div class="mb-5">
-              <h5>Tag Cloud</h5>
-              <div class="tagcloud">
-                <a href="#" class="tag-cloud-link">dish</a>
-                <a href="#" class="tag-cloud-link">menu</a>
-                <a href="#" class="tag-cloud-link">food</a>
-                <a href="#" class="tag-cloud-link">sweet</a>
-                <a href="#" class="tag-cloud-link">tasty</a>
-                <a href="#" class="tag-cloud-link">delicious</a>
-                <a href="#" class="tag-cloud-link">desserts</a>
-                <a href="#" class="tag-cloud-link">drinks</a>
-              </div>
-            </div> -->
-			<!-- <div class="mb-5">
-              <h5>Newsletter</h5>
-              <form action="#" class="subscribe-form">
-                <div class="form-group d-flex">
-                  <div class="icon"><span class="icon-paper-plane"></span></div>
-                  <input type="text" class="form-control" placeholder="Enter Email Address">
-                </div>
-              </form>
-            </div>-->
+	
 		</div>
 	</nav>
 	<!-- 사이드바끝 -->

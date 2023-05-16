@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <main id="main" class="main">
-	<h3>admingetHotelInfo</h3>
+	<h3>admingetRoomlInfo</h3>
 	<h5>객실정보확인</h5>
 	<form action="adminRoomInfoModifyPage.do" method="GET">
 		<table class="table">

@@ -85,10 +85,8 @@ public class AdminAddRoomControl implements Control {
 		HotelInfoService service = new HotelInfoServiceImpl();
 				
 		if(service.addAdminRoom(addRoom) && service.addAdminRoomImage(addRoom) && service.addAdminRoomDetail(addRoom)) {
-			//System.out.println("성공");
 			return "adminHotelList.do";
 		}else {
-			
 			return "adminHotelList.do";
 		}
 	}
