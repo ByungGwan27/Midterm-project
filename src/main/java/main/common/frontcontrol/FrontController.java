@@ -27,6 +27,7 @@ import gwan.mypage.ajax.control.MyPageVisitedPagingControl;
 import gwan.mypage.ajax.control.MyPageWishAjaxControl;
 import gwan.mypage.ajax.control.MyPageWishAjaxDeleteControl;
 import gwan.mypage.control.AdminMessagePageControl;
+import gwan.mypage.control.CreateHotelInfoControl;
 import gwan.mypage.control.MyPageCommentControl;
 import gwan.mypage.control.MyPageCouponControl;
 import gwan.mypage.control.MyPageCreateCommentControl;
@@ -341,6 +342,10 @@ public class FrontController extends HttpServlet{
 		
 		//관리자 메세지 페이지
 		map.put("/adminMessagePage.do", new AdminMessagePageControl());
+		
+		// 호텔 인포 위시리스트 추가
+		map.put("/createHotelInfo.do", new CreateHotelInfoControl());
+		
 		
 		
 	}

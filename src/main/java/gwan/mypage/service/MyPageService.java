@@ -57,4 +57,8 @@ public interface MyPageService {
 	
 	//메세지 갯수
 	public int readCountmessage(String memberId);
+	
+	//호텔 인포 : 위시리스트 추가
+	public boolean createWishList(String memberId, int hotelId);
+		
 }

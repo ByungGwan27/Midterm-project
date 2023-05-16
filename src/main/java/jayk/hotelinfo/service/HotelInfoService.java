@@ -51,4 +51,5 @@ public interface HotelInfoService {
 	public List<HotelInfoVO> readHotelList();
 	
 	public int totalCount();
+
 }
