@@ -68,11 +68,6 @@
 			}
 	}
 </script>
-<<<<<<< HEAD
-
-
-=======
->>>>>>> branch 'jayk' of https://github.com/ByungGwan27/Midterm-project.git
 	
   <div class="hero hero-inner">
 	<div class="container">
