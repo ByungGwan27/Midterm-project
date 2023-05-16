@@ -12,7 +12,7 @@
 		select distinct hotel_thema from hotel where
 		hotel_thema is not null
 	</select>
-	
+
 
 	<select id="hotelListPage" resultType="hi">
 		<![CDATA[
@@ -233,11 +233,13 @@
 
 
 	<select id="roomList">
-		SELECT m.image, i.room_name, i.room_grade, i.room_max, i.room_price,
+		SELECT m.image, i.room_name, i.room_grade,
+		i.room_max, i.room_price,
 		i.room_id
 		from room_info i
 		join room_image m
-		on i.hotel_id = m.hotel_id
+		on
+		i.hotel_id = m.hotel_id
 		where i.hotel_id = #{hotelId}
 	</select>
 
@@ -315,6 +317,7 @@
 		update hotel set hotel_name=#{hotelName},
 		hotel_location1=#{hotelLocation1}, hotel_location2=#{hotelLocation2},
 		location_detail=#{locationDetail}, hotel_thema=#{hotelThema}
+		<if test="hotelImage != null and hotelImage != ''">,hotel_image=#{hotelImage}</if>
 		where
 		hotel_id = #{hotelId}
 	</update>

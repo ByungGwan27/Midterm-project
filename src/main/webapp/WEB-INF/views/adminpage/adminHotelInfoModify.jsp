@@ -5,12 +5,13 @@
 <main id="main" class="main">
 	<h3>hotelinfomodify</h3>
 	<h5>숙소정보수정</h5>
-	<form action="adminHotelInfoModifyPage.do" method="POST">
+	<form action="adminHotelInfoModifyPage.do" method="POST" enctype="multipart/form-data">
 		<table class="table">
 			<tr>
 				<th>메인이미지</th>
 				<td><img width="200px"
-					src="cssMainpage/images/${adminHotelInfo.hotelImage}"></td>
+					src="images/${adminHotelInfo.hotelImage}"></td>
+					<td><input type="file" name="attach"></td>
 			</tr>
 			<tr>
 				<th>hotelId</th>
