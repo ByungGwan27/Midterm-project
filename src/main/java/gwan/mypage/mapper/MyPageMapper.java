@@ -63,6 +63,7 @@ public interface MyPageMapper {
 	public int readCountmessage(String memberId);
 	public void updateMessageCheck(MyPageVO vo);
 	
-	
+	//호텔 인포 : 위시리스트 추가
+	public int createWishList(@Param("memberId") String memberId, @Param("hotelId") int hotelId);
 	
 }

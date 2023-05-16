@@ -263,4 +263,10 @@
 		UPDATE message SET message_check = 2 WHERE member_id = #{memberId} AND member_id2 = #{memberId2}
 	</update>
 	
+	<!-- 호텔 인포 : 위시리스트 추가 -->
+	<insert id="createWishList">
+		INSERT INTO wishlist (wishlist_id, member_id, hotel_id)
+		VALUES(wish_seq.NEXTVAL, #{memberId}, #{hotelId})
+	</insert>
+	
 </mapper>

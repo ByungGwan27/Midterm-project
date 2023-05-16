@@ -181,4 +181,5 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 			int roomMin) {
 		return mapper.filteredList(hotelLocation1, hotelThema, roomPrice, roomMax, roomMin);
 	}
+
 }

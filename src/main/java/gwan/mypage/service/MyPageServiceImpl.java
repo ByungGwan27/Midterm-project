@@ -134,6 +134,11 @@ public class MyPageServiceImpl implements MyPageService {
 	public int readCountmessage(String memberId) {
 		return mapper.readCountmessage(memberId);
 	}
+
+	@Override
+	public boolean createWishList(String memberId, int hotelId) {
+		return mapper.createWishList(memberId, hotelId) == 1;
+	}
 	
 	
 }
