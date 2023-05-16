@@ -54,8 +54,6 @@ public class MyPageUserInfoChangeInputControl implements Control {
 //		// 회원 정보가 변경된 경우 세션 값을 갱신합니다.
 //		session.setAttribute("member", member);
 		
-		
-		
 		LoginPageVO vo = new LoginPageVO();
 		vo.setMemberProfile(attach);
 		vo.setMemberEmail(email);
@@ -66,7 +64,7 @@ public class MyPageUserInfoChangeInputControl implements Control {
 		vo.setMemberId(id);
 		
 		MyPageService service = new MyPageServiceImpl();
-		System.out.println("정보수정 테스트"+vo);
+		//System.out.println("정보수정 테스트"+vo);
 		boolean cinfo = service.updateMemberInfo(vo);
 		//System.out.println(cinfo);
 		

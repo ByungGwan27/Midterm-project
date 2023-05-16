@@ -6,8 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
 import gwan.mypage.service.MyPageService;
 import gwan.mypage.service.MyPageServiceImpl;
 import main.common.control.Control;
@@ -33,7 +31,6 @@ public class MyPageHomeDelWillVisitControl implements Control {
 		// 삭제 버튼 누를시 삭제
 		String wvId = req.getParameter("wvId");
 		String json = "";
-		Gson gson = new Gson();
 
 		if (service.deleteWillVisit(Integer.parseInt(wvId))) {
 			json = "{\"retCode\":\"Success\"}";

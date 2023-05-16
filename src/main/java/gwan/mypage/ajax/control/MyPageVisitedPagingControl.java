@@ -28,7 +28,6 @@ public class MyPageVisitedPagingControl implements Control {
 		MyPageService service = new MyPageServiceImpl();
 		List<MyPageVO> list = service.visited(id, page);
 		
-		
 		String json="[";
 		for (int i=0; i<list.size();i++) {
 			json += "{\"hotelName\":\""+list.get(i).getHotelName()+"\",";

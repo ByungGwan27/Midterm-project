@@ -11,7 +11,6 @@ import com.google.gson.JsonObject;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import gwan.mypage.domain.MyPageVO;
 import main.common.control.Control;
 
 public class MyPageQnaQCreateControl implements Control {
@@ -34,7 +33,6 @@ public class MyPageQnaQCreateControl implements Control {
 			fileName = multi.getFilesystemName(file);
 		}
 		fileUrl = req.getContextPath() + "/images/" + fileName;
-		
 		
 		// ckeditor 정보를 확인. 에디터부분 출력.
 		JsonObject json = new JsonObject();
