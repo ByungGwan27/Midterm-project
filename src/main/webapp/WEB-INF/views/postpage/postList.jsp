@@ -190,10 +190,10 @@ to {
 					<div class="swiper-slide">
 					
 						<div class="testimonial-item">
-							<a href="postDetail.do?postId=${postmain.postId }">${postmain.memberProfile}</a>
+							<a href="postDetail.do?postId=${postmain.postId }">
 							<img src="cssPostList/images/profile/${postmain.memberProfile }"
-								class="testimonial-img" alt="">
-							<h3>Saul Goodman</h3>
+								class="testimonial-img" alt=""></a>
+							<h3>${postmain.memberNickName }</h3>
 
 							<h4>Ceo &amp; Founder</h4>
 							<p>
@@ -338,7 +338,7 @@ to {
 	<div class="container px-5 my-5">
 		<div class="text-center">
 			<h2 class="fw-bolder"></h2>
-			<p class="lead fw-normal text-muted mb-5">✨✨여행 파워 블로거✨✨</p>
+			<h2 class="lead fw-normal text-muted mb-5">✨✨여행 파워 블로거✨✨</h2>
 		</div>
 
 		<div
@@ -346,9 +346,9 @@ to {
 			<c:forEach var="pm" items="${postmain}" begin="1" end="4">
 				<div class="col mb-5 mb-5 mb-xl-0">
 					<div class="text-center">
-							<a href="">
+							<a href="postDetail.do?postId=${pm.postId }">
 							<img class="img-fluid rounded-circle mb-4 px-4"
-								src="${pm.memberProfile }" alt="..." />
+								src="images/${pm.memberProfile }" alt="..." />
 						 </a>
 						<h5 class="fw-bolder">${pm.memberNickName}</h5>
 						<div class="fst-italic text-muted">Founder &amp; CEO</div>
